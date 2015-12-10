@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<runtimes>\r\n  <runtime id\="GlassFish 3.1" location\="D\:/Backup Deivid/Maven/glassfish3/glassfish" name\="GlassFish 3.1" runtime-type-id\="org.glassfish.jst.server.runtime.glassfish31" timestamp\="0"/>\r\n</runtimes>\r\n
