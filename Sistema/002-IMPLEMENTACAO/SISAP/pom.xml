@@ -6,6 +6,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>SISAP</name>
+	
+	 <properties>
+             <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+             <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+             <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+         </properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -77,6 +84,22 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<plugin>
+                		<groupId>org.jacoco</groupId>
+			        <artifactId>jacoco-maven-plugin</artifactId>
+                		<version>0.7.4.201502262128</version>
+                		<executions>
+		                    <execution>
+		                        <goals>
+		                            <goal>prepare-agent</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		                <configuration>
+		                    <append>true</append>
+		                    <destFile>${sonar.jacoco.reportPath}</destFile>
+		                </configuration>
+		        </plugin>
 		</plugins>
 	</build>
 </project>
