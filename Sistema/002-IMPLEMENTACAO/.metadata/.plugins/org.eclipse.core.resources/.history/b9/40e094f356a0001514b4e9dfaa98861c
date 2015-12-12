@@ -1,0 +1,10 @@
+package br.edu.ifpb.monteiro.ads.sisap.entities;
+
+public class Pedagogo extends Pessoa {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5222738149854183983L;
+
+}

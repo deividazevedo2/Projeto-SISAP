@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;br.edu.ifpb.monteiro.ads.sisap.beans&apos; to &apos;br.edu.ifpb.monteiro.ads.sisap.entities&apos;&#x0D;&#x0A;- Original project: &apos;SISAP&apos;&#x0D;&#x0A;- Original element: &apos;SISAP/src/main/java/br.edu.ifpb.monteiro.ads.sisap.beans&apos;&#x0D;&#x0A;- Renamed element: &apos;SISAP/src/main/java/br.edu.ifpb.monteiro.ads.sisap.entities&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;br.edu.ifpb.monteiro.ads.sisap.beans&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;br.edu.ifpb.monteiro.ads.sisap.beans" name="br.edu.ifpb.monteiro.ads.sisap.entities" qualified="false" references="true" stamp="1449860905361" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,76 @@
+package br.edu.ifpb.monteiro.ads.sisap.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
+
+@Entity
+@Table(name = "TB_PESSOA")
+public class Pessoa implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3385709462485432545L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+
+	@Column(name = "PRIMEIRO_NOME")
+	private String primeiroNome;
+
+	@Column(name = "SEGUNDO_NOME")
+	private String segundoNome;
+
+	@Column(name = "CPF", unique = true)
+	private String cpf;
+	
+	@Column(name = "RG", unique = true)
+	private String rg;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DATA_NASCIMENTO")
+	private Date dataNascimento;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "SEXO", nullable = false)
+	private Sexo sexo;
+	
+	@Column(name = "NATURALIDADE", unique = true)
+	private String naturalidade;
+	
+	@Embedded
+	private Endereco endereco;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
+	@JoinColumn(name = "CONTATO")
+	private List<Contato> contatos;
+
+	
+	public Pessoa() {
+	}
+	
+	
+	
+}

@@ -1,0 +1,10 @@
+package br.edu.ifpb.monteiro.ads.sisap.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TB_CONTATO")
+public class Contato {
+
+}

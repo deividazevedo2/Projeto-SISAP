@@ -1,0 +1,43 @@
+package br.edu.ifpb.monteiro.ads.sisap.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TB_USUARIO")
+public class Usuario {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+
+	@Column(name = "PRIMEIRO_NOME")
+	private String primeiroNome;
+	
+	@Column(name = "SEGUNDO_NOME")
+	private String segundoNome;
+
+	@Column(name = "EMAIL", unique = true)
+	private String email;
+
+	@Column(name = "LOGIN", nullable = false, unique = true)
+	private String login;
+
+	@Column(name = "SENHA", nullable = false, unique = true)
+	private String senha;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "CARGO", nullable = false)
+	private String cargo;
+
+	public Usuario() {
+	}
+
+}
