@@ -57,14 +57,4 @@ public class PedagogoService {
 
 	}
 
-	public List<Pedagogo> getAll()
-			throws SisapException {
-		try {
-			return this.pedagogoDAO.getAll();
-		} catch (PersistenceException exception) {
-			throw new SisapException(exception.getMessage(), exception);
-		}
-
-	}
-
 }
