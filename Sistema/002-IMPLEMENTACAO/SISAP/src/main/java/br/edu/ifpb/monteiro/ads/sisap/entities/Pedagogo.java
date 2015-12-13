@@ -1,8 +1,10 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Id;
 
+@DiscriminatorValue("P")
 public class Pedagogo extends Pessoa {
 
 	/**
