@@ -8,6 +8,11 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 
 public class PedagogoDAO extends DAO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4651136765722356561L;
+
 	public void salvar(Pedagogo pedagogo) {
 		EntityManager em = getEntityManager();
 		em.persist(pedagogo);
@@ -28,15 +33,15 @@ public class PedagogoDAO extends DAO {
 		return resultado;
 
 	}
-	
-	public List<Pedagogo> getAll(){
+
+	public List<Pedagogo> getAll() {
 		EntityManager em = getEntityManager();
 		List<Pedagogo> resultado = null;
 
 		String jpql = "select a from Aluno_JS a where 1=1";
 
 		return resultado;
-		
+
 	}
 
 }

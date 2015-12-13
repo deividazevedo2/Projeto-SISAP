@@ -2,8 +2,12 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "TB_PEDAGOGO")
 @DiscriminatorValue("P")
 public class Pedagogo extends Pessoa {
 
