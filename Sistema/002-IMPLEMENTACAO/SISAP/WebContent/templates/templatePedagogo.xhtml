@@ -39,7 +39,8 @@
 							</a>
 						</f:facet>
 						<f:facet name="right">
-							<h:outputLabel>Pedagogo Logado</h:outputLabel>
+							<h:outputLink id="openDialogLink" value="javascript:void(0)"
+								onclick="PF('dlg').show();">Pedagogo Logado</h:outputLink>
 
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -60,29 +61,20 @@
 				<h:form>
 					<p:menu style="width: 97%" toggleable="true">
 						<p:submenu label="Acompanhamento Pedagógico">
-							<p:menuitem id="agendarAtividade" value="Agendar Atividade"
-								outcome="/paginas/pedagogo/agendarAtividade.xhtml"
-								styleClass="#{'menu1' == page.viewId ? 'menuItemActive' : ''}" />
-							<p:menuitem id="diarioPessoal" value="Diário Pessoal"
-								outcome="/paginas/pedagogo/visualizarDiario.xhtml" />
-							<p:menuitem id="atendimentos" value="Atendimentos"
-								outcome="/paginas/pedagogo/visualizarAtendimentos.xhtml" />
-							<p:menuitem id="notificacoes" value="Notificações"
-								outcome="/paginas/pedagogo/notificacoesEnviadas.xhtml" />
-							<p:menuitem id="reunioes" value="Reuniões"
-								outcome="/paginas/pedagogo/visualizarReunioes.xhtml" />
-							<p:menuitem id="visitasDomiciliares" value="Visitas Domiciliares"
-								outcome="/paginas/pedagogo/visualizarVisitas.xhtml" />
+							<p:menuitem id="agendarAtividade" value="Agendar Atividade" />
+							<p:menuitem id="diarioPessoal" value="Diário Pessoal" />
+							<p:menuitem id="atendimentos" value="Atendimentos" />
+							<p:menuitem id="notificacoes" value="Notificações" />
+							<p:menuitem id="reunioes" value="Reuniões" />
+							<p:menuitem id="visitasDomiciliares" value="Visitas Domiciliares" />
 						</p:submenu>
 
 						<p:submenu label="Conselho De Classe">
-							<p:menuitem id="conselhosDeClasse" value="Listar"
-								outcome="/paginas/pedagogo/visualizarConselhosDeClasse.xhtml" />
+							<p:menuitem id="conselhosDeClasse" value="Listar" />
 						</p:submenu>
 
 						<p:submenu label="Núcleo de Aprendizagem">
-							<p:menuitem id="nucleosDeAprendizagem" value="Visualizar Núcleos"
-								outcome="/paginas/pedagogo/visualizarNucleos.xhtml" />
+							<p:menuitem id="nucleosDeAprendizagem" value="Visualizar Núcleos" />
 							<p:menuitem id="relatorioDeNucleo" value="Relatório de Núcleo" />
 						</p:submenu>
 
@@ -92,8 +84,65 @@
 						</p:submenu>
 					</p:menu>
 				</h:form>
-
 			</p:layoutUnit>
+
+			<h:form>
+				<p:dialog id="dlg-editar-pedagogo" showEffect="scale"
+					hideEffect="scale" header="Editar Dados" widgetVar="dlg"
+					maximizable="true" minimizable="true">
+					<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
+					<h:panelGrid id="dados-pessoais" columns="2" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="nome" value="Nome: " />
+							<br />
+							<p:inputText id="nome" required="true" label="nome" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel for="sobrenome" value="Sobrenome: " />
+							<br />
+							<p:inputText id="sobrenome" required="true" label="sobrenome" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:separator style="height: 1px; width: 100%;" />
+					<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
+
+					<h:panelGrid id="dados-login" columns="2" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="matricula" value="Matrícula: " />
+							<br />
+							<p:inputText id="matricula" required="true" label="matricula" />
+						</h:panelGroup>
+						<br />
+						<h:panelGroup>
+							<h:outputLabel for="senha" value="Senha:" />
+							<br />
+							<p:password id="senha" required="true" label="senha" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel for="re-senha" value="Confirmar Senha:" />
+							<br />
+							<p:password id="re-senha" required="true" label="re-senha" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:separator style="height: 1px; width: 100%;" />
+					<h:outputLabel style="font-weight: bold;">Dados de Admin</h:outputLabel>
+					<h:panelGrid id="dados-admin" columns="2" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="chave-admin" value="Chave Admin:" />
+							<br />
+							<p:password id="chave-admin" required="true" label="chave-admin" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:separator style="height: 1px; width: 100%;" />
+					<center>
+						<p:commandButton value="Salvar" />
+						<p:commandButton value="Limpar" />
+					</center>
+				</p:dialog>
+			</h:form>
 
 			<p:layoutUnit id="center" position="center">
 				<ui:insert name="center" />
