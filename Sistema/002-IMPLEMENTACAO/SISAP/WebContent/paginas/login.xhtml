@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templates/templateLogin.xhtml">
+	<ui:define name="title">
+		SISAP - Login
+	</ui:define>
+	<ui:define name="center">
+		<p:growl id="messages" showDetail="true" showSummary="true" />
+		<p:spacer height="65px" />
+		<center>
+			<p:panel
+				style="width : 25%; text-align : center; background: #f3f3f3">
+				<p:spacer height="5px" />
+				<div style="float: center;">
+					<img src="../resources/logo_sisap.png" height="100%" width="100%" />
+				</div>
+				<center>
+					<h:form id="login" prependId="false"
+						onsubmit="action='j_security_check';">
+				Login: <input type="text" name="j_username" />
+						<br />
+						<br />
+				Senha: <input type="password" name="j_password" />
+						<br />
+						<br />
+						<input type="submit" value="Entrar" />
+						<input type="reset" value="Limpar" />
+					</h:form>
+					<h:commandButton id="btCadastrar" type="button" value="Cadastrar"
+						onclick="PF('dlg').show();">
+					</h:commandButton>
+				</center>
+				<h:form>
+					<p:dialog id="dlg-cadastro-pedagogo" header="Novo Pedagogo"
+						widgetVar="dlg" maximizable="true" minimizable="true">
+						<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
+						<h:panelGrid id="dados-pessoais" columns="2" cellpadding="5">
+							<h:panelGroup>
+								<h:outputLabel for="nome" value="Nome: " />
+								<br />
+								<p:inputText id="nome" required="true" label="nome" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<h:outputLabel for="sobrenome" value="Sobrenome: " />
+								<br />
+								<p:inputText id="sobrenome" required="true" label="sobrenome" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<p:separator style="height: 1px; width: 100%;" />
+						<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
+
+						<h:panelGrid id="dados-login" columns="2" cellpadding="5">
+							<h:panelGroup>
+								<h:outputLabel for="matricula" value="Matrícula: " />
+								<br />
+								<p:inputText id="matricula" required="true" label="matricula" />
+							</h:panelGroup>
+							<br />
+							<h:panelGroup>
+								<h:outputLabel for="senha" value="Senha:" />
+								<br />
+								<p:password id="senha" required="true" label="senha" />
+							</h:panelGroup>
+							<h:panelGroup>
+								<h:outputLabel for="re-senha" value="Confirmar Senha:" />
+								<br />
+								<p:password id="re-senha" required="true" label="re-senha" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<p:separator style="height: 1px; width: 100%;" />
+						<h:outputLabel style="font-weight: bold;">Dados de Admin</h:outputLabel>
+						<h:panelGrid id="dados-admin" columns="2" cellpadding="5">
+							<h:panelGroup>
+								<h:outputLabel for="chave-admin" value="Chave Admin:" />
+								<br />
+								<p:password id="chave-admin" required="true" label="chave-admin" />
+							</h:panelGroup>
+						</h:panelGrid>
+
+						<p:separator style="height: 1px; width: 100%;" />
+						<center>
+							<p:commandButton value="Cadastrar" />
+							<p:commandButton value="Limpar" />
+						</center>
+					</p:dialog>
+				</h:form>
+			</p:panel>
+		</center>
+		<div
+			style="color: white; font-size: 12px; position: fixed; bottom: 0; width: 100%;">
+			<center>
+				Instituto Federal de Educação Ciência e Tecnologia da Paraíba -
+				Campus Monteiro<br />Análise e Desenvolvimento de Sistemas - 2012.2
+			</center>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

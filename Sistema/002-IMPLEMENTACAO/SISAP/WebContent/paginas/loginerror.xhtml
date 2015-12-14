@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templates/templateLogin.xhtml">
+	<ui:define name="title">
+		SISAP - Erro no Login
+	</ui:define>
+	<ui:define name="center">
+		<p:panel header="Erro de Login">
+            Login e/ou senha errada. Por favor tente novamente: <a
+				href="#{facesContext.externalContext.requestContextPath}/faces/paginas/login.xhtml">Login</a>
+
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>
