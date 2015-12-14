@@ -33,13 +33,14 @@
 						<input type="submit" value="Entrar" />
 						<input type="reset" value="Limpar" />
 					</h:form>
-					<h:commandButton id="btCadastrar" type="button" value="Cadastrar"
-						onclick="PF('dlg').show();">
-					</h:commandButton>
 				</center>
+				<p:spacer height="5px" />
+				<h:outputLink id="openDialogLink" value="javascript:void(0)"
+					onclick="PF('dlg').show();">Novo Cadastro</h:outputLink>
 				<h:form>
-					<p:dialog id="dlg-cadastro-pedagogo" header="Novo Pedagogo"
-						widgetVar="dlg" maximizable="true" minimizable="true">
+					<p:dialog id="dlg-cadastro-pedagogo" showEffect="scale"
+						hideEffect="scale" header="Novo Pedagogo" widgetVar="dlg"
+						maximizable="true" minimizable="true">
 						<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
 						<h:panelGrid id="dados-pessoais" columns="2" cellpadding="5">
 							<h:panelGroup>
