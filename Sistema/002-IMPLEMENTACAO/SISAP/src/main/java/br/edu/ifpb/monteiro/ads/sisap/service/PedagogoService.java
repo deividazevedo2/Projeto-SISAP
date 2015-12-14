@@ -1,7 +1,5 @@
 package br.edu.ifpb.monteiro.ads.sisap.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
@@ -24,6 +22,7 @@ public class PedagogoService {
 		}
 
 	}
+
 	@TransacionalCdi
 	private Pedagogo editarPedagogo(Pedagogo pedagogo) throws SisapException {
 		try {
@@ -33,13 +32,13 @@ public class PedagogoService {
 		}
 	}
 
-//	private void excluirPedagogo(Pedagogo pedagogo) throws SisapException {
-//		try {
-//			this.pedagogoDAO.deletar(pedagogo);
-//		} catch (SisapException exception) {
-//			throw new SisapException(exception.getMessage());
-//		}
-//	}
+	// private void excluirPedagogo(Pedagogo pedagogo) throws SisapException {
+	// try {
+	// this.pedagogoDAO.deletar(pedagogo);
+	// } catch (SisapException exception) {
+	// throw new SisapException(exception.getMessage());
+	// }
+	// }
 	@TransacionalCdi
 	public Pedagogo buscaPorMatricula(String matricula) throws SisapException {
 		try {
