@@ -13,9 +13,10 @@
 	</ui:define>
 	<ui:define name="center">
 		<p:panel header="Erro de Login">
-            Login e/ou senha errada. Por favor tente novamente: <a
-				href="#{facesContext.externalContext.requestContextPath}/faces/paginas/login.xhtml">Login</a>
-
+			<div style="color: white;">
+				Login e/ou senha errada. Por favor tente novamente:
+				<h:button value="Login" outcome="login.xhtml" />
+			</div>
 		</p:panel>
 	</ui:define>
 </ui:composition>
