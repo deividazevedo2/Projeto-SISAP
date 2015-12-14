@@ -3,8 +3,8 @@ package br.edu.ifpb.monteiro.ads.sisap.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
-import br.com.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
+import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAO extends DAO {
 

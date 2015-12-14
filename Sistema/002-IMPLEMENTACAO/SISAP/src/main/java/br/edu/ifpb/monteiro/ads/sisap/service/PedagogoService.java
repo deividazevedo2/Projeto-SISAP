@@ -5,9 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
-import br.com.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
+import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
 public class PedagogoService {

@@ -1,4 +1,4 @@
-package br.com.ifpb.monteiro.ads.sisap.exception;
+package br.edu.ifpb.monteiro.ads.sisap.exception;
 
 public class SisapException extends Exception {
 
