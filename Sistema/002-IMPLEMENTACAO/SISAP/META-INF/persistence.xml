@@ -8,7 +8,7 @@
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sisap_db"></property>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/SISAP"></property>
 			<property name="javax.persistence.jdbc.user" value="localhost" />
 			<property name="javax.persistence.jdbc.password" value="boisemsede2" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
