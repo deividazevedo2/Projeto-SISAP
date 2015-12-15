@@ -35,10 +35,20 @@
 						<f:facet name="left">
 							<a
 								href="http://localhost:8080/SISAP/faces/paginas/pedagogo/indexPedagogo.xhtml">
-								<img src="../../resources/logo.png" height="30px" width="26px" />
+								<img src="../../resources/logo.png" height="30px" width="30px" />
 							</a>
 						</f:facet>
 						<f:facet name="right">
+
+							<p:button title="Notificações" icon="ui-icon-comment" />
+							<p:button title="Sincronização" icon="ui-icon-refresh" />
+							<p:button title="Sair" icon="ui-icon-extlink"
+								outcome="/paginas/login.xhtml" />
+								
+							<span class="ui-separator"> <span
+								class="ui-icon ui-icon-grip-dotted-vertical" />
+							</span>
+							
 							<p:menuButton value="Pedagogo Logado">
 								<p:menuitem value="Editar Perfil" update="messages"
 									icon="ui-icon-arrowrefresh-1-w" id="openDialogLink"
@@ -47,14 +57,8 @@
 									icon="ui-icon-close" />
 							</p:menuButton>
 
-							<span class="ui-separator"> <span
-								class="ui-icon ui-icon-grip-dotted-vertical" />
-							</span>
-							<p:button title="Notificações" icon="ui-icon-comment" />
-							<p:button title="Sincronização" icon="ui-icon-refresh" />
-							<p:button title="Sair" icon="ui-icon-extlink"
-								outcome="/paginas/login.xhtml" />
 						</f:facet>
+
 					</p:toolbar>
 				</h:form>
 			</p:layoutUnit>
