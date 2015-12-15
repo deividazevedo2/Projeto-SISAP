@@ -39,8 +39,13 @@
 							</a>
 						</f:facet>
 						<f:facet name="right">
-							<h:outputLink id="openDialogLink" value="javascript:void(0)"
-								onclick="PF('dlg').show();">Pedagogo Logado</h:outputLink>
+							<p:menuButton value="Pedagogo Logado">
+								<p:menuitem value="Editar Perfil" update="messages"
+									icon="ui-icon-arrowrefresh-1-w" id="openDialogLink"
+									onclick="PF('dlg').show();" />
+								<p:menuitem value="Excluir Perfil" update="messages"
+									icon="ui-icon-close" />
+							</p:menuButton>
 
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -50,7 +55,6 @@
 							<p:button title="Sair" icon="ui-icon-extlink"
 								outcome="/paginas/login.xhtml" />
 						</f:facet>
-
 					</p:toolbar>
 				</h:form>
 			</p:layoutUnit>
