@@ -37,6 +37,8 @@
 				<p:spacer height="5px" />
 				<h:outputLink id="openDialogLink" value="javascript:void(0)"
 					onclick="PF('dlg').show();">Novo Cadastro</h:outputLink>
+
+				<!-- Formulário de cadastro de novo Pedagogo -->
 				<h:form>
 					<p:dialog id="dlg-cadastro-pedagogo" showEffect="scale"
 						hideEffect="scale" header="Novo Pedagogo" widgetVar="dlg"
@@ -46,12 +48,14 @@
 							<h:panelGroup>
 								<h:outputLabel for="nome" value="Nome: " />
 								<br />
-								<p:inputText id="nome" required="true" label="nome" />
+								<p:inputText id="nome" required="true" label="nome"
+									value="#{editarPedagogoBean.pedagogo.primeiroNome}" />
 							</h:panelGroup>
 							<h:panelGroup>
 								<h:outputLabel for="sobrenome" value="Sobrenome: " />
 								<br />
-								<p:inputText id="sobrenome" required="true" label="sobrenome" />
+								<p:inputText id="sobrenome" required="true" label="sobrenome"
+									value="#{editarPedagogoBean.pedagogo.segundoNome}" />
 							</h:panelGroup>
 						</h:panelGrid>
 
@@ -62,18 +66,21 @@
 							<h:panelGroup>
 								<h:outputLabel for="matricula" value="Matrícula: " />
 								<br />
-								<p:inputText id="matricula" required="true" label="matricula" />
+								<p:inputText id="matricula" required="true" label="matricula"
+									value="#{editarPedagogoBean.pedagogo.matriculaSuap}" />
 							</h:panelGroup>
 							<br />
 							<h:panelGroup>
 								<h:outputLabel for="senha" value="Senha:" />
 								<br />
-								<p:password id="senha" required="true" label="senha" />
+								<p:password id="senha" required="true" label="senha"
+									value="#{editarPedagogoBean.pedagogo.conta.senha}" />
 							</h:panelGroup>
 							<h:panelGroup>
 								<h:outputLabel for="re-senha" value="Confirmar Senha:" />
 								<br />
-								<p:password id="re-senha" required="true" label="re-senha" />
+								<p:password id="re-senha" required="true" label="re-senha"
+									value="#{editarPedagogoBean.pedagogo.conta.senha}" />
 							</h:panelGroup>
 						</h:panelGrid>
 
