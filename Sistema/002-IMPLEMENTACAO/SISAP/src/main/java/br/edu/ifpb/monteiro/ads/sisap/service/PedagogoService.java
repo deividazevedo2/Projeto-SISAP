@@ -14,7 +14,7 @@ public class PedagogoService {
 	private PedagogoDAO pedagogoDAO;
 
 	@TransacionalCdi
-	private void addPedagogo(Pedagogo pedagogo) throws SisapException {
+	public void addPedagogo(Pedagogo pedagogo) throws SisapException {
 		try {
 			this.pedagogoDAO.salvar(pedagogo);
 		} catch (SisapException exception) {
@@ -24,7 +24,7 @@ public class PedagogoService {
 	}
 
 	@TransacionalCdi
-	private Pedagogo editarPedagogo(Pedagogo pedagogo) throws SisapException {
+	public Pedagogo editarPedagogo(Pedagogo pedagogo) throws SisapException {
 		try {
 			return pedagogoDAO.alterar(pedagogo);
 		} catch (SisapException exception) {
@@ -32,13 +32,15 @@ public class PedagogoService {
 		}
 	}
 
-	// private void excluirPedagogo(Pedagogo pedagogo) throws SisapException {
-	// try {
-	// this.pedagogoDAO.deletar(pedagogo);
-	// } catch (SisapException exception) {
-	// throw new SisapException(exception.getMessage());
-	// }
-	// }
+	@TransacionalCdi
+	public void excluirPedagogo(Pedagogo pedagogo) throws SisapException {
+		try {
+			this.pedagogoDAO.deletar(pedagogo);
+		} catch (SisapException exception) {
+			throw new SisapException(exception.getMessage());
+		}
+	}
+
 	@TransacionalCdi
 	public Pedagogo buscaPorMatricula(String matricula) throws SisapException {
 		try {
