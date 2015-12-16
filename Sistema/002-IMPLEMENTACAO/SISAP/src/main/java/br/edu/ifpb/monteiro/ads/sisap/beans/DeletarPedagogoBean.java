@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
+import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 
 @Named
@@ -47,12 +48,12 @@ public class DeletarPedagogoBean extends ClasseAbstrata {
 			reportarMensagemDeErro(exception.getMessage());
 			return null;
 		}
-		return EnderecoPaginas.PAGINA_PRINCIPAL_USUARIOS;
+		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
 	}
 
 	public String cancel() {
 		conversation.end();
-		return EnderecoPaginas.PAGINA_PRINCIPAL_USUARIOS;
+		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
 	}
 
 	public Pedagogo getPedagogo() {
