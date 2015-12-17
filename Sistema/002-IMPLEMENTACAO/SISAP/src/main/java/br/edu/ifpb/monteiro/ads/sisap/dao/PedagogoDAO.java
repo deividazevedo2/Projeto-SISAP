@@ -6,11 +6,14 @@ import javax.persistence.PersistenceException;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
-public class PedagogoDAO extends DAO {
+public class PedagogoDAO extends DAO<Pedagogo> {
 
-	/**
-	 * 
-	 */
+	
+	public PedagogoDAO(Class<Pedagogo> entity) {
+		super(entity);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 4651136765722356561L;
 
 	public void salvar(Pedagogo pedagogo) throws SisapException {
@@ -42,7 +45,7 @@ public class PedagogoDAO extends DAO {
 			throw new SisapException("Erro ao deletar o cadastro!");
 		}
 	}
-
+	
 	public Pedagogo buscarPorMatricula(String matriculaSuap)
 			throws SisapException {
 		EntityManager em = getEntityManager();
