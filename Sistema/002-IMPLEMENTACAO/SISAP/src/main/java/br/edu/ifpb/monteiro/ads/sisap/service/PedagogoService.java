@@ -12,6 +12,10 @@ import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
 public class PedagogoService implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private PedagogoDAO pedagogoDAO;
 

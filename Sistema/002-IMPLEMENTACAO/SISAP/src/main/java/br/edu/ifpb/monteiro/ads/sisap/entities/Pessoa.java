@@ -2,7 +2,6 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -66,7 +65,7 @@ public class Pessoa implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
 	@JoinColumn(name = "CONTATO")
 	private List<Contato> contatos;
-	
+
 	public Pessoa() {
 	}
 
