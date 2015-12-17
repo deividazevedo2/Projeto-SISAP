@@ -1,10 +1,8 @@
 package br.edu.ifpb.monteiro.ads.sisap.service;
 
 import java.io.Serializable;
-
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
-
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
