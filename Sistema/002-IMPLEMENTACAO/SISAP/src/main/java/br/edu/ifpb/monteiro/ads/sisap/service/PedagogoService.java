@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.service;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
@@ -8,7 +10,7 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
-public class PedagogoService {
+public class PedagogoService implements Serializable {
 
 	@Inject
 	private PedagogoDAO pedagogoDAO;

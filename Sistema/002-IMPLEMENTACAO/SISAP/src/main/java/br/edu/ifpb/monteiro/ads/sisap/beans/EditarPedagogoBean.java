@@ -38,7 +38,7 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 	public String salvarPedagogo() {
 		conversation.end();
 		try {
-			if((pedagogo.getMatriculaSuap() != null) && (pedagogo.getId() != null) && (pedagogo.getConta().getLogin() != null)){
+			if((pedagogo.getMatriculaSuap() != null) && (pedagogo.getId() != null) && (pedagogo.getSenha() != null)){
 				pedagogoService.editarPedagogo(pedagogo);
 				reportarMensagemDeSucesso("Pedagogo" + pedagogo.getPrimeiroNome()+" atualizao com sucesso.");
 			} else {
