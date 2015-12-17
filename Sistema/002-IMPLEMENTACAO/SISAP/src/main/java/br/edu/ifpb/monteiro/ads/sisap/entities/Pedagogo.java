@@ -3,12 +3,11 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_PEDAGOGO")
-@DiscriminatorValue("P")
+@DiscriminatorValue("PEDAGOGO")
 public class Pedagogo extends Pessoa {
 
 	/**
@@ -16,23 +15,13 @@ public class Pedagogo extends Pessoa {
 	 */
 	private static final long serialVersionUID = -5222738149854183983L;
 
-	@Id
-	@Column(name = "ID")
-	private Long id;
-
+	@Column(name = "MATRICULA", unique = true)
 	private String matriculaSuap;
 
+	@Column(name = "SENHA")
 	private String senha;
 
 	public Pedagogo() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getMatriculaSuap() {
@@ -59,7 +48,6 @@ public class Pedagogo extends Pessoa {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((matriculaSuap == null) ? 0 : matriculaSuap.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
@@ -75,11 +63,6 @@ public class Pedagogo extends Pessoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Pedagogo other = (Pedagogo) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (matriculaSuap == null) {
 			if (other.matriculaSuap != null)
 				return false;
@@ -93,7 +76,4 @@ public class Pedagogo extends Pessoa {
 		return true;
 	}
 
-
-	
-	
 }
