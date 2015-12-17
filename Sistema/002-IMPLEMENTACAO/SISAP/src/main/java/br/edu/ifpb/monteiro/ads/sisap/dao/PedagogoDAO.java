@@ -8,7 +8,6 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAO extends DAO<Pedagogo> {
 
-	
 	public PedagogoDAO(Class<Pedagogo> entity) {
 		super(entity);
 		// TODO Auto-generated constructor stub
@@ -16,6 +15,7 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 
 	private static final long serialVersionUID = 4651136765722356561L;
 
+	@Override
 	public void salvar(Pedagogo pedagogo) throws SisapException {
 		EntityManager em = getEntityManager();
 		try {
@@ -25,7 +25,8 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 		}
 	}
 
-	public Pedagogo alterar(Pedagogo pedagogo) throws SisapException {
+	@Override
+	public Pedagogo atualizar(Pedagogo pedagogo) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = pedagogo;
 		try {
@@ -36,7 +37,8 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 		return resultado;
 	}
 
-	public void deletar(Pedagogo pedagogo) throws SisapException {
+	@Override
+	public void remover(Pedagogo pedagogo) throws SisapException {
 		EntityManager em = getEntityManager();
 		try {
 			pedagogo = em.merge(pedagogo);
@@ -45,6 +47,7 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 			throw new SisapException("Erro ao deletar o cadastro!");
 		}
 	}
+
 	
 	public Pedagogo buscarPorMatricula(String matriculaSuap)
 			throws SisapException {
@@ -58,8 +61,9 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 		}
 		return resultado;
 	}
-
-	public Pedagogo buscar(Long idPedagogo) throws SisapException {
+	
+	@Override
+	public Pedagogo buscaPorId(Long idPedagogo) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = null;
 		try {

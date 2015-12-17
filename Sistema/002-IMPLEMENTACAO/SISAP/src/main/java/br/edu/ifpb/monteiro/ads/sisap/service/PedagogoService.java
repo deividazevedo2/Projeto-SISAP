@@ -6,19 +6,23 @@ import javax.persistence.PersistenceException;
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.DaoIF;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.ServiceIF;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
-public class PedagogoService implements Serializable {
+public class PedagogoService extends Service<Pedagogo> implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Inject
-	private PedagogoDAO pedagogoDAO;
+	private DaoIF<Pedagogo> pedagogoDAO;
+//	private PedagogoDAO pedagogoDAO;
 
+	
+	
+	@Override
 	@TransacionalCdi
-	public void addPedagogo(Pedagogo pedagogo) throws SisapException {
+	public void salvar(Pedagogo pedagogo) throws SisapException {
 		try {
 			this.pedagogoDAO.salvar(pedagogo);
 		} catch (SisapException exception) {
@@ -27,37 +31,49 @@ public class PedagogoService implements Serializable {
 
 	}
 
+	public DaoIF<Pedagogo> getPedagogoDAO() {
+		return pedagogoDAO;
+	}
+
+	public void setPedagogoDAO(DaoIF<Pedagogo> pedagogoDAO) {
+		this.pedagogoDAO = pedagogoDAO;
+	}
+
+	@Override
 	@TransacionalCdi
-	public Pedagogo editarPedagogo(Pedagogo pedagogo) throws SisapException {
+	public Pedagogo atualizar(Pedagogo pedagogo) throws SisapException {
 		try {
-			return pedagogoDAO.alterar(pedagogo);
+			return pedagogoDAO.atualizar(pedagogo);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());
 		}
 	}
 
+	@Override
 	@TransacionalCdi
-	public void excluirPedagogo(Pedagogo pedagogo) throws SisapException {
+	public void remover(Pedagogo pedagogo) throws SisapException {
 		try {
-			this.pedagogoDAO.deletar(pedagogo);
+			this.pedagogoDAO.remover(pedagogo);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());
+		}
+
+	}
+
+	@Override
+	@TransacionalCdi
+	public Pedagogo consultarPorId(Long idPedagogo) throws SisapException {
+		try {
+			return this.pedagogoDAO.buscaPorId(idPedagogo);
+		} catch (PersistenceException exception) {
+			throw new SisapException(exception.getMessage(), exception);
 		}
 	}
 
 	@TransacionalCdi
 	public Pedagogo buscaPorMatricula(String matricula) throws SisapException {
 		try {
-			return this.pedagogoDAO.buscarPorMatricula(matricula);
-		} catch (PersistenceException exception) {
-			throw new SisapException(exception.getMessage(), exception);
-		}
-
-	}
-
-	public Pedagogo getById(Long idPedagogo) throws SisapException {
-		try {
-			return this.pedagogoDAO.buscar(idPedagogo);
+			return ((PedagogoDAO) this.pedagogoDAO).buscarPorMatricula(matricula);
 		} catch (PersistenceException exception) {
 			throw new SisapException(exception.getMessage(), exception);
 		}

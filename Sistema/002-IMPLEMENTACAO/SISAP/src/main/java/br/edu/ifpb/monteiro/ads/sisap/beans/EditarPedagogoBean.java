@@ -7,21 +7,27 @@ import javax.inject.Named;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.BeanIF;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.ServiceIF;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 
 @Named
 @ConversationScoped
-public class EditarPedagogoBean extends ClasseAbstrata {
+public class EditarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedagogo>{
+	
 
-	private static final long serialVersionUID = -79727005056917194L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Pedagogo pedagogo;
 
 	@Inject
-	private PedagogoService pedagogoService;
-
+	private	ServiceIF<Pedagogo> pedagogoService;
+	
 	@Inject
 	private Conversation conversation;
 
@@ -33,21 +39,25 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 			conversation.begin();
 		}
 	}
+	public Pedagogo getPedagogo() {
+		return pedagogo;
+	}
 
-	public String salvarPedagogo() {
-		// conversation.end();
+	public void setPedagogo(Pedagogo pedagogo) {
+		this.pedagogo = pedagogo;
+	}
+
+	@Override
+	public String salvar() throws SisapException {
+		conversation.end();
 		try {
-			if ((pedagogo.getMatriculaSuap() != null)
-					&& (pedagogo.getId() != null)
-					&& (pedagogo.getSenha() != null)) {
-				pedagogoService.editarPedagogo(pedagogo);
-				reportarMensagemDeSucesso("Pedagogo"
-						+ pedagogo.getPrimeiroNome()
-						+ " atualizao com sucesso.");
+			if((pedagogo.getMatriculaSuap() != null) && (pedagogo.getId() != null) && (pedagogo.getSenha() != null)){
+				pedagogoService.atualizar(pedagogo);
+				reportarMensagemDeSucesso("Pedagogo" + pedagogo.getPrimeiroNome()+" atualizao com sucesso.");
 			} else {
-				pedagogoService.addPedagogo(pedagogo);
-				reportarMensagemDeSucesso("Pedagogo "
-						+ pedagogo.getPrimeiroNome() + " salvo com sucesso!");
+				pedagogoService.salvar(pedagogo);
+				reportarMensagemDeSucesso("Pedagogo " + pedagogo.getPrimeiroNome()
+						+ " salvo com sucesso!");
 			}
 		} catch (SisapException exception) {
 			reportarMensagemDeErro(exception.getMessage());
@@ -57,12 +67,22 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
 	}
 
-	public Pedagogo getPedagogo() {
-		return pedagogo;
+	@Override
+	public String atualizar() throws SisapException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void setPedagogo(Pedagogo pedagogo) {
-		this.pedagogo = pedagogo;
+	@Override
+	public void remover(Pedagogo identificavel) throws SisapException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Pedagogo consultarPorId(Long id) throws SisapException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -6,8 +6,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.DaoIF;
 
-public abstract class DAO<T> implements Serializable {
+public abstract class DAO<T> implements Serializable, DaoIF<T> {
 
 	private static final long serialVersionUID = -315740615092329279L;
 
@@ -36,20 +37,24 @@ public abstract class DAO<T> implements Serializable {
 		this.entity = entity;
 	}
 
+	@Override
 	public void salvar(T entity) throws SisapException {
 		entityManager.persist(entity);
 	}
 
+	@Override
 	public T atualizar(T entity) throws SisapException {
 		entityManager.merge(entity);
 		return entity;
 	}
 
-	public void remover(T entity) throws SisapException{
+	@Override
+	public void remover(T entity) throws SisapException {
 		entityManager.remove(entity);
 	}
 
-	public T consultarPorId(Long id) throws SisapException {
+	@Override
+	public T buscaPorId(Long id) throws SisapException {
 		return entityManager.find(this.entity, id);
 	}
 
