@@ -50,7 +50,7 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 	}
 	
 
-	public String salvar(Pedagogo pedagogo) throws SisapException {
+	public String salvarPedagogo(Pedagogo pedagogo) throws SisapException {
 		conversation.end();
 		try {
 			if (pedagogo.getMatriculaSuap()!= null) {
