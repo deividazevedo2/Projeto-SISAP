@@ -46,7 +46,7 @@ public class IndexBean extends ClasseAbstrata {
 	
 	public void filtrar() {
 		try {
-			pedagogo = pedagogoService.buscaPorMatricula(matricula);
+			pedagogo = pedagogoService.buscarPorMatricula(matricula);
 		} catch (SisapException exception) {
 			reportarMensagemDeErro(exception.getMessage());
 		}

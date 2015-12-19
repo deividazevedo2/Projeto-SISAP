@@ -10,25 +10,13 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
-public class PedagogoService extends Service<Pedagogo> implements Serializable {
+public class PedagogoService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private PedagogoDAO pedagogoDAO;
 
-	
-	
-
-	public PedagogoDAO getPedagogoDAO() {
-		return pedagogoDAO;
-	}
-	
-	public void setPedagogoDAO(PedagogoDAO pedagogoDAO) {
-		this.pedagogoDAO = pedagogoDAO;
-	}
-
-	@Override
 	@TransacionalCdi
 	public void salvar(Pedagogo pedagogo) throws SisapException {
 		try {
@@ -39,7 +27,6 @@ public class PedagogoService extends Service<Pedagogo> implements Serializable {
 
 	}
 
-	@Override
 	@TransacionalCdi
 	public Pedagogo atualizar(Pedagogo pedagogo) throws SisapException {
 		try {
@@ -49,7 +36,6 @@ public class PedagogoService extends Service<Pedagogo> implements Serializable {
 		}
 	}
 
-	@Override
 	@TransacionalCdi
 	public void remover(Pedagogo pedagogo) throws SisapException {
 		try {
@@ -60,20 +46,20 @@ public class PedagogoService extends Service<Pedagogo> implements Serializable {
 
 	}
 
-	@Override
 	@TransacionalCdi
-	public Pedagogo consultarPorId(Long idPedagogo) throws SisapException {
+	public Pedagogo buscarPorId(Long idPedagogo) throws SisapException {
 		try {
-			return this.pedagogoDAO.buscaPorId(idPedagogo);
+			return this.pedagogoDAO.buscarPorId(idPedagogo);
 		} catch (PersistenceException exception) {
 			throw new SisapException(exception.getMessage(), exception);
 		}
 	}
 
 	@TransacionalCdi
-	public Pedagogo buscaPorMatricula(String matricula) throws SisapException {
+	public Pedagogo buscarPorMatricula(String matricula) throws SisapException {
 		try {
-			return ((PedagogoDAO) this.pedagogoDAO).buscarPorMatricula(matricula);
+			return ((PedagogoDAO) this.pedagogoDAO)
+					.buscarPorMatricula(matricula);
 		} catch (PersistenceException exception) {
 			throw new SisapException(exception.getMessage(), exception);
 		}

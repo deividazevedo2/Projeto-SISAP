@@ -1,7 +1,5 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
-import java.lang.ProcessBuilder.Redirect;
-
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
@@ -9,15 +7,12 @@ import javax.inject.Named;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.InterfaceGenerica;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
-import br.edu.ifpb.monteiro.ads.sisap.service.Service;
 
 @Named
 @ConversationScoped
-public class EditarPedagogoBean extends ClasseAbstrata{
-	
+public class EditarPedagogoBean extends ClasseAbstrata {
 
 	/**
 	 * 
@@ -28,8 +23,8 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 	private Pedagogo pedagogo;
 
 	@Inject
-	private	PedagogoService pedagogoService;
-	
+	private PedagogoService pedagogoService;
+
 	@Inject
 	private Conversation conversation;
 
@@ -41,6 +36,7 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 			conversation.begin();
 		}
 	}
+
 	public Pedagogo getPedagogo() {
 		return pedagogo;
 	}
@@ -48,12 +44,11 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 	public void setPedagogo(Pedagogo pedagogo) {
 		this.pedagogo = pedagogo;
 	}
-	
 
 	public String salvarPedagogo(Pedagogo pedagogo) throws SisapException {
 		conversation.end();
 		try {
-			if (pedagogo.getMatriculaSuap()!= null) {
+			if (pedagogo.getMatriculaSuap() != null) {
 				pedagogoService.atualizar(pedagogo);
 				reportarMensagemDeSucesso("Usuário atualizado com sucesso!");
 			} else {
