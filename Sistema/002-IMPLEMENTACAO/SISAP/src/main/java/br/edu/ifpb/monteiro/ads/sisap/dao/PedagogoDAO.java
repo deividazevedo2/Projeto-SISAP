@@ -63,17 +63,16 @@ public class PedagogoDAO extends DAO<Pedagogo> {
 	}
 	
 	@Override
-	public Pedagogo buscaPorId(Long idPedagogo) throws SisapException {
+	public Pedagogo consultarPorId(Long id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = null;
 		try {
-			resultado = em.find(Pedagogo.class, idPedagogo);
+			resultado = em.find(Pedagogo.class, id);
 		} catch (PersistenceException pe) {
 			throw new SisapException(
 					"Ocorreu um problema ao buscar o cadastro!");
 		}
 		return resultado;
-
 	}
 
 }

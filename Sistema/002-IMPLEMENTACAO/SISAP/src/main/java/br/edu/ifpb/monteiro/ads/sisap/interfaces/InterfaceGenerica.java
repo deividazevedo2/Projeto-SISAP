@@ -2,7 +2,7 @@ package br.edu.ifpb.monteiro.ads.sisap.interfaces;
 
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
-public interface ServiceIF<T> {
+public interface InterfaceGenerica<T> {
 	
 	public void salvar(T entity) throws SisapException;
 
@@ -12,5 +12,5 @@ public interface ServiceIF<T> {
 
     public T consultarPorId(Long id) throws SisapException;
 
-    
+
 }

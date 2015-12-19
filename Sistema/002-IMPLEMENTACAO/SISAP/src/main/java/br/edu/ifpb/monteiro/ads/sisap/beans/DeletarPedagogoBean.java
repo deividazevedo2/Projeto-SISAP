@@ -9,26 +9,20 @@ import javax.inject.Named;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.BeanIF;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.ServiceIF;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 
 @Named
 @ConversationScoped
-public class DeletarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedagogo> {
+public class DeletarPedagogoBean extends ClasseAbstrata {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Pedagogo pedagogo;
 
 	@Inject
 	@RequestScoped
-	private ServiceIF<Pedagogo> pedagogoService;
+	private PedagogoService pedagogoService;
 
 	@Inject
 	private Conversation conversation;
@@ -46,6 +40,7 @@ public class DeletarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedago
 		try {
 			if ((pedagogo.getMatriculaSuap() == "0")
 					&& pedagogo.getMatriculaSuap().isEmpty()) {
+
 				pedagogoService.remover(pedagogo);
 				reportarMensagemDeSucesso("Pedagogo removido com sucesso!");
 
@@ -54,12 +49,12 @@ public class DeletarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedago
 			reportarMensagemDeErro(exception.getMessage());
 			return null;
 		}
-		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
+		return EnderecoPaginas.REDIRECT_TRUE;
 	}
 
 	public String cancel() {
 		conversation.end();
-		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
+		return EnderecoPaginas.REDIRECT_TRUE;
 	}
 
 	public Pedagogo getPedagogo() {
@@ -70,28 +65,4 @@ public class DeletarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedago
 		this.pedagogo = pedagogo;
 	}
 
-	@Override
-	public String salvar() throws SisapException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String atualizar() throws SisapException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void remover(Pedagogo identificavel) throws SisapException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Pedagogo consultarPorId(Long id) throws SisapException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

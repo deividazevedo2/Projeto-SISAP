@@ -6,9 +6,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.ServiceIF;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.InterfaceGenerica;
 
-public class Service<T> implements Serializable, ServiceIF<T> {
+public class Service<T> implements Serializable, InterfaceGenerica<T> {
 
 
 	/**

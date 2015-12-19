@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
@@ -7,14 +9,14 @@ import javax.inject.Named;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.BeanIF;
-import br.edu.ifpb.monteiro.ads.sisap.interfaces.ServiceIF;
+import br.edu.ifpb.monteiro.ads.sisap.interfaces.InterfaceGenerica;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
+import br.edu.ifpb.monteiro.ads.sisap.service.Service;
 
 @Named
 @ConversationScoped
-public class EditarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedagogo>{
+public class EditarPedagogoBean extends ClasseAbstrata{
 	
 
 	/**
@@ -26,7 +28,7 @@ public class EditarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedagog
 	private Pedagogo pedagogo;
 
 	@Inject
-	private	ServiceIF<Pedagogo> pedagogoService;
+	private	PedagogoService pedagogoService;
 	
 	@Inject
 	private Conversation conversation;
@@ -46,43 +48,22 @@ public class EditarPedagogoBean extends ClasseAbstrata implements BeanIF<Pedagog
 	public void setPedagogo(Pedagogo pedagogo) {
 		this.pedagogo = pedagogo;
 	}
+	
 
-	@Override
-	public String salvar() throws SisapException {
+	public String salvar(Pedagogo pedagogo) throws SisapException {
 		conversation.end();
 		try {
-			if((pedagogo.getMatriculaSuap() != null) && (pedagogo.getId() != null) && (pedagogo.getSenha() != null)){
+			if (pedagogo.getMatriculaSuap()!= null) {
 				pedagogoService.atualizar(pedagogo);
-				reportarMensagemDeSucesso("Pedagogo" + pedagogo.getPrimeiroNome()+" atualizao com sucesso.");
+				reportarMensagemDeSucesso("Usuário atualizado com sucesso!");
 			} else {
 				pedagogoService.salvar(pedagogo);
-				reportarMensagemDeSucesso("Pedagogo " + pedagogo.getPrimeiroNome()
-						+ " salvo com sucesso!");
+				reportarMensagemDeSucesso("Usuário criado com sucesso!");
 			}
-		} catch (SisapException exception) {
-			reportarMensagemDeErro(exception.getMessage());
-			return null;
+		} catch (SisapException e) {
+			reportarMensagemDeErro(e.getMessage());
 		}
-
-		return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
-	}
-
-	@Override
-	public String atualizar() throws SisapException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void remover(Pedagogo identificavel) throws SisapException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Pedagogo consultarPorId(Long id) throws SisapException {
-		// TODO Auto-generated method stub
-		return null;
+		return EnderecoPaginas.REDIRECT_TRUE;
 	}
 
 }

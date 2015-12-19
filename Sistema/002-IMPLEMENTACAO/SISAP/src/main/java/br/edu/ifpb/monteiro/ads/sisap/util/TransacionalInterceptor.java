@@ -13,10 +13,10 @@ public class TransacionalInterceptor {
 
 	@Inject
 	private EntityManager em;
-
+	
 	@AroundInvoke
 	public Object intercept(InvocationContext ctx) throws Exception {
-
+		
 		Object resultado = null;
 
 		EntityTransaction transaction = em.getTransaction();
@@ -29,7 +29,7 @@ public class TransacionalInterceptor {
 			transaction.rollback();
 			throw pe;
 		}
-
+		
 		return resultado;
 	}
 
