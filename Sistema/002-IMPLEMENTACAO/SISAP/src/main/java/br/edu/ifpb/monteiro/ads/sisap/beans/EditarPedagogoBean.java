@@ -50,7 +50,7 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 	}
 	
 
-	public String salvarPedagogo(Pedagogo pedagogo) throws SisapException {
+	public String salvarPedagogo() throws SisapException{
 		conversation.end();
 		try {
 			if (pedagogo.getMatriculaSuap()!= null) {
@@ -63,6 +63,7 @@ public class EditarPedagogoBean extends ClasseAbstrata{
 		} catch (SisapException e) {
 			reportarMensagemDeErro(e.getMessage());
 		}
+		
 		return EnderecoPaginas.REDIRECT_TRUE;
 	}
 
