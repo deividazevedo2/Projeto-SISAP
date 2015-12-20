@@ -6,12 +6,12 @@
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>br.edu.ifpb.monteiro.ads.entities.Pessoa</class>
-		<class>br.edu.ifpb.monteiro.ads.entities.Pedagogo</class>
-		<class>br.edu.ifpb.monteiro.ads.entities.Sexo</class>
-		<class>br.edu.ifpb.monteiro.ads.entities.Grupo</class>
-		<class>br.edu.ifpb.monteiro.ads.entities.Contato</class>
-		<class>br.edu.ifpb.monteiro.ads.entities.Cargo</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Sexo</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Grupo</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Contato</class>
+		<class>br.edu.ifpb.monteiro.ads.sisap.entities.Cargo</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
