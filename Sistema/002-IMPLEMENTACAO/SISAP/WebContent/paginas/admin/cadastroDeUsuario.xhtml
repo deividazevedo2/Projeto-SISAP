@@ -28,92 +28,91 @@
 			showSummary="true" />
 
 		<h:form>
-			<h:panelGrid>
+			<h:panelGrid id="campos-cadastro-pedagogo" columns="3"
+				cellpadding="5">
 				<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
-				<h:panelGrid id="dados-pessoais" columns="3" cellpadding="5">
-					<h:panelGroup>
-						<h:outputLabel for="nome" value="Nome: " />
-						<br />
-						<h:inputText id="nome" required="true" label="nome"
-							value="#{editarPedagogoBean.pedagogo.primeiroNome}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="sobrenome" value="Sobrenome: " />
-						<br />
-						<h:inputText id="sobrenome" required="true" label="sobrenome"
-							value="#{editarPedagogoBean.pedagogo.segundoNome}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="sexo" value="Sexo: " />
-						<br />
-						<h:selectOneMenu id="sexo" required="true" label="sexo"
-							value="#{editarPedagogoBean.pedagogo.sexo}">
-							<f:selectItem itemValue="selecione"
-								itemLabel="--------  Selecione  --------" />
-							<f:selectItem itemValue="masculino" itemLabel="Masculino" />
-							<f:selectItem itemValue="feminino" itemLabel="Feminino" />
-						</h:selectOneMenu>
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
-						<br />
-						<h:inputText id="data-nascimento" required="true"
-							label="data-nascimento"
-							value="#{editarPedagogoBean.pedagogo.dataNascimento}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="cpf" value="CPF: " />
-						<br />
-						<h:inputText id="cpf" required="true" label="cpf"
-							value="#{editarPedagogoBean.pedagogo.cpf}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="rg" value="RG: " />
-						<br />
-						<h:inputText id="rg" required="true" label="rg"
-							value="#{editarPedagogoBean.pedagogo.rg}" />
-					</h:panelGroup>
-				</h:panelGrid>
+				<h:panelGroup>
+					<h:outputLabel for="nome" value="Nome: " />
+					<br />
+					<h:inputText id="nome" required="true" label="nome"
+						value="#{editarPedagogoBean.pedagogo.primeiroNome}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="sobrenome" value="Sobrenome: " />
+					<br />
+					<h:inputText id="sobrenome" required="true" label="sobrenome"
+						value="#{editarPedagogoBean.pedagogo.segundoNome}" />
+				</h:panelGroup>
+				<!-- 	<h:panelGroup>
+					<h:outputLabel for="sexo" value="Sexo: " />
+					<br />
+					<h:selectOneMenu id="sexo" required="true" label="sexo"
+						value="#{editarPedagogoBean.pedagogo.sexo}">
+						<f:selectItem itemValue="selecione"
+							itemLabel=" Selecione  " />
+						<f:selectItem itemValue="masculino" itemLabel="Masculino" />
+						<f:selectItem itemValue="feminino" itemLabel="Feminino" />
+					</h:selectOneMenu>
+				</h:panelGroup> -->
+				<!-- <h:panelGroup>
+					<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
+					<br />
+					<h:inputText id="data-nascimento" required="true"
+						label="data-nascimento"
+						value="#{editarPedagogoBean.pedagogo.dataNascimento}" />
+				</h:panelGroup>-->
+				<h:panelGroup>
+					<h:outputLabel for="cpf" value="CPF: " />
+					<br />
+					<h:inputText id="cpf" required="true" label="cpf"
+						value="#{editarPedagogoBean.pedagogo.cpf}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="rg" value="RG: " />
+					<br />
+					<h:inputText id="rg" required="true" label="rg"
+						value="#{editarPedagogoBean.pedagogo.rg}" />
+				</h:panelGroup>
 
 				<p:separator style="height: 1px;" />
 				<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
 
-				<h:panelGrid id="dados-login" columns="2" cellpadding="5">
-					<h:panelGroup>
-						<h:outputLabel for="matricula" value="Matrícula: " />
-						<br />
-						<h:inputText id="matricula" required="true" label="matricula"
-							value="#{editarPedagogoBean.pedagogo.matriculaSuap}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="grupo" value="Grupo: " />
-						<br />
-						<h:selectOneMenu id="grupo" required="true" label="grupo"
-							value="#{editarPedagogoBean.pedagogo.grupo}">
-							<f:selectItem itemValue="selecione"
-								itemLabel="--------  Selecione  --------" />
-							<f:selectItem itemValue="pedagogo" itemLabel="Pedagogo" />
-							<f:selectItem itemValue="professor" itemLabel="Professor" />
-						</h:selectOneMenu>
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="senha" value="Senha:" />
-						<br />
-						<h:inputSecret id="senha" required="true" label="senha"
-							value="#{editarPedagogoBean.pedagogo.senha}" />
-					</h:panelGroup>
-					<h:panelGroup>
-						<h:outputLabel for="re-senha" value="Confirmar Senha:" />
-						<br />
-						<h:inputSecret id="re-senha" required="true" label="re-senha" />
-					</h:panelGroup>
-				</h:panelGrid>
+				<h:panelGroup>
+					<h:outputLabel for="matricula" value="Matrícula: " />
+					<br />
+					<h:inputText id="matricula" required="true" label="matricula"
+						value="#{editarPedagogoBean.pedagogo.matriculaSuap}" />
+				</h:panelGroup>
+				<!--<h:panelGroup>
+					<h:outputLabel for="grupo" value="Grupo: " />
+					<br />
+					<h:selectOneMenu id="grupo" required="true" label="grupo"
+						value="#{editarPedagogoBean.pedagogo.grupo}">
+						<f:selectItem itemValue="selecione"
+							itemLabel="  Selecione  " />
+						<f:selectItem itemValue="pedagogo" itemLabel="Pedagogo" />
+						<f:selectItem itemValue="professor" itemLabel="Professor" />
+					</h:selectOneMenu>
+				</h:panelGroup> -->
+				<h:panelGroup>
+					<h:outputLabel for="senha" value="Senha:" />
+					<br />
+					<h:inputSecret id="senha" required="true" label="senha"
+						value="#{editarPedagogoBean.pedagogo.senha}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="re-senha" value="Confirmar Senha:" />
+					<br />
+					<h:inputSecret id="re-senha" required="true" label="re-senha" />
+				</h:panelGroup>
 
+				<p:separator style="height: 1px;" />
+				<f:facet name="footer">
+					<p:commandButton value="Salvar"
+						action="#{editarPedagogoBean.salvarPedagogo}" />
+					<p:commandButton value="Limpar" />
+				</f:facet>
 			</h:panelGrid>
-			<p:separator style="height: 1px;" />
-			<p:commandButton value="Salvar"
-				action="#{editarPedagogoBean.salvarPedagogo}" process="@this" />
-			<p:commandButton value="Limpar" />
 		</h:form>
 
 	</ui:define>
