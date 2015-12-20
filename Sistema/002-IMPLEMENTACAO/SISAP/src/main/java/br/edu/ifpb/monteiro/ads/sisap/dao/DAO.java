@@ -12,7 +12,7 @@ public abstract class DAO implements Serializable {
 	@Inject
 	private EntityManager entityManager;
 
-	protected EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return entityManager;
 	}
 
