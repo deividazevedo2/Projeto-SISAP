@@ -7,16 +7,16 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="/templates/templateList.xhtml">
+<ui:composition template="/templates/templateLogin.xhtml">
 	<ui:define name="title">
-		Biblioteca - Acesso Restrito
+		SISAP - Acesso Restrito
 	</ui:define>
 	<ui:define name="center">
 		<p:panel columns="1" style="width : 100%; text-align:center">
 			<h:outputText value="Você não tem acesso a este recurso do sistema!" />
 			<center>
 				<h:form>
-					<p:button value="Voltar" outcome="home.xhtml" />
+					<p:button value="Voltar" outcome="/paginas/login.xhtml"/>
 				</h:form>
 			</center>
 		</p:panel>
