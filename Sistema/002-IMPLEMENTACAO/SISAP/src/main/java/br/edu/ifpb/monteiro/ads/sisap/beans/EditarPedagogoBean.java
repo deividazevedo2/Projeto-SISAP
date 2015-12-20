@@ -14,12 +14,8 @@ import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 @ConversationScoped
 public class EditarPedagogoBean extends ClasseAbstrata {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	@Inject
 	private Pedagogo pedagogo;
 
 	@Inject
@@ -45,7 +41,7 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		this.pedagogo = pedagogo;
 	}
 
-	public String salvarPedagogo() throws SisapException{
+	public String salvarPedagogo() throws SisapException {
 		conversation.end();
 		try {
 			if (pedagogo.getMatriculaSuap() != null) {
@@ -58,7 +54,7 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		} catch (SisapException e) {
 			reportarMensagemDeErro(e.getMessage());
 		}
-		
+
 		return EnderecoPaginas.REDIRECT_TRUE;
 	}
 
