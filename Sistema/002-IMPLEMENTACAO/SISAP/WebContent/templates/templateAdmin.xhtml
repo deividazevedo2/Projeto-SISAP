@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+		<link rel="stylesheet" href="../../resources/theme.css"
+			type="text/css" />
+		<link rel="shortcut icon" href="../../resources/favicon.ico"
+			type="image/x-icon" />
+		<style type="text/css">
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+</style>
+		<title><ui:insert name="title">SISAP</ui:insert></title>
+	</h:head>
+
+	<h:body>
+		<p:layout fullPage="true">
+
+			<!-- Layout superior da aplicação que contém o logotipo da aplicação, o botão de menu de 
+			configuração de usuário, e os botões de sincronização, notificações e logout -->
+			<p:layoutUnit position="north">
+				<h:form>
+					<p:growl id="messages" showDetail="true" />
+					<p:toolbar>
+						<f:facet name="left">
+							<a
+								href="http://localhost:8080/SISAP/faces/paginas/admin/indexAdmin.xhtml">
+								<img src="../../resources/logo.png" height="30px" width="30px" />
+							</a>
+						</f:facet>
+						<f:facet name="right">
+
+							<p:button title="Sair" icon="ui-icon-extlink"
+								outcome="/paginas/login.xhtml" />
+
+							<span class="ui-separator"> <span
+								class="ui-icon ui-icon-grip-dotted-vertical" />
+							</span>
+
+							<p:menuButton value="Admin Logado">
+								<p:menuitem value="Editar Perfil" update="messages"
+									id="openDialogEdtAdmin" onclick="PF('dlg-edt-admin').show();" />
+								<p:menuitem value="Excluir Perfil" update="messages"
+									id="openDialogExcAdmin" onclick="PF('dlg-exc-admin').show();" />
+							</p:menuButton>
+
+						</f:facet>
+
+					</p:toolbar>
+				</h:form>
+			</p:layoutUnit>
+
+			<!-- Layout lateral esquerdo que contém o menu e seus respectivos itens -->
+			<p:layoutUnit position="west" size="260" resizable="false"
+				closable="false" collapsible="true">
+
+				<h:form>
+					<p:menu style="width: 97%" toggleable="true">
+						<p:submenu label="Gerenciamento de Usuários">
+							<p:menuitem id="listar-usuarios" value="Listar Usuários"
+								outcome="/paginas/admin/indexAdmin.xhtml" />
+							<p:menuitem id="cadastrar-usuario" value="Cadastrar Usuário"
+								outcome="/paginas/admin/cadastroDeUsuario.xhtml" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+			</p:layoutUnit>
+
+			<!-- Caixa de edição de dados do perfil do Pedagogo -->
+			<h:form>
+				<p:dialog id="dlg-editar-admin" showEffect="scale"
+					hideEffect="scale" header="Editar Dados" widgetVar="dlg-edt-admin"
+					maximizable="true" minimizable="true">
+					<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
+					<h:panelGrid id="dados-pessoais" columns="2" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="nome" value="Nome: " />
+							<br />
+							<p:inputText id="nome" required="true" label="nome" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel for="sobrenome" value="Sobrenome: " />
+							<br />
+							<p:inputText id="sobrenome" required="true" label="sobrenome" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:separator style="height: 1px; width: 100%;" />
+					<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
+
+					<h:panelGrid id="dados-login" columns="2" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="matricula" value="Matrícula: " />
+							<br />
+							<p:inputText id="matricula" required="true" label="matricula" />
+						</h:panelGroup>
+						<br />
+						<h:panelGroup>
+							<h:outputLabel for="senha" value="Senha:" />
+							<br />
+							<p:password id="senha" required="true" label="senha" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel for="re-senha" value="Confirmar Senha:" />
+							<br />
+							<p:password id="re-senha" required="true" label="re-senha" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:separator style="height: 1px; width: 100%;" />
+					<center>
+						<p:commandButton value="Salvar" />
+						<p:commandButton value="Limpar" />
+					</center>
+				</p:dialog>
+			</h:form>
+
+			<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+			<h:form>
+				<p:dialog id="dlg-excluir-admin" showEffect="scale"
+					hideEffect="scale" header="Excluir Perfil"
+					widgetVar="dlg-exc-admin">
+					<h:outputLabel style="font-weight: bold;">Confirmação de Senha</h:outputLabel>
+					<h:panelGrid id="exc-senha" columns="1" cellpadding="5">
+						<h:panelGroup>
+							<h:outputLabel for="conf-senha" value="Confirme sua senha:" />
+							<br />
+							<br />
+							<p:password id="conf-senha" required="true" label="conf-senha"
+								style="width: 100%;" />
+						</h:panelGroup>
+					</h:panelGrid>
+					<p:separator style="height: 1px; width: 100%;" />
+					<center>
+						<p:commandButton value="Confirmar Exclusão" />
+						<p:commandButton value="Limpar" />
+					</center>
+				</p:dialog>
+			</h:form>
+
+			<!-- Layout central onde aparecerá o conteúdo da aplicação -->
+			<p:layoutUnit id="center" position="center">
+				<ui:insert name="center" />
+			</p:layoutUnit>
+		</p:layout>
+
+	</h:body>
+</f:view>
+</html>
