@@ -13,7 +13,7 @@ public class JPAUtil {
 	@Produces
 	@ApplicationScoped
 	public EntityManagerFactory criarEMF() {
-		return Persistence.createEntityManagerFactory("sisap");
+		return Persistence.createEntityManagerFactory("SISAP");
 	}
 
 	@Produces
