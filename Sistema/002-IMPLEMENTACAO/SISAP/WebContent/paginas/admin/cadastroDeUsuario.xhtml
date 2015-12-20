@@ -5,9 +5,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 
 <ui:composition template="/templates/templateAdmin.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="pedagogo" value="#{editarPedagogoBean.pedagogo}"
+			converter="#{pedagogoConverter}" />
+		<f:event listener="#{editarPedagogoBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
 	<ui:define name="title">
 	SISAP - Bem Vindo
 	</ui:define>
@@ -102,7 +112,7 @@
 			</h:panelGrid>
 			<p:separator style="height: 1px;" />
 			<p:commandButton value="Salvar"
-				action="#{editarPedagogoBean.salvarPedagogo}" />
+				action="#{editarPedagogoBean.salvarPedagogo}" process="@this" />
 			<p:commandButton value="Limpar" />
 		</h:form>
 
