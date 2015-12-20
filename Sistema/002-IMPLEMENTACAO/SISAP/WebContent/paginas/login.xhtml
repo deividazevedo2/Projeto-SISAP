@@ -19,7 +19,8 @@
 				style="width : 25%; text-align : center; background: #f3f3f3">
 				<p:spacer height="5px" />
 				<div style="float: center;">
-					<img src="../resources/logo_sisap.png" height="100%" width="100%" />
+					<img src="../../resources/logo_sisap.png" height="100%"
+						width="100%" />
 				</div>
 				<center>
 					<h:form id="login" prependId="false"
@@ -34,75 +35,6 @@
 						<input type="reset" value="Limpar" />
 					</h:form>
 				</center>
-				<p:spacer height="5px" />
-				<h:outputLink id="openDialogLink" value="javascript:void(0)"
-					onclick="PF('dlg').show();">Novo Cadastro</h:outputLink>
-
-				<!-- Formulário de cadastro de novo Pedagogo -->
-				<h:form>
-					<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
-					<p:dialog id="dlg-cadastro-pedagogo" showEffect="scale"
-						hideEffect="scale" header="Novo Pedagogo" widgetVar="dlg"
-						maximizable="true" minimizable="true">
-						<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
-						<h:panelGrid id="dados-pessoais" columns="2" cellpadding="5">
-							<h:panelGroup>
-								<h:outputLabel for="nome" value="Nome: " />
-								<br />
-								<p:inputText id="nome" required="true" label="nome"
-									value="#{editarPedagogoBean.pedagogo.primeiroNome}" />
-							</h:panelGroup>
-							<h:panelGroup>
-								<h:outputLabel for="sobrenome" value="Sobrenome: " />
-								<br />
-								<p:inputText id="sobrenome" required="true" label="sobrenome"
-									value="#{editarPedagogoBean.pedagogo.segundoNome}" />
-							</h:panelGroup>
-						</h:panelGrid>
-
-						<p:separator style="height: 1px; width: 100%;" />
-						<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
-
-						<h:panelGrid id="dados-login" columns="2" cellpadding="5">
-							<h:panelGroup>
-								<h:outputLabel for="matricula" value="Matrícula: " />
-								<br />
-								<p:inputText id="matricula" required="true" label="matricula"
-									value="#{editarPedagogoBean.pedagogo.matriculaSuap}" />
-							</h:panelGroup>
-							<br />
-							<h:panelGroup>
-								<h:outputLabel for="senha" value="Senha:" />
-								<br />
-								<p:password id="senha" required="true" label="senha"
-									value="#{editarPedagogoBean.pedagogo.senha}" />
-							</h:panelGroup>
-							<h:panelGroup>
-								<h:outputLabel for="re-senha" value="Confirmar Senha:" />
-								<br />
-								<p:password id="re-senha" required="true" label="re-senha" />
-							</h:panelGroup>
-						</h:panelGrid>
-
-						<p:separator style="height: 1px; width: 100%;" />
-						<h:outputLabel style="font-weight: bold;">Dados de Admin</h:outputLabel>
-						<h:panelGrid id="dados-admin" columns="2" cellpadding="5">
-							<h:panelGroup>
-								<h:outputLabel for="chave-admin" value="Chave Admin:" />
-								<br />
-								<p:password id="chave-admin" required="true" label="chave-admin" />
-							</h:panelGroup>
-							<br />
-							<p:separator style="height: 1px; width: 100%;" />
-							<center>
-								<h:commandButton value="Cadastrar" update="growl"
-									action="#{editarPedagogoBean.salvarPedagogo}" />
-								<p:commandButton value="Limpar" />
-							</center>
-						</h:panelGrid>
-					</p:dialog>
-				</h:form>
 			</p:panel>
 		</center>
 		<div
