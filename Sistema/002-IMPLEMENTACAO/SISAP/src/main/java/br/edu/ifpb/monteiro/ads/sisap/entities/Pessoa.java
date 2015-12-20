@@ -49,10 +49,6 @@ public class Pessoa implements Serializable {
 	@Column(name = "RG", unique = true)
 	private String rg;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "GRUPO")
-	private Grupo grupo;
-
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
@@ -113,14 +109,6 @@ public class Pessoa implements Serializable {
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
 	}
 
 	public Date getDataNascimento() {
