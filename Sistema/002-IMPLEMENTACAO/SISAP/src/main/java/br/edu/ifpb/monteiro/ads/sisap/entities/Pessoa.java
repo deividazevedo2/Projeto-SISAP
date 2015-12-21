@@ -24,7 +24,7 @@ import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 @Entity
 @Table(name = "TB_PESSOA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "FROM_CLASS", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "TIPO_PESSOA", discriminatorType = DiscriminatorType.STRING)
 public class Pessoa implements Serializable {
 
 	/**
