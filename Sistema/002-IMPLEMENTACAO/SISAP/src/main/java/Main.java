@@ -3,7 +3,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Grupo;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Sexo;
 
@@ -25,15 +24,14 @@ public class Main {
 			endereco.setUf("PE");
 
 			Pedagogo pedagogo = new Pedagogo();
-			pedagogo.setMatriculaSuap("6505026526520");
-			pedagogo.setGrupo(Grupo.PEDAGOGO);
+			pedagogo.setMatriculaSuap("65050265265201");
 			pedagogo.setSexo(Sexo.MASCULINO);
 			pedagogo.setPrimeiroNome("Widancassio");
 			pedagogo.setSegundoNome("Galindo");
-			pedagogo.setCpf("000020000");
+			pedagogo.setCpf("000020000111");
 			pedagogo.setEndereco(endereco);
 			pedagogo.setSenha("pedagogo");
-			
+
 			em.persist(pedagogo);
 		} catch (Exception ex) {
 			ex.printStackTrace();
