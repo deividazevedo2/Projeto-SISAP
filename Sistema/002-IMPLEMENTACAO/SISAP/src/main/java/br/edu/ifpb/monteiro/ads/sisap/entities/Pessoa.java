@@ -71,8 +71,8 @@ public class Pessoa implements Serializable {
 	@Embedded
 	private Endereco endereco;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
-	@JoinColumn(name = "CONTATO")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="PESSOA_FK")
 	private List<Contato> contatos;
 
 	@Column(name = "MATRICULA", unique = true)
