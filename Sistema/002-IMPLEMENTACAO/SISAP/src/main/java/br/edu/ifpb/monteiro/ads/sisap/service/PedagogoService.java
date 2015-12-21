@@ -9,6 +9,7 @@ import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
+import br.edu.ifpb.monteiro.ads.sisap.validator.Validador;
 
 public class PedagogoService implements Serializable {
 
@@ -16,10 +17,12 @@ public class PedagogoService implements Serializable {
 
 	@Inject
 	private PedagogoDAO pedagogoDAO;
+	private Validador validador;
 
 	@TransacionalCdi
 	public void salvar(Pedagogo pedagogo) throws SisapException {
 		try {
+			validador.ValidarCamposPedagogo(pedagogo);
 			this.pedagogoDAO.salvar(pedagogo);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());
@@ -30,6 +33,7 @@ public class PedagogoService implements Serializable {
 	@TransacionalCdi
 	public Pedagogo atualizar(Pedagogo pedagogo) throws SisapException {
 		try {
+			validador.ValidarCamposPedagogo(pedagogo);
 			return pedagogoDAO.atualizar(pedagogo);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());

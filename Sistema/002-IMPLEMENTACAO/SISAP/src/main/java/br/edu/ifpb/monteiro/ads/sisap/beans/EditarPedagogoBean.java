@@ -12,7 +12,6 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 import br.edu.ifpb.monteiro.ads.sisap.service.ProfessorService;
-import br.edu.ifpb.monteiro.ads.sisap.validator.Validador;
 
 @Named
 @ConversationScoped
@@ -23,7 +22,6 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	private Pessoa pessoa;
 	private Pedagogo pedagogo;
 	private Professor professor;
-	private Validador validador;
 
 	@Inject
 	private PedagogoService pedagogoService;
@@ -100,35 +98,25 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	}
 
 	public Pedagogo atributosPedagogo() {
-		try {
-			validador.ValidarCamposPedagogo(pedagogo);
-			pedagogo.setPrimeiroNome(pessoa.getPrimeiroNome());
-			pedagogo.setSegundoNome(pessoa.getSegundoNome());
-			pedagogo.setCpf(pessoa.getCpf());
-			pedagogo.setMatriculaSuap(pessoa.getMatriculaSuap());
-			pedagogo.setSenha(pessoa.getSenha());
-			pedagogo.setGrupo(pessoa.getGrupo());
-			pedagogo.setRg(pessoa.getRg());
+		pedagogo.setPrimeiroNome(pessoa.getPrimeiroNome());
+		pedagogo.setSegundoNome(pessoa.getSegundoNome());
+		pedagogo.setCpf(pessoa.getCpf());
+		pedagogo.setMatriculaSuap(pessoa.getMatriculaSuap());
+		pedagogo.setSenha(pessoa.getSenha());
+		pedagogo.setGrupo(pessoa.getGrupo());
+		pedagogo.setRg(pessoa.getRg());
 
-		} catch (SisapException e) {
-			reportarMensagemDeErro(e.getMessage());
-		}
 		return pedagogo;
 	}
 
 	public Professor atributosProfessor() {
-		try {
-			validador.ValidarCamposProfessor(professor);
-			professor.setPrimeiroNome(pessoa.getPrimeiroNome());
-			professor.setSegundoNome(pessoa.getSegundoNome());
-			professor.setCpf(pessoa.getCpf());
-			professor.setMatriculaSuap(pessoa.getMatriculaSuap());
-			professor.setSenha(pessoa.getSenha());
-			professor.setGrupo(pessoa.getGrupo());
-			professor.setRg(pessoa.getRg());
-		} catch (SisapException e) {
-			reportarMensagemDeErro(e.getMessage());
-		}
+		professor.setPrimeiroNome(pessoa.getPrimeiroNome());
+		professor.setSegundoNome(pessoa.getSegundoNome());
+		professor.setCpf(pessoa.getCpf());
+		professor.setMatriculaSuap(pessoa.getMatriculaSuap());
+		professor.setSenha(pessoa.getSenha());
+		professor.setGrupo(pessoa.getGrupo());
+		professor.setRg(pessoa.getRg());
 
 		return professor;
 	}
