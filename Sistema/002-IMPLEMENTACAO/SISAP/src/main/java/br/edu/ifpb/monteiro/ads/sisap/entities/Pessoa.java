@@ -2,7 +2,9 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -10,11 +12,14 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -66,10 +71,9 @@ public class Pessoa implements Serializable {
 	@Embedded
 	private Endereco endereco;
 
-	// @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =
-	// "order")
-	// @JoinColumn(name = "CONTATO")
-	// private List<Contato> contatos;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
+	@JoinColumn(name = "CONTATO")
+	private List<Contato> contatos;
 
 	@Column(name = "MATRICULA", unique = true)
 	private String matriculaSuap;
@@ -176,13 +180,13 @@ public class Pessoa implements Serializable {
 		this.senha = senha;
 	}
 
-	// public List<Contato> getContatos() {
-	// return contatos;
-	// }
+	public List<Contato> getContatos() {
+		return contatos;
+	}
 
-	// public void setContatos(List<Contato> contatos) {
-	// this.contatos = contatos;
-	// }
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -192,17 +196,18 @@ public class Pessoa implements Serializable {
 	public String toString() {
 		return "Pessoa [id=" + id + ", primeiroNome=" + primeiroNome
 				+ ", segundoNome=" + segundoNome + ", cpf=" + cpf + ", rg="
-				+ rg + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo
-				+ ", naturalidade=" + naturalidade + ", endereco=" + endereco
-				+ "]";// , contatos=" + contatos + "
+				+ rg + ", dataNascimento=" + dataNascimento + ", grupo="
+				+ grupo + ", sexo=" + sexo + ", naturalidade=" + naturalidade
+				+ ", endereco=" + endereco + ", contatos=" + contatos
+				+ ", matriculaSuap=" + matriculaSuap + ", senha=" + senha + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		// result = prime * result
-		// + ((contatos == null) ? 0 : contatos.hashCode());
+		result = prime * result
+				+ ((contatos == null) ? 0 : contatos.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result
 				+ ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
@@ -232,11 +237,11 @@ public class Pessoa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		// if (contatos == null) {
-		// if (other.contatos != null)
-		// return false;
-		// } else if (!contatos.equals(other.contatos))
-		// return false;
+		if (contatos == null) {
+			if (other.contatos != null)
+				return false;
+		} else if (!contatos.equals(other.contatos))
+			return false;
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
