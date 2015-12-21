@@ -45,8 +45,8 @@
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
 							<p:button title="Notificações" icon="ui-icon-comment" />
-							<p:button title="Sair" icon="ui-icon-extlink"
-								outcome="/paginas/login.xhtml" />
+							<p:commandButton title="Sair" icon="ui-icon-extlink"
+								action="#{logoutBean.efetuarLogout}" />
 						</f:facet>
 
 					</p:toolbar>

@@ -24,6 +24,7 @@
 }
 </style>
 		<title><ui:insert name="title">SISAP</ui:insert></title>
+
 	</h:head>
 
 	<h:body>
@@ -45,8 +46,8 @@
 
 							<p:button title="Notificações" icon="ui-icon-comment" />
 							<p:button title="Sincronização" icon="ui-icon-refresh" />
-							<p:button title="Sair" icon="ui-icon-extlink"
-								outcome="/paginas/login.xhtml" />
+							<p:commandButton title="Sair" icon="ui-icon-extlink"
+								action="#{logoutBean.efetuarLogout}" />
 
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -109,12 +110,14 @@
 						<h:panelGroup>
 							<h:outputLabel for="nome" value="Nome: " />
 							<br />
-							<p:inputText id="nome" required="true" label="nome" />
+							<p:inputText id="nome" required="true" label="nome"
+								value="#{editarPedagogoBean.pessoa.primeiroNome}" />
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:outputLabel for="sobrenome" value="Sobrenome: " />
 							<br />
-							<p:inputText id="sobrenome" required="true" label="sobrenome" />
+							<p:inputText id="sobrenome" required="true" label="sobrenome"
+								value="#{editarPedagogoBean.pessoa.segundoNome}" />
 						</h:panelGroup>
 					</h:panelGrid>
 
@@ -125,13 +128,15 @@
 						<h:panelGroup>
 							<h:outputLabel for="matricula" value="Matrícula: " />
 							<br />
-							<p:inputText id="matricula" required="true" label="matricula" />
+							<p:inputText id="matricula" required="true" label="matricula"
+								value="#{editarPedagogoBean.pessoa.matriculaSuap}" />
 						</h:panelGroup>
 						<br />
 						<h:panelGroup>
 							<h:outputLabel for="senha" value="Senha:" />
 							<br />
-							<p:password id="senha" required="true" label="senha" />
+							<p:password id="senha" required="true" label="senha"
+								value="#{editarPedagogoBean.pessoa.senha}" />
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:outputLabel for="re-senha" value="Confirmar Senha:" />
