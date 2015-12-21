@@ -12,8 +12,8 @@
 <ui:composition template="/templates/templateAdmin.xhtml">
 
 	<f:metadata>
-		<o:viewParam name="pedagogo" value="#{editarPedagogoBean.pedagogo}"
-			converter="#{pedagogoConverter}" />
+		<o:viewParam name="pessoa" value="#{editarPedagogoBean.pessoa}"
+			converter="#{pessoaConverter}" />
 		<f:event listener="#{editarPedagogoBean.preRenderView()}"
 			type="preRenderView" />
 	</f:metadata>
@@ -28,91 +28,84 @@
 			showSummary="true" />
 
 		<h:form>
-			<h:panelGrid id="campos-cadastro-pedagogo" columns="3"
-				cellpadding="5">
-				<h:outputLabel style="font-weight: bold;">Dados Pessoais</h:outputLabel>
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados Pessoais</h:outputLabel>
+			<h:panelGrid id="campos-dados-pessoais" columns="3" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="nome" value="Nome: " />
 					<br />
 					<h:inputText id="nome" required="true" label="nome"
-						value="#{editarPedagogoBean.pedagogo.primeiroNome}" />
+						value="#{editarPedagogoBean.pessoa.primeiroNome}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="sobrenome" value="Sobrenome: " />
 					<br />
 					<h:inputText id="sobrenome" required="true" label="sobrenome"
-						value="#{editarPedagogoBean.pedagogo.segundoNome}" />
+						value="#{editarPedagogoBean.pessoa.segundoNome}" />
 				</h:panelGroup>
-				<!-- 	<h:panelGroup>
+				<h:panelGroup>
 					<h:outputLabel for="sexo" value="Sexo: " />
 					<br />
-					<h:selectOneMenu id="sexo" required="true" label="sexo"
-						value="#{editarPedagogoBean.pedagogo.sexo}">
+					<h:selectOneMenu id="sexo" label="sexo">
 						<f:selectItem itemValue="selecione"
-							itemLabel=" Selecione  " />
+							itemLabel="------- Selecione --------" />
 						<f:selectItem itemValue="masculino" itemLabel="Masculino" />
 						<f:selectItem itemValue="feminino" itemLabel="Feminino" />
 					</h:selectOneMenu>
-				</h:panelGroup> -->
-				<!-- <h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup>
 					<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
 					<br />
-					<h:inputText id="data-nascimento" required="true"
-						label="data-nascimento"
-						value="#{editarPedagogoBean.pedagogo.dataNascimento}" />
-				</h:panelGroup>-->
+					<h:inputText id="data-nascimento" label="data-nascimento" />
+				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="cpf" value="CPF: " />
 					<br />
 					<h:inputText id="cpf" required="true" label="cpf"
-						value="#{editarPedagogoBean.pedagogo.cpf}" />
+						value="#{editarPedagogoBean.pessoa.cpf}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="rg" value="RG: " />
 					<br />
 					<h:inputText id="rg" required="true" label="rg"
-						value="#{editarPedagogoBean.pedagogo.rg}" />
+						value="#{editarPedagogoBean.pessoa.rg}" />
 				</h:panelGroup>
-
-				<p:separator style="height: 1px;" />
-				<h:outputLabel style="font-weight: bold;">Dados de Login</h:outputLabel>
-
+			</h:panelGrid>
+			<p:separator style="height: 1px;" />
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Login</h:outputLabel>
+			<h:panelGrid id="campos-dados-login" columns="3" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="matricula" value="Matrícula: " />
 					<br />
 					<h:inputText id="matricula" required="true" label="matricula"
-						value="#{editarPedagogoBean.pedagogo.matriculaSuap}" />
+						value="#{editarPedagogoBean.pessoa.matriculaSuap}" />
 				</h:panelGroup>
-				<!--<h:panelGroup>
-					<h:outputLabel for="grupo" value="Grupo: " />
-					<br />
-					<h:selectOneMenu id="grupo" required="true" label="grupo"
-						value="#{editarPedagogoBean.pedagogo.grupo}">
-						<f:selectItem itemValue="selecione"
-							itemLabel="  Selecione  " />
-						<f:selectItem itemValue="pedagogo" itemLabel="Pedagogo" />
-						<f:selectItem itemValue="professor" itemLabel="Professor" />
-					</h:selectOneMenu>
-				</h:panelGroup> -->
 				<h:panelGroup>
 					<h:outputLabel for="senha" value="Senha:" />
 					<br />
 					<h:inputSecret id="senha" required="true" label="senha"
-						value="#{editarPedagogoBean.pedagogo.senha}" />
+						value="#{editarPedagogoBean.pessoa.senha}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="re-senha" value="Confirmar Senha:" />
 					<br />
-					<h:inputSecret id="re-senha" required="true" label="re-senha" />
+					<h:inputSecret id="re-senha" label="re-senha" />
 				</h:panelGroup>
-
-				<p:separator style="height: 1px;" />
-				<f:facet name="footer">
-					<p:commandButton value="Salvar"
-						action="#{editarPedagogoBean.salvarPedagogo}" />
-					<p:commandButton value="Limpar" />
-				</f:facet>
+				<h:panelGroup>
+					<h:outputLabel for="grupo" value="Grupo: " />
+					<br />
+					<h:selectOneMenu id="grupo" label="grupo"
+						value="#{editarPedagogoBean.pessoa.grupo}">
+						<f:selectItem itemValue="selecione"
+							itemLabel="------- Selecione --------" />
+						<f:selectItem itemValue="pedagogo" itemLabel="PEDAGOGO" />
+						<f:selectItem itemValue="professor" itemLabel="PROFESSOR" />
+					</h:selectOneMenu>
+				</h:panelGroup>
 			</h:panelGrid>
+			<p:separator style="height: 1px;" />
+			<p:commandButton value="Salvar"
+				action="#{editarPedagogoBean.salvarUsuario}" />
+			<p:commandButton value="Limpar" />
 		</h:form>
 
 	</ui:define>
