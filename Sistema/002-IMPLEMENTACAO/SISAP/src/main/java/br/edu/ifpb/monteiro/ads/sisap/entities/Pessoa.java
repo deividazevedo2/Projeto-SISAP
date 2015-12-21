@@ -53,6 +53,9 @@ public class Pessoa implements Serializable {
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
 
+	@Column(name = "GRUPO")
+	private String grupo;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "SEXO")
 	private Sexo sexo;
@@ -67,6 +70,12 @@ public class Pessoa implements Serializable {
 	// "order")
 	// @JoinColumn(name = "CONTATO")
 	// private List<Contato> contatos;
+
+	@Column(name = "MATRICULA", unique = true)
+	private String matriculaSuap;
+
+	@Column(name = "SENHA")
+	private String senha;
 
 	public Pessoa() {
 	}
@@ -123,6 +132,14 @@ public class Pessoa implements Serializable {
 		return sexo;
 	}
 
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
@@ -141,6 +158,22 @@ public class Pessoa implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getMatriculaSuap() {
+		return matriculaSuap;
+	}
+
+	public void setMatriculaSuap(String matriculaSuap) {
+		this.matriculaSuap = matriculaSuap;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	// public List<Contato> getContatos() {
@@ -184,6 +217,9 @@ public class Pessoa implements Serializable {
 		result = prime * result
 				+ ((segundoNome == null) ? 0 : segundoNome.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result
+				+ ((matriculaSuap == null) ? 0 : matriculaSuap.hashCode());
+		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
 
@@ -242,6 +278,16 @@ public class Pessoa implements Serializable {
 		} else if (!segundoNome.equals(other.segundoNome))
 			return false;
 		if (sexo != other.sexo)
+			return false;
+		if (matriculaSuap == null) {
+			if (other.matriculaSuap != null)
+				return false;
+		} else if (!matriculaSuap.equals(other.matriculaSuap))
+			return false;
+		if (senha == null) {
+			if (other.senha != null)
+				return false;
+		} else if (!senha.equals(other.senha))
 			return false;
 		return true;
 	}
