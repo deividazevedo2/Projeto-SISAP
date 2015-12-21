@@ -19,6 +19,7 @@ import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Sexo;
+import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAOTest {
 
@@ -189,7 +190,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarMatriculaParaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -197,7 +198,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarMatriculaParaVazio() {
 		pedagogo.setMatriculaSuap(" ");
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -205,7 +206,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarNomeParaNull() {
 		pedagogo.setPrimeiroNome(Null);
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -213,7 +214,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarNomeParaVazio() {
 		pedagogo.setSegundoNome(" ");
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -221,7 +222,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarSenhaParaNull() {
 		pedagogo.setSenha(Null);
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -229,7 +230,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarSenhaParaVazio() {
 		pedagogo.setSenha(" ");
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -245,7 +246,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarCpfParaVazio() {
 		pedagogo.setCpf(" ");
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -253,7 +254,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarGrupoParaNull() {
 		pedagogo.setGrupo(Null);
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -261,7 +262,7 @@ public class PedagogoDAOTest {
 	public void testAtualizarGrupoParaVazio() {
 		pedagogo.setGrupo(" ");
 		em.merge(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao Atualizar o cadastro!");
 
 	}
 
@@ -272,7 +273,7 @@ public class PedagogoDAOTest {
 	public void testRemoverMatriculaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.remove(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao remover o cadastro!");
 
 	}
 
@@ -280,7 +281,7 @@ public class PedagogoDAOTest {
 	public void testRemoverMatriculaVazia() {
 		pedagogo.setMatriculaSuap(" ");
 		em.remove(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao remover o cadastro!");
 
 	}
 
@@ -288,17 +289,23 @@ public class PedagogoDAOTest {
 	public void testRemoverPedagogoNull() {
 		pedagogo = new Pedagogo();
 		em.remove(pedagogo);
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao remover o cadastro!");
 
 	}
 
-	// // ================== Buscar Matricula =================
+	// ================== Buscar Matricula =================
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testBuscarPedagogo() throws SisapException{
+		Pedagogo p = pedagogoDAO.buscarPorMatricula("65050265265201");
+		assertEquals(p, pedagogo);
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void testBuscarPedagogoMatriculaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.find(Pedagogo.class, pedagogo.getMatriculaSuap());
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao buscar o cadastro!");
 
 	}
 
@@ -306,9 +313,10 @@ public class PedagogoDAOTest {
 	public void testBuscarPedagogoMatriculaVazia() {
 		pedagogo.setMatriculaSuap(" ");
 		em.find(Pedagogo.class, pedagogo.getMatriculaSuap());
-		fail("Erro ao salvar o cadastro!");
+		fail("Erro ao buscar o cadastro!");
 
 	}
+}
 
 	// // ===================== Busca por ID ========================
 	//
@@ -347,5 +355,3 @@ public class PedagogoDAOTest {
 	// assertEquals("Esperasse BUZZ",fizzBuzz.BUZZ, fb);
 	// }
 	//
-
-}
