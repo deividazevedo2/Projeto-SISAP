@@ -76,19 +76,19 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		try {
 			if (pessoa.getId() != null && pessoa.getGrupo().equals("pedagogo")) {
 				pedagogoService.atualizar(atributosPedagogo());
-				reportarMensagemDeSucesso("Usuário atualizado com sucesso!");
+				reportarMensagemDeSucesso("Usuario atualizado com sucesso!");
 			} else if (pessoa.getId() == null
 					&& pessoa.getGrupo().equals("pedagogo")) {
 				pedagogoService.salvar(atributosPedagogo());
-				reportarMensagemDeSucesso("Usuário criado com sucesso!");
+				reportarMensagemDeSucesso("Usuario criado com sucesso!");
 			} else if (pessoa.getId() != null
 					&& pessoa.getGrupo().equals("professor")) {
 				professorService.atualizar(atributosProfessor());
-				reportarMensagemDeSucesso("Usuário atualizado com sucesso!");
+				reportarMensagemDeSucesso("Usuario atualizado com sucesso!");
 			} else if (pessoa.getId() == null
 					&& pessoa.getGrupo().equals("professor")) {
 				professorService.salvar(atributosProfessor());
-				reportarMensagemDeSucesso("Usuário criado com sucesso!");
+				reportarMensagemDeSucesso("Usuario criado com sucesso!");
 			}
 		} catch (SisapException e) {
 			reportarMensagemDeErro(e.getMessage());

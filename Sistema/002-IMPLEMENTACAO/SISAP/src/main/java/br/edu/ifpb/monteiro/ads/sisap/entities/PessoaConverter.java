@@ -31,7 +31,7 @@ public class PessoaConverter implements Converter {
 			return pessoas.buscarPorMatricula(matricula);
 		} catch (SisapException e) {
 			String msgErroStr = String
-					.format("Erro de conversão! Não foi possível realizar a conversão da string '%s' para o tipo esperado.",
+					.format("Erro de conversao! Nao foi possivel realizar a conversao da string '%s' para o tipo esperado.",
 							valor);
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
