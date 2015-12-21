@@ -54,6 +54,7 @@
 		<auth-constraint>
 			<description />
 			<role-name>PEDAGOGO</role-name>
+			<role-name>ADMIN</role-name>
 		</auth-constraint>
 	</security-constraint>
 	<security-constraint>
@@ -73,6 +74,26 @@
 		<auth-constraint>
 			<description />
 			<role-name>PROFESSOR</role-name>
+			<role-name>ADMIN</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>Páginas do Admin</display-name>
+		<web-resource-collection>
+			<web-resource-name>Área do ADMIN</web-resource-name>
+			<description />
+			<url-pattern>/faces/paginas/admin/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>PUT</http-method>
+			<http-method>OPTIONS</http-method>
+			<http-method>TRACE</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description />
+			<role-name>ADMIN</role-name>
 		</auth-constraint>
 	</security-constraint>
 </web-app>
