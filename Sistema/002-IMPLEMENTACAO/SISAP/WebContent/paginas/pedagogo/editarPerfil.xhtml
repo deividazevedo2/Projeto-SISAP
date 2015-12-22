@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/templates/templatePedagogo.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="pessoa" value="#{editarPedagogoBean.pessoa}"
+			converter="#{pessoaConverter}" />
+		<f:event listener="#{editarPedagogoBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="title">
+	SISAP - Editar Perfil
+	</ui:define>
+
+	<ui:define name="center">
+
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
+		<h:form>
+			<p:separator style="height: 1px;" />
+
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados Pessoais</h:outputLabel>
+
+			<p:separator style="height: 1px;" />
+
+			<p:outputLabel value="Id: " style="padding: 10px"
+				rendered="#{!empty editarPedagogoBean.idUsuarioLogado}" />
+			<p:outputLabel value="#{editarPedagogoBean.idUsuarioLogado}"
+				rendered="#{!empty editarPedagogoBean.idUsuarioLogado}" />
+			<h:panelGrid id="campos-dados-pessoais" columns="4" cellpadding="5">
+				<h:panelGroup>
+					<h:outputLabel for="nome" value="Nome: " />
+					<br />
+					<h:inputText id="nome" required="true" label="nome"
+						value="#{editarPedagogoBean.pessoa.primeiroNome}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="sobrenome" value="Sobrenome: " />
+					<br />
+					<h:inputText id="sobrenome" required="true" label="sobrenome"
+						value="#{editarPedagogoBean.pessoa.segundoNome}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="sexo" value="Sexo: " />
+					<br />
+					<h:selectOneMenu id="sexo" label="sexo"
+						value="#{editarPedagogoBean.pessoa.sexo}">
+						<f:selectItem itemValue="selecione"
+							itemLabel="------- Selecione --------" />
+						<f:selectItem itemValue="masculino" itemLabel="Masculino" />
+						<f:selectItem itemValue="feminino" itemLabel="Feminino" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
+					<br />
+					<h:inputText id="data-nascimento" label="data-nascimento"
+						value="#{editarPedagogoBean.pessoa.dataNascimento}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="cpf" value="CPF: " />
+					<br />
+					<h:inputText id="cpf" required="true" label="cpf"
+						value="#{editarPedagogoBean.pessoa.cpf}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="rg" value="RG: " />
+					<br />
+					<h:inputText id="rg" required="true" label="rg"
+						value="#{editarPedagogoBean.pessoa.rg}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="naturalidade" value="Naturalidade: " />
+					<br />
+					<h:inputText id="naturalidade" required="true" label="naturalidade"
+						value="#{editarPedagogoBean.pessoa.naturalidade}" />
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<p:separator style="height: 1px;" />
+
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Contato</h:outputLabel>
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-contato" columns="4" cellpadding="5">
+				<h:panelGroup>
+					<h:outputLabel for="celular" value="Celular: " />
+					<br />
+					<h:inputText id="celular" required="true" label="celular"
+						value="#{editarPedagogoBean.contato.celular}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="telefoneResidencial"
+						value="Telefone Residencial: " />
+					<br />
+					<h:inputText id="telefoneResidencial" required="true"
+						label="telefoneResidencial"
+						value="#{editarPedagogoBean.contato.telefoneResidencial}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="telefoneTrabalho" value="Telefone Trabalho:" />
+					<br />
+					<h:inputText id="telefoneTrabalho" required="true"
+						label="telefoneTrabalho"
+						value="#{editarPedagogoBean.contato.telefoneTrabalho}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="email" value="Email:" />
+					<br />
+					<h:inputText id="email" required="true" label="email"
+						value="#{editarPedagogoBean.contato.email}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="facebook" value="Facebook:" />
+					<br />
+					<h:inputText id="facebook" required="true" label="facebook"
+						value="#{editarPedagogoBean.contato.facebok}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="twitter" value="Twitter:" />
+					<br />
+					<h:inputText id="twitter" required="true" label="twitter"
+						value="#{editarPedagogoBean.contato.twitter}" />
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<p:separator style="height: 1px;" />
+
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Endereço</h:outputLabel>
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-endereco" columns="4" cellpadding="5">
+				<h:panelGroup>
+					<h:outputLabel for="rua" value="Rua: " />
+					<br />
+					<h:inputText id="rua" required="true" label="rua"
+						value="#{editarPedagogoBean.endereco.rua}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="numero" value="Número:" />
+					<br />
+					<h:inputText id="numero" required="true" label="numero"
+						value="#{editarPedagogoBean.endereco.numero}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="bairro" value="Bairro:" />
+					<br />
+					<h:inputText id="bairro" label="bairro"
+						value="#{editarPedagogoBean.endereco.bairro}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="cidade" value="Cidade: " />
+					<br />
+					<h:inputText id="cidade" label="cidade"
+						value="#{editarPedagogoBean.endereco.cidade}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="cep" value="CEP: " />
+					<br />
+					<h:inputText id="cep" label="cep"
+						value="#{editarPedagogoBean.endereco.cep}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="uf" value="UF: " />
+					<br />
+					<h:inputText id="uf" label="uf"
+						value="#{editarPedagogoBean.endereco.uf}" />
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<p:separator style="height: 1px;" />
+
+			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Login</h:outputLabel>
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-login" columns="4" cellpadding="5">
+				<h:panelGroup>
+					<h:outputLabel for="matricula" value="Matrícula: " />
+					<br />
+					<h:inputText id="matricula" required="true" label="matricula"
+						value="#{editarPedagogoBean.pessoa.matriculaSuap}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="senha" value="Senha:" />
+					<br />
+					<h:inputSecret id="senha" required="true" label="senha"
+						value="#{editarPedagogoBean.pessoa.senha}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel for="grupo" value="Grupo: " />
+					<br />
+					<h:selectOneMenu id="grupo" label="grupo"
+						value="#{editarPedagogoBean.pessoa.grupo}">
+						<f:selectItem itemValue="selecione"
+							itemLabel="------- Selecione --------" />
+						<f:selectItem itemValue="pedagogo" itemLabel="PEDAGOGO" />
+						<f:selectItem itemValue="professor" itemLabel="PROFESSOR" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<p:separator style="height: 1px;" />
+
+			<p:commandButton value="Salvar"
+				action="#{editarPedagogoBean.salvarUsuario}" />
+			<p:commandButton value="Limpar" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>
