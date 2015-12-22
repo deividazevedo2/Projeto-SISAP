@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -187,6 +188,14 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		professor.setEndereco(endereco);
 
 		return professor;
+	}
+
+	public String getIdUsuarioLogado() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		String usuarioSessao = fc.getExternalContext().getUserPrincipal()
+				.getName();
+
+		return usuarioSessao;
 	}
 
 }
