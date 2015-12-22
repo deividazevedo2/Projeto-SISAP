@@ -4,7 +4,6 @@ import javax.persistence.Persistence;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Sexo;
 
 public class Main {
 	public static void main(String[] args) {
@@ -25,7 +24,7 @@ public class Main {
 
 			Pedagogo pedagogo = new Pedagogo();
 			pedagogo.setMatriculaSuap("65050265265201");
-			pedagogo.setSexo(Sexo.MASCULINO);
+			pedagogo.setSexo("Masculino");
 			pedagogo.setPrimeiroNome("Widancassio");
 			pedagogo.setSegundoNome("Galindo");
 			pedagogo.setCpf("000020000111");
