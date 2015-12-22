@@ -19,6 +19,10 @@ public class PedagogoService implements Serializable {
 	private PedagogoDAO pedagogoDAO;
 	private Validador validador;
 
+	public PedagogoService() {
+		validador = new Validador();
+	}
+
 	@TransacionalCdi
 	public void salvar(Pedagogo pedagogo) throws SisapException {
 		try {
