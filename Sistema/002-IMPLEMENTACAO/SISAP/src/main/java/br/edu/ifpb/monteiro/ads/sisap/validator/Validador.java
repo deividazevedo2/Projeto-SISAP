@@ -15,9 +15,9 @@ public class Validador {
 	private final String PATTERN_EMAIL = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
 
 	/**
-	 * Método para validar todos os campos do pedagogo. Caso algum campo não
-	 * esteja de acordo com o esperado ou seja nulo e/ou vazio, este método
-	 * retorna uma exceção SisapException com a mensagem de erro.
+	 * Metodo para validar todos os campos do pedagogo. Caso algum campo nao
+	 * esteja de acordo com o esperado ou seja nulo e/ou vazio, este metodo
+	 * retorna uma excecao com uma mesagem de erro.
 	 * 
 	 * @param pedagogo
 	 * @throws SisapException
@@ -77,9 +77,9 @@ public class Validador {
 	}
 
 	/**
-	 * Método para validar todos os campos do professor. Caso algum campo não
-	 * esteja de acordo com o esperado ou seja nulo e/ou vazio, este método
-	 * retorna uma exceção SisapException com a mensagem de erro.
+	 * Metodo para validar todos os campos de professor. Caso algum campo nao
+	 * esteja de acordo com o esperado ou seja nulo e/ou vazio, este metodo
+	 * retorna uma excecao com uma mesagem de erro.
 	 * 
 	 * @param profesor
 	 * @throws SisapException
@@ -140,9 +140,10 @@ public class Validador {
 	}
 
 	/**
-	 * Método para verificar e validar um email digitado pelo usuário. É
-	 * verificado utilizando um padrão inserido no Pattern. Caso não esteja de
-	 * acordo com o padrão adotado o método retorna false.
+	 * 
+	 * Metodo para verificar e validar um email digitado pelo usuario. Eh
+	 * verificado utilizando um padrao inserido no Pattern. caso nao esteja de
+	 * acordo com o padrao adotado o metodo retorna false.
 	 * 
 	 * @param email
 	 * @return
@@ -158,11 +159,11 @@ public class Validador {
 	}
 
 	/**
-	 * Algumas string precisam ter apenas números, como no caso da matrícula do
-	 * SUAP. Este método verifica se tem apenas números na string ou se há algum
-	 * caractere que não deve ser inserido (letras ou símbolos). Retorna um
-	 * booleano true caso tenha apenas numeros ou false caso haja algum
-	 * caractere inválido (letra ou símbolo).
+	 * Algumas strings precisam ter apenas numeros, como no caso da matricula do
+	 * SUAP. Este metodo verifica se tem apenas numeros na string ou se ha algum
+	 * caractere que nao deve ser inserido(letras ou simbolos). Retorna um
+	 * booleano true caso tenha apenas numeros ou false caso haja caractere
+	 * invalido.
 	 * 
 	 * @param verificar
 	 * @return
@@ -172,7 +173,7 @@ public class Validador {
 		char[] c = verificar.toCharArray();
 		boolean d = true;
 		for (int i = 0; i < c.length; i++)
-			// verifica se o char não é um dígito
+			// verifica se o char nao eh um digito
 			if (!Character.isDigit(c[i])) {
 				d = false;
 				break;
