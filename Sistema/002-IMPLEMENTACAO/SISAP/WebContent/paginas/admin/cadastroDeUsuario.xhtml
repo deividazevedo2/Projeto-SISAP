@@ -19,7 +19,7 @@
 	</f:metadata>
 
 	<ui:define name="title">
-	SISAP - Bem Vindo
+	SISAP - Novo Usuário
 	</ui:define>
 
 	<ui:define name="center">
@@ -28,7 +28,10 @@
 			showSummary="true" />
 		<h:form>
 			<h:outputLabel style="font-weight: bold; padding: 10px">Dados Pessoais</h:outputLabel>
-			<h:panelGrid id="campos-dados-pessoais" columns="3" cellpadding="5">
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-pessoais" columns="4" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="nome" value="Nome: " />
 					<br />
@@ -81,7 +84,10 @@
 			<p:separator style="height: 1px;" />
 
 			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Contato</h:outputLabel>
-			<h:panelGrid id="campos-dados-contato" columns="3" cellpadding="5">
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-contato" columns="4" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="celular" value="Celular: " />
 					<br />
@@ -126,7 +132,10 @@
 			<p:separator style="height: 1px;" />
 
 			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Endereço</h:outputLabel>
-			<h:panelGrid id="campos-dados-endereco" columns="3" cellpadding="5">
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-endereco" columns="4" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="rua" value="Rua: " />
 					<br />
@@ -168,7 +177,10 @@
 			<p:separator style="height: 1px;" />
 
 			<h:outputLabel style="font-weight: bold; padding: 10px">Dados de Login</h:outputLabel>
-			<h:panelGrid id="campos-dados-login" columns="3" cellpadding="5">
+
+			<p:separator style="height: 1px;" />
+
+			<h:panelGrid id="campos-dados-login" columns="4" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="matricula" value="Matrícula: " />
 					<br />
@@ -180,11 +192,6 @@
 					<br />
 					<h:inputSecret id="senha" required="true" label="senha"
 						value="#{editarPedagogoBean.pessoa.senha}" />
-				</h:panelGroup>
-				<h:panelGroup>
-					<h:outputLabel for="re-senha" value="Confirmar Senha:" />
-					<br />
-					<h:inputSecret id="re-senha" label="re-senha" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="grupo" value="Grupo: " />
