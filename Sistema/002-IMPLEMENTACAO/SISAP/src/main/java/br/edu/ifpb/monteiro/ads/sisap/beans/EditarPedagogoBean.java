@@ -1,10 +1,15 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Professor;
@@ -22,6 +27,9 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	private Pessoa pessoa;
 	private Pedagogo pedagogo;
 	private Professor professor;
+	private Contato contato;
+	private Endereco endereco;
+	private List<Contato> contatos = new ArrayList<Contato>();
 
 	@Inject
 	private PedagogoService pedagogoService;
@@ -41,6 +49,12 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		}
 		if (pessoa == null) {
 			pessoa = new Professor();
+		}
+		if (contato == null) {
+			contato = new Contato();
+		}
+		if (endereco == null) {
+			endereco = new Endereco();
 		}
 		if (conversation.isTransient()) {
 			conversation.begin();
@@ -71,6 +85,22 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		this.pessoa = pessoa;
 	}
 
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public String salvarUsuario() throws SisapException {
 		conversation.end();
 		try {
@@ -98,25 +128,63 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	}
 
 	public Pedagogo atributosPedagogo() {
+		contato.setCelular(contato.getCelular());
+		contato.setEmail(contato.getEmail());
+		contato.setFacebok(contato.getFacebok());
+		contato.setTwitter(contato.getTwitter());
+		contato.setTelefoneResidencial(contato.getTelefoneResidencial());
+		contato.setTelefoneTrabalho(contato.getTelefoneTrabalho());
+		endereco.setRua(endereco.getRua());
+		endereco.setNumero(endereco.getNumero());
+		endereco.setBairro(endereco.getBairro());
+		endereco.setCidade(endereco.getCidade());
+		endereco.setCep(endereco.getCep());
+		endereco.setUf(endereco.getUf());
 		pedagogo.setPrimeiroNome(pessoa.getPrimeiroNome());
 		pedagogo.setSegundoNome(pessoa.getSegundoNome());
 		pedagogo.setCpf(pessoa.getCpf());
+		pedagogo.setDataNascimento(pessoa.getDataNascimento());
+		pedagogo.setNaturalidade(pessoa.getNaturalidade());
 		pedagogo.setMatriculaSuap(pessoa.getMatriculaSuap());
+		pedagogo.setSexo(pessoa.getSexo());
 		pedagogo.setSenha(pessoa.getSenha());
 		pedagogo.setGrupo(pessoa.getGrupo());
 		pedagogo.setRg(pessoa.getRg());
+		pedagogo.setSenha(pessoa.getSenha());
+		contatos.add(contato);
+		pedagogo.setContatos(contatos);
+		pedagogo.setEndereco(endereco);
 
 		return pedagogo;
 	}
 
 	public Professor atributosProfessor() {
+		contato.setCelular(contato.getCelular());
+		contato.setEmail(contato.getEmail());
+		contato.setFacebok(contato.getFacebok());
+		contato.setTwitter(contato.getTwitter());
+		contato.setTelefoneResidencial(contato.getTelefoneResidencial());
+		contato.setTelefoneTrabalho(contato.getTelefoneTrabalho());
+		endereco.setRua(endereco.getRua());
+		endereco.setNumero(endereco.getNumero());
+		endereco.setBairro(endereco.getBairro());
+		endereco.setCidade(endereco.getCidade());
+		endereco.setCep(endereco.getCep());
+		endereco.setUf(endereco.getUf());
 		professor.setPrimeiroNome(pessoa.getPrimeiroNome());
 		professor.setSegundoNome(pessoa.getSegundoNome());
 		professor.setCpf(pessoa.getCpf());
+		professor.setDataNascimento(pessoa.getDataNascimento());
+		professor.setNaturalidade(pessoa.getNaturalidade());
 		professor.setMatriculaSuap(pessoa.getMatriculaSuap());
+		professor.setSexo(pessoa.getSexo());
 		professor.setSenha(pessoa.getSenha());
 		professor.setGrupo(pessoa.getGrupo());
 		professor.setRg(pessoa.getRg());
+		professor.setSenha(pessoa.getSenha());
+		contatos.add(contato);
+		professor.setContatos(contatos);
+		professor.setEndereco(endereco);
 
 		return professor;
 	}
