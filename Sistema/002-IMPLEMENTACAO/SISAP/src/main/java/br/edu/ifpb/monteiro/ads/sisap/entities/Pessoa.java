@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +22,10 @@ import javax.persistence.Table;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
-@Entity
+@Entity (name="Pessoa")
 @Table(name = "TB_PESSOA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("PS")
 @DiscriminatorColumn(name = "TIPO_PESSOA", discriminatorType = DiscriminatorType.STRING)
 public class Pessoa implements Serializable {
 
