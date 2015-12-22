@@ -3,8 +3,6 @@ package br.edu.ifpb.monteiro.ads.sisap.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.el.ELContext;
-import javax.el.ExpressionFactory;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.context.FacesContext;
@@ -111,10 +109,12 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 			if (pessoa.getId() != null && pessoa.getGrupo().equals("pedagogo")) {
 				pedagogoService.atualizar(atributosPedagogo());
 				reportarMensagemDeSucesso("Usuario atualizado com sucesso!");
+				return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
 			} else if (pessoa.getId() == null
 					&& pessoa.getGrupo().equals("pedagogo")) {
 				pedagogoService.salvar(atributosPedagogo());
 				reportarMensagemDeSucesso("Usuario criado com sucesso!");
+				return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
 			} else if (pessoa.getId() != null
 					&& pessoa.getGrupo().equals("professor")) {
 				professorService.atualizar(atributosProfessor());
