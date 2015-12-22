@@ -34,8 +34,8 @@ public class Validador {
 		if (pedagogo.getSexo().equals("") || pedagogo.getSexo().equals(null)) {
 			throw new SisapException(MSG_CAMPO_INVALIDO);
 		}
-		if (!(pedagogo.getSexo().equals("FEMININO"))
-				|| !(pedagogo.getSexo().equals("MASCULINO"))) {
+		if (!(pedagogo.getSexo().toUpperCase().equals("FEMININO"))
+				&& !(pedagogo.getSexo().toUpperCase().equals("MASCULINO"))) {
 			throw new SisapException(MSG_CAMPO_INVALIDO);
 		}
 		if (pedagogo.getDataNascimento().equals("")
@@ -68,7 +68,7 @@ public class Validador {
 		if (!(pedagogo.getContatos().isEmpty())) {
 			List<Contato> contatos = pedagogo.getContatos();
 			for (Contato contato : contatos) {
-				if (validarEmail(contato.getEmail())) {
+				if (!validarEmail(contato.getEmail())) {
 					throw new SisapException(MSG_CAMPO_INVALIDO);
 				}
 			}
