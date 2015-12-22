@@ -4,9 +4,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+@Entity (name="Pedagogo")
 @Table(name = "TB_PEDAGOGO")
-@DiscriminatorValue("PEDAGOGO")
+@DiscriminatorValue("P")
 public class Pedagogo extends Pessoa {
 
 	/**
