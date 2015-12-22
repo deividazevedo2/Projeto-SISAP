@@ -18,7 +18,6 @@ import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Sexo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAOTest {
@@ -74,7 +73,7 @@ public class PedagogoDAOTest {
 		
 		pedagogo.setContatos(contatos);
 		pedagogo.setMatriculaSuap("65050265265201");
-		pedagogo.setSexo(Sexo.MASCULINO);
+		pedagogo.setSexo("Masculino");
 		pedagogo.setPrimeiroNome("Widancassio");
 		pedagogo.setSegundoNome("Galindo");
 		pedagogo.setCpf("000020000111");
