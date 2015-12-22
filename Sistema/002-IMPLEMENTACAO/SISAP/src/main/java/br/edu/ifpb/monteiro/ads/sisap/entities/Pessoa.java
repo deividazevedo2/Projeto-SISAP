@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,8 +9,6 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +18,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
@@ -54,16 +49,14 @@ public class Pessoa implements Serializable {
 	@Column(name = "RG", unique = true)
 	private String rg;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
-	private Date dataNascimento;
+	private String dataNascimento;
 
 	@Column(name = "GRUPO")
 	private String grupo;
 
-	@Enumerated(EnumType.STRING)
 	@Column(name = "SEXO")
-	private Sexo sexo;
+	private String sexo;
 
 	@Column(name = "NATURALIDADE", unique = true)
 	private String naturalidade;
@@ -72,7 +65,7 @@ public class Pessoa implements Serializable {
 	private Endereco endereco;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="PESSOA_FK")
+	@JoinColumn(name = "PESSOA_FK")
 	private List<Contato> contatos;
 
 	@Column(name = "MATRICULA", unique = true)
@@ -124,15 +117,15 @@ public class Pessoa implements Serializable {
 		this.rg = rg;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Sexo getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
@@ -144,7 +137,7 @@ public class Pessoa implements Serializable {
 		this.grupo = grupo;
 	}
 
-	public void setSexo(Sexo sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
