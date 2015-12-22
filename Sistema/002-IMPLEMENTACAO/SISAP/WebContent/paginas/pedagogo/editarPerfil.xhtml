@@ -34,27 +34,27 @@
 			<p:separator style="height: 1px;" />
 
 			<p:outputLabel value="Id: " style="padding: 10px"
-				rendered="#{!empty editarPedagogoBean.idUsuarioLogado}" />
-			<p:outputLabel value="#{editarPedagogoBean.idUsuarioLogado}"
-				rendered="#{!empty editarPedagogoBean.idUsuarioLogado}" />
+				rendered="#{!empty editarPedagogoBean.usuarioLogado.id}" />
+			<p:outputLabel value="#{editarPedagogoBean.usuarioLogado.id}"
+				rendered="#{!empty editarPedagogoBean.usuarioLogado.id}" />
 			<h:panelGrid id="campos-dados-pessoais" columns="4" cellpadding="5">
 				<h:panelGroup>
 					<h:outputLabel for="nome" value="Nome: " />
 					<br />
 					<h:inputText id="nome" required="true" label="nome"
-						value="#{editarPedagogoBean.pessoa.primeiroNome}" />
+						value="#{editarPedagogoBean.usuarioLogado.primeiroNome}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="sobrenome" value="Sobrenome: " />
 					<br />
 					<h:inputText id="sobrenome" required="true" label="sobrenome"
-						value="#{editarPedagogoBean.pessoa.segundoNome}" />
+						value="#{editarPedagogoBean.usuarioLogado.segundoNome}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="sexo" value="Sexo: " />
 					<br />
 					<h:selectOneMenu id="sexo" label="sexo"
-						value="#{editarPedagogoBean.pessoa.sexo}">
+						value="#{editarPedagogoBean.usuarioLogado.sexo}">
 						<f:selectItem itemValue="selecione"
 							itemLabel="------- Selecione --------" />
 						<f:selectItem itemValue="masculino" itemLabel="Masculino" />
@@ -65,25 +65,25 @@
 					<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
 					<br />
 					<h:inputText id="data-nascimento" label="data-nascimento"
-						value="#{editarPedagogoBean.pessoa.dataNascimento}" />
+						value="#{editarPedagogoBean.usuarioLogado.dataNascimento}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="cpf" value="CPF: " />
 					<br />
 					<h:inputText id="cpf" required="true" label="cpf"
-						value="#{editarPedagogoBean.pessoa.cpf}" />
+						value="#{editarPedagogoBean.usuarioLogado.cpf}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="rg" value="RG: " />
 					<br />
 					<h:inputText id="rg" required="true" label="rg"
-						value="#{editarPedagogoBean.pessoa.rg}" />
+						value="#{editarPedagogoBean.usuarioLogado.rg}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="naturalidade" value="Naturalidade: " />
 					<br />
 					<h:inputText id="naturalidade" required="true" label="naturalidade"
-						value="#{editarPedagogoBean.pessoa.naturalidade}" />
+						value="#{editarPedagogoBean.usuarioLogado.naturalidade}" />
 				</h:panelGroup>
 			</h:panelGrid>
 
@@ -98,7 +98,7 @@
 					<h:outputLabel for="celular" value="Celular: " />
 					<br />
 					<h:inputText id="celular" required="true" label="celular"
-						value="#{editarPedagogoBean.contato.celular}" />
+						value="#{editarPedagogoBean.contatoUsuario.celular}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="telefoneResidencial"
@@ -146,37 +146,37 @@
 					<h:outputLabel for="rua" value="Rua: " />
 					<br />
 					<h:inputText id="rua" required="true" label="rua"
-						value="#{editarPedagogoBean.endereco.rua}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.rua}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="numero" value="Número:" />
 					<br />
 					<h:inputText id="numero" required="true" label="numero"
-						value="#{editarPedagogoBean.endereco.numero}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.numero}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="bairro" value="Bairro:" />
 					<br />
 					<h:inputText id="bairro" label="bairro"
-						value="#{editarPedagogoBean.endereco.bairro}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.bairro}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="cidade" value="Cidade: " />
 					<br />
 					<h:inputText id="cidade" label="cidade"
-						value="#{editarPedagogoBean.endereco.cidade}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.cidade}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="cep" value="CEP: " />
 					<br />
 					<h:inputText id="cep" label="cep"
-						value="#{editarPedagogoBean.endereco.cep}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.cep}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="uf" value="UF: " />
 					<br />
 					<h:inputText id="uf" label="uf"
-						value="#{editarPedagogoBean.endereco.uf}" />
+						value="#{editarPedagogoBean.usuarioLogado.endereco.uf}" />
 				</h:panelGroup>
 			</h:panelGrid>
 
@@ -191,19 +191,19 @@
 					<h:outputLabel for="matricula" value="Matrícula: " />
 					<br />
 					<h:inputText id="matricula" required="true" label="matricula"
-						value="#{editarPedagogoBean.pessoa.matriculaSuap}" />
+						value="#{editarPedagogoBean.usuarioLogado.matriculaSuap}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="senha" value="Senha:" />
 					<br />
 					<h:inputSecret id="senha" required="true" label="senha"
-						value="#{editarPedagogoBean.pessoa.senha}" />
+						value="#{editarPedagogoBean.usuarioLogado.senha}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="grupo" value="Grupo: " />
 					<br />
 					<h:selectOneMenu id="grupo" label="grupo"
-						value="#{editarPedagogoBean.pessoa.grupo}">
+						value="#{editarPedagogoBean.usuarioLogado.grupo}">
 						<f:selectItem itemValue="selecione"
 							itemLabel="------- Selecione --------" />
 						<f:selectItem itemValue="pedagogo" itemLabel="PEDAGOGO" />

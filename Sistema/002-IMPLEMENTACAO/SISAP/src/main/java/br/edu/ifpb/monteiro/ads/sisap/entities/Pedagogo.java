@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity (name="Pedagogo")
 @Table(name = "TB_PEDAGOGO")
-@DiscriminatorValue("P")
+@DiscriminatorValue("PEDAGOGO")
 public class Pedagogo extends Pessoa {
 
 	/**

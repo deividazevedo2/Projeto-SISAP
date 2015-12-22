@@ -5,6 +5,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAO extends DAO {
@@ -63,15 +64,17 @@ public class PedagogoDAO extends DAO {
 		try {
 			TypedQuery<Pedagogo> query = em
 					.createQuery(
-							"select pedagogo from PEDAGOGO pedagogo where pedagogo.matricula like :matricula",
+							"select pedagogo from Pedagogo pedagogo where pedagogo.matriculaSuap like :matricula",
 							Pedagogo.class);
-			query.setParameter("matricula", matriculaPedagogo);
+			query.setParameter("matricula", "%" + matriculaPedagogo + "%");
 			resultado = query.getSingleResult();
 		} catch (PersistenceException pe) {
 			throw new SisapException("Erro ao recuperar aluno por matricula.",
 					pe);
 		}
+
 		return resultado;
+
 	}
 
 }

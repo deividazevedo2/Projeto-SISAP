@@ -53,11 +53,11 @@
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
 
-							<p:menuButton value="#{editarPedagogoBean.idUsuarioLogado}">
+							<p:menuButton value="#{editarPedagogoBean.usuarioLogado.primeiroNome}">
 								<p:menuitem value="Editar Perfil" update="messages"
 									outcome="/paginas/pedagogo/editarPerfil.xhtml">
 									<f:param name="pedagogo"
-										value="#{editarPedagogoBean.idUsuarioLogado}" />
+										value="#{editarPedagogoBean.usuarioLogado.id}" />
 								</p:menuitem>
 								<p:menuitem value="Excluir Perfil" update="messages"
 									id="openDialogExcPedagogo"

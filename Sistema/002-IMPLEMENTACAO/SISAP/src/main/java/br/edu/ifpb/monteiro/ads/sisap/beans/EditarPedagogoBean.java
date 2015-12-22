@@ -3,6 +3,8 @@ package br.edu.ifpb.monteiro.ads.sisap.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.context.FacesContext;
@@ -31,6 +33,7 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	private Contato contato;
 	private Endereco endereco;
 	private List<Contato> contatos = new ArrayList<Contato>();
+	private List<Contato> contatosPessoa;
 
 	@Inject
 	private PedagogoService pedagogoService;
@@ -190,12 +193,43 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		return professor;
 	}
 
-	public String getIdUsuarioLogado() {
+	public Pessoa getUsuarioLogado() throws SisapException {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		String usuarioSessao = fc.getExternalContext().getUserPrincipal()
 				.getName();
 
-		return usuarioSessao;
+		Pessoa temp = pedagogoService.buscarPorMatricula(usuarioSessao);
+
+		return temp;
+	}
+
+	public Contato getContatoUsuario() throws SisapException {
+		Contato contatoTemp;
+		contatosPessoa = getUsuarioLogado().getContatos();
+		contatoTemp = contatosPessoa.get(0);
+
+		return contatoTemp;
+
+	}
+
+	public String getNomeUsuarioLogado() throws SisapException {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		String usuarioSessao = fc.getExternalContext().getUserPrincipal()
+				.getName();
+
+		Pessoa temp = pedagogoService.buscarPorMatricula(usuarioSessao);
+
+		String nomeLogado = temp.getPrimeiroNome();
+
+		return nomeLogado;
+	}
+
+	public List<Contato> getContatosPessoa() {
+		return contatosPessoa;
+	}
+
+	public void setContatosPessoa(List<Contato> contatosPessoa) {
+		this.contatosPessoa = contatosPessoa;
 	}
 
 }
