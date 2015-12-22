@@ -64,10 +64,11 @@ public class PedagogoService implements Serializable {
 	}
 
 	@TransacionalCdi
-	public Pedagogo buscarPorMatricula(String matricula) throws SisapException {
+	public Pedagogo buscarPorMatricula(String matricula)
+			throws SisapException {
 		try {
 			return ((PedagogoDAO) this.pedagogoDAO)
-					.buscarPorMatricula(matricula);
+					.buscarPorMatricula(Long.parseLong(matricula));
 		} catch (PersistenceException exception) {
 			throw new SisapException(exception.getMessage(), exception);
 		}
