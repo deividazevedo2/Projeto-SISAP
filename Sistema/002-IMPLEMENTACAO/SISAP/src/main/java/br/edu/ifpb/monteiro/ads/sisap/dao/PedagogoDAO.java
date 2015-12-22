@@ -45,7 +45,7 @@ public class PedagogoDAO extends DAO {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = null;
 		try {
-			resultado = em.find(Pedagogo.class, matriculaSuap);
+			resultado = em.find(Pedagogo.class, Long.parseLong(matriculaSuap));
 		} catch (PersistenceException pe) {
 			throw new SisapException(
 					"Ocorreu um problema ao buscar o cadastro!");
