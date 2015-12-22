@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.sisap.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
@@ -40,19 +41,6 @@ public class PedagogoDAO extends DAO {
 		}
 	}
 
-	public Pedagogo buscarPorMatricula(String matriculaSuap)
-			throws SisapException {
-		EntityManager em = getEntityManager();
-		Pedagogo resultado = null;
-		try {
-			resultado = em.find(Pedagogo.class, Long.parseLong(matriculaSuap));
-		} catch (PersistenceException pe) {
-			throw new SisapException(
-					"Ocorreu um problema ao buscar o cadastro!");
-		}
-		return resultado;
-	}
-
 	public Pedagogo buscarPorId(Long id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = null;
@@ -61,6 +49,27 @@ public class PedagogoDAO extends DAO {
 		} catch (PersistenceException pe) {
 			throw new SisapException(
 					"Ocorreu um problema ao buscar o cadastro!");
+		}
+		return resultado;
+	}
+
+	public Pedagogo buscarPorMatricula(Long matriculaPedagogo)
+			throws SisapException {
+		EntityManager em = getEntityManager();
+		Pedagogo resultado = null;
+		if (matriculaPedagogo == null) {
+			matriculaPedagogo = Long.valueOf("");
+		}
+		try {
+			TypedQuery<Pedagogo> query = em
+					.createQuery(
+							"select pedagogo from PEDAGOGO pedagogo where pedagogo.matricula like :matricula",
+							Pedagogo.class);
+			query.setParameter("matricula", matriculaPedagogo);
+			resultado = query.getSingleResult();
+		} catch (PersistenceException pe) {
+			throw new SisapException("Erro ao recuperar aluno por matricula.",
+					pe);
 		}
 		return resultado;
 	}
