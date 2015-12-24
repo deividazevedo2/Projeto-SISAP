@@ -68,8 +68,8 @@ public class PedagogoDAO extends DAO {
 			query.setParameter("matricula", "%" + matriculaPedagogo + "%");
 			resultado = query.getSingleResult();
 		} catch (PersistenceException pe) {
-			throw new SisapException("Erro ao recuperar aluno por matricula.",
-					pe);
+			throw new SisapException(
+					"Erro ao recuperar o pedagogo pela matricula.", pe);
 		}
 
 		return resultado;
