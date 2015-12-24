@@ -9,7 +9,6 @@ import br.edu.ifpb.monteiro.ads.sisap.dao.ProfessorDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Professor;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
-import br.edu.ifpb.monteiro.ads.sisap.validator.Validador;
 
 public class ProfessorService implements Serializable {
 
@@ -17,12 +16,10 @@ public class ProfessorService implements Serializable {
 
 	@Inject
 	private ProfessorDAO professorDAO;
-	private Validador validador;
 
 	@TransacionalCdi
 	public void salvar(Professor professor) throws SisapException {
 		try {
-			validador.ValidarCamposProfessor(professor);
 			this.professorDAO.salvar(professor);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());
@@ -33,7 +30,6 @@ public class ProfessorService implements Serializable {
 	@TransacionalCdi
 	public Professor atualizar(Professor professor) throws SisapException {
 		try {
-			validador.ValidarCamposProfessor(professor);
 			return professorDAO.atualizar(professor);
 		} catch (SisapException exception) {
 			throw new SisapException(exception.getMessage());
