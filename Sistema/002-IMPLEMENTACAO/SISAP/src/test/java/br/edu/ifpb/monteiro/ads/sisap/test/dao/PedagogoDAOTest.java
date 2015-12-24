@@ -1,8 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,21 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.primefaces.component.editor.Editor;
 
-import static org.junit.Assert.*;
-import br.edu.ifpb.monteiro.ads.sisap.beans.EditarPedagogoBean;
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 
 public class PedagogoDAOTest {
 
@@ -44,7 +35,7 @@ public class PedagogoDAOTest {
 		emf = Persistence.createEntityManagerFactory("SISAP");
 		em = emf.createEntityManager();
 		pedagogoDAO.setEntityManager(em);
-		
+
 		pedagogo = new Pedagogo();
 		Endereco endereco = new Endereco();
 		endereco.setBairro("Prado");
@@ -53,13 +44,12 @@ public class PedagogoDAOTest {
 		endereco.setNumero(11);
 		endereco.setRua("Rua Santa Agueda");
 		endereco.setUf("PE");
-		
 
 		Contato contato = new Contato();
 		List<Contato> contatos = new ArrayList<Contato>();
 		contato.setEmail("cassio@gmail.com");
 		contatos.add(contato);
-		
+
 		pedagogo.setContatos(contatos);
 		pedagogo.setMatriculaSuap("65050265265201");
 		pedagogo.setSexo("Masculino");
@@ -70,9 +60,7 @@ public class PedagogoDAOTest {
 		pedagogo.setSenha("pedagogo");
 
 	}
-	
-	
-	
+
 	@Test(expected = AssertionError.class)
 	public void testSalvarPedagogoNull() {
 		Pedagogo p1 = new Pedagogo();
@@ -167,7 +155,7 @@ public class PedagogoDAOTest {
 
 	}
 
- //===================Parte de Atualizar ====================
+	// ===================Parte de Atualizar ====================
 
 	@Test(expected = AssertionError.class)
 	public void testAtualizarMatriculaParaNull() {
@@ -279,11 +267,13 @@ public class PedagogoDAOTest {
 	// ================== Buscar Matricula =================
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testBuscarPedagogo() throws SisapException{
-		Pedagogo p = pedagogoDAO.buscarPorMatricula("65050265265201");
+	public void testBuscarPedagogo() throws SisapException {
+		String mat = "pedagogo";
+		Long matricula = Long.parseLong(mat);
+		Pedagogo p = pedagogoDAO.buscarPorMatricula(matricula);
 		assertEquals(p, pedagogo);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testBuscarPedagogoMatriculaNull() {
 		pedagogo.setMatriculaSuap(Null);

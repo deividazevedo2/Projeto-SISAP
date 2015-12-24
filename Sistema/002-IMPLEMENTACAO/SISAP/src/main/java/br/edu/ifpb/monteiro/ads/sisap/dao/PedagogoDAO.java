@@ -5,7 +5,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAO extends DAO {
