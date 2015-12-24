@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "TB_CONTATO")
@@ -18,12 +21,14 @@ public class Contato {
 
 	private String telefoneTrabalho;
 
+	@Length(min = 10, max = 14, message = "Celular Invalido!")
 	private String celular;
 
 	private String facebok;
 
 	private String twitter;
 
+	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$", message = "Email Invalido!")
 	private String email;
 
 	public Contato() {
