@@ -19,7 +19,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -75,7 +74,6 @@ public class Pessoa implements Serializable {
 	private List<Contato> contatos;
 
 	@Column(name = "MATRICULA", unique = true)
-	@Pattern(regexp="[0-9]", message = "Matricula Invalida!")
 	private String matriculaSuap;
 
 	@Column(name = "SENHA")
