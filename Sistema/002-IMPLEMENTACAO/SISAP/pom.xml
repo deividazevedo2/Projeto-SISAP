@@ -70,6 +70,14 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
+		<!-- Selenium -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.44.0</version>
+		</dependency>
+		
+		
 		<!-- Driver JDBC 4 do PostgreSQL 9.4 -->
 		<dependency>
 			<groupId>org.postgresql</groupId>

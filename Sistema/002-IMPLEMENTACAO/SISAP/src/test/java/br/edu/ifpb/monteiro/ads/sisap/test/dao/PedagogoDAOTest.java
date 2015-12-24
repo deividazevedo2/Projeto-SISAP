@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -60,8 +61,8 @@ public class PedagogoDAOTest {
 		pedagogo.setSenha("pedagogo");
 
 	}
-
-	@Test(expected = AssertionError.class)
+	
+	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoNull() {
 		Pedagogo p1 = new Pedagogo();
 		em.persist(p1);
@@ -69,25 +70,22 @@ public class PedagogoDAOTest {
 
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoPrimeiroNomeVazio() {
 		pedagogo.setPrimeiroNome(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testSalvarPedagogoPrimeiroNomeComNull() {
 		pedagogo.setPrimeiroNome(Null);
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoSegundoNomeVazio() {
 		pedagogo.setSegundoNome(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
@@ -95,7 +93,6 @@ public class PedagogoDAOTest {
 	public void testSalvarPedagogoRGVazio() {
 		pedagogo.setRg(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
@@ -103,7 +100,6 @@ public class PedagogoDAOTest {
 	public void testSalvarPedagogoRGNull() {
 		pedagogo.setRg(Null);
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
@@ -111,57 +107,44 @@ public class PedagogoDAOTest {
 	public void testSalvarPedagogoCPFVazio() {
 		pedagogo.setCpf(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testSalvarPedagogoCPFNull() {
 		pedagogo.setCpf(Null);
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testSalvarPedagogoComMatriculaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testSalvarPedagogoComMatriculaVazia() {
 		pedagogo.setMatriculaSuap(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoComSenhaNull() {
 		pedagogo.setSenha(Null);
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoComSenhaVazia() {
 		pedagogo.setSenha(" ");
 		em.persist(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	// ===================Parte de Atualizar ====================
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarMatriculaParaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
@@ -169,63 +152,49 @@ public class PedagogoDAOTest {
 	public void testAtualizarMatriculaParaVazio() {
 		pedagogo.setMatriculaSuap(" ");
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testAtualizarNomeParaNull() {
 		pedagogo.setPrimeiroNome(Null);
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testAtualizarNomeParaVazio() {
 		pedagogo.setSegundoNome(" ");
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarSenhaParaNull() {
 		pedagogo.setSenha(Null);
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarSenhaParaVazio() {
 		pedagogo.setSenha(" ");
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarCpfParaNull() {
 		pedagogo.setCpf(Null);
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarCpfParaVazio() {
 		pedagogo.setCpf(" ");
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expected = PersistenceException.class)
 	public void testAtualizarGrupoParaNull() {
 		pedagogo.setGrupo(Null);
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
 
 	}
 
@@ -233,8 +202,6 @@ public class PedagogoDAOTest {
 	public void testAtualizarGrupoParaVazio() {
 		pedagogo.setGrupo(" ");
 		em.merge(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	// // ========================Remover
@@ -244,24 +211,18 @@ public class PedagogoDAOTest {
 	public void testRemoverMatriculaNull() {
 		pedagogo.setMatriculaSuap(Null);
 		em.remove(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testRemoverMatriculaVazia() {
 		pedagogo.setMatriculaSuap(" ");
 		em.remove(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	@Test(expected = AssertionError.class)
 	public void testRemoverPedagogoNull() {
 		pedagogo = new Pedagogo();
 		em.remove(pedagogo);
-		fail("Verifique os campos e tente novamente");
-
 	}
 
 	// ================== Buscar Matricula =================
