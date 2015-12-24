@@ -39,21 +39,21 @@
 				rendered="#{!empty editarPedagogoBean.usuarioLogado.id}" />
 			<h:panelGrid id="campos-dados-pessoais" columns="4" cellpadding="5">
 				<h:panelGroup>
-					<h:outputLabel for="nome" value="Nome: " />
+					<h:outputLabel for="nome" value="Nome: *" />
 					<br />
 					<h:inputText id="nome" required="true" label="nome"
 						value="#{editarPedagogoBean.usuarioLogado.primeiroNome}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="sobrenome" value="Sobrenome: " />
+					<h:outputLabel for="sobrenome" value="Sobrenome: *" />
 					<br />
 					<h:inputText id="sobrenome" required="true" label="sobrenome"
 						value="#{editarPedagogoBean.usuarioLogado.segundoNome}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="sexo" value="Sexo: " />
+					<h:outputLabel for="sexo" value="Sexo: *" />
 					<br />
-					<h:selectOneMenu id="sexo" label="sexo"
+					<h:selectOneMenu id="sexo" label="sexo" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.sexo}">
 						<f:selectItem itemValue="selecione"
 							itemLabel="------- Selecione --------" />
@@ -62,19 +62,20 @@
 					</h:selectOneMenu>
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="data-nascimento" value="Data de Nascimento: " />
+					<h:outputLabel for="data-nascimento" value="Data de Nascimento: *" />
 					<br />
 					<h:inputText id="data-nascimento" label="data-nascimento"
+						required="true"
 						value="#{editarPedagogoBean.usuarioLogado.dataNascimento}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="cpf" value="CPF: " />
+					<h:outputLabel for="cpf" value="CPF: *" />
 					<br />
 					<h:inputText id="cpf" required="true" label="cpf"
 						value="#{editarPedagogoBean.usuarioLogado.cpf}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="rg" value="RG: " />
+					<h:outputLabel for="rg" value="RG: *" />
 					<br />
 					<h:inputText id="rg" required="true" label="rg"
 						value="#{editarPedagogoBean.usuarioLogado.rg}" />
@@ -82,7 +83,7 @@
 				<h:panelGroup>
 					<h:outputLabel for="naturalidade" value="Naturalidade: " />
 					<br />
-					<h:inputText id="naturalidade" required="true" label="naturalidade"
+					<h:inputText id="naturalidade" label="naturalidade"
 						value="#{editarPedagogoBean.usuarioLogado.naturalidade}" />
 				</h:panelGroup>
 			</h:panelGrid>
@@ -95,7 +96,7 @@
 
 			<h:panelGrid id="campos-dados-contato" columns="4" cellpadding="5">
 				<h:panelGroup>
-					<h:outputLabel for="celular" value="Celular: " />
+					<h:outputLabel for="celular" value="Celular: *" />
 					<br />
 					<h:inputText id="celular" required="true" label="celular"
 						value="#{editarPedagogoBean.contatoUsuario.celular}" />
@@ -104,19 +105,17 @@
 					<h:outputLabel for="telefoneResidencial"
 						value="Telefone Residencial: " />
 					<br />
-					<h:inputText id="telefoneResidencial" required="true"
-						label="telefoneResidencial"
+					<h:inputText id="telefoneResidencial" label="telefoneResidencial"
 						value="#{editarPedagogoBean.contatoUsuario.telefoneResidencial}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="telefoneTrabalho" value="Telefone Trabalho:" />
 					<br />
-					<h:inputText id="telefoneTrabalho" required="true"
-						label="telefoneTrabalho"
+					<h:inputText id="telefoneTrabalho" label="telefoneTrabalho"
 						value="#{editarPedagogoBean.contatoUsuario.telefoneTrabalho}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="email" value="Email:" />
+					<h:outputLabel for="email" value="Email: *" />
 					<br />
 					<h:inputText id="email" required="true" label="email"
 						value="#{editarPedagogoBean.contatoUsuario.email}" />
@@ -124,13 +123,13 @@
 				<h:panelGroup>
 					<h:outputLabel for="facebook" value="Facebook:" />
 					<br />
-					<h:inputText id="facebook" required="true" label="facebook"
+					<h:inputText id="facebook" label="facebook"
 						value="#{editarPedagogoBean.contatoUsuario.facebok}" />
 				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputLabel for="twitter" value="Twitter:" />
 					<br />
-					<h:inputText id="twitter" required="true" label="twitter"
+					<h:inputText id="twitter" label="twitter"
 						value="#{editarPedagogoBean.contatoUsuario.twitter}" />
 				</h:panelGroup>
 			</h:panelGrid>
@@ -143,39 +142,39 @@
 
 			<h:panelGrid id="campos-dados-endereco" columns="4" cellpadding="5">
 				<h:panelGroup>
-					<h:outputLabel for="rua" value="Rua: " />
+					<h:outputLabel for="rua" value="Rua: *" />
 					<br />
 					<h:inputText id="rua" required="true" label="rua"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.rua}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="numero" value="Número:" />
+					<h:outputLabel for="numero" value="Número: *" />
 					<br />
 					<h:inputText id="numero" required="true" label="numero"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.numero}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="bairro" value="Bairro:" />
+					<h:outputLabel for="bairro" value="Bairro: *" />
 					<br />
-					<h:inputText id="bairro" label="bairro"
+					<h:inputText id="bairro" label="bairro" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.bairro}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="cidade" value="Cidade: " />
+					<h:outputLabel for="cidade" value="Cidade: *" />
 					<br />
-					<h:inputText id="cidade" label="cidade"
+					<h:inputText id="cidade" label="cidade" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.cidade}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="cep" value="CEP: " />
+					<h:outputLabel for="cep" value="CEP: *" />
 					<br />
-					<h:inputText id="cep" label="cep"
+					<h:inputText id="cep" label="cep" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.cep}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="uf" value="UF: " />
+					<h:outputLabel for="uf" value="UF: *" />
 					<br />
-					<h:inputText id="uf" label="uf"
+					<h:inputText id="uf" label="uf" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.endereco.uf}" />
 				</h:panelGroup>
 			</h:panelGrid>
@@ -188,21 +187,21 @@
 
 			<h:panelGrid id="campos-dados-login" columns="4" cellpadding="5">
 				<h:panelGroup>
-					<h:outputLabel for="matricula" value="Matrícula: " />
+					<h:outputLabel for="matricula" value="Matrícula: *" />
 					<br />
 					<h:inputText id="matricula" required="true" label="matricula"
 						value="#{editarPedagogoBean.usuarioLogado.matriculaSuap}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="senha" value="Senha:" />
+					<h:outputLabel for="senha" value="Senha: *" />
 					<br />
 					<h:inputSecret id="senha" required="true" label="senha"
 						value="#{editarPedagogoBean.usuarioLogado.senha}" />
 				</h:panelGroup>
 				<h:panelGroup>
-					<h:outputLabel for="grupo" value="Grupo: " />
+					<h:outputLabel for="grupo" value="Grupo: *" />
 					<br />
-					<h:selectOneMenu id="grupo" label="grupo"
+					<h:selectOneMenu id="grupo" label="grupo" required="true"
 						value="#{editarPedagogoBean.usuarioLogado.grupo}">
 						<f:selectItem itemValue="selecione"
 							itemLabel="------- Selecione --------" />
