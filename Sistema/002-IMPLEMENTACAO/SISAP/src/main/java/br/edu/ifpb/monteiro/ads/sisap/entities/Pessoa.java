@@ -19,6 +19,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
@@ -46,6 +49,7 @@ public class Pessoa implements Serializable {
 	private String segundoNome;
 
 	@Column(name = "CPF", unique = true)
+	@Length(min = 11, max = 14, message = "CPF Invalido!")
 	private String cpf;
 
 	@Column(name = "RG", unique = true)
@@ -60,7 +64,7 @@ public class Pessoa implements Serializable {
 	@Column(name = "SEXO")
 	private String sexo;
 
-	@Column(name = "NATURALIDADE", unique = true)
+	@Column(name = "NATURALIDADE")
 	private String naturalidade;
 
 	@Embedded
@@ -71,6 +75,7 @@ public class Pessoa implements Serializable {
 	private List<Contato> contatos;
 
 	@Column(name = "MATRICULA", unique = true)
+	@Pattern(regexp="[0-9]", message = "Matricula Invalida!")
 	private String matriculaSuap;
 
 	@Column(name = "SENHA")
