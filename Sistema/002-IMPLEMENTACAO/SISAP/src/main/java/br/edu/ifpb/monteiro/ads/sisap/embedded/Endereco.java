@@ -1,6 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.embedded;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Pattern;
 
 @Embeddable
 public class Endereco {
@@ -9,6 +10,8 @@ public class Endereco {
 	private Integer numero;
 	private String bairro;
 	private String cidade;
+	
+	@Pattern(regexp="[0-9]{5}-[0-9]{3}", message = "CEP Invalido!")
 	private String cep;
 	private String uf;
 
