@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.Length;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
-@Entity (name="Pessoa")
+@Entity(name = "Pessoa")
 @Table(name = "TB_PESSOA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("PS")
@@ -184,115 +184,6 @@ public class Pessoa implements Serializable {
 
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", primeiroNome=" + primeiroNome
-				+ ", segundoNome=" + segundoNome + ", cpf=" + cpf + ", rg="
-				+ rg + ", dataNascimento=" + dataNascimento + ", grupo="
-				+ grupo + ", sexo=" + sexo + ", naturalidade=" + naturalidade
-				+ ", endereco=" + endereco + ", contatos=" + contatos
-				+ ", matriculaSuap=" + matriculaSuap + ", senha=" + senha + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((contatos == null) ? 0 : contatos.hashCode());
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result
-				+ ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
-		result = prime * result
-				+ ((endereco == null) ? 0 : endereco.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((naturalidade == null) ? 0 : naturalidade.hashCode());
-		result = prime * result
-				+ ((primeiroNome == null) ? 0 : primeiroNome.hashCode());
-		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
-		result = prime * result
-				+ ((segundoNome == null) ? 0 : segundoNome.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result
-				+ ((matriculaSuap == null) ? 0 : matriculaSuap.hashCode());
-		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		if (contatos == null) {
-			if (other.contatos != null)
-				return false;
-		} else if (!contatos.equals(other.contatos))
-			return false;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (dataNascimento == null) {
-			if (other.dataNascimento != null)
-				return false;
-		} else if (!dataNascimento.equals(other.dataNascimento))
-			return false;
-		if (endereco == null) {
-			if (other.endereco != null)
-				return false;
-		} else if (!endereco.equals(other.endereco))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (naturalidade == null) {
-			if (other.naturalidade != null)
-				return false;
-		} else if (!naturalidade.equals(other.naturalidade))
-			return false;
-		if (primeiroNome == null) {
-			if (other.primeiroNome != null)
-				return false;
-		} else if (!primeiroNome.equals(other.primeiroNome))
-			return false;
-		if (rg == null) {
-			if (other.rg != null)
-				return false;
-		} else if (!rg.equals(other.rg))
-			return false;
-		if (segundoNome == null) {
-			if (other.segundoNome != null)
-				return false;
-		} else if (!segundoNome.equals(other.segundoNome))
-			return false;
-		if (sexo != other.sexo)
-			return false;
-		if (matriculaSuap == null) {
-			if (other.matriculaSuap != null)
-				return false;
-		} else if (!matriculaSuap.equals(other.matriculaSuap))
-			return false;
-		if (senha == null) {
-			if (other.senha != null)
-				return false;
-		} else if (!senha.equals(other.senha))
-			return false;
-		return true;
 	}
 
 }
