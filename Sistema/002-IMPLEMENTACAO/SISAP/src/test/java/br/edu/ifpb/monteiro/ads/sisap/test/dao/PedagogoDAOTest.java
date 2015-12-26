@@ -1,9 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -47,21 +45,20 @@ public class PedagogoDAOTest {
 		endereco.setUf("PE");
 
 		Contato contato = new Contato();
-		List<Contato> contatos = new ArrayList<Contato>();
 		contato.setEmail("cassio@gmail.com");
-		contatos.add(contato);
+		contato.setCelular("1234567890");
 
-		pedagogo.setContatos(contatos);
-		pedagogo.setMatriculaSuap("65050265265201");
-		pedagogo.setSexo("Masculino");
+		pedagogo.setContato(contato);
+		pedagogo.setMatriculaSuap("65050265265208");
+		pedagogo.setSexo("masculino");
 		pedagogo.setPrimeiroNome("Widancassio");
 		pedagogo.setSegundoNome("Galindo");
-		pedagogo.setCpf("000020000111");
+		pedagogo.setCpf("000020000113");
 		pedagogo.setEndereco(endereco);
-		pedagogo.setSenha("pedagogo");
+		pedagogo.setSenha("31b40d73c5430362a8be7c76e9f44492a256da37c98dd9f7c34b2ecebc88b68b");
 
 	}
-	
+
 	@Test(expected = PersistenceException.class)
 	public void testSalvarPedagogoNull() {
 		Pedagogo p1 = new Pedagogo();
