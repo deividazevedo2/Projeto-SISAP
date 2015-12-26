@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
@@ -18,11 +17,7 @@ public class PessoaDAO extends DAO {
 	 */
 	public void salvar(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
-		try {
-			em.persist(pessoa);
-		} catch (PersistenceException pe) {
-			throw new SisapException("Erro ao salvar o cadastro!");
-		}
+		em.persist(pessoa);
 	}
 
 	/**
@@ -36,11 +31,7 @@ public class PessoaDAO extends DAO {
 	public Pessoa atualizar(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pessoa resultado = pessoa;
-		try {
-			resultado = em.merge(pessoa);
-		} catch (PersistenceException pe) {
-			throw new SisapException("Erro ao alterar o cadastro!");
-		}
+		resultado = em.merge(pessoa);
 		return resultado;
 	}
 
@@ -52,12 +43,8 @@ public class PessoaDAO extends DAO {
 	 */
 	public void remover(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
-		try {
-			pessoa = em.merge(pessoa);
-			em.remove(pessoa);
-		} catch (PersistenceException pe) {
-			throw new SisapException("Erro ao deletar o cadastro!");
-		}
+		pessoa = em.merge(pessoa);
+		em.remove(pessoa);
 	}
 
 	/**
@@ -72,12 +59,7 @@ public class PessoaDAO extends DAO {
 			throws SisapException {
 		EntityManager em = getEntityManager();
 		Pessoa resultado = null;
-		try {
-			resultado = em.find(Pessoa.class, matriculaSuap);
-		} catch (PersistenceException pe) {
-			throw new SisapException(
-					"Ocorreu um problema ao buscar o cadastro!");
-		}
+		resultado = em.find(Pessoa.class, matriculaSuap);
 		return resultado;
 	}
 
@@ -92,12 +74,7 @@ public class PessoaDAO extends DAO {
 	public Pessoa buscarPorId(Long id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pessoa resultado = null;
-		try {
-			resultado = em.find(Pessoa.class, id);
-		} catch (PersistenceException pe) {
-			throw new SisapException(
-					"Ocorreu um problema ao buscar o cadastro!");
-		}
+		resultado = em.find(Pessoa.class, id);
 		return resultado;
 	}
 
