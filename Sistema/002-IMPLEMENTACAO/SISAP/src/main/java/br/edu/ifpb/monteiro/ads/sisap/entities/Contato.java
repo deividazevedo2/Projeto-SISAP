@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
 public class Contato {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String telefoneResidencial;

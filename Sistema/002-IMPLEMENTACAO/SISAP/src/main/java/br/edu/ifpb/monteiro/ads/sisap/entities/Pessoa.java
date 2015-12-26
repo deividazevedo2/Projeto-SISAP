@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Length;
@@ -69,9 +68,9 @@ public class Pessoa implements Serializable {
 	@Embedded
 	private Endereco endereco;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "PESSOA_FK")
-	private List<Contato> contatos;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "CONTATO_FK", nullable = false)
+	private Contato contato;
 
 	@Column(name = "MATRICULA", unique = true)
 	private String matriculaSuap;
@@ -178,12 +177,12 @@ public class Pessoa implements Serializable {
 		this.senha = senha;
 	}
 
-	public List<Contato> getContatos() {
-		return contatos;
+	public Contato getContato() {
+		return contato;
 	}
 
-	public void setContatos(List<Contato> contatos) {
-		this.contatos = contatos;
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 
 }
