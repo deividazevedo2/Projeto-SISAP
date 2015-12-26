@@ -10,6 +10,12 @@ public class PessoaDAO extends DAO {
 
 	private static final long serialVersionUID = 4651136765722356561L;
 
+	/**
+	 * Metodo para salvar uma entidade Pessoa no banco de dados do sistema.
+	 * 
+	 * @param pessoa
+	 * @throws SisapException
+	 */
 	public void salvar(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
 		try {
@@ -19,6 +25,14 @@ public class PessoaDAO extends DAO {
 		}
 	}
 
+	/**
+	 * Metodo que realiza a atualizacao dos dados da entidade pessoa passada
+	 * como parametro para ser persistida no banco de dados do sistema.
+	 * 
+	 * @param pessoa
+	 * @return
+	 * @throws SisapException
+	 */
 	public Pessoa atualizar(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pessoa resultado = pessoa;
@@ -30,6 +44,12 @@ public class PessoaDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Metodo para realizar a exclusao da pessoa no banco de dados do sistema.
+	 * 
+	 * @param pessoa
+	 * @throws SisapException
+	 */
 	public void remover(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
 		try {
@@ -40,6 +60,14 @@ public class PessoaDAO extends DAO {
 		}
 	}
 
+	/**
+	 * Este metodo busca um cadastro de uma entidade Pessoa no banco atraves da
+	 * matricula passada como parametro.
+	 * 
+	 * @param matriculaSuap
+	 * @return
+	 * @throws SisapException
+	 */
 	public Pessoa buscarPorMatricula(String matriculaSuap)
 			throws SisapException {
 		EntityManager em = getEntityManager();
@@ -53,6 +81,14 @@ public class PessoaDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Este metodo realiza a busca de uma determinada entidade Pessoa atraves do
+	 * ID passado como parametro.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws SisapException
+	 */
 	public Pessoa buscarPorId(Long id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Pessoa resultado = null;

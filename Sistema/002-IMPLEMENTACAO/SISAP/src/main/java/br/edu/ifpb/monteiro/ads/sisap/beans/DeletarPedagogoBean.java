@@ -34,6 +34,11 @@ public class DeletarPedagogoBean extends ClasseAbstrata {
 		}
 	}
 
+	/**
+	 * Metodo para realizar a exclusao do cadastro do pedagogo.
+	 * 
+	 * @return
+	 */
 	public String excluirPedagogo() {
 		conversation.end();
 

@@ -10,8 +10,10 @@ public class Endereco {
 	private Integer numero;
 	private String bairro;
 	private String cidade;
-	
-	@Pattern(regexp="[0-9]{5}-[0-9]{3}", message = "CEP Invalido!")
+
+	// Pattern para realizar a validacao do CEP. Deve estar de acordo com o
+	// padrao 99999-999
+	@Pattern(regexp = "[0-9]{5}-[0-9]{3}", message = "CEP Invalido!")
 	private String cep;
 	private String uf;
 
