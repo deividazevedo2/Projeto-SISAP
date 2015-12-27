@@ -169,7 +169,7 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		try {
 			pedagogoService.criptografarSenha(pedagogo);
 		} catch (SisapException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 		return pedagogo;
