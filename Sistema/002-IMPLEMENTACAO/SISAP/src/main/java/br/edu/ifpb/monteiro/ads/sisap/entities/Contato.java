@@ -1,9 +1,11 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
@@ -16,7 +18,7 @@ public class Contato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String telefoneResidencial;
 
 	private String telefoneTrabalho;
@@ -31,7 +33,18 @@ public class Contato {
 	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$", message = "Email Invalido!")
 	private String email;
 
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
+	private Pessoa pessoa;
+
 	public Contato() {
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
 	public Long getId() {

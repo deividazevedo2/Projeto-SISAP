@@ -159,6 +159,7 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 			pedagogo.setContato(pessoa.getContato());
 			pedagogo.setEndereco(pessoa.getEndereco());
 		} else {
+			contato.setPessoa(pedagogo);
 			pedagogo.setContato(contato);
 			pedagogo.setEndereco(endereco);
 		}
