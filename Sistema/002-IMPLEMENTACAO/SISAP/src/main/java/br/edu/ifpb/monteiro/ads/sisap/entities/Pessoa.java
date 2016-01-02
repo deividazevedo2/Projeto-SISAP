@@ -66,11 +66,11 @@ public class Pessoa implements Serializable {
 	private String naturalidade;
 
 	@Embedded
-	private Endereco endereco;
+	private transient Endereco endereco;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "CONTATO_FK", nullable = false)
-	private Contato contato;
+	private transient Contato contato;
 
 	@Column(name = "MATRICULA", unique = true)
 	private String matriculaSuap;

@@ -5,6 +5,10 @@ import javax.enterprise.context.ConversationScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.RollbackException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
@@ -24,6 +28,9 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	 * 
 	 */
 	private static final long serialVersionUID = 7928640369695996239L;
+
+	private static final Log LOGGER = LogFactory
+			.getLog(EditarPedagogoBean.class);
 
 	private Pessoa pessoa;
 	private Pedagogo pedagogo;
@@ -168,8 +175,8 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		pedagogo.setId(pessoa.getId());
 		try {
 			pedagogoService.criptografarSenha(pedagogo);
-		} catch (SisapException e) {
-			e.getMessage();
+		} catch (RollbackException | SisapException e) {
+			LOGGER.warn(e);
 		}
 
 		return pedagogo;
@@ -256,6 +263,11 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 
 	}
 
+	/**
+	 * Capturar o contato da pessoa logada.
+	 * 
+	 * @return
+	 */
 	public Contato getContatosPessoa() {
 		return contatoPessoa;
 	}

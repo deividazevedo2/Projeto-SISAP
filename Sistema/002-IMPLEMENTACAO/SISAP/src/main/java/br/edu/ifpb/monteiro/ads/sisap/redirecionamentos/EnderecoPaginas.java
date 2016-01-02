@@ -7,6 +7,9 @@ package br.edu.ifpb.monteiro.ads.sisap.redirecionamentos;
  *
  */
 public class EnderecoPaginas {
+	
+	private EnderecoPaginas() {
+	}
 
 	public static final String REDIRECT_TRUE = "?faces-redirect=true";
 

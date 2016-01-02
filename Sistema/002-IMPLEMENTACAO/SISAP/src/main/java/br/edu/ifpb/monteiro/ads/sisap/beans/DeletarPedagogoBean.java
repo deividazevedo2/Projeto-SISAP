@@ -6,17 +6,23 @@ import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.RollbackException;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @Named
 @ConversationScoped
 public class DeletarPedagogoBean extends ClasseAbstrata {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final Log LOGGER = LogFactory.getLog(DeletarPedagogoBean.class);
 
 	private Pedagogo pedagogo;
 
@@ -50,8 +56,9 @@ public class DeletarPedagogoBean extends ClasseAbstrata {
 				reportarMensagemDeSucesso("Pedagogo removido com sucesso!");
 
 			}
-		} catch (SisapException exception) {
+		} catch (RollbackException | SisapException exception) {
 			reportarMensagemDeErro(exception.getMessage());
+			LOGGER.warn("Erro ao salvar cadastro!", exception);
 			return null;
 		}
 		return EnderecoPaginas.REDIRECT_TRUE;

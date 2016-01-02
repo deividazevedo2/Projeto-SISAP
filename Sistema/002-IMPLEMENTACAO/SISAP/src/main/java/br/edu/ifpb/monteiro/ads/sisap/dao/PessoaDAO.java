@@ -43,8 +43,7 @@ public class PessoaDAO extends DAO {
 	 */
 	public void remover(Pessoa pessoa) throws SisapException {
 		EntityManager em = getEntityManager();
-		pessoa = em.merge(pessoa);
-		em.remove(pessoa);
+		em.remove(em.merge(pessoa));
 	}
 
 	/**

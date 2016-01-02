@@ -14,7 +14,7 @@ public class ProfessorService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private ProfessorDAO professorDAO;
+	private transient ProfessorDAO professorDAO;
 
 	/**
 	 * Metodo para salvar um novo prfessor, chamando a classe professorDAO onde

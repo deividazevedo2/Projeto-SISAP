@@ -10,7 +10,7 @@ public abstract class DAO implements Serializable {
 	private static final long serialVersionUID = -315740615092329279L;
 
 	@Inject
-	private EntityManager entityManager;
+	private transient EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
 		return entityManager;

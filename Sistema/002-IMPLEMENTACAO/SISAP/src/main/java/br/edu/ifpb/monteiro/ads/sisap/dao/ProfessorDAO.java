@@ -42,8 +42,7 @@ public class ProfessorDAO extends DAO {
 	 */
 	public void remover(Professor professor) throws SisapException {
 		EntityManager em = getEntityManager();
-		professor = em.merge(professor);
-		em.remove(professor);
+		em.remove(em.merge(professor));
 	}
 
 	/**

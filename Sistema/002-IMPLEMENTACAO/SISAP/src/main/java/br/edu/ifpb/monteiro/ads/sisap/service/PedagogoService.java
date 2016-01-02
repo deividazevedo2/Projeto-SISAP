@@ -8,6 +8,9 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.inject.Inject;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
@@ -15,13 +18,12 @@ import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
 public class PedagogoService implements Serializable {
 
-	/**
-	 * 
-	 */
+	private static final Log LOGGER = LogFactory.getLog(PedagogoService.class);
+	
 	private static final long serialVersionUID = -8713392833366563250L;
 
 	@Inject
-	private PedagogoDAO pedagogoDAO;
+	private transient PedagogoDAO pedagogoDAO;
 
 	public PedagogoDAO getPedagogoDAO() {
 		return pedagogoDAO;
@@ -113,7 +115,7 @@ public class PedagogoService implements Serializable {
 	 * @throws SisapException
 	 */
 	public void criptografarSenha(Pedagogo pedagogo) throws SisapException {
-		pedagogo.setSenha((criptografarSenha(pedagogo.getSenha())));
+		pedagogo.setSenha(criptografarSenha(pedagogo.getSenha()));
 	}
 
 	/**
@@ -135,13 +137,13 @@ public class PedagogoService implements Serializable {
 												// needed
 			byte[] digest = md.digest();
 			BigInteger bigInt = new BigInteger(1, digest);
-			String output = bigInt.toString(16);
-			return output;
+			return bigInt.toString(16);
 		} catch (NoSuchAlgorithmException e) {
-			throw new SisapException("Nao foi possivel criptografar a senha");
+			LOGGER.warn("Nao foi possivel criptografar a senha!", e);
 		} catch (UnsupportedEncodingException e) {
-			throw new SisapException("Nao foi possivel criptografar a senha");
+			LOGGER.warn("Nao foi possivel criptografar a senha!", e);
 		}
+		return null;
 	}
 
 }

@@ -1,13 +1,24 @@
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.RollbackException;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class Main {
+
+	private static final Log LOGGER = LogFactory.getLog(Main.class);
+
+	private Main() {
+	}
+
 	public static void main(String[] args) {
+
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("SISAP");
 		EntityManager em = emf.createEntityManager();
@@ -34,17 +45,17 @@ public class Main {
 			pedagogo.setSegundoNome("Galindo");
 			pedagogo.setCpf("000020000115");
 			pedagogo.setEndereco(endereco);
-			pedagogo.setSenha("31b40d73c5430362a8be7c76e9f44492a256da37c98dd9f7c34b2ecebc88b68b");
+			pedagogo.setSenha("pedagogo");
 
 			em.persist(pedagogo);
-		} catch (Exception ex) {
-			ex.printStackTrace();
+		} catch (RollbackException ex) {
+			LOGGER.warn("Erro ao salvar cadastro!", ex);
 		} finally {
 			em.getTransaction().commit();
 			emf.close();
 		}
 
-		System.out.println("It is over");
+		LOGGER.info("It is Over");
 
 	}
 

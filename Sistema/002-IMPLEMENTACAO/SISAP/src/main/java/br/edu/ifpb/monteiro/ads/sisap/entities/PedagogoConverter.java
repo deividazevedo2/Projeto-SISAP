@@ -5,20 +5,38 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Esta classe representa o conversor de Pedagogo, cujo objetivo é converter um
+ * valor enviando pela View em objeto ou retornar o ID do objeto. Ao implementar
+ * a interface Converter dois métodos são implementados, getAsObject e
+ * getAsString.
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Named
 @RequestScoped
 public class PedagogoConverter implements Converter {
 
+	private static final Log LOGGER = LogFactory
+			.getLog(PedagogoConverter.class);
+
 	@Inject
 	private PedagogoDAO pedagogos;
 
+	/**
+	 * Este método recebe a String e devolve o Object. Quando um Pedagogo for
+	 * mostrado na tela será seu ID que estará sendo exibido.
+	 */
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String valor) {
@@ -35,10 +53,15 @@ public class PedagogoConverter implements Converter {
 							valor);
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
-			throw new ConverterException(msgErro);
+			LOGGER.warn(msgErro, e);
 		}
+		return null;
 	}
 
+	/**
+	 * Este método recebe o Object e devolve a String. Apartir dessa String
+	 * recuperamos o Object que esta ligado ao modelo.
+	 */
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,
 			Object valor) {

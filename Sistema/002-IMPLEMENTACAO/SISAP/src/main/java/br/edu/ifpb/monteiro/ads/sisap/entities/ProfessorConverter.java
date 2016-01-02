@@ -5,9 +5,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.ProfessorDAO;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
@@ -16,6 +18,9 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 @RequestScoped
 public class ProfessorConverter implements Converter {
 
+	private static final Log LOGGER = LogFactory
+			.getLog(ProfessorConverter.class);
+	
 	@Inject
 	private ProfessorDAO professores;
 
@@ -35,8 +40,9 @@ public class ProfessorConverter implements Converter {
 							valor);
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
-			throw new ConverterException(msgErro);
+			LOGGER.warn(msgErro, e);
 		}
+		return null;
 	}
 
 	@Override

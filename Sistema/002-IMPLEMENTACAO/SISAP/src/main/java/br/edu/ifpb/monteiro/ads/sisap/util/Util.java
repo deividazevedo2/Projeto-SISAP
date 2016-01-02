@@ -9,6 +9,9 @@ import org.hibernate.collection.internal.PersistentBag;
 
 public class Util {
 
+	private Util() {
+	}
+
 	public static Date getDate(int ano, int mes, int dia) {
 
 		Calendar cal = Calendar.getInstance();
@@ -30,9 +33,7 @@ public class Util {
 	}
 
 	public static <E> boolean equals(List<E> l1, List<E> l2) {
-		l1 = getNotPersistentBagList(l1);
-		l2 = getNotPersistentBagList(l2);
-		return l1.equals(l2);
+		return getNotPersistentBagList(l1).equals(getNotPersistentBagList(l2));
 	}
 
 	private static <E> List<E> getNotPersistentBagList(List<E> list) {
