@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/templates/templatePedagogo.xhtml">
+
+	<ui:define name="title">
+	SISAP - Atendimentos
+	</ui:define>
+
+	<ui:define name="center">
+
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
+		<h:form>
+			<h:panelGrid id="camposAtendimento" columns="2">
+
+				<p:outputLabel for="button" value="Data: *" />
+				<p:calendar id="button" />
+
+				<h:outputText value="Nome/Matrícula: *" />
+				<h:inputText id="matricula" style="width:250px" required="false" />
+
+				<br />
+				<br />
+
+				<f:facet name="footer">
+					<h:button value="Continuar" icon="ui-icon-search" />
+
+					<h:commandButton id="limparBotao" value="Limpar"
+						update="camposAtendimento" process="@this" icon="ui-icon-close">
+						<p:resetInput target="camposAtendimento" />
+					</h:commandButton>
+					<h:button value="Cancelar"
+						outcome="/paginas/pedagogo/indexPedagogo.xhtml"
+						icon="ui-icon-cancel" />
+				</f:facet>
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

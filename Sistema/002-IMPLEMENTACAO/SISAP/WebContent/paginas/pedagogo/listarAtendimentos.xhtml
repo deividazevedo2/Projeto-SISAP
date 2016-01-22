@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/templates/templatePedagogo.xhtml">
+
+	<ui:define name="title">
+	SISAP - Atendimentos
+	</ui:define>
+
+	<ui:define name="center">
+
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
+		<h:form>
+			<p:separator style="height: 1px;" />
+
+			<h:button value="Novo Atendimento"
+				outcome="/paginas/pedagogo/novoAtendimento.xhtml" />
+
+			<p:dataTable var="atendimentos" value="#{dtFilterView.cars}"
+				widgetVar="carsTable" emptyMessage="Nenhum registro encontrado"
+				filteredValue="#{dtFilterView.filteredCars}" rows="10"
+				paginator="true" rowsPerPageTemplate="5,10,15">>
+
+                    <p:column filterBy="#{data.a}"
+					headerText="Matrícula">
+					<h:outputText value="matricula" />
+				</p:column>
+
+				<p:column filterBy="#{data.a}" headerText="Nome">
+					<h:outputText value="nome" />
+				</p:column>
+
+				<p:column filterBy="#{data.a}" headerText="Data">
+					<h:outputText value="data" />
+				</p:column>
+
+				<p:column filterBy="#{data.a}" headerText="Solicitante">
+					<h:outputText value="solicitante" />
+				</p:column>
+
+				<p:column filterBy="#{data.a}" headerText="Situação">
+					<f:facet name="filter">
+						<h:selectOneMenu id="itens">
+							<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
+							<f:selectItem itemLabel="Agendado" itemValue="agendado" />
+							<f:selectItem itemLabel="Iniciado" itemValue="iniciado" />
+							<f:selectItem itemLabel="Concluído" itemValue="concluido" />
+							<f:selectItem itemLabel="Cancelado" itemValue="cancelado" />
+						</h:selectOneMenu>
+					</f:facet>
+					<h:outputText value="situacao" />
+				</p:column>
+
+				<p:column filterBy="#" headerText="Visualizar/Alterar">
+					<h:outputText value="visualizar/alterar" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

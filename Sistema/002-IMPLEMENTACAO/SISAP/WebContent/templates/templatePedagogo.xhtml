@@ -53,7 +53,8 @@
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
 
-							<p:menuButton value="#{editarPedagogoBean.usuarioLogado.primeiroNome}">
+							<p:menuButton
+								value="#{editarPedagogoBean.usuarioLogado.primeiroNome}">
 								<p:menuitem value="Editar Perfil" update="messages"
 									outcome="/paginas/pedagogo/editarPerfil.xhtml">
 									<f:param name="pedagogo"
@@ -79,7 +80,8 @@
 						<p:submenu label="Acompanhamento Pedagógico">
 							<p:menuitem id="agendarAtividade" value="Agendar Atividade" />
 							<p:menuitem id="diarioPessoal" value="Diário Pessoal" />
-							<p:menuitem id="atendimentos" value="Atendimentos" />
+							<p:menuitem id="atendimentos" value="Atendimentos"
+								outcome="/paginas/pedagogo/listarAtendimentos.xhtml" />
 							<p:menuitem id="notificacoes" value="Notificações" />
 							<p:menuitem id="reunioes" value="Reuniões" />
 							<p:menuitem id="visitasDomiciliares" value="Visitas Domiciliares" />
