@@ -25,6 +25,12 @@ public class NotaDeAvaliacao implements Serializable {
 	@Column(name = "ID")
 	private Long id;
 
+	@Column(name = "ALUNO")
+	private Aluno aluno;
+
+	@Column(name = "DISCIPLINA")
+	private Disciplina disciplina;
+
 	@Column(name = "NOTA")
 	private Float nota;
 
@@ -33,4 +39,49 @@ public class NotaDeAvaliacao implements Serializable {
 
 	public NotaDeAvaliacao() {
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Float getNota() {
+		return nota;
+	}
+
+	public void setNota(Float nota) {
+		this.nota = nota;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }
