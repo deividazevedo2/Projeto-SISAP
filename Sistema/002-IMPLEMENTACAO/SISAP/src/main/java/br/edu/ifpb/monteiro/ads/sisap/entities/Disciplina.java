@@ -1,6 +1,8 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,17 +49,18 @@ public class Disciplina implements Serializable {
 	private Boolean disponivel;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "disciplina")
-	private Curso curso;
+	private List<Curso> cursos;
 
 	public Disciplina() {
+		cursos = new ArrayList<Curso>();
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public List<Curso> getCursos() {
+		return cursos;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
 	}
 
 	public Long getId() {

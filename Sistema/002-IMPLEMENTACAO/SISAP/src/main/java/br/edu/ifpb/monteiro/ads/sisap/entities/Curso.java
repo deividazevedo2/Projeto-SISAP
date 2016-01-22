@@ -43,7 +43,7 @@ public class Curso implements Serializable {
 	private Turno turno;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CURSO_FK")
+	@JoinColumn(name = "DISCIPLINA_FK")
 	private Disciplina disciplina;
 
 	public Curso() {

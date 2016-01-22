@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TB_DISCIPLINA")
-@DiscriminatorValue("DISCIPLINA")
+@Table(name = "TB_AULA")
+@DiscriminatorValue("AULA")
 public class Aula implements Serializable {
 
 	/**
