@@ -1,0 +1,7 @@
+package br.edu.ifpb.monteiro.ads.sisap.entities;
+
+public enum Turno {
+
+	MATUTINO, VESPERTINO, NOTURNO, VESPERTINO_NOTURNO, MATUTINO_VESPERTINO, MATUTINO_NOTURNO, MATUTINO_VESPERTINO_NOTURNO
+
+}
