@@ -24,27 +24,34 @@ public class Disciplina implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
-	
+
 	@Column(name = "NOME")
 	private String nome;
-	
-	@Column(name = "CARGAHORARIAEMHORAAULA")
+
+	@Column(name = "CARGA_HORARIA_EM_HORA_AULA")
 	private String cargaHorariaEmHoraAula;
-	
-	@Column(name = "CARGAHORARIAEMHORARELOGIO")
+
+	@Column(name = "CARGA_HORARIA_EM_HORA_RELOGIO")
 	private String cargaHorariaEmHoraRelogio;
-	
+
 	@Column(name = "HORARIO")
 	private String horario;
-	
-	@Column(name = "PERIODOSERIE")
+
+	@Column(name = "PERIODO_SERIE")
 	private String periodoSerie;
-	
+
 	@Column(name = "DISPONIVEL")
-	private String disponivel;
-	
+	private Boolean disponivel;
+
 	public Disciplina() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -87,14 +94,12 @@ public class Disciplina implements Serializable {
 		this.periodoSerie = periodoSerie;
 	}
 
-	public String getDisponivel() {
+	public Boolean getDisponivel() {
 		return disponivel;
 	}
 
-	public void setDisponivel(String disponivel) {
+	public void setDisponivel(Boolean disponivel) {
 		this.disponivel = disponivel;
 	}
-	
-	
 
 }
