@@ -29,14 +29,6 @@ public class Turma implements Serializable {
 	@Column(name = "ALUNOS")
 	private ArrayList<Aluno> alunos;
 
-	public ArrayList<Aluno> getAlunos() {
-		return alunos;
-	}
-
-	public void setAlunos(ArrayList<Aluno> alunos) {
-		this.alunos = alunos;
-	}
-
 	@Column(name = "ANO_PERIODO_LETIVO")
 	private String anoPeriodoLetivo;
 
@@ -46,6 +38,10 @@ public class Turma implements Serializable {
 	@Column(name = "SALA")
 	private String sala;
 
+	@Column(name = "AVALIACOES")
+	private ArrayList<Avaliacao> avaliacoes;
+
+	
 	public Turma() {
 		// TODO Auto-generated constructor stub
 	}
@@ -56,6 +52,14 @@ public class Turma implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public ArrayList<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(ArrayList<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	public String getAnoPeriodoLetivo() {
@@ -81,5 +85,15 @@ public class Turma implements Serializable {
 	public void setSala(String sala) {
 		this.sala = sala;
 	}
+
+	public ArrayList<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+	
+	
 
 }
