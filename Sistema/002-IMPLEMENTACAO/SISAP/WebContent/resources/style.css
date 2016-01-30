@@ -1,0 +1,145 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: #EEEEEE;
+	margin: 0px;
+}
+
+body, table, ul, li {
+	font-size: 85%;
+	font-family: Frutlger, Verdana, "Verdana CE", Arial, "Arial CE",
+		"Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+	color: #555555;
+}
+
+.center-h {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.center-v {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.center-hv {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+form fieldset {
+	border: 0px none;
+}
+
+form fieldset legend {
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	color: #555555;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, 
+ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+	color: #555555;
+	background: #CCCCCC;
+	border: 1px solid #999999;
+	color: #555555;
+	border: 1px solid #999999;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+	background: #555555 50% 50% repeat-x;
+}
+
+.ui-inputfield.ui-state-focus, .ui-state-focus {
+	box-shadow: 0px 0px 5px #999999, inset 2px 2px #CCCCCC;
+	border: 1px solid #999999;
+	outline-color: #999999;
+	background: #CCCCCC;
+}
+
+
+
+.ui-link {
+	font-size: 85%;
+	color: #555555;
+}
+
+.ui-link:hover {
+	color: #999999;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#logo {
+	position: absolute;
+	width: 5%;
+	right: 2%;
+	bottom: 2%;
+}
+
+#content {
+	position: absolute; 
+	top: 115px; 
+	left: 0%;
+	right: 0%;
+	bottom: 0px;
+}
+
+/* BEGIN OF DASHBOARD STYLING */
+#dashboard {
+	position: fixed;
+	height: 115px;
+	width: 100%;
+	background: #D5D5D5;
+}
+
+.dashbd-product-project {
+}
+
+.dashbd-product-project button {
+	padding: 3px;
+}
+
+.dashbd-alerts {
+}
+
+.dashbd-alerts table {
+	font-size: 85%;
+	padding: 2px;
+	text-align: center;
+	border-spacing: 2px;
+}
+
+.dashbd-alerts table td {
+	background: #BBBBBB;
+}
+
+.dashbd-sprint-release-info {
+}
+
+.dashbd-gamification-info {
+}
+
+.dashbd-team-member-info {
+	width: 50%;
+}
+
+.dashbd-team-member-info table {
+	float: right;
+}
+/* END OF DASHBOARD STYLING */
