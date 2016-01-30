@@ -5,10 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "TB_NOTA_DE_AVALIACAO")
@@ -36,8 +41,17 @@ public class NotaDeAvaliacao implements Serializable {
 
 	@Column(name = "COMENTARIO")
 	private String comentario;
+	
+//	@Column
+//	private Avaliacao avaliacao;
 
+
+//	@OneToMany(fetch= FetchType.EAGER)
+	@JoinTable(name="AVALICAO")
+	private Avaliacao avaliacao;
+	
 	public NotaDeAvaliacao() {
+		
 	}
 
 	public Long getId() {

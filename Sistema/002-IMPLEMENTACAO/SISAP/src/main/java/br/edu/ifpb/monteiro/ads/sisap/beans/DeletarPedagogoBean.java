@@ -3,7 +3,6 @@ package br.edu.ifpb.monteiro.ads.sisap.beans;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.RollbackException;
@@ -20,14 +19,17 @@ import org.apache.commons.logging.LogFactory;
 @ConversationScoped
 public class DeletarPedagogoBean extends ClasseAbstrata {
 
-	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8611704093255027657L;
+
 	private static final Log LOGGER = LogFactory.getLog(DeletarPedagogoBean.class);
 
 	private Pedagogo pedagogo;
 
 	@Inject
-	@RequestScoped
+//	@RequestScoped
 	private PedagogoService pedagogoService;
 
 	@Inject
