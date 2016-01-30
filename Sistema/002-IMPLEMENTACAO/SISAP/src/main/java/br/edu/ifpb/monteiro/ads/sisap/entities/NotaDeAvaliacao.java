@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,12 +10,19 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
-
+/**
+ * Classe onde serao salvas as notas de cada avaliacao do aluno. Onde serao
+ * armazenadas as seguintes informacoes: referencia do aluno, nota deste,
+ * disciplina da avaliacao, e comentario que possa vir a ser informado para
+ * alguma observacao acerca desta nota.
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Entity
 @Table(name = "TB_NOTA_DE_AVALIACAO")
 @DiscriminatorValue("NOTA_DE_AVALIACAO")
@@ -30,28 +38,33 @@ public class NotaDeAvaliacao implements Serializable {
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "ALUNO")
-	private Aluno aluno;
-
-	@Column(name = "DISCIPLINA")
-	private Disciplina disciplina;
-
 	@Column(name = "NOTA")
 	private Float nota;
 
 	@Column(name = "COMENTARIO")
 	private String comentario;
-	
-//	@Column
-//	private Avaliacao avaliacao;
 
+	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "ALUNO_FK", nullable = false)
+	private Aluno aluno;
 
-//	@OneToMany(fetch= FetchType.EAGER)
-	@JoinTable(name="AVALICAO")
+	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "DISCIPLINA_FK", nullable = false)
+	private Disciplina disciplina;
+
+	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "AVALIACAO_FK", nullable = false)
 	private Avaliacao avaliacao;
-	
+
 	public NotaDeAvaliacao() {
-		
+	}
+
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 
 	public Long getId() {

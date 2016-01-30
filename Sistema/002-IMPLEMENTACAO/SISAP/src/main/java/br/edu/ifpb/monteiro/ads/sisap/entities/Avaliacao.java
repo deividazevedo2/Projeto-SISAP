@@ -1,9 +1,11 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,11 +14,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidade Avaliacao para informar a DATA de realizacao da avaliacao, o ASSUNTO
+ * dela, e as notas de cada avaliacao. As notas da avaliacao deverao estar em
+ * outra tabela, onde serao referenciados o ID da avaliacao e o ID do aluno com
+ * a sua nota na avaliacao.
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Entity(name = "Avaliacao")
 @Table(name = "TB_AVALIACAO")
 @DiscriminatorValue("AVALIACAO")
@@ -35,23 +45,18 @@ public class Avaliacao implements Serializable {
 	@Column(name = "DATA")
 	private Date data;
 
-//	@Column(name = "ASSUNTO")
-//	private Aula assunto;
-
-//	@Column(name = "NOTA")
-//	private List<NotaDeAvaliacao> notas;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="ASSUNTO")
+	@Column(name = "ASSUNTO")
 	private Aula assunto;
 
-	@OneToMany(fetch= FetchType.EAGER)
-	@JoinTable(name="NOTAS_AVALICAO", joinColumns={@JoinColumn(name="AVALICAO_ID", referencedColumnName="ID")},inverseJoinColumns={@JoinColumn(name="NOTA_DE_AVALIACAO_ID", referencedColumnName="ID")})
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "avaliacao")
 	private List<NotaDeAvaliacao> notas;
 
+	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TURMA_FK", nullable = false)
+	private Turma turma;
+
 	public Avaliacao() {
+		notas = new ArrayList<NotaDeAvaliacao>();
 	}
-	
-	 
 
 }

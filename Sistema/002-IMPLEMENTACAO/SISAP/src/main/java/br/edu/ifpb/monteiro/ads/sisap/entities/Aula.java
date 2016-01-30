@@ -4,14 +4,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidade para registro de aulas com DATA, CONTEUDO da aula, e ALUNOS
+ * presentes na aula
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Entity
 @Table(name = "TB_AULA")
 @DiscriminatorValue("AULA")
@@ -33,11 +46,15 @@ public class Aula implements Serializable {
 	@Column(name = "CONTEUDO")
 	private String conteudo;
 
-	@Column(name = "ALUNOS")
-	private ArrayList<Aluno> alunos;
+	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TURMA_FK", nullable = false)
+	private Turma turma;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "ALUNO_FK", nullable = false)
+	private Aluno aluno;
 
 	public Aula() {
-		alunos = new ArrayList<Aluno>();
 	}
 
 	public Long getId() {
@@ -64,12 +81,12 @@ public class Aula implements Serializable {
 		this.conteudo = conteudo;
 	}
 
-	public ArrayList<Aluno> getAlunos() {
-		return alunos;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setAlunos(ArrayList<Aluno> alunos) {
-		this.alunos = alunos;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 }

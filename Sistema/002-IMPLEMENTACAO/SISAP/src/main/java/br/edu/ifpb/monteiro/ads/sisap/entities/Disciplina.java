@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +12,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidade Disciplina que devera conter informacoes acerca da disciplina de um
+ * determinado curso.
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Entity
 @Table(name = "TB_DISCIPLINA")
 @DiscriminatorValue("DISCIPLINA")
@@ -49,18 +56,9 @@ public class Disciplina implements Serializable {
 	private Boolean disponivel;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "disciplina")
-	private List<Curso> cursos;
+	private List<Turma> turmas;
 
 	public Disciplina() {
-		cursos = new ArrayList<Curso>();
-	}
-
-	public List<Curso> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
 	}
 
 	public Long getId() {
@@ -117,6 +115,14 @@ public class Disciplina implements Serializable {
 
 	public void setDisponivel(Boolean disponivel) {
 		this.disponivel = disponivel;
+	}
+
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+
+	public List<Turma> getTurmas() {
+		return turmas;
 	}
 
 }

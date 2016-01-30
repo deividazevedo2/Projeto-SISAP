@@ -1,62 +1,103 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-@Entity(name = "Atendimento")
+/**
+ * Entidade Atendimento para que seja realizado o preenchimento da ficha de
+ * atendimento referente a uma pessoa que esta sendo atendida no momento.
+ * 
+ * @author Deivid Azevedo
+ *
+ */
+@Entity
 @Table(name = "TB_ATENDIMENTO")
 @DiscriminatorValue("ATENDIMENTO")
-public class Atendimento implements Serializable{
-	
-	
+public class Atendimento implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1497141210903425799L;
+	private static final long serialVersionUID = -8244968228387250826L;
 
-	@OneToMany(fetch= FetchType.EAGER)
-	@JoinColumn(name="ATENDIDO") 
-	private List<Pessoa> atendido;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+
+	private Pessoa atendido;
+
+	@Column(name = "SOLICITANTE")
+	private String solicitante;
+
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "PESSOA_FK", nullable = false)
-	private Pessoa solicitante;
-	
+	@JoinColumn(name = "ALUNO_FK", nullable = false)
+	private Aluno aluno;
+
+	@Column(name = "DESCRICAO")
+	private String descricao;
+
 	@Column(name = "MEDIDAS_ANTERIORES")
 	private String medidasAnteriores;
-	
+
 	@Column(name = "MEDIDAS_POSTERIORES")
 	private String medidasPosteriores;
-	
+
+	@Column(name = "ENCAMINHADO")
+	private Boolean encaminhado;
+
+	@Column(name = "NOTIFICACAO_ENVIADA")
+	private Boolean notificacaoEnviada;
+
+	@Column(name = "OBSERVACOES")
+	private String observacoes;
+
 	public Atendimento() {
-		// TODO Auto-generated constructor stub
+		encaminhado = false;
+		notificacaoEnviada = false;
 	}
 
-	public List<Pessoa> getAtendido() {
+	public Pessoa getAtendido() {
 		return atendido;
 	}
 
-	public void setAtendido(List<Pessoa> atendido) {
+	public void setAtendido(Pessoa atendido) {
 		this.atendido = atendido;
 	}
 
-	public Pessoa getSolicitante() {
+	public String getSolicitante() {
 		return solicitante;
 	}
 
-	public void setSolicitante(Pessoa solicitante) {
+	public void setSolicitante(String solicitante) {
 		this.solicitante = solicitante;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getMedidasAnteriores() {
@@ -74,8 +115,29 @@ public class Atendimento implements Serializable{
 	public void setMedidasPosteriores(String medidasPosteriores) {
 		this.medidasPosteriores = medidasPosteriores;
 	}
-	
-	
-	
+
+	public Boolean getEncaminhado() {
+		return encaminhado;
+	}
+
+	public void setEncaminhado(Boolean encaminhado) {
+		this.encaminhado = encaminhado;
+	}
+
+	public Boolean getNotificacaoEnviada() {
+		return notificacaoEnviada;
+	}
+
+	public void setNotificacaoEnviada(Boolean notificacaoEnviada) {
+		this.notificacaoEnviada = notificacaoEnviada;
+	}
+
+	public String getObservacoes() {
+		return observacoes;
+	}
+
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
+	}
 
 }

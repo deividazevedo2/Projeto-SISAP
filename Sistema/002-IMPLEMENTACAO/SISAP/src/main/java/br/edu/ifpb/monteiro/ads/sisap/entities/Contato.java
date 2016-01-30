@@ -11,6 +11,13 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
+/**
+ * Entidade Contato, onde devera conter todos os contatos necessarios para uma
+ * pessoa (aluno, responsavel, Professor, etc).
+ * 
+ * @author Deivid Azevedo
+ *
+ */
 @Entity
 @Table(name = "TB_CONTATO")
 public class Contato {
@@ -30,13 +37,36 @@ public class Contato {
 
 	private String twitter;
 
+	// Pattern para definir o padrao de um e-mail a ser inserido no cadastro.
 	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$", message = "Email Invalido!")
 	private String email;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
 	private Pessoa pessoa;
 
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
+	private Responsavel responsavel;
+
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
+	private Aluno aluno;
+
 	public Contato() {
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 	public void setPessoa(Pessoa pessoa) {
