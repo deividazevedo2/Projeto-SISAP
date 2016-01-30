@@ -254,8 +254,7 @@ public class PedagogoDAOTest {
 	@Ignore
 	public void testBuscarPedagogo() throws SisapException {
 		String mat = "pedagogo";
-		Long matricula = Long.parseLong(mat);
-		Pedagogo p = pedagogoDAO.buscarPorMatricula(matricula);
+		Pedagogo p = pedagogoDAO.buscarPorMatricula(mat);
 		assertEquals(p, pedagogo);
 	}
 
