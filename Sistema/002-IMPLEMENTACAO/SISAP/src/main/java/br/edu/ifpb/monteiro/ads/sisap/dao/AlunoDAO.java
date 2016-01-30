@@ -13,21 +13,18 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
-public class AlunoDAO extends DAO{
+public class AlunoDAO extends DAO {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -601004838687928376L;
-	
+
 	private static final Log LOGGER = LogFactory.getLog(AlunoDAO.class);
 
-	
-	
-
 	/**
-	 * Realiza a busca da entidade Aluno atraves do ID passado como parametro
-	 * no metodo.
+	 * Realiza a busca da entidade Aluno atraves do ID passado como parametro no
+	 * metodo.
 	 * 
 	 * @param id
 	 * @return
@@ -43,7 +40,6 @@ public class AlunoDAO extends DAO{
 		}
 		return resultado;
 	}
-
 
 	/**
 	 * Realiza a busca de uma determinada entidade PEdagogo atraves da matricula
@@ -69,22 +65,38 @@ public class AlunoDAO extends DAO{
 			query.setParameter("matricula", "%" + matriculaAluno + "%");
 			notas.add(resultado);
 		} catch (PersistenceException e) {
-			LOGGER.warn(
-					"Ocorreu um problema ao buscar as notas!",
-					e);
+			LOGGER.warn("Ocorreu um problema ao buscar as notas!", e);
 		}
-		
+
 		return notas;
 
 	}
 
-
 	public String buscarFrequenciaDoAluno(Long matricula) {
 		return null;
 	}
-	
-	
-	
-	
-	
+
+	public Aluno buscarPorMatricula(Long matriculaAluno) throws SisapException {
+		EntityManager em = getEntityManager();
+		Aluno resultado = null;
+		if (matriculaAluno == null) {
+			matriculaAluno = Long.valueOf("");
+		}
+		try {
+			TypedQuery<Aluno> query = em
+					.createQuery(
+							"select * from tb_aluno where matricula = " + matriculaAluno,
+							Aluno.class);
+			//query.setParameter("matricula_aluno", "%" + matriculaAluno + "%");
+			resultado = query.getSingleResult();
+		} catch (PersistenceException e) {
+			LOGGER.warn(
+					"Ocorreu um problema ao buscar o cadastro pela matricula!",
+					e);
+		}
+
+		return resultado;
+
+	}
+
 }

@@ -94,13 +94,10 @@ public class PedagogoDAO extends DAO {
 	 * @return
 	 * @throws SisapException
 	 */
-	public Pedagogo buscarPorMatricula(Long matriculaPedagogo)
+	public Pedagogo buscarPorMatricula(String matriculaPedagogo)
 			throws SisapException {
 		EntityManager em = getEntityManager();
 		Pedagogo resultado = null;
-		if (matriculaPedagogo == null) {
-			matriculaPedagogo = Long.valueOf("");
-		}
 		try {
 			TypedQuery<Pedagogo> query = em
 					.createQuery(
