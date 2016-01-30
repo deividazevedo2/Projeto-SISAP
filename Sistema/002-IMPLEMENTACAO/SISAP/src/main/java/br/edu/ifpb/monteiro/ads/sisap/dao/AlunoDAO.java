@@ -30,7 +30,7 @@ public class AlunoDAO extends DAO {
 	 * @return
 	 * @throws SisapException
 	 */
-	public Aluno buscarPorId(Long id) throws SisapException {
+	public Aluno buscarPorId(int id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Aluno resultado = null;
 		try {
@@ -76,18 +76,18 @@ public class AlunoDAO extends DAO {
 		return null;
 	}
 
-	public Aluno buscarPorMatricula(Long matriculaAluno) throws SisapException {
+	public Aluno buscarPorMatricula(String matricula) throws SisapException {
 		EntityManager em = getEntityManager();
 		Aluno resultado = null;
-		if (matriculaAluno == null) {
-			matriculaAluno = Long.valueOf("");
+		if (matricula == null) {
+			matricula = "";
 		}
 		try {
 			TypedQuery<Aluno> query = em
 					.createQuery(
-							"select * from tb_aluno where matricula = " + matriculaAluno,
+							"select aluno from Aluno aluno where aluno.matricula like :matricula",
 							Aluno.class);
-			//query.setParameter("matricula_aluno", "%" + matriculaAluno + "%");
+			query.setParameter("matricula", "%" + matricula + "%");
 			resultado = query.getSingleResult();
 		} catch (PersistenceException e) {
 			LOGGER.warn(

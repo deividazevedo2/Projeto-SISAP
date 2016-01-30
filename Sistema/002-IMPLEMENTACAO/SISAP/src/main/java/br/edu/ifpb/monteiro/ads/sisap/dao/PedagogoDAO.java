@@ -101,7 +101,7 @@ public class PedagogoDAO extends DAO {
 		try {
 			TypedQuery<Pedagogo> query = em
 					.createQuery(
-							"select pedagogo from Pedagogo pedagogo where pedagogo.matriculaSuap like :matricula",
+							"select pedagogo from Pedagogo pedagogo where pedagogo.matricula like :matricula",
 							Pedagogo.class);
 			query.setParameter("matricula", "%" + matriculaPedagogo + "%");
 			resultado = query.getSingleResult();

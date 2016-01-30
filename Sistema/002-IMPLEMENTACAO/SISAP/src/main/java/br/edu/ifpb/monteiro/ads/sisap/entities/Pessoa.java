@@ -73,7 +73,7 @@ public class Pessoa implements Serializable {
 	private Contato contato;
 
 	@Column(name = "MATRICULA", unique = true)
-	private String matriculaSuap;
+	private String matricula;
 
 	@Column(name = "SENHA")
 	private String senha;
@@ -162,11 +162,11 @@ public class Pessoa implements Serializable {
 	}
 
 	public String getMatriculaSuap() {
-		return matriculaSuap;
+		return matricula;
 	}
 
 	public void setMatriculaSuap(String matriculaSuap) {
-		this.matriculaSuap = matriculaSuap;
+		this.matricula = matriculaSuap;
 	}
 
 	public String getSenha() {

@@ -10,11 +10,10 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
-public class AlunoService implements Serializable{
-	
+public class AlunoService implements Serializable {
+
 	@Inject
 	private transient AlunoDAO alunoDAO;
-
 
 	/**
 	 * 
@@ -22,22 +21,22 @@ public class AlunoService implements Serializable{
 	private static final long serialVersionUID = -6694613964483092616L;
 
 	/**
-	 * Metodo para realizar a busca do Aluno pela matricula do
-	 * mesmo. A matricula deve ser passada como parametro para que a busca no banco
-	 * possa ser realizada, retornando o cadastro referente.
+	 * Metodo para realizar a busca do Aluno pela matricula do mesmo. A
+	 * matricula deve ser passada como parametro para que a busca no banco possa
+	 * ser realizada, retornando o cadastro referente.
 	 * 
 	 * @param idAluno
 	 * @return
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public Aluno buscarPorMatricula(Long matricula) throws SisapException {
-		return this.alunoDAO.buscarPorId(matricula);
+	public Aluno buscarPorMatricula(String matricula) throws SisapException {
+		return this.alunoDAO.buscarPorMatricula(matricula);
 	}
 
 	/**
-	 * Metodo para realizar a busca das notas do Aluno pela matricula do
-	 * mesmo. A matricula deve ser passada como parametro para que a busca no banco
+	 * Metodo para realizar a busca das notas do Aluno pela matricula do mesmo.
+	 * A matricula deve ser passada como parametro para que a busca no banco
 	 * possa ser realizada, retornando o cadastro referente.
 	 * 
 	 * @param matricula
@@ -45,14 +44,15 @@ public class AlunoService implements Serializable{
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public ArrayList<Float> buscarNotasDoAluno(Long matricula) throws SisapException {
+	public ArrayList<Float> buscarNotasDoAluno(Long matricula)
+			throws SisapException {
 		return this.alunoDAO.buscarNotaPorMatricula(matricula);
 	}
-	
+
 	/**
 	 * Metodo para realizar a busca das frequencias do Aluno pela matricula do
-	 * mesmo. A matricula deve ser passada como parametro para que a busca no banco
-	 * possa ser realizada, retornando o cadastro referente.
+	 * mesmo. A matricula deve ser passada como parametro para que a busca no
+	 * banco possa ser realizada, retornando o cadastro referente.
 	 * 
 	 * @param matricula
 	 * @return
@@ -62,5 +62,10 @@ public class AlunoService implements Serializable{
 	public String buscarFrequenciaDoAluno(Long matricula) throws SisapException {
 		return this.alunoDAO.buscarFrequenciaDoAluno(matricula);
 	}
-	
+
+	@TransacionalCdi
+	public Aluno buscarPorId(int id) throws SisapException {
+		return this.alunoDAO.buscarPorId(id);
+	}
+
 }
