@@ -19,7 +19,7 @@ import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 public class PedagogoService implements Serializable {
 
 	private static final Log LOGGER = LogFactory.getLog(PedagogoService.class);
-	
+
 	private static final long serialVersionUID = -8713392833366563250L;
 
 	@Inject
@@ -102,8 +102,7 @@ public class PedagogoService implements Serializable {
 	 */
 	@TransacionalCdi
 	public Pedagogo buscarPorMatricula(String matricula) throws SisapException {
-		return ((PedagogoDAO) this.pedagogoDAO).buscarPorMatricula(Long
-				.parseLong(matricula));
+		return ((PedagogoDAO) this.pedagogoDAO).buscarPorMatricula(matricula);
 
 	}
 
