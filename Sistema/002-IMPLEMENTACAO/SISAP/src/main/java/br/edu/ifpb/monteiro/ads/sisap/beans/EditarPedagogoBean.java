@@ -245,26 +245,6 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	}
 
 	/**
-	 * Capturar o nome do usuario logado no sistema para colocar no canto
-	 * superior direito da tela no momento que o usuario se autenticar. Isso
-	 * servira para posteriormente o usuario remover seu cadastro ou alterar
-	 * dados pessoais.
-	 * 
-	 * @return
-	 * @throws SisapException
-	 */
-	public String getNomeUsuarioLogado() throws SisapException {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		String usuarioSessao = fc.getExternalContext().getUserPrincipal()
-				.getName();
-
-		Pessoa temp = pedagogoService.buscarPorMatricula(usuarioSessao);
-
-		return temp.getPrimeiroNome();
-
-	}
-
-	/**
 	 * Capturar o contato da pessoa logada.
 	 * 
 	 * @return
