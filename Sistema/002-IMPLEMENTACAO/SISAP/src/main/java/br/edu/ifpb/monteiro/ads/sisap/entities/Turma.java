@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,9 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 /**
  * Entidade Turma onde deve ter todas as caracteristicas de uma turma.
@@ -47,15 +50,23 @@ public class Turma implements Serializable {
 	private String sala;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
-	private ArrayList<Aluno> alunos;
+	@IndexColumn(name = "aluno")
+	private List<Aluno> alunos;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
-	private ArrayList<Avaliacao> avaliacoes;
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
+	@IndexColumn(name = "avaliacao")
+	private List<Avaliacao> avaliacoes;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
-	private ArrayList<Aula> aulas;
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
+	@IndexColumn(name = "aula")
+	private List<Aula> aulas;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="DISCIPLINA_FK")
+	private Disciplina disciplina;
 
 	public Turma() {
+		alunos = new ArrayList<Aluno>();
 	}
 
 	public Long getId() {
@@ -66,11 +77,11 @@ public class Turma implements Serializable {
 		this.id = id;
 	}
 
-	public ArrayList<Aluno> getAlunos() {
+	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 
-	public void setAlunos(ArrayList<Aluno> alunos) {
+	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
 
@@ -98,11 +109,11 @@ public class Turma implements Serializable {
 		this.sala = sala;
 	}
 
-	public ArrayList<Avaliacao> getAvaliacoes() {
+	public List<Avaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
 
-	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 

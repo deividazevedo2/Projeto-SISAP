@@ -46,7 +46,7 @@ public class PedagogoConverter implements Converter {
 		String matricula = String.valueOf(valor);
 
 		try {
-			return pedagogos.buscarPorMatricula(Long.parseLong(matricula));
+			return pedagogos.buscarPorMatricula((matricula));
 		} catch (SisapException e) {
 			String msgErroStr = String
 					.format("Erro de conversao! Nao foi possivel realizar a conversao da string '%s' para o tipo esperado.",

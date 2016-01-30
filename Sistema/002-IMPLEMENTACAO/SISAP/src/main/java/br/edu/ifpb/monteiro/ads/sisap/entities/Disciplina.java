@@ -12,8 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 /**
  * Entidade Disciplina que devera conter informacoes acerca da disciplina de um
@@ -56,6 +57,7 @@ public class Disciplina implements Serializable {
 	private Boolean disponivel;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "disciplina")
+	@IndexColumn(name = "turma")
 	private List<Turma> turmas;
 
 	public Disciplina() {

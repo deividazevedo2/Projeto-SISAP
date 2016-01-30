@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
 /**
@@ -44,11 +46,12 @@ public class Aluno implements Serializable {
 	private Long id;
 
 	@Column(name = "MATRICULA_ALUNO", unique = true)
-	private long matricula;
+	private Long matricula;
 
 	private String nome;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
+	@IndexColumn(name = "nota")
 	private List<NotaDeAvaliacao> notas;
 
 	@Embedded
@@ -67,10 +70,15 @@ public class Aluno implements Serializable {
 	private Responsavel responsavel;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
+	@IndexColumn(name = "atendimento")
 	private List<Atendimento> atendimentos;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	private Aula aula;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "TURMA_FK")
+	private Turma turma;
 
 	public Aluno() {
 		atendimentos = new ArrayList<Atendimento>();
@@ -88,7 +96,7 @@ public class Aluno implements Serializable {
 		return matricula;
 	}
 
-	public void setMatricula(long matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
 

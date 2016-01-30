@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 /**
  * Entidade Avaliacao para informar a DATA de realizacao da avaliacao, o ASSUNTO
  * dela, e as notas de cada avaliacao. As notas da avaliacao deverao estar em
@@ -49,6 +51,7 @@ public class Avaliacao implements Serializable {
 	private Aula assunto;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "avaliacao")
+	@IndexColumn(name = "nota")
 	private List<NotaDeAvaliacao> notas;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
