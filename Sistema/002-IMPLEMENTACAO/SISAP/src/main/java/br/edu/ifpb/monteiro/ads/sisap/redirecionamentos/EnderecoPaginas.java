@@ -7,7 +7,7 @@ package br.edu.ifpb.monteiro.ads.sisap.redirecionamentos;
  *
  */
 public class EnderecoPaginas {
-	
+
 	private EnderecoPaginas() {
 	}
 
@@ -23,5 +23,8 @@ public class EnderecoPaginas {
 			+ REDIRECT_TRUE;
 
 	public static final String PAGINA_PRINCIPAL_ADMIN = "/paginas/admin/indexAdmin"
+			+ REDIRECT_TRUE;
+
+	public static final String PAGINA_ATENDIMENTO_1 = "/paginas/pedagogo/atendimentoPasso1"
 			+ REDIRECT_TRUE;
 }

@@ -10,6 +10,10 @@
 	xmlns:of="http://omnifaces.org/functions">
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
+	<f:metadata>
+		<o:viewParam name="aluno" value="#{buscarAlunoBean.aluno}"
+			converter="#{alunoConverter}" />
+	</f:metadata>
 
 	<ui:define name="title">
 	SISAP - Atendimento - Passo 1/2
@@ -22,23 +26,15 @@
 		<h:form>
 			<h:panelGrid id="resultadoBusca" columns="2">
 
-				<div>
-					<h:outputText value="Resultado da Busca" />
-				</div>
+				<h:outputText value="Aluno: " />
+				<h:outputText value="#{buscarAlunoBean.aluno.nome}" />
 
-				<p:dataTable var="aluno" emptyMessage="Nenhum registro encontrado.">
-					<p:column headerText="Matrícula">
-						<h:outputText value="Matrícula do Aluno" />
-					</p:column>
+				<h:outputText value="Matrícula: " />
+				<h:outputText value="#{buscarAlunoBean.aluno.matricula}" />
 
-					<p:column headerText="Nome">
-						<h:outputText value="Nome Completo do Aluno" />
-					</p:column>
-				</p:dataTable>
 				<br />
-				<div>
-					<h:button value="Ver Boletim" icon="ui-icon-search" />
-				</div>
+
+				<h:button value="Ver Boletim" icon="ui-icon-search" />
 
 			</h:panelGrid>
 

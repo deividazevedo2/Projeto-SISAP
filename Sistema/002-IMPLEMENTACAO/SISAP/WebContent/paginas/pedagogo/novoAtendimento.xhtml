@@ -22,28 +22,28 @@
 		<h:form>
 			<h:panelGrid id="camposAtendimento" columns="2">
 
-				<!-- <p:outputLabel for="button" value="Data: *" />
-				<p:calendar id="button" />-->
+				<p:dataTable id="idTabela" var="aluno"
+					value="#{indexAlunoBean.alunos}"
+					emptyMessage="Nenhum registro encontrado." paginator="true"
+					rows="6" style="text-align: center">
 
-				<h:outputText value="ID: *" />
-				<h:inputText id="matricula" style="width:250px" required="false"
-					value="#{buscarAlunoBean.aluno.matricula}" />
+					<p:column headerText="Matrícula">
+						<h:outputText value="#{aluno.matricula}" />
+					</p:column>
 
-				<br />
-				<br />
+					<p:column headerText="Nome">
+						<h:outputText value="#{aluno.nome}" />
+					</p:column>
 
-				<f:facet name="footer">
-					<p:commandButton value="Buscar"
-						action="#{buscarAlunoBean.buscarAlunoPorMatricula}" />
+					<p:column headerText="Deletar">
+						<p:link outcome="/paginas/pedagogo/atendimentoPasso1.xhtml"
+							value="Realizar Atendimento">
+							<f:param name="aluno" value="#{aluno.matricula}" />
+						</p:link>
+					</p:column>
 
-					<h:commandButton id="limparBotao" value="Limpar"
-						update="camposAtendimento" process="@this" icon="ui-icon-close">
-						<p:resetInput target="camposAtendimento" />
-					</h:commandButton>
-					<h:button value="Cancelar"
-						outcome="/paginas/pedagogo/indexPedagogo.xhtml"
-						icon="ui-icon-cancel" />
-				</f:facet>
+				</p:dataTable>
+
 			</h:panelGrid>
 		</h:form>
 
