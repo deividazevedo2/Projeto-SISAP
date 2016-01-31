@@ -42,7 +42,7 @@ public class AtendimentoDAO extends DAO {
 		return resultado;
 	}
 
-	public Atendimento buscarPorId(Long id) throws SisapException {
+	public Atendimento buscarPorId(Integer id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Atendimento resultado = null;
 		try {
