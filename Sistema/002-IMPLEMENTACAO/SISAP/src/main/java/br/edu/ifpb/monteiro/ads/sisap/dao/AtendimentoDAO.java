@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
@@ -7,8 +9,8 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class AtendimentoDAO extends DAO {
@@ -51,25 +53,39 @@ public class AtendimentoDAO extends DAO {
 		return resultado;
 	}
 
-	public Atendimento buscarPorAluno(String matriculaAluno)
+	public List<Atendimento> getAll(String matricula, String nome)
 			throws SisapException {
 		EntityManager em = getEntityManager();
-		Atendimento resultado = null;
-		try {
-			TypedQuery<Atendimento> query = em
-					.createQuery(
-							"select atendimento from Atendimento atendimento where atendimento.aluno like :aluno_fk",
-							Atendimento.class);
-			query.setParameter("aluno_fk", "%" + matriculaAluno + "%");
-			resultado = query.getSingleResult();
-		} catch (PersistenceException e) {
-			LOGGER.warn(
-					"Ocorreu um problema ao buscar o cadastro pela matricula!",
-					e);
+		List<Atendimento> resultado = null;
+
+		String jpql = "select atendimento from Atendimento atendimento where 1=1";
+
+		if (matricula != null && !matricula.isEmpty()) {
+			jpql += " and atendimento.aluno.matricula = :matricula";
 		}
 
-		return resultado;
+		if (nome != null && !nome.isEmpty()) {
+			jpql += " and atendimento.aluno.nome like :nome";
+		}
 
+		TypedQuery<Atendimento> query = em.createQuery(jpql, Atendimento.class);
+
+		if (matricula != null && !matricula.isEmpty()) {
+			query.setParameter("matricula", "%" + matricula + "%");
+		}
+
+		if (nome != null && !nome.isEmpty()) {
+			query.setParameter("nome", "%" + nome + "%");
+		}
+
+		try {
+			resultado = query.getResultList();
+		} catch (PersistenceException pe) {
+			throw new SisapException(
+					"Ocorreu algum problema ao tentar recuperar os atendimentos do aluno com base no nome e/ou matricula.",
+					pe);
+		}
+		return resultado;
 	}
 
 }
