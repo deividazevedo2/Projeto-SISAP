@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author Deivid Azevedo
  *
  */
-@Entity
+@Entity (name="Atendimento")
 @Table(name = "TB_ATENDIMENTO")
 @DiscriminatorValue("ATENDIMENTO")
 public class Atendimento implements Serializable {
@@ -34,7 +34,7 @@ public class Atendimento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 
 	private String atendido;
 
@@ -54,18 +54,10 @@ public class Atendimento implements Serializable {
 	@Column(name = "MEDIDAS_POSTERIORES")
 	private String medidasPosteriores;
 
-	@Column(name = "ENCAMINHADO")
-	private Boolean encaminhado;
-
-	@Column(name = "NOTIFICACAO_ENVIADA")
-	private Boolean notificacaoEnviada;
-
 	@Column(name = "OBSERVACOES")
 	private String observacoes;
 
 	public Atendimento() {
-		encaminhado = false;
-		notificacaoEnviada = false;
 	}
 
 	public String getAtendido() {
@@ -114,22 +106,6 @@ public class Atendimento implements Serializable {
 
 	public void setMedidasPosteriores(String medidasPosteriores) {
 		this.medidasPosteriores = medidasPosteriores;
-	}
-
-	public Boolean getEncaminhado() {
-		return encaminhado;
-	}
-
-	public void setEncaminhado(Boolean encaminhado) {
-		this.encaminhado = encaminhado;
-	}
-
-	public Boolean getNotificacaoEnviada() {
-		return notificacaoEnviada;
-	}
-
-	public void setNotificacaoEnviada(Boolean notificacaoEnviada) {
-		this.notificacaoEnviada = notificacaoEnviada;
 	}
 
 	public String getObservacoes() {
