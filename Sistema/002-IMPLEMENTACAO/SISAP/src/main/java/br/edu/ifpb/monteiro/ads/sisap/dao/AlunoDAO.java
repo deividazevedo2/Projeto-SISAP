@@ -1,6 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
@@ -72,10 +73,6 @@ public class AlunoDAO extends DAO {
 
 	}
 
-	public String buscarFrequenciaDoAluno(Long matricula) {
-		return null;
-	}
-
 	public Aluno buscarPorMatricula(String matricula) throws SisapException {
 		EntityManager em = getEntityManager();
 		Aluno resultado = null;
@@ -97,6 +94,41 @@ public class AlunoDAO extends DAO {
 
 		return resultado;
 
+	}
+
+	public List<Aluno> getAll(String matricula, String nome)
+			throws SisapException {
+		EntityManager em = getEntityManager();
+		List<Aluno> resultado = null;
+
+		String jpql = "select aluno from Aluno aluno where 1=1";
+
+		if (matricula != null && !matricula.isEmpty()) {
+			jpql += " and aluno.matricula = :matricula";
+		}
+
+		if (nome != null && !nome.isEmpty()) {
+			jpql += " and aluno.nome like :nome";
+		}
+
+		TypedQuery<Aluno> query = em.createQuery(jpql, Aluno.class);
+
+		if (matricula != null && !matricula.isEmpty()) {
+			query.setParameter("matricula", "%" + matricula + "%");
+		}
+
+		if (nome != null && !nome.isEmpty()) {
+			query.setParameter("nome", "%" + nome + "%");
+		}
+
+		try {
+			resultado = query.getResultList();
+		} catch (PersistenceException pe) {
+			throw new SisapException(
+					"Ocorreu algum problema ao tentar recuperar os alunos com base no nome e/ou matricula.",
+					pe);
+		}
+		return resultado;
 	}
 
 }
