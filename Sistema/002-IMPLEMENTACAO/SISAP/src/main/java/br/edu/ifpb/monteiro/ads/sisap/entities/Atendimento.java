@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author Deivid Azevedo
  *
  */
-@Entity (name="Atendimento")
+@Entity(name = "Atendimento")
 @Table(name = "TB_ATENDIMENTO")
 @DiscriminatorValue("ATENDIMENTO")
 public class Atendimento implements Serializable {
@@ -37,6 +37,8 @@ public class Atendimento implements Serializable {
 	private Integer id;
 
 	private String atendido;
+
+	private String data;
 
 	@Column(name = "SOLICITANTE")
 	private String solicitante;
@@ -58,6 +60,14 @@ public class Atendimento implements Serializable {
 	private String observacoes;
 
 	public Atendimento() {
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	public String getAtendido() {
