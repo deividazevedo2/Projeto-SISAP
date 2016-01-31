@@ -36,7 +36,7 @@ public class Atendimento implements Serializable {
 	@Column(name = "ID")
 	private Long id;
 
-	private Pessoa atendido;
+	private String atendido;
 
 	@Column(name = "SOLICITANTE")
 	private String solicitante;
@@ -68,11 +68,11 @@ public class Atendimento implements Serializable {
 		notificacaoEnviada = false;
 	}
 
-	public Pessoa getAtendido() {
+	public String getAtendido() {
 		return atendido;
 	}
 
-	public void setAtendido(Pessoa atendido) {
+	public void setAtendido(String atendido) {
 		this.atendido = atendido;
 	}
 
