@@ -25,6 +25,6 @@ public class EnderecoPaginas {
 	public static final String PAGINA_PRINCIPAL_ADMIN = "/paginas/admin/indexAdmin"
 			+ REDIRECT_TRUE;
 
-	public static final String PAGINA_ATENDIMENTO_1 = "/paginas/pedagogo/atendimentoPasso1"
+	public static final String PAGINA_PRINCIPAL_ATENDIMENTOS = "/paginas/pedagogo/listarAtendimentos"
 			+ REDIRECT_TRUE;
 }

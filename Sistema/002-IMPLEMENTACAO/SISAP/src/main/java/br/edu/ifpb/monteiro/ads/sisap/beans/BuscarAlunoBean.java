@@ -3,7 +3,6 @@ package br.edu.ifpb.monteiro.ads.sisap.beans;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,7 +24,6 @@ public class BuscarAlunoBean extends ClasseAbstrata {
 	private String matricula;
 
 	@Inject
-	@RequestScoped
 	private AlunoService alunoService;
 
 	@Inject
@@ -45,7 +43,6 @@ public class BuscarAlunoBean extends ClasseAbstrata {
 	 * @throws SisapException
 	 */
 	public Aluno buscarAluno() throws SisapException {
-		conversation.end();
 		aluno = alunoService.buscarPorId(aluno.getId());
 
 		return aluno;

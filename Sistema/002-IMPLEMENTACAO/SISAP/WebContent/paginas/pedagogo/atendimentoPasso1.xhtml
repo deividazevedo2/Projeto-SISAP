@@ -11,7 +11,7 @@
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
 	<f:metadata>
-		<o:viewParam name="aluno" value="#{buscarAlunoBean.aluno}"
+		<o:viewParam name="aluno" value="#{atendimentoBean.aluno}"
 			converter="#{alunoConverter}" />
 	</f:metadata>
 
@@ -27,10 +27,10 @@
 			<h:panelGrid id="resultadoBusca" columns="2">
 
 				<h:outputText value="Aluno: " />
-				<h:outputText value="#{buscarAlunoBean.aluno.nome}" />
+				<h:outputText value="#{atendimentoBean.aluno.nome}" />
 
 				<h:outputText value="Matrícula: " />
-				<h:outputText value="#{buscarAlunoBean.aluno.matricula}" />
+				<h:outputText value="#{atendimentoBean.aluno.matricula}" />
 
 				<br />
 
@@ -41,33 +41,53 @@
 
 			<br />
 
+			<!-- <h:panelGrid columns="1">
+
+				<h:outputText value="Data do Atendimento: *" />
+				<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
+
+			</h:panelGrid>
+ -->
 			<h:panelGrid columns="2">
 
 				<h:panelGrid id="camposAtendimento1" columns="1">
 
 					<h:outputText value="Solicitante: *" />
-					<h:inputText size="44" />
+					<h:inputText size="44"
+						value="#{atendimentoBean.atendimento.solicitante}" />
+
+					<h:outputText value="Descrição: *" />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true" value="#{atendimentoBean.atendimento.descricao}" />
 
 					<h:outputText value="Medidas Anteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true" />
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.medidasAnteriores}" />
 
 				</h:panelGrid>
 
 				<h:panelGrid id="camposAtendimento2" columns="1">
 
-					<h:outputText value="Descrição: *" />
-					<h:inputTextarea rows="1" cols="45" maxlength="10"
-						autoResize="true" />
+					<h:outputText value="Atendido: *" />
+					<h:inputText size="44"
+						value="#{atendimentoBean.atendimento.atendido}" />
+
+					<h:outputText value="Observações: *" />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.observacoes}" />
 
 					<h:outputText value="Medidas Posteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true" />
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.medidasPosteriores}" />
 
 				</h:panelGrid>
+
 				<f:facet name="footer" style="width:100%">
-					<h:button value="Continuar" icon="ui-icon-search"
-						outcome="/paginas/pedagogo/atendimentoPasso2.xhtml" />
+					<p:commandButton value="Salvar" icon="ui-icon-search"
+						action="#{atendimentoBean.salvarAtendimento}" />
 
 					<h:commandButton id="limparBotao" value="Limpar"
 						update="camposAtendimento2, camposAtendimento2" process="@this"
