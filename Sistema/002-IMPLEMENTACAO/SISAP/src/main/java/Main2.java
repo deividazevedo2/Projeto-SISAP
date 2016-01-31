@@ -27,27 +27,26 @@ public class Main2 {
 
 		try {
 
-			 Aula aula = new Aula();
-			 aula.setConteudo("Matematica Aplicada");
-			 Date data = new Date();
-			 data.setDate(12);
-			 data.setMonth(2);
-			 data.setYear(2012);
-			 aula.setData(data);
-			 AlunoDAO alunoDAO = new AlunoDAO();
-			
-			 Aluno aluno = alunoDAO.buscarPorMatricula(Long
-			 .parseLong("123"));
-			 aula.setAluno(aluno);
+			Aula aula = new Aula();
+			aula.setConteudo("Matematica Aplicada");
+			Date data = new Date();
+			data.setDate(12);
+			data.setMonth(2);
+			data.setYear(2012);
+			aula.setData(data);
+			AlunoDAO alunoDAO = new AlunoDAO();
 
-			//PedagogoDAO pedagogoDAO = new PedagogoDAO();
+			Aluno aluno = alunoDAO.buscarPorId(1);
+			aula.setAluno(aluno);
 
-			//Pedagogo pedagogo = pedagogoDAO
-				//	.buscarPorMatricula("65050265265200");
+			// PedagogoDAO pedagogoDAO = new PedagogoDAO();
 
-			//System.out.println(pedagogo.getPrimeiroNome());
+			// Pedagogo pedagogo = pedagogoDAO
+			// .buscarPorMatricula("65050265265200");
 
-			 em.persist(aula);
+			// System.out.println(pedagogo.getPrimeiroNome());
+
+			em.persist(aula);
 
 		} catch (Exception ex) {
 			LOGGER.warn("Erro ao salvar cadastro!", ex);

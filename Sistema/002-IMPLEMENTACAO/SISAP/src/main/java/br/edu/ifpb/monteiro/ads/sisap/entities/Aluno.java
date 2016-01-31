@@ -43,10 +43,10 @@ public class Aluno implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private int id;
 
-	@Column(name = "MATRICULA_ALUNO", unique = true)
-	private Long matricula;
+	@Column(name = "MATRICULA", unique = true)
+	private String matricula;
 
 	private String nome;
 
@@ -84,19 +84,19 @@ public class Aluno implements Serializable {
 		atendimentos = new ArrayList<Atendimento>();
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public long getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Long matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 

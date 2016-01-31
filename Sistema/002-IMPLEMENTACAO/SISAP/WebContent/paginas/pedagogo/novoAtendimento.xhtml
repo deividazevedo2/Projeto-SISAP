@@ -22,17 +22,19 @@
 		<h:form>
 			<h:panelGrid id="camposAtendimento" columns="2">
 
-				<p:outputLabel for="button" value="Data: *" />
-				<p:calendar id="button" />
+				<!-- <p:outputLabel for="button" value="Data: *" />
+				<p:calendar id="button" />-->
 
-				<h:outputText value="Nome/Matrícula: *" />
-				<h:inputText id="matricula" style="width:250px" required="false" />
+				<h:outputText value="ID: *" />
+				<h:inputText id="matricula" style="width:250px" required="false"
+					value="#{buscarAlunoBean.aluno.matricula}" />
 
 				<br />
 				<br />
 
 				<f:facet name="footer">
-					<h:button value="Continuar" icon="ui-icon-search" />
+					<p:commandButton value="Buscar"
+						action="#{buscarAlunoBean.buscarAlunoPorMatricula}" />
 
 					<h:commandButton id="limparBotao" value="Limpar"
 						update="camposAtendimento" process="@this" icon="ui-icon-close">

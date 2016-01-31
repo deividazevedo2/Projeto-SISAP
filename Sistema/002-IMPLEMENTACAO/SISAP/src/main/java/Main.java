@@ -44,7 +44,7 @@ public class Main {
 			pedagogo.setSegundoNome("Galindo");
 			pedagogo.setCpf("000020000110");
 			pedagogo.setEndereco(endereco);
-			pedagogo.setSenha("pedagogo");
+			pedagogo.setSenha("31b40d73c5430362a8be7c76e9f44492a256da37c98dd9f7c34b2ecebc88b68b");
 
 			contato.setPessoa(pedagogo);
 			pedagogo.setContato(contato);

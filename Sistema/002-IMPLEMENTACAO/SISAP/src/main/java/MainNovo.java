@@ -45,7 +45,7 @@ public class MainNovo {
 			aluno.setContato(contato);
 			aluno.setEndereco(endereco);
 			aluno.setMae("mae");
-			aluno.setMatricula(Long.parseLong("123"));
+			aluno.setMatricula("123");
 			aluno.setPai("aijsiasjisa");
 
 			resp.setAluno(aluno);
