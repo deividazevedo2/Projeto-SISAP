@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
@@ -22,7 +21,7 @@ public class AtendimentoDAO extends DAO {
 
 	private static final Log LOGGER = LogFactory.getLog(AtendimentoDAO.class);
 
-	public void Salvar(Atendimento atendimento) {
+	public void salvar(Atendimento atendimento) {
 		EntityManager em = getEntityManager();
 		try {
 			em.persist(atendimento);
