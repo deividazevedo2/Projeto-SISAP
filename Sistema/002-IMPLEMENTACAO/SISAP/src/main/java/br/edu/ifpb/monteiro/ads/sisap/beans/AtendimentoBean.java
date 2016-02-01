@@ -9,6 +9,9 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
@@ -24,6 +27,8 @@ public class AtendimentoBean extends ClasseAbstrata {
 	 * 
 	 */
 	private static final long serialVersionUID = -6977557276403647255L;
+
+	private static final Log LOGGER = LogFactory.getLog(AtendimentoBean.class);
 
 	private List<Atendimento> atendimentos;
 	private Aluno aluno;
@@ -127,6 +132,7 @@ public class AtendimentoBean extends ClasseAbstrata {
 			atendimentos = atendimentoService.getAll(matriculaAluno, nomeAluno);
 		} catch (SisapException e) {
 			reportarMensagemDeErro(e.getMessage());
+			LOGGER.warn(e);
 		}
 	}
 
