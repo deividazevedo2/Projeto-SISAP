@@ -51,7 +51,7 @@ public class Aluno implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
 	@IndexColumn(name = "nota")
-	private List<NotaDeAvaliacao> notas;
+	private transient List<NotaDeAvaliacao> notas;
 
 	@Embedded
 	private Endereco endereco;
@@ -66,14 +66,14 @@ public class Aluno implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
-	private Responsavel responsavel;
+	private transient Responsavel responsavel;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	private Aula aula;
+	private transient Aula aula;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TURMA_FK")
-	private Turma turma;
+	private transient Turma turma;
 
 	public Aluno() {
 	}

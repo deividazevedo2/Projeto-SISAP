@@ -54,7 +54,7 @@ public class Responsavel implements Serializable {
 	private String grauDeInstrucao;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "responsavel")
-	private Aluno aluno;
+	private transient Aluno aluno;
 
 	public Responsavel() {
 	}

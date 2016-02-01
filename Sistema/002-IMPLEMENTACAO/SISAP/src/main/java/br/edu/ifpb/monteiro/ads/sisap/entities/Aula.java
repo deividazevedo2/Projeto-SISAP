@@ -46,11 +46,11 @@ public class Aula implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TURMA_FK", nullable = false)
-	private Turma turma;
+	private transient Turma turma;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "ALUNO_FK", nullable = false)
-	private Aluno aluno;
+	private transient Aluno aluno;
 
 	public Aula() {
 	}

@@ -48,15 +48,15 @@ public class Avaliacao implements Serializable {
 	private Date data;
 
 	@Column(name = "ASSUNTO")
-	private Aula assunto;
+	private String assunto;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "avaliacao")
 	@IndexColumn(name = "nota")
-	private List<NotaDeAvaliacao> notas;
+	private transient List<NotaDeAvaliacao> notas;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TURMA_FK", nullable = false)
-	private Turma turma;
+	private transient Turma turma;
 
 	public Avaliacao() {
 		notas = new ArrayList<NotaDeAvaliacao>();
