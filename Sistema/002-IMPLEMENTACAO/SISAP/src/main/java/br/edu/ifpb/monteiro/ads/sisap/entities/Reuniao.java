@@ -37,6 +37,8 @@ public class Reuniao implements Serializable {
 
 	private String situacao;
 
+	private String solicitante;
+
 	public Reuniao() {
 	}
 
@@ -94,6 +96,14 @@ public class Reuniao implements Serializable {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getSolicitante() {
+		return solicitante;
+	}
+
+	public void setSolicitante(String solicitante) {
+		this.solicitante = solicitante;
 	}
 
 }

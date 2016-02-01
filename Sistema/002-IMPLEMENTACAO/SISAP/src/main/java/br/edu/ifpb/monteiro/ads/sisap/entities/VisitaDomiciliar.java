@@ -2,12 +2,17 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Visita_domiciliar")
@@ -24,6 +29,10 @@ public class VisitaDomiciliar implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ALUNO_FK")
+	private Aluno aluno;
 
 	private String dataDeAgendamento;
 
@@ -94,6 +103,14 @@ public class VisitaDomiciliar implements Serializable {
 
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 }

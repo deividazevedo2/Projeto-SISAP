@@ -52,6 +52,9 @@ public class Aluno implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
 	@IndexColumn(name = "nota")
 	private transient List<NotaDeAvaliacao> notas;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
+	private List<VisitaDomiciliar> visitasDomiciliares;
 
 	@Embedded
 	private Endereco endereco;
