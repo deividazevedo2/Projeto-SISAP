@@ -12,7 +12,7 @@
 <ui:composition template="/templates/templatePedagogo.xhtml">
 
 	<ui:define name="title">
-	SISAP - Atendimentos
+	SISAP - Reuniões
 	</ui:define>
 
 	<ui:define name="center">
@@ -22,40 +22,34 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<h:button value="Novo Atendimento"
-				outcome="/paginas/pedagogo/novoAtendimento.xhtml" />
+			<h:button value="Nova Reunião"
+				outcome="/paginas/pedagogo/novaReuniao.xhtml" />
 
-			<p:dataTable var="atendimento"
-				value="#{atendimentoBean.atendimentos}"
+			<p:dataTable var="reuniao" value="#{reuniaoBean.reunioes}"
 				emptyMessage="Nenhum registro encontrado." paginator="true" rows="6"
 				style="text-align: center">
 
-				<p:column filterBy="#{atendimento.aluno.matricula}"
-					headerText="Matrícula">
-					<h:outputText value="#{atendimento.aluno.matricula}" />
+				<p:column filterBy="#{reuniao.dataDeAgendamento}"
+					headerText="Data de Agendamento">
+					<h:outputText value="#{reuniao.dataDeAgendamento}" />
 				</p:column>
 
-				<p:column filterBy="#{atendimento.aluno.nome}" headerText="Nome">
-					<h:outputText value="#{atendimento.aluno.nome}" />
+				<p:column filterBy="#{reuniao.dataDeFinalizacao}"
+					headerText="Data de Finalização">
+					<h:outputText value="#{reuniao.dataDeFinalizacao}" />
 				</p:column>
 
-				<p:column filterBy="#{atendimento.data}" headerText="Data">
-					<h:outputText value="#{atendimento.data}" />
+				<p:column filterBy="#{reuniao.solicitante}" headerText="Solicitante">
+					<h:outputText value="#{reuniao.solicitante}" />
 				</p:column>
 
-				<p:column filterBy="#{atendimento.solicitante}"
-					headerText="Solicitante">
-					<h:outputText value="#{atendimento.solicitante}" />
-				</p:column>
-
-				<p:column filterBy="#{atendimento.situacao}" headerText="Situação">
-					<h:outputText value="#{atendimento.situacao}" />
+				<p:column filterBy="#{reuniao.situacao}" headerText="Situação">
+					<h:outputText value="#{reuniao.situacao}" />
 				</p:column>
 
 				<p:column headerText="Visualizar/Alterar">
-					<p:link outcome="/paginas/pedagogo/editarAtendimento.xhtml"
-						value="Visualizar/Editar">
-						<f:param name="atendimento" value="#{atendimento.id}" />
+					<p:link value="Visualizar/Editar">
+						<f:param name="reuniao" value="#{reuniao.id}" />
 					</p:link>
 				</p:column>
 

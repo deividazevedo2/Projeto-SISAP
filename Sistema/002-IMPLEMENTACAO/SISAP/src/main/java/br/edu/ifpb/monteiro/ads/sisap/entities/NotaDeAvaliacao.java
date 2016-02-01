@@ -46,15 +46,15 @@ public class NotaDeAvaliacao implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "ALUNO_FK", nullable = false)
-	private transient Aluno aluno;
+	private Aluno aluno;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "DISCIPLINA_FK", nullable = false)
-	private transient Disciplina disciplina;
+	private Disciplina disciplina;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "AVALIACAO_FK", nullable = false)
-	private transient Avaliacao avaliacao;
+	private Avaliacao avaliacao;
 
 	public NotaDeAvaliacao() {
 	}

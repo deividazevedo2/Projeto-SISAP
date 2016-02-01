@@ -52,11 +52,11 @@ public class Avaliacao implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "avaliacao")
 	@IndexColumn(name = "nota")
-	private transient List<NotaDeAvaliacao> notas;
+	private List<NotaDeAvaliacao> notas;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "TURMA_FK", nullable = false)
-	private transient Turma turma;
+	private Turma turma;
 
 	public Avaliacao() {
 		notas = new ArrayList<NotaDeAvaliacao>();

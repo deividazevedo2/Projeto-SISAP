@@ -6,24 +6,24 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
-import br.edu.ifpb.monteiro.ads.sisap.dao.AtendimentoDAO;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
+import br.edu.ifpb.monteiro.ads.sisap.dao.ReuniaoDAO;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
-public class AtendimentoService implements Serializable {
+public class ReuniaoService implements Serializable {
 
 	private static final long serialVersionUID = -8713392833366563250L;
 
 	@Inject
-	private AtendimentoDAO atendimentoDAO;
+	private ReuniaoDAO reuniaoDAO;
 
-	public AtendimentoDAO getAtendimentoDAO() {
-		return atendimentoDAO;
+	public ReuniaoDAO getReuniaoDAO() {
+		return reuniaoDAO;
 	}
 
-	public void setAtendimentoDAO(AtendimentoDAO atendimentoDAO) {
-		this.atendimentoDAO = atendimentoDAO;
+	public void setReuniaoDAO(ReuniaoDAO reuniaoDAO) {
+		this.reuniaoDAO = reuniaoDAO;
 	}
 
 	/**
@@ -35,8 +35,8 @@ public class AtendimentoService implements Serializable {
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public void salvar(Atendimento atendimento) throws SisapException {
-		this.atendimentoDAO.salvar(atendimento);
+	public void salvar(Reuniao reuniao) throws SisapException {
+		this.reuniaoDAO.salvar(reuniao);
 
 	}
 
@@ -45,13 +45,13 @@ public class AtendimentoService implements Serializable {
 	 * como parametro. Sera chamado o atendimentoDAO que fara a busca no banco e
 	 * ira alterar os dados que foram modificados na ficha do atendimento.
 	 * 
-	 * @param atendimento
+	 * @param reuniao
 	 * @return
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public Atendimento atualizar(Atendimento atendimento) throws SisapException {
-		return atendimentoDAO.atualizar(atendimento);
+	public Reuniao atualizar(Reuniao reuniao) throws SisapException {
+		return reuniaoDAO.atualizar(reuniao);
 	}
 
 	/**
@@ -64,14 +64,13 @@ public class AtendimentoService implements Serializable {
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public Atendimento buscarPorId(Integer id) throws SisapException {
-		return this.atendimentoDAO.buscarPorId(id);
+	public Reuniao buscarPorId(Integer id) throws SisapException {
+		return this.reuniaoDAO.buscarPorId(id);
 	}
 
-	public List<Atendimento> getAll(String matriculaAluno, String nomeAluno)
-			throws SisapException {
+	public List<Reuniao> getAll() throws SisapException {
 		try {
-			return this.atendimentoDAO.getAll(matriculaAluno, nomeAluno);
+			return this.reuniaoDAO.getAll();
 		} catch (PersistenceException e) {
 			throw new SisapException(e.getMessage(), e);
 		}

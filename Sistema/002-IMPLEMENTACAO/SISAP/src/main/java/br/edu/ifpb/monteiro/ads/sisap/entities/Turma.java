@@ -51,19 +51,19 @@ public class Turma implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
 	@IndexColumn(name = "aluno")
-	private transient List<Aluno> alunos;
+	private List<Aluno> alunos;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
 	@IndexColumn(name = "avaliacao")
-	private transient List<Avaliacao> avaliacoes;
+	private List<Avaliacao> avaliacoes;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "turma")
 	@IndexColumn(name = "aula")
-	private transient List<Aula> aulas;
+	private List<Aula> aulas;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "DISCIPLINA_FK")
-	private transient Disciplina disciplina;
+	private Disciplina disciplina;
 
 	public Turma() {
 		alunos = new ArrayList<Aluno>();

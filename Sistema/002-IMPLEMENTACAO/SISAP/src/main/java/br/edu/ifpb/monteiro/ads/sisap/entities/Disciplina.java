@@ -58,7 +58,7 @@ public class Disciplina implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "disciplina")
 	@IndexColumn(name = "turma")
-	private transient List<Turma> turmas;
+	private List<Turma> turmas;
 
 	public Disciplina() {
 	}

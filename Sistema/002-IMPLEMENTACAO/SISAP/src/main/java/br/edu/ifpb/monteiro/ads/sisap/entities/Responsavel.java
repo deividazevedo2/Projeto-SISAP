@@ -42,10 +42,10 @@ public class Responsavel implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "CONTATO_FK", nullable = false)
-	private transient Contato contato;
+	private Contato contato;
 
 	@Embedded
-	private transient Endereco endereco;
+	private Endereco endereco;
 
 	@Column(name = "GRAU_DE_PARENTESCO")
 	private String grauDeParentesco;
@@ -54,7 +54,7 @@ public class Responsavel implements Serializable {
 	private String grauDeInstrucao;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "responsavel")
-	private transient Aluno aluno;
+	private Aluno aluno;
 
 	public Responsavel() {
 	}

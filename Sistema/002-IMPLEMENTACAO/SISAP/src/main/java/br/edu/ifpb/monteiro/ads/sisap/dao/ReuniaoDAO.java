@@ -64,7 +64,7 @@ public class ReuniaoDAO extends DAO {
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			throw new SisapException(
-					"Ocorreu algum problema ao tentar recuperar as reuniões.",
+					"Ocorreu algum problema ao tentar recuperar as reunioess.",
 					pe);
 		}
 		return resultado;

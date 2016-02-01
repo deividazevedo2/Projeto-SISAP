@@ -48,16 +48,12 @@
 
 			<br />
 
-			<h:panelGrid columns="1">
-
-				<h:outputText value="Data do Atendimento: *" />
-				<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
-
-			</h:panelGrid>
-
 			<h:panelGrid columns="2">
 
 				<h:panelGrid id="camposAtendimento1" columns="1">
+
+					<h:outputText value="Data do Atendimento: *" />
+					<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
 
 					<h:outputText value="Solicitante: *" />
 					<h:inputText size="44"
@@ -75,6 +71,16 @@
 				</h:panelGrid>
 
 				<h:panelGrid id="camposAtendimento2" columns="1">
+
+					<h:outputText value="Situação: *" />
+					<h:selectOneMenu id="situacao"
+						value="#{atendimentoBean.atendimento.situacao}">
+						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
+						<f:selectItem itemLabel="Agendado" itemValue="agendado" />
+						<f:selectItem itemLabel="Iniciado" itemValue="iniciado" />
+						<f:selectItem itemLabel="Concluído" itemValue="concluido" />
+						<f:selectItem itemLabel="Cancelado" itemValue="cancelado" />
+					</h:selectOneMenu>
 
 					<h:outputText value="Atendido: *" />
 					<h:inputText size="44"

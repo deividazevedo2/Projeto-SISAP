@@ -51,17 +51,17 @@ public class Aluno implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
 	@IndexColumn(name = "nota")
-	private transient List<NotaDeAvaliacao> notas;
+	private List<NotaDeAvaliacao> notas;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
 	private List<VisitaDomiciliar> visitasDomiciliares;
 
 	@Embedded
-	private transient Endereco endereco;
+	private Endereco endereco;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "CONTATO_FK", nullable = false)
-	private transient Contato contato;
+	private Contato contato;
 
 	private String pai;
 
@@ -69,14 +69,14 @@ public class Aluno implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
-	private transient Responsavel responsavel;
+	private Responsavel responsavel;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	private transient Aula aula;
+	private Aula aula;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TURMA_FK")
-	private transient Turma turma;
+	private Turma turma;
 
 	public Aluno() {
 	}

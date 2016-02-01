@@ -49,13 +49,13 @@ public class Contato implements Serializable {
 	private String email;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
-	private transient Pessoa pessoa;
+	private Pessoa pessoa;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
-	private transient Responsavel responsavel;
+	private Responsavel responsavel;
 
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "contato")
-	private transient Aluno aluno;
+	private Aluno aluno;
 
 	public Contato() {
 	}
