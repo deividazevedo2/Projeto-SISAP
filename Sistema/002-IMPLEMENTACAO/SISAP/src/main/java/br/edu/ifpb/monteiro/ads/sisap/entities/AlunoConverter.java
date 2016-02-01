@@ -5,7 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,11 +29,14 @@ public class AlunoConverter implements Converter {
 			return alunos.buscarPorMatricula(matricula);
 		} catch (SisapException e) {
 			String msgErroStr = String
-					.format("Erro de conversão! Não foi possível realizar a conversão da string '%s' para o tipo esperado.",
+					.format("Erro de conversÃ£o!",
 							matricula);
+
+			@SuppressWarnings("unused")
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
-			throw new ConverterException(msgErro);
+
+			throw new RuntimeException(e);
 		}
 	}
 

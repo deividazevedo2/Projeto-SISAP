@@ -5,7 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -33,9 +32,12 @@ public class PessoaConverter implements Converter {
 			String msgErroStr = String
 					.format("Erro de conversao! Nao foi possivel realizar a conversao da string '%s' para o tipo esperado.",
 							valor);
+
+			@SuppressWarnings("unused")
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
-			throw new ConverterException(msgErro);
+
+			throw new RuntimeException(e);
 		}
 	}
 

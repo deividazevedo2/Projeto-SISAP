@@ -42,10 +42,10 @@ public class Responsavel implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "CONTATO_FK", nullable = false)
-	private Contato contato;
+	private transient Contato contato;
 
 	@Embedded
-	private Endereco endereco;
+	private transient Endereco endereco;
 
 	@Column(name = "GRAU_DE_PARENTESCO")
 	private String grauDeParentesco;
