@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,12 @@ import org.hibernate.validator.constraints.Length;
  */
 @Entity
 @Table(name = "TB_CONTATO")
-public class Contato {
+public class Contato implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4151821226815105871L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

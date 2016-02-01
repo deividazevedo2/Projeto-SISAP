@@ -45,7 +45,7 @@ public class Atendimento implements Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "ALUNO_FK", nullable = false)
-	private Aluno aluno;
+	private transient Aluno aluno;
 
 	@Column(name = "DESCRICAO")
 	private String descricao;
