@@ -1,11 +1,17 @@
 package br.edu.ifpb.monteiro.ads.sisap.embedded;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Pattern;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7207479435326188441L;
 	private String rua;
 	private Integer numero;
 	private String bairro;
