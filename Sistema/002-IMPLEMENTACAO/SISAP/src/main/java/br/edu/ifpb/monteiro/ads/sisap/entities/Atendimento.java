@@ -59,6 +59,8 @@ public class Atendimento implements Serializable {
 	@Column(name = "OBSERVACOES")
 	private String observacoes;
 
+	private String situacao;
+
 	public Atendimento() {
 	}
 
@@ -132,6 +134,14 @@ public class Atendimento implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 }
