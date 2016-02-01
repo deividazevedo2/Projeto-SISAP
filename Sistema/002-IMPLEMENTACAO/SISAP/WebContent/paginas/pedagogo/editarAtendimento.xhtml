@@ -11,6 +11,13 @@
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
 
+	<f:metadata>
+		<o:viewParam name="atendimento" value="#{atendimentoBean.atendimento}"
+			converter="#{atendimentoConverter}" />
+		<f:event listener="#{atendimentoBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
 	<ui:define name="title">
 	SISAP - Editar Atendimento
 	</ui:define>
@@ -25,11 +32,35 @@
 
 					<h:outputText value="Aluno: " />
 
-					<h:outputText value="José Num Sei de Que" />
+					<h:outputText value="#{atendimentoBean.atendimento.aluno.nome}" />
 
 					<h:outputText value="Matrícula: " />
 
-					<h:outputText value="201615020021" />
+					<h:outputText
+						value="#{atendimentoBean.atendimento.aluno.matricula}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid id="informacoesAluno2" columns="2">
+
+					<p:outputLabel value="Atendimento Número: "
+						rendered="#{!empty atendimentoBean.atendimento.id}" />
+					<p:outputLabel value="#{atendimentoBean.atendimento.id}"
+						rendered="#{!empty atendimentoBean.atendimento.id}" />
+
+				</h:panelGrid>
+
+				<br />
+
+				<h:panelGrid columns="2">
+
+					<h:outputText value="Solicitante: " />
+					<h:outputText size="44"
+						value="#{atendimentoBean.atendimento.solicitante}" />
+
+					<h:outputText value="Atendido: " />
+					<h:outputText size="44"
+						value="#{atendimentoBean.atendimento.atendido}" />
 
 				</h:panelGrid>
 
@@ -39,91 +70,42 @@
 
 					<h:panelGrid columns="1">
 
-						<h:panelGrid columns="2">
-							<h:outputText value="Solicitante: " />
-							<h:outputText value="Nome do Solicitante" />
-						</h:panelGrid>
+						<h:outputText value="Descrição: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{atendimentoBean.atendimento.descricao}" />
 
-						<br />
-
-						<h:panelGrid id="camposAtendimento1" columns="1">
-
-							<h:outputText value="Medidas Anteriores: *" />
-							<h:inputTextarea rows="4" cols="45" maxlength="10"
-								autoResize="true" />
-
-						</h:panelGrid>
+						<h:outputText value="Medidas Anteriores: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{atendimentoBean.atendimento.medidasAnteriores}" />
 
 					</h:panelGrid>
 
-					<h:panelGrid columns="1">
+					<h:panelGrid id="camposAtendimento1" columns="1">
 
-						<h:panelGrid id="camposAtendimento2" columns="1">
+						<h:outputText value="Observações: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{atendimentoBean.atendimento.observacoes}" />
 
-							<h:outputText value="Descrição: *" />
-							<h:inputTextarea rows="2" cols="45" maxlength="10"
-								autoResize="true" />
-
-						</h:panelGrid>
-
-						<h:panelGrid id="medidas" columns="1">
-
-							<h:outputText value="Medidas Posteriores: *" />
-							<h:inputTextarea rows="3" cols="45" maxlength="10"
-								autoResize="true" />
-
-						</h:panelGrid>
+						<h:outputText value="Medidas Posteriores: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{atendimentoBean.atendimento.medidasPosteriores}" />
 
 					</h:panelGrid>
 
-				</h:panelGrid>
-
-				<h:panelGrid id="atendimentoPasso2" columns="1">
-
-					<h:outputText style="font-size:16px"
-						value="Foi realizado encaminhamento deste atendimento?" />
-
-					<h:panelGrid columns="1">
-						<h:outputText id="encaminhamento" value="Sim" />
-					</h:panelGrid>
-
-					<h:panelGrid id="selecionarSetor" columns="2">
-						<h:outputText value="Setor do encaminhamento: " />
-						<h:outputText value="Coordenação" />
-					</h:panelGrid>
-
-					<p:separator style="height: 1px;" />
-
-					<h:outputText style="font-size:16px"
-						value="O responsável do aluno foi notificado?" />
-
-					<h:panelGrid columns="1">
-						<h:outputText id="notificacao" value="Sim" />
-					</h:panelGrid>
-
-					<h:panelGrid id="notificarResponsavel" columns="1">
-
-						<h:panelGrid columns="2">
-							<h:outputText value="Responsável Notificado:" />
-
-							<h:outputText value="Mãe" />
-						</h:panelGrid>
-
-						<h:panelGrid columns="2">
-							<h:outputText value="Forma de notificação: " />
-
-							<h:outputText value="Email" />
-						</h:panelGrid>
-					</h:panelGrid>
-
-					<br />
 				</h:panelGrid>
 
 				<f:facet name="footer">
-					<h:button value="Atualizar Atendimento" icon="ui-icon-search" />
+					<h:commandButton value="Atualizar Atendimento"
+						icon="ui-icon-search"
+						action="#{atendimentoBean.salvarAtendimento}" />
 					<h:button value="Voltar" icon="ui-icon-search"
 						outcome="/paginas/pedagogo/atendimentoPasso1.xhtml" />
 				</f:facet>
+
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

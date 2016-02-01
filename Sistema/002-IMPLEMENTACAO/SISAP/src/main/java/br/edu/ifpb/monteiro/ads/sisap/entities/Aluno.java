@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -69,10 +68,6 @@ public class Aluno implements Serializable {
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
 	private Responsavel responsavel;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
-	@IndexColumn(name = "atendimento")
-	private List<Atendimento> atendimentos;
-
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	private Aula aula;
 
@@ -81,7 +76,6 @@ public class Aluno implements Serializable {
 	private Turma turma;
 
 	public Aluno() {
-		atendimentos = new ArrayList<Atendimento>();
 	}
 
 	public int getId() {
@@ -146,14 +140,6 @@ public class Aluno implements Serializable {
 
 	public void setResponsavel(Responsavel responsavel) {
 		this.responsavel = responsavel;
-	}
-
-	public List<Atendimento> getAtendimentos() {
-		return atendimentos;
-	}
-
-	public void setAtendimentos(List<Atendimento> atendimentos) {
-		this.atendimentos = atendimentos;
 	}
 
 }

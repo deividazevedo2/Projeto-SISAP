@@ -14,6 +14,13 @@
 		<o:viewParam name="aluno" value="#{atendimentoBean.aluno}"
 			converter="#{alunoConverter}" />
 	</f:metadata>
+	<f:metadata>
+		<o:viewParam name="atendimento" value="#{atendimentoBean.atendimento}"
+			converter="#{atendimentoConverter}" />
+		<f:event listener="#{atendimentoBean.preRenderView()}"
+			type="preRenderView" />
+
+	</f:metadata>
 
 	<ui:define name="title">
 	SISAP - Atendimento - Passo 1/2
@@ -41,47 +48,42 @@
 
 			<br />
 
-			<!-- <h:panelGrid columns="1">
+			<h:panelGrid columns="1">
 
 				<h:outputText value="Data do Atendimento: *" />
-				<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
+				<h:inputText size="44" value="#{atendimentoBean.data}" />
 
 			</h:panelGrid>
- -->
+
 			<h:panelGrid columns="2">
 
 				<h:panelGrid id="camposAtendimento1" columns="1">
 
 					<h:outputText value="Solicitante: *" />
-					<h:inputText size="44"
-						value="#{atendimentoBean.atendimento.solicitante}" />
+					<h:inputText size="44" value="#{atendimentoBean.solicitante}" />
 
 					<h:outputText value="Descrição: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true" value="#{atendimentoBean.atendimento.descricao}" />
+						autoResize="true" value="#{atendimentoBean.descricao}" />
 
 					<h:outputText value="Medidas Anteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true"
-						value="#{atendimentoBean.atendimento.medidasAnteriores}" />
+						autoResize="true" value="#{atendimentoBean.medidasAnteriores}" />
 
 				</h:panelGrid>
 
 				<h:panelGrid id="camposAtendimento2" columns="1">
 
 					<h:outputText value="Atendido: *" />
-					<h:inputText size="44"
-						value="#{atendimentoBean.atendimento.atendido}" />
+					<h:inputText size="44" value="#{atendimentoBean.atendido}" />
 
 					<h:outputText value="Observações: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true"
-						value="#{atendimentoBean.atendimento.observacoes}" />
+						autoResize="true" value="#{atendimentoBean.observacoes}" />
 
 					<h:outputText value="Medidas Posteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true"
-						value="#{atendimentoBean.atendimento.medidasPosteriores}" />
+						autoResize="true" value="#{atendimentoBean.medidasPosteriores}" />
 
 				</h:panelGrid>
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,7 +17,7 @@ import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
 import br.edu.ifpb.monteiro.ads.sisap.service.AtendimentoService;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class AtendimentoBean extends ClasseAbstrata {
 
 	/**
@@ -25,10 +25,10 @@ public class AtendimentoBean extends ClasseAbstrata {
 	 */
 	private static final long serialVersionUID = -6977557276403647255L;
 
-	private List<Aluno> alunos;
-	private String matricula;
+	private List<Atendimento> atendimentos;
 	private Aluno aluno;
-	private Atendimento atendimento;
+
+	private Atendimento atendimento = new Atendimento();
 
 	@Inject
 	private AlunoService alunoService;
@@ -54,20 +54,24 @@ public class AtendimentoBean extends ClasseAbstrata {
 		if (atendimento == null) {
 			atendimento = new Atendimento();
 		}
-		if (alunos == null) {
-			alunos = new ArrayList<Aluno>();
+		if (atendimentos == null) {
+			atendimentos = new ArrayList<Atendimento>();
 		}
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 	}
 
-	public List<Aluno> getAlunos() {
-		return alunos;
-	}
-
 	public String getMatriculaAluno() {
 		return matriculaAluno;
+	}
+
+	public List<Atendimento> getAtendimentos() {
+		return atendimentos;
+	}
+
+	public void setAtendimentos(List<Atendimento> atendimentos) {
+		this.atendimentos = atendimentos;
 	}
 
 	public void setMatriculaAluno(String matriculaAluno) {
@@ -84,15 +88,19 @@ public class AtendimentoBean extends ClasseAbstrata {
 
 	public Aluno buscarAlunoPorMatricula() throws SisapException {
 
-		this.aluno = alunoService.buscarPorMatricula(matricula);
+		this.aluno = alunoService.buscarPorMatricula(matriculaAluno);
 
 		return aluno;
 	}
 
 	public String salvarAtendimento() throws SisapException {
-		conversation.end();
+		aluno = buscarAlunoPorMatricula();
 		atendimento.setAluno(aluno);
-		atendimentoService.salvar(atendimento);
+		if (atendimento.getId() != null) {
+			atendimentoService.atualizar(atendimento);
+		} else {
+			atendimentoService.salvar(atendimento);
+		}
 		reportarMensagemDeSucesso("Atendimento realizado com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_ATENDIMENTOS;
 
@@ -116,7 +124,7 @@ public class AtendimentoBean extends ClasseAbstrata {
 
 	public void filtrar() {
 		try {
-			alunos = alunoService.getAll(matriculaAluno, nomeAluno);
+			atendimentos = atendimentoService.getAll(matriculaAluno, nomeAluno);
 		} catch (SisapException e) {
 			reportarMensagemDeErro(e.getMessage());
 		}

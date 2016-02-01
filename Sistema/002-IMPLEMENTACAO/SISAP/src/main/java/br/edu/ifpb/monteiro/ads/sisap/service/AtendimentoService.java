@@ -1,8 +1,10 @@
 package br.edu.ifpb.monteiro.ads.sisap.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.AtendimentoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
@@ -64,6 +66,15 @@ public class AtendimentoService implements Serializable {
 	@TransacionalCdi
 	public Atendimento buscarPorId(Integer id) throws SisapException {
 		return this.atendimentoDAO.buscarPorId(id);
+	}
+
+	public List<Atendimento> getAll(String matriculaAluno, String nomeAluno)
+			throws SisapException {
+		try {
+			return this.atendimentoDAO.getAll(matriculaAluno, nomeAluno);
+		} catch (PersistenceException e) {
+			throw new SisapException(e.getMessage(), e);
+		}
 	}
 
 }
