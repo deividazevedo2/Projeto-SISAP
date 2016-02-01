@@ -1,15 +1,12 @@
 package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
@@ -20,7 +17,6 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class PedagogoDAOTest {
 
-	private static final String Null = null;
 	private static EntityManager em;
 	private static EntityManagerFactory emf;
 	private static PedagogoDAO pedagogoDAO;
@@ -60,217 +56,142 @@ public class PedagogoDAOTest {
 
 	}
 
-	@Test(expected = AssertionError.class)
-	@Ignore
-	public void testSalvarPedagogoNull() {
-		Pedagogo p1 = new Pedagogo();
-		em.persist(p1);
-		assertNull(em);
+	@Test
+	public void buscarPedagogoIdInvalido() {
+
+		try {
+
+			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("90"));
+
+			assertNull("Resultado deveria ser nulo.", pedagogo);
+
+		} catch (NumberFormatException | SisapException e) {
+			e.printStackTrace();
+		}
 
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoPrimeiroNomeVazio() {
-		pedagogo.setPrimeiroNome(" ");
-		em.persist(pedagogo);
-	}
+	@Test
+	public void buscarPedagogoMatriculaInvalida() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorMatricula("234521");
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoPrimeiroNomeComNull() {
-		pedagogo.setPrimeiroNome(Null);
-		em.persist(pedagogo);
-	}
+			assertNull("Resultado deveria ser nulo.", pedagogo);
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoSegundoNomeVazio() {
-		pedagogo.setSegundoNome(" ");
-		em.persist(pedagogo);
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoRGVazio() {
-		pedagogo.setRg(" ");
-		em.persist(pedagogo);
+	@Test
+	public void buscarPedagogoIdNull() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorId(null);
 
+			assertNull("Resultado deveria ser nulo.", pedagogo);
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoRGNull() {
-		pedagogo.setRg(Null);
-		em.persist(pedagogo);
+	@Test
+	public void buscarPedagogoMatriculaNull() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorMatricula(null);
 
+			assertNull("Resultado deveria ser nulo.", pedagogo);
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoCPFVazio() {
-		pedagogo.setCpf(" ");
-		em.persist(pedagogo);
+	@Test
+	public void buscarPedagogoPorMatricula() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorMatricula("65050265265208");
+
+			assertEquals("Widancassio", pedagogo.getPrimeiroNome());
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoCPFNull() {
-		pedagogo.setCpf(Null);
-		em.persist(pedagogo);
+	@Test
+	public void buscarPedagogoPorId() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("1"));
+
+			assertEquals("Galindo", pedagogo.getSegundoNome());
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoComMatriculaNull() {
-		pedagogo.setMatriculaSuap(Null);
-		em.persist(pedagogo);
+	@Test
+	public void atualizarPrimeiroNome() {
+		try {
+			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("1"));
+
+			// Procurando o pedagogo e comparando o primeiro nome dele até o
+			// momento
+			assertEquals("Widancassio", pedagogo.getPrimeiroNome());
+
+			// Alterando o primeiro nome do pedagogo
+			pedagogo.setPrimeiroNome("Felipe");
+
+			// Salvando a alteracao do cadastro de pedagogo
+			pedagogoDAO.atualizar(pedagogo);
+
+			// Procurando o pedagogo já com a alteração feita
+			Pedagogo alterado = pedagogoDAO.buscarPorId(Long.parseLong("1"));
+
+			// Comparando se o novo nome do pedagogo foi alterado
+			assertEquals("Felipe", alterado.getPrimeiroNome());
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
 
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoComMatriculaVazia() {
-		pedagogo.setMatriculaSuap(" ");
-		em.persist(pedagogo);
+	@Test
+	public void atualizarContatoEmail() {
+		try {
+			// Buscando o pedagogo pela matricula
+			pedagogo = pedagogoDAO.buscarPorMatricula("65050265265208");
+
+			// Buscando o contato deste pedagogo
+			Contato c = pedagogo.getContato();
+
+			// Verificando o email do pedagogo
+			assertEquals("cassio@gmail.com", c.getEmail());
+
+			// Setando novo valor do contato email para o pedagogo e adicionando
+			// ao seu cadastro
+			c.setEmail("novo@email.com");
+			pedagogo.setContato(c);
+
+			// atualizando o cadastro de pedagogo com o email alterado
+			pedagogoDAO.atualizar(pedagogo);
+
+			// Buscando o pedagogo que foi alterado
+			Pedagogo alterado = pedagogoDAO
+					.buscarPorMatricula("65050265265208");
+
+			// Buscando o contato do pedagogo onde foi alterado o email
+			Contato novo = alterado.getContato();
+
+			// comparando agora o novo email que foi adicionado e salvo no
+			// pedagogo
+			assertEquals("novo@email.com", novo.getEmail());
+
+		} catch (SisapException e) {
+			e.printStackTrace();
+		}
 	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoComSenhaNull() {
-		pedagogo.setSenha(Null);
-		em.persist(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testSalvarPedagogoComSenhaVazia() {
-		pedagogo.setSenha(" ");
-		em.persist(pedagogo);
-	}
-
-	// ===================Parte de Atualizar ====================
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarMatriculaParaNull() {
-		pedagogo.setMatriculaSuap(Null);
-		em.merge(pedagogo);
-
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarMatriculaParaVazio() {
-		pedagogo.setMatriculaSuap(" ");
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarNomeParaNull() {
-		pedagogo.setPrimeiroNome(Null);
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarNomeParaVazio() {
-		pedagogo.setSegundoNome(" ");
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarSenhaParaNull() {
-		pedagogo.setSenha(Null);
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarSenhaParaVazio() {
-		pedagogo.setSenha(" ");
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarCpfParaNull() {
-		pedagogo.setCpf(Null);
-		em.merge(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarCpfParaVazio() {
-		pedagogo.setCpf(" ");
-		em.merge(pedagogo);
-
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarGrupoParaNull() {
-		pedagogo.setGrupo(Null);
-		em.merge(pedagogo);
-
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testAtualizarGrupoParaVazio() {
-		pedagogo.setGrupo(" ");
-		em.merge(pedagogo);
-	}
-
-	// // ========================Remover
-	// Pedagogo===============================
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testRemoverMatriculaNull() {
-		pedagogo.setMatriculaSuap(Null);
-		em.remove(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testRemoverMatriculaVazia() {
-		pedagogo.setMatriculaSuap(" ");
-		em.remove(pedagogo);
-	}
-
-	@Test(expected = PersistenceException.class)
-	@Ignore
-	public void testRemoverPedagogoNull() {
-		pedagogo = new Pedagogo();
-		em.remove(pedagogo);
-	}
-
-	// ================== Buscar Matricula =================
-
-	@Test(expected = IllegalArgumentException.class)
-	@Ignore
-	public void testBuscarPedagogo() throws SisapException {
-		String mat = "pedagogo";
-		Pedagogo p = pedagogoDAO.buscarPorMatricula(mat);
-		assertEquals(p, pedagogo);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	@Ignore
-	public void testBuscarPedagogoMatriculaNull() {
-		pedagogo.setMatriculaSuap(Null);
-		em.find(Pedagogo.class, pedagogo.getMatriculaSuap());
-
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	@Ignore
-	public void testBuscarPedagogoMatriculaVazia() {
-		pedagogo.setMatriculaSuap(" ");
-		em.find(Pedagogo.class, pedagogo.getMatriculaSuap());
-
-	}
+	
 }
