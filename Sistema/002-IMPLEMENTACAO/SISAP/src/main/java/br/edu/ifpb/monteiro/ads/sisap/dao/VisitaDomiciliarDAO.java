@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.entities.VisitaDomiciliar;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
