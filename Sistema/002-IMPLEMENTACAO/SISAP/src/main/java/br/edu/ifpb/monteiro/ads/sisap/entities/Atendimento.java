@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * Entidade Atendimento para que seja realizado o preenchimento da ficha de
@@ -36,8 +38,11 @@ public class Atendimento implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
+	@NotNull(message = "Informe o nome do Atendido")
 	private String atendido;
 
+	@NotNull
+	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
 	private String data;
 
 	@Column(name = "SOLICITANTE")
@@ -59,6 +64,7 @@ public class Atendimento implements Serializable {
 	@Column(name = "OBSERVACOES")
 	private String observacoes;
 
+	@NotNull(message = "Informe a Situacao deste Atendimento")
 	private String situacao;
 
 	public Atendimento() {

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity(name = "Reuniao")
 @Table(name = "TB_REUNIAO")
@@ -25,18 +27,23 @@ public class Reuniao implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
+	@NotNull
+	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
 	private String dataDeAgendamento;
 
 	private String dataDeFinalizacao;
 
+	@NotNull(message = "Informe o objetivo da reunião!")
 	private String objetivo;
 
 	private String descricao;
 
 	private String pauta;
 
+	@NotNull(message = "Informe a Situação da Reunião!")
 	private String situacao;
 
+	@NotNull(message = "Informe o Solicitante da Reunião!")
 	private String solicitante;
 
 	public Reuniao() {
