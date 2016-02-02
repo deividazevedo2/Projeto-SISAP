@@ -101,6 +101,10 @@ public class AtendimentoBean extends ClasseAbstrata {
 	public String salvarAtendimento() throws SisapException {
 		aluno = buscarAlunoPorMatricula();
 		atendimento.setAluno(aluno);
+		if (atendimento.getSolicitante() == null
+				|| "".equals(atendimento.getSolicitante())) {
+			atendimento.setSolicitante("Não há");
+		}
 		if (atendimento.getId() != null) {
 			atendimentoService.atualizar(atendimento);
 		} else {
