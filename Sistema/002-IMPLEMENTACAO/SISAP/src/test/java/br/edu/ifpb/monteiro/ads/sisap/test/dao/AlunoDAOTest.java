@@ -2,6 +2,7 @@ package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -82,11 +83,12 @@ public class AlunoDAOTest {
 		try {
 			aluno = alunoDAO.buscarPorMatricula(null);
 
-			assertEquals(null, aluno.getNome());
+			assertNull("Resultado deveria ser nulo.", aluno);
 
 		} catch (SisapException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Test
