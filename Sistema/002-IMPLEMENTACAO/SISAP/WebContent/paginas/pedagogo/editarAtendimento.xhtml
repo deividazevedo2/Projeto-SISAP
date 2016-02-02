@@ -54,21 +54,22 @@
 
 				<h:panelGrid columns="2">
 
-					<h:outputText value="Solicitante: " />
-					<h:outputText size="44"
-						value="#{atendimentoBean.atendimento.solicitante}" />
-
-					<h:outputText value="Atendido: " />
-					<h:outputText size="44"
-						value="#{atendimentoBean.atendimento.atendido}" />
-
-				</h:panelGrid>
-
-				<br />
-
-				<h:panelGrid columns="2">
-
 					<h:panelGrid columns="1">
+
+						<h:panelGrid columns="2">
+
+							<h:outputText value="Solicitante: " />
+							<h:outputText size="44"
+								value="#{atendimentoBean.atendimento.solicitante}" />
+
+							<h:outputText value="Atendido: " />
+							<h:outputText size="44"
+								value="#{atendimentoBean.atendimento.atendido}" />
+
+						</h:panelGrid>
+
+						<br />
+						<br />
 
 						<h:outputText value="Descrição: *" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
@@ -83,6 +84,20 @@
 					</h:panelGrid>
 
 					<h:panelGrid id="camposAtendimento1" columns="1">
+
+
+						<h:outputText value="Situação: *" />
+						<h:selectOneMenu id="situacao"
+							value="#{atendimentoBean.atendimento.situacao}">
+							<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
+							<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
+							<f:selectItem itemLabel="Iniciado" itemValue="Iniciado" />
+							<f:selectItem itemLabel="Concluído" itemValue="Concluido" />
+							<f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+						</h:selectOneMenu>
+
+						<br />
+						<br />
 
 						<h:outputText value="Observações: *" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
@@ -103,7 +118,7 @@
 						icon="ui-icon-search"
 						action="#{atendimentoBean.salvarAtendimento}" />
 					<h:button value="Voltar" icon="ui-icon-search"
-						outcome="/paginas/pedagogo/atendimentoPasso1.xhtml" />
+						outcome="/paginas/pedagogo/listarAtendimentos.xhtml" />
 				</f:facet>
 
 			</h:panelGrid>

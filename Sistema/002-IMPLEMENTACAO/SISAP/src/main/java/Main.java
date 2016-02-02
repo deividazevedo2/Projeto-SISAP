@@ -35,14 +35,14 @@ public class Main {
 			endereco.setUf("PE");
 
 			Pedagogo pedagogo = new Pedagogo();
-			pedagogo.setMatriculaSuap("pedagogo");
+			pedagogo.setMatriculaSuap("felipe");
 			pedagogo.setSexo("Masculino");
 			Contato contato = new Contato();
-			contato.setEmail("deividazevedo1@gmail.com");
+			contato.setEmail("deividazevedo@gmail.com");
 			contato.setCelular("1234567890");
 			pedagogo.setPrimeiroNome("Widancassio");
 			pedagogo.setSegundoNome("Galindo");
-			pedagogo.setCpf("000020000110");
+			pedagogo.setCpf("000020000111");
 			pedagogo.setEndereco(endereco);
 			pedagogo.setSenha("31b40d73c5430362a8be7c76e9f44492a256da37c98dd9f7c34b2ecebc88b68b");
 

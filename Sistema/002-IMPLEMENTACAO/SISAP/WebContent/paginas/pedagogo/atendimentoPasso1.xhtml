@@ -76,10 +76,10 @@
 					<h:selectOneMenu id="situacao"
 						value="#{atendimentoBean.atendimento.situacao}">
 						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
-						<f:selectItem itemLabel="Agendado" itemValue="agendado" />
-						<f:selectItem itemLabel="Iniciado" itemValue="iniciado" />
-						<f:selectItem itemLabel="Concluído" itemValue="concluido" />
-						<f:selectItem itemLabel="Cancelado" itemValue="cancelado" />
+						<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
+						<f:selectItem itemLabel="Iniciado" itemValue="Iniciado" />
+						<f:selectItem itemLabel="Concluído" itemValue="Concluido" />
+						<f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
 					</h:selectOneMenu>
 
 					<h:outputText value="Atendido: *" />
@@ -109,7 +109,7 @@
 					</h:commandButton>
 
 					<h:button value="Cancelar"
-						outcome="/paginas/pedagogo/indexPedagogo.xhtml"
+						outcome="/paginas/pedagogo/listarAtendimentos.xhtml"
 						icon="ui-icon-cancel" />
 				</f:facet>
 			</h:panelGrid>
