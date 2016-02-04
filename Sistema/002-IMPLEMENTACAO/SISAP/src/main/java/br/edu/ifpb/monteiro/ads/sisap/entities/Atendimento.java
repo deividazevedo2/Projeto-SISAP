@@ -42,7 +42,7 @@ public class Atendimento implements Serializable {
 	private String atendido;
 
 	@NotNull
-	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
+//	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
 	private String data;
 
 	@Column(name = "SOLICITANTE")

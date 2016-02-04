@@ -28,22 +28,22 @@ public class Reuniao implements Serializable {
 	private Integer id;
 
 	@NotNull
-	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
+//	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
 	private String dataDeAgendamento;
 
 	private String dataDeFinalizacao;
 
-	@NotNull(message = "Informe o objetivo da reunião!")
+	@NotNull(message = "Informe o objetivo da Reuniao!")
 	private String objetivo;
 
 	private String descricao;
 
 	private String pauta;
 
-	@NotNull(message = "Informe a Situação da Reunião!")
+	@NotNull(message = "Informe a Situacao da Reuniao!")
 	private String situacao;
 
-	@NotNull(message = "Informe o Solicitante da Reunião!")
+	@NotNull(message = "Informe o Solicitante da Reuniao!")
 	private String solicitante;
 
 	public Reuniao() {

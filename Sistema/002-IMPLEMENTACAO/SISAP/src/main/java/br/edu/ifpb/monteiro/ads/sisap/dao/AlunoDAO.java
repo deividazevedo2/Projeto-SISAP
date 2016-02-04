@@ -43,10 +43,10 @@ public class AlunoDAO extends DAO {
 	}
 
 	/**
-	 * Realiza a busca de uma determinada entidade PEdagogo atraves da matricula
+	 * Realiza a busca de uma determinada entidade Aluno atraves da matricula
 	 * do pedagogo passada como parametro.
 	 * 
-	 * @param matriculaPedagogo
+	 * @param matriculaAluno
 	 * @return
 	 * @throws SisapException
 	 */
@@ -72,7 +72,15 @@ public class AlunoDAO extends DAO {
 		return notas;
 
 	}
-
+	
+	/**
+	 * Realiza a busca de um determinado Aluno atraves da matricula
+	 *  passados como parâmentros 
+	 * 
+	 * @param matricula
+	 * @return Aluno
+	 * @throws SisapException
+	 */
 	public Aluno buscarPorMatricula(String matricula) throws SisapException {
 		EntityManager em = getEntityManager();
 		Aluno resultado = null;
@@ -95,7 +103,16 @@ public class AlunoDAO extends DAO {
 		return resultado;
 
 	}
-
+	
+	/**
+	 * Realiza a busca de uma determinada Lista de Alunos atraves da matricula
+	 *  e do nome passados como parâmentros 
+	 * 
+	 * @param matricula
+	 * @param nome
+	 * @return List<Aluno>
+	 * @throws SisapException
+	 */
 	public List<Aluno> getAll(String matricula, String nome)
 			throws SisapException {
 		EntityManager em = getEntityManager();

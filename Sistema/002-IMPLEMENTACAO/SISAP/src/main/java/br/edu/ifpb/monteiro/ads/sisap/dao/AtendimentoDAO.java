@@ -21,6 +21,13 @@ public class AtendimentoDAO extends DAO {
 
 	private static final Log LOGGER = LogFactory.getLog(AtendimentoDAO.class);
 
+	/**
+	 * Realiza a persistencia da entidade Atendimento passada como parametro no
+	 * banco de dados.
+	 * 
+	 * @param atendimento
+	 * @throws SisapException
+	 */
 	public void salvar(Atendimento atendimento) {
 		EntityManager em = getEntityManager();
 		try {
@@ -29,7 +36,15 @@ public class AtendimentoDAO extends DAO {
 			LOGGER.warn("Erro ao salvar o atendimento!", e);
 		}
 	}
-
+	
+	/**
+	 * Atualiza o registro no banco de dados de uma determinada entidade
+	 * Atendimento passada como parametro.
+	 * 
+	 * @param atendimento
+	 * @return Atendimento
+	 * @throws SisapException
+	 */
 	public Atendimento atualizar(Atendimento atendimento) throws SisapException {
 		EntityManager em = getEntityManager();
 		Atendimento resultado = atendimento;
@@ -41,6 +56,14 @@ public class AtendimentoDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Realiza a busca da entidade Atendimento atraves do ID passado como parametro
+	 * no metodo.
+	 * 
+	 * @param id
+	 * @return Atendimento
+	 * @throws SisapException
+	 */
 	public Atendimento buscarPorId(Integer id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Atendimento resultado = null;
@@ -52,6 +75,15 @@ public class AtendimentoDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Realiza a busca de uma determinada Lista de Atendimentos atraves da matricula
+	 *  e do nome passados como parâmentros 
+	 * 
+	 * @param matricula
+	 * @param nome
+	 * @return
+	 * @throws SisapException
+	 */
 	public List<Atendimento> getAll(String matricula, String nome)
 			throws SisapException {
 		EntityManager em = getEntityManager();

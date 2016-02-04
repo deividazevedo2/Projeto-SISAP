@@ -103,7 +103,7 @@ public class AtendimentoBean extends ClasseAbstrata {
 		atendimento.setAluno(aluno);
 		if (atendimento.getSolicitante() == null
 				|| "".equals(atendimento.getSolicitante())) {
-			atendimento.setSolicitante("Não há");
+			atendimento.setSolicitante(" ");
 		}
 		if (atendimento.getId() != null) {
 			atendimentoService.atualizar(atendimento);

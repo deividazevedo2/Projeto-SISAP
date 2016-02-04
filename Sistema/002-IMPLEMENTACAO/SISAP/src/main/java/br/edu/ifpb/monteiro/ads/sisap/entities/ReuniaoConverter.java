@@ -31,7 +31,7 @@ public class ReuniaoConverter implements Converter {
 		try {
 			return reunioes.buscarPorId(id);
 		} catch (SisapException e) {
-			String msgErroStr = String.format("Erro de conversão!", valor);
+			String msgErroStr = String.format("Erro de conversao!", valor);
 			FacesMessage msgErro = new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, msgErroStr, msgErroStr);
 			throw new ConverterException(msgErro);

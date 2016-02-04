@@ -51,6 +51,12 @@ public class AlunoService implements Serializable {
 		return this.alunoDAO.buscarNotaPorMatricula(matricula);
 	}
 
+	
+//	@TransacionalCdi
+//	public String buscarFrequenciaDoAluno(Long matricula) throws SisapException {
+//		return this.alunoDAO.buscarFrequenciaDoAluno(matricula);
+//	}
+	
 	/**
 	 * Metodo para realizar a busca das frequencias do Aluno pela matricula do
 	 * mesmo. A matricula deve ser passada como parametro para que a busca no
@@ -60,11 +66,6 @@ public class AlunoService implements Serializable {
 	 * @return
 	 * @throws SisapException
 	 */
-//	@TransacionalCdi
-//	public String buscarFrequenciaDoAluno(Long matricula) throws SisapException {
-//		return this.alunoDAO.buscarFrequenciaDoAluno(matricula);
-//	}
-
 	@TransacionalCdi
 	public Aluno buscarPorId(int id) throws SisapException {
 		return this.alunoDAO.buscarPorId(id);

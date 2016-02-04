@@ -21,6 +21,13 @@ public class ReuniaoDAO extends DAO {
 
 	private static final Log LOGGER = LogFactory.getLog(ReuniaoDAO.class);
 
+	/**
+	 * Realiza a persistencia da entidade Reuniao passada como parametro no
+	 * banco de dados.
+	 * 
+	 * @param reuniao
+	 * @throws SisapException
+	 */
 	public void salvar(Reuniao reuniao) {
 		EntityManager em = getEntityManager();
 		try {
@@ -30,6 +37,14 @@ public class ReuniaoDAO extends DAO {
 		}
 	}
 
+	/**
+	 * Atualiza o registro no banco de dados de uma determinada entidade
+	 * Reuniao passada como parametro.
+	 * 
+	 * @param reuniao
+	 * @return
+	 * @throws SisapException
+	 */
 	public Reuniao atualizar(Reuniao reuniao) throws SisapException {
 		EntityManager em = getEntityManager();
 		Reuniao resultado = reuniao;
@@ -41,6 +56,14 @@ public class ReuniaoDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Realiza a busca da entidade Reuniao atraves do ID passado como parametro
+	 * no metodo.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws SisapException
+	 */
 	public Reuniao buscarPorId(Integer id) throws SisapException {
 		EntityManager em = getEntityManager();
 		Reuniao resultado = null;
@@ -52,6 +75,13 @@ public class ReuniaoDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 * Realiza a busca de uma determinada Lista de Reuniões 
+	 * 
+	 * @param 
+	 * @return
+	 * @throws SisapException
+	 */
 	public List<Reuniao> getAll() throws SisapException {
 		EntityManager em = getEntityManager();
 		List<Reuniao> resultado = null;

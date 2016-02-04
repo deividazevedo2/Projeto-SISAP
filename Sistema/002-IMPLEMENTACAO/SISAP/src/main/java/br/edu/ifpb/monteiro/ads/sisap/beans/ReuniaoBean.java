@@ -64,6 +64,7 @@ public class ReuniaoBean extends ClasseAbstrata {
 	}
 
 	public String salvarReuniao() throws SisapException {
+
 		if (reuniao.getId() != null) {
 			reuniaoService.atualizar(reuniao);
 		} else {

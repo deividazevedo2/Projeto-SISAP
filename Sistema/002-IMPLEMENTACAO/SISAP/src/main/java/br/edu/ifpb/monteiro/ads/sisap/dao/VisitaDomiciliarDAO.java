@@ -22,6 +22,14 @@ public class VisitaDomiciliarDAO extends DAO {
 	private static final Log LOGGER = LogFactory
 			.getLog(VisitaDomiciliarDAO.class);
 
+	/**
+	 *  Realiza a persistencia da entidade VisitaDomiciliar passada como parametro no
+	 * banco de dados.
+	 * 
+	 * @param visitaDomiciliar
+	 * @return
+	 * @throws SisapException
+	 */
 	public void salvar(VisitaDomiciliar visitaDomiciliar) {
 		EntityManager em = getEntityManager();
 		try {
@@ -30,7 +38,16 @@ public class VisitaDomiciliarDAO extends DAO {
 			LOGGER.warn("Erro ao salvar a visita Domiciliar!", e);
 		}
 	}
-
+	
+	
+	/**
+	 *  Atualiza a entidade VisitaDomiciliar passada como parametro no
+	 * banco de dados.
+	 * 
+	 * @param visitaDomiciliar
+	 * @return
+	 * @throws SisapException
+	 */
 	public VisitaDomiciliar atualizar(VisitaDomiciliar visitaDomiciliar)
 			throws SisapException {
 		EntityManager em = getEntityManager();
@@ -43,6 +60,14 @@ public class VisitaDomiciliarDAO extends DAO {
 		return resultado;
 	}
 
+	/**
+	 *   Realiza a busca da entidade VisitaDomiciliar atraves do ID passado como parametro
+	 * no metodo.
+	 * 
+	 * @param visitaDomiciliar
+	 * @return
+	 * @throws SisapException
+	 */
 	public VisitaDomiciliar buscarPorId(Integer id) throws SisapException {
 		EntityManager em = getEntityManager();
 		VisitaDomiciliar resultado = null;
@@ -53,7 +78,14 @@ public class VisitaDomiciliarDAO extends DAO {
 		}
 		return resultado;
 	}
-
+	
+	/**
+	 *   Realiza a busca de uma Lista de VisitaDomiciliar.
+	 * 
+	 * @param 
+	 * @return
+	 * @throws SisapException
+	 */
 	public List<VisitaDomiciliar> getAll() throws SisapException {
 		EntityManager em = getEntityManager();
 		List<VisitaDomiciliar> resultado = null;
