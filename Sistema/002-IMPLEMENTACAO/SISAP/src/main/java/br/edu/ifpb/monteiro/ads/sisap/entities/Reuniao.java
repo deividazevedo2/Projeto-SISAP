@@ -27,7 +27,7 @@ public class Reuniao implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@NotNull
+	@NotNull(message = "Informe a data de agendamento!")
 //	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
 	private String dataDeAgendamento;
 

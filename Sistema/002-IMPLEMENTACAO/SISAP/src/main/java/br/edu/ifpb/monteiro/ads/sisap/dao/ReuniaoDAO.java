@@ -33,7 +33,7 @@ public class ReuniaoDAO extends DAO {
 		try {
 			em.persist(reuniao);
 		} catch (PersistenceException e) {
-			LOGGER.warn("Erro ao salvar a reunião!", e);
+			LOGGER.warn("Erro ao salvar a reuniao!", e);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class ReuniaoDAO extends DAO {
 		try {
 			resultado = em.merge(reuniao);
 		} catch (PersistenceException e) {
-			LOGGER.warn("Erro ao alterar o atendimento!", e);
+			LOGGER.warn("Erro ao alterar o reuniao!", e);
 		}
 		return resultado;
 	}
@@ -70,7 +70,7 @@ public class ReuniaoDAO extends DAO {
 		try {
 			resultado = em.find(Reuniao.class, id);
 		} catch (PersistenceException e) {
-			LOGGER.warn("Ocorreu um problema ao buscar o atendimento!", e);
+			LOGGER.warn("Ocorreu um problema ao buscar o reuniao!", e);
 		}
 		return resultado;
 	}
