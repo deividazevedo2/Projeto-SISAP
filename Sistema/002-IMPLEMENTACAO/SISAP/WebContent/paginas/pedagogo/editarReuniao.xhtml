@@ -10,16 +10,16 @@
 	xmlns:of="http://omnifaces.org/functions">
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
+
 	<f:metadata>
 		<o:viewParam name="reuniao" value="#{reuniaoBean.reuniao}"
 			converter="#{reuniaoConverter}" />
-		<f:event listener="#{reuniaoBean.preRenderView()}"
+		<f:event listener="#{atendimentoBean.preRenderView}"
 			type="preRenderView" />
-
 	</f:metadata>
 
 	<ui:define name="title">
-	SISAP - Nova Reunião
+	SISAP - Editar Reunião
 	</ui:define>
 
 	<ui:define name="center">
@@ -27,23 +27,32 @@
 		<p:growl id="messages" autoUpdate="true" showDetail="true"
 			showSummary="true" />
 		<h:form>
+			<h:panelGrid id="informacoesReuniao" columns="2">
 
+				<h:outputText value="Solicitante: *" />
+
+				<h:outputText value="#{reuniaoBean.reuniao.solicitante}" />
+
+			</h:panelGrid>
 			<h:panelGrid columns="2">
 
-				<h:panelGrid id="camposReuniao1" columns="1">
+				<h:panelGrid columns="1">
 
-					<h:outputText value="Data de Agendamento: *" />
-					<h:inputText size="44"
-						value="#{reuniaoBean.reuniao.dataDeAgendamento}" />
+					<h:panelGrid id="camposReuniao1" columns="2">
 
-					<h:outputText value="Objetivo: *" />
-					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true" value="#{reuniaoBean.reuniao.objetivo}" />
+						<h:outputText value="Data de Agendamento: *" />
+						<h:inputText size="44"
+							value="#{reuniaoBean.reuniao.dataDeAgendamento}" />
 
-					<h:outputText value="Pauta: " />
-					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true" value="#{reuniaoBean.reuniao.pauta}" />
+						<h:outputText value="Objetivo: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true" value="#{reuniaoBean.reuniao.objetivo}" />
 
+						<h:outputText value="Pauta: " />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true" value="#{reuniaoBean.reuniao.pauta}" />
+
+					</h:panelGrid>
 				</h:panelGrid>
 
 				<h:panelGrid id="camposReuniao2" columns="1">
@@ -56,9 +65,6 @@
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true" value="#{reuniaoBean.reuniao.descricao}" />
 
-					<h:outputText value="Solicitante: *" />
-					<h:inputText size="44" value="#{reuniaoBean.reuniao.solicitante}" />
-
 					<h:outputText value="Situação: *" />
 					<h:selectOneMenu id="situacao"
 						value="#{reuniaoBean.reuniao.situacao}">
@@ -70,24 +76,15 @@
 					</h:selectOneMenu>
 
 				</h:panelGrid>
-
-				<f:facet name="footer" style="width:100%">
-					<p:commandButton value="Salvar" icon="ui-icon-search"
+				<f:facet name="footer">
+					<h:commandButton value="Atualizar Reuniao" icon="ui-icon-search"
 						action="#{reuniaoBean.salvarReuniao}" />
-
-					<h:commandButton id="limparBotao" value="Limpar"
-						update="camposReuniao1, camposReuniao2" process="@this"
-						icon="ui-icon-close">
-						<p:resetInput target="camposReuniao1, camposReuniao2" />
-					</h:commandButton>
-
-					<h:button value="Cancelar"
-						outcome="/paginas/pedagogo/listarReunioes.xhtml"
-						icon="ui-icon-cancel" />
+					<h:button value="Voltar" icon="ui-icon-search"
+						outcome="/paginas/pedagogo/listarReunioes.xhtml" />
 				</f:facet>
 			</h:panelGrid>
+
 		</h:form>
 	</ui:define>
-
 </ui:composition>
 </html>

@@ -46,9 +46,10 @@
 				<p:column filterBy="#{reuniao.situacao}" headerText="Situação">
 					<h:outputText value="#{reuniao.situacao}" />
 				</p:column>
-
+				
 				<p:column headerText="Visualizar/Alterar">
-					<p:link value="Visualizar/Editar">
+					<p:link outcome="/paginas/pedagogo/editarReuniao.xhtml"
+						value="Visualizar/Editar">
 						<f:param name="reuniao" value="#{reuniao.id}" />
 					</p:link>
 				</p:column>
