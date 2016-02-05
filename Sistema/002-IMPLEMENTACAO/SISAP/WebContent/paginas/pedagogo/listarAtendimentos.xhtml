@@ -23,20 +23,20 @@
 			<p:separator style="height: 1px;" />
 
 			<h:button value="Novo Atendimento"
-				outcome="/paginas/pedagogo/novoAtendimento.xhtml" />
+				outcome="/paginas/pedagogo/atendimentoPasso1.xhtml" />
 
 			<p:dataTable var="atendimento"
 				value="#{atendimentoBean.atendimentos}"
 				emptyMessage="Nenhum registro encontrado." paginator="true" rows="6"
 				style="text-align: center">
 
-				<p:column filterBy="#{atendimento.aluno.matricula}"
+				<p:column filterBy="#{atendimento.matriculaAluno}"
 					headerText="Matrícula">
-					<h:outputText value="#{atendimento.aluno.matricula}" />
+					<h:outputText value="#{atendimento.matriculaAluno}" />
 				</p:column>
 
-				<p:column filterBy="#{atendimento.aluno.nome}" headerText="Nome">
-					<h:outputText value="#{atendimento.aluno.nome}" />
+				<p:column filterBy="#{atendimento.nomeAluno}" headerText="Nome">
+					<h:outputText value="#{atendimento.nomeAluno}" />
 				</p:column>
 
 				<p:column filterBy="#{atendimento.data}" headerText="Data">

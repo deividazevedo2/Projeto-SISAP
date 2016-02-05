@@ -1,7 +1,9 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
@@ -11,6 +13,8 @@ import javax.inject.Named;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
@@ -31,9 +35,13 @@ public class AtendimentoBean extends ClasseAbstrata {
 	private static final Log LOGGER = LogFactory.getLog(AtendimentoBean.class);
 
 	private List<Atendimento> atendimentos;
+
 	private Aluno aluno;
 
 	private Atendimento atendimento = new Atendimento();
+
+	String matriculaAluno;
+	String nomeAluno;
 
 	@Inject
 	private AlunoService alunoService;
@@ -43,9 +51,6 @@ public class AtendimentoBean extends ClasseAbstrata {
 
 	@Inject
 	private Conversation conversation;
-
-	private String matriculaAluno;
-	private String nomeAluno;
 
 	@PostConstruct
 	public void init() {
@@ -67,10 +72,6 @@ public class AtendimentoBean extends ClasseAbstrata {
 		}
 	}
 
-	public String getMatriculaAluno() {
-		return matriculaAluno;
-	}
-
 	public List<Atendimento> getAtendimentos() {
 		return atendimentos;
 	}
@@ -79,31 +80,21 @@ public class AtendimentoBean extends ClasseAbstrata {
 		this.atendimentos = atendimentos;
 	}
 
-	public void setMatriculaAluno(String matriculaAluno) {
-		this.matriculaAluno = matriculaAluno;
-	}
-
-	public String getNomeAluno() {
-		return nomeAluno;
-	}
-
-	public void setNomeAluno(String nomeAluno) {
-		this.nomeAluno = nomeAluno;
-	}
-
 	public Aluno buscarAlunoPorMatricula() throws SisapException {
 
-		this.aluno = alunoService.buscarPorMatricula(matriculaAluno);
+		this.aluno = alunoService.buscarPorMatricula(aluno.getMatricula());
 
 		return aluno;
 	}
 
 	public String salvarAtendimento() throws SisapException {
-		aluno = buscarAlunoPorMatricula();
-		atendimento.setAluno(aluno);
+		if (atendimento.getMatriculaAluno() == null) {
+			atendimento.setNomeAluno(nomeAluno);
+			atendimento.setMatriculaAluno(matriculaAluno);
+		}
 		if (atendimento.getSolicitante() == null
 				|| "".equals(atendimento.getSolicitante())) {
-			atendimento.setSolicitante(" ");
+			atendimento.setSolicitante("Nao ha");
 		}
 		if (atendimento.getId() != null) {
 			atendimentoService.atualizar(atendimento);
@@ -131,6 +122,22 @@ public class AtendimentoBean extends ClasseAbstrata {
 		this.atendimento = atendimento;
 	}
 
+	public String getMatriculaAluno() {
+		return matriculaAluno;
+	}
+
+	public void setMatriculaAluno(String matriculaAluno) {
+		this.matriculaAluno = matriculaAluno;
+	}
+
+	public String getNomeAluno() {
+		return nomeAluno;
+	}
+
+	public void setNomeAluno(String nomeAluno) {
+		this.nomeAluno = nomeAluno;
+	}
+
 	public void filtrar() {
 		try {
 			atendimentos = atendimentoService.getAll(matriculaAluno, nomeAluno);
@@ -141,8 +148,31 @@ public class AtendimentoBean extends ClasseAbstrata {
 	}
 
 	public void limpar() {
-		nomeAluno = null;
 		matriculaAluno = null;
+		nomeAluno = null;
+	}
+
+	public void abrirDialogoAluno() {
+		Map<String, Object> opcoes = new HashMap<>();
+		opcoes.put("modal", true);
+		opcoes.put("resizable", false);
+		opcoes.put("contentHeight", 470);
+
+		RequestContext.getCurrentInstance().openDialog("listaAlunos", opcoes,
+				null);
+
+	}
+
+	public void selecionarAluno(Aluno aluno) {
+		RequestContext.getCurrentInstance().closeDialog(aluno);
+	}
+
+	public void alunoSelecionado(SelectEvent event) {
+		aluno = (Aluno) event.getObject();
+		matriculaAluno = aluno.getMatricula();
+		nomeAluno = aluno.getNome();
+		// atendimento.setAluno(aluno);
+		// setAtendimento(atendimento);
 	}
 
 }

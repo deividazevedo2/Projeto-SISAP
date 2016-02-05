@@ -11,7 +11,7 @@
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
 	<f:metadata>
-		<o:viewParam name="aluno" value="#{atendimentoBean.aluno}"
+		<o:viewParam name="aluno" value="#{atendimentoBean.atendimento.aluno}"
 			converter="#{alunoConverter}" />
 	</f:metadata>
 	<f:metadata>
@@ -23,8 +23,8 @@
 	</f:metadata>
 
 	<ui:define name="title">
-	SISAP - Atendimento - Passo 1/2
-	</ui:define>
+    SISAP - Atendimento - Passo 1/2
+    </ui:define>
 
 	<ui:define name="center">
 
@@ -33,15 +33,19 @@
 		<h:form>
 			<h:panelGrid id="resultadoBusca" columns="2">
 
-				<h:outputText value="Aluno: " />
-				<h:outputText value="#{atendimentoBean.aluno.nome}" />
-
-				<h:outputText value="Matrícula: " />
-				<h:outputText value="#{atendimentoBean.aluno.matricula}" />
-
-				<br />
-
-				<h:button value="Ver Boletim" icon="ui-icon-search" />
+				<h:outputText value="Aluno: " for="aluno" />
+				<h:panelGroup>
+					<p:inputText id="aluno" value="#{atendimentoBean.matriculaAluno}"
+						required="true" />
+					<p:spacer width="10px" />
+					<p:commandButton icon="ui-icon-search" title="Pesquisar"
+						action="#{atendimentoBean.abrirDialogoAluno}" process="@this"
+						update="@none">
+						<p:ajax event="dialogReturn"
+							listener="#{atendimentoBean.alunoSelecionado}" process="@this"
+							update="aluno" />
+					</p:commandButton>
+				</h:panelGroup>
 
 			</h:panelGrid>
 
@@ -55,15 +59,15 @@
 					<h:outputText value="Data do Atendimento: *" />
 					<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
 
-					<h:outputText value="Solicitante: " />
+					<h:outputText value="Solicitante: *" />
 					<h:inputText size="44"
 						value="#{atendimentoBean.atendimento.solicitante}" />
 
-					<h:outputText value="Descrição: " />
+					<h:outputText value="Descrição: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true" value="#{atendimentoBean.atendimento.descricao}" />
 
-					<h:outputText value="Medidas Anteriores: " />
+					<h:outputText value="Medidas Anteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.medidasAnteriores}" />
@@ -86,12 +90,12 @@
 					<h:inputText size="44"
 						value="#{atendimentoBean.atendimento.atendido}" />
 
-					<h:outputText value="Observações: " />
+					<h:outputText value="Observações: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.observacoes}" />
 
-					<h:outputText value="Medidas Posteriores: " />
+					<h:outputText value="Medidas Posteriores: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.medidasPosteriores}" />

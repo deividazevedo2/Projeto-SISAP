@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/templateLista.xhtml">
+
+	<h:head>
+		<title>SISAP - Selecionar Aluno</title>
+	</h:head>
+
+	<ui:define name="center">
+		<h:form>
+			<h:inputText id="nomeAluno" size="50"
+				value="#{indexAlunoBean.nomeAluno}" />
+			<p:spacer width="10px" />
+			<p:commandButton value="Filtrar" id="filtrarBotao" update=":lista"
+				action="#{indexAlunoBean.filtrar}" icon="ui-icon-search" />
+		</h:form>
+		<br />
+		<p:dataTable id="lista" var="aluno" value="#{indexAlunoBean.alunos}"
+			emptyMessage="Nenhum registro encontrado." paginator="true" rows="10"
+			style="text-align: center">
+
+			<p:column headerText="Matrícula">
+				<h:outputText value="#{aluno.matricula}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{aluno.nome}" />
+			</p:column>
+
+			<p:column headerText="Selecionar">
+				<p:commandButton title="Selecionar" icon="ui-icon-check"
+					action="#{atendimentoBean.selecionarAluno(aluno)}" process="@this" />
+			</p:column>
+
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

@@ -42,18 +42,26 @@ public class Atendimento implements Serializable {
 	private String atendido;
 
 	@NotNull
-//	@Pattern(regexp = "^((19|20)\\d\\d)/(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])$", message = "Informe a data no formato DD/MM/YYYY")
+	// @Pattern(regexp =
+	// "(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((18|19|20|21)\\d\\d)",
+	// message = "Informe a data no formato DD/MM/YYYY")
 	private String data;
 
 	@Column(name = "SOLICITANTE")
 	private String solicitante;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "ALUNO_FK", nullable = false)
+	// @OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	// @JoinColumn(name = "ALUNO_FK", nullable = false)
 	private Aluno aluno;
 
 	@Column(name = "DESCRICAO")
 	private String descricao;
+
+	@Column(name = "MATRICULA_ALUNO")
+	private String matriculaAluno;
+
+	@Column(name = "NOME_ALUNO")
+	private String nomeAluno;
 
 	@Column(name = "MEDIDAS_ANTERIORES")
 	private String medidasAnteriores;
@@ -100,6 +108,22 @@ public class Atendimento implements Serializable {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+	}
+
+	public String getNomeAluno() {
+		return nomeAluno;
+	}
+
+	public void setNomeAluno(String nomeAluno) {
+		this.nomeAluno = nomeAluno;
+	}
+
+	public String getMatriculaAluno() {
+		return matriculaAluno;
+	}
+
+	public void setMatriculaAluno(String matriculaAluno) {
+		this.matriculaAluno = matriculaAluno;
 	}
 
 	public String getDescricao() {
