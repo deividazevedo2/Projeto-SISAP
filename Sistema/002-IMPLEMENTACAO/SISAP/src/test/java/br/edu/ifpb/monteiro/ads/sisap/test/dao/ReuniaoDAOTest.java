@@ -73,28 +73,4 @@ public class ReuniaoDAOTest {
 
 	}
 
-//	@Test
-//	public void buscarAlunoPorId() {
-//		try {
-//			aluno = alunoDAO.buscarPorId(100);
-//
-//			assertNull(aluno);
-//
-//		} catch (SisapException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Test
-//	public void alunoNaoEncontradoNaListagem() {
-//		try {
-//			List<Aluno> alunos = alunoDAO.getAll("invalida", "invalido");
-//
-//			assertEquals(0, alunos.size());
-//
-//		} catch (SisapException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 }
