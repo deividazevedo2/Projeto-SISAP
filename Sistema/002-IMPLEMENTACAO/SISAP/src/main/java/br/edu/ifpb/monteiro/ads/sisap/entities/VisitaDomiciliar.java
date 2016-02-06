@@ -26,10 +26,6 @@ public class VisitaDomiciliar implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	// @ManyToOne(fetch = FetchType.EAGER)
-	// @JoinColumn(name = "ALUNO_FK")
-	private Aluno aluno;
-
 	@Column(name = "DATA_AGENDAMENTO")
 	private String dataDeAgendamento;
 
@@ -112,14 +108,6 @@ public class VisitaDomiciliar implements Serializable {
 
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
 	}
 
 	public String getMatriculaAluno() {
