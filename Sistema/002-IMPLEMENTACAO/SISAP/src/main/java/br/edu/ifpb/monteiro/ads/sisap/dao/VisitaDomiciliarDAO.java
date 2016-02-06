@@ -90,7 +90,7 @@ public class VisitaDomiciliarDAO extends DAO {
 		EntityManager em = getEntityManager();
 		List<VisitaDomiciliar> resultado = null;
 
-		String jpql = "select visita_domiciliar from VisitaDomiciliar visita_domiciliar where 1=1";
+		String jpql = "select visitadomiciliar from VisitaDomiciliar visitadomiciliar where 1=1";
 
 		TypedQuery<VisitaDomiciliar> query = em.createQuery(jpql,
 				VisitaDomiciliar.class);
