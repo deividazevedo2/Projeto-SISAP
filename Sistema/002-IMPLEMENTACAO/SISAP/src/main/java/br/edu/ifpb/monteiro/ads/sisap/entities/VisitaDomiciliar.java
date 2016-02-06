@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "Visita_domiciliar")
+@Entity(name = "VisitaDomiciliar")
 @Table(name = "TB_VISITA_DOMICILIAR")
-@DiscriminatorValue("VISITA_DOMICILIAR")
+@DiscriminatorValue("VISITADOMICILIAR")
 public class VisitaDomiciliar implements Serializable {
 
 	/**
