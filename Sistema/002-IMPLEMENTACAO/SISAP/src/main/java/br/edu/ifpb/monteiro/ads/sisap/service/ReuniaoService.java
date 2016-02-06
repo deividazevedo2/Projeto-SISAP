@@ -27,11 +27,9 @@ public class ReuniaoService implements Serializable {
 	}
 
 	/**
-	 * Metodo para salvar um novo atendimento, chamando a classe atendimentoDAO
-	 * onde o registro desta ficha de atendimento devera ser salva no banco de
-	 * dados da aplicação..
+	 * Metodo para salvar um novo Reuniao, chamando a classe ReuniaoDAO.
 	 * 
-	 * @param atendimento
+	 * @param Reuniao
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
@@ -41,8 +39,8 @@ public class ReuniaoService implements Serializable {
 	}
 
 	/**
-	 * Este metodo atualiza um determinado atendimento que esta sendo passado
-	 * como parametro. Sera chamado o atendimentoDAO que fara a busca no banco e
+	 * Este metodo atualiza um determinado Reuniao que esta sendo passado
+	 * como parametro. Sera chamado o ReuniaoDAO que fara a busca no banco e
 	 * ira alterar os dados que foram modificados na ficha do atendimento.
 	 * 
 	 * @param reuniao
@@ -55,9 +53,9 @@ public class ReuniaoService implements Serializable {
 	}
 
 	/**
-	 * Metodo para realizar a busca do atendimento pelo identificador (ID) do
+	 * Metodo para realizar a busca do Reuniao pelo identificador (ID) do
 	 * mesmo. O id deve ser passado como parametro para que a busca no banco
-	 * possa ser realizada, retornando o atendimento referente ao ID procurado.
+	 * possa ser realizada, retornando o Reuniao referente ao ID procurado.
 	 * 
 	 * @param id
 	 * @return

@@ -48,7 +48,6 @@ public class ReuniaoDAOTest {
 	public void buscarReuniaoComIdInvalido() {
 
 		try {
-
 			reuniao = reuniaoDAO.buscarPorId(1223);
 
 			assertNull("Ocorreu um problema ao buscar o reuniao!", reuniao);
