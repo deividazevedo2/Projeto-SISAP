@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity(name = "Visita_domiciliar")
 @Table(name = "TB_VISITA_DOMICILIAR")
@@ -32,16 +33,23 @@ public class VisitaDomiciliar implements Serializable {
 	@JoinColumn(name = "ALUNO_FK")
 	private Aluno aluno;
 
+	@Column(name = "DATA_AGENDAMENTO")
 	private String dataDeAgendamento;
 
+	@Column(name = "DATA_FINALIZACAO")
 	private String dataDeFinalizacao;
 
+	@NotNull
+	@Column(name = "DESCRICAO")
 	private String descricao;
 
+	@Column(name = "SITUACAO")
 	private String situacao;
 
+	@Column(name = "MOTIVO")
 	private String motivo;
 
+	@Column(name = "ANALISE")
 	private String analise;
 
 	public VisitaDomiciliar() {

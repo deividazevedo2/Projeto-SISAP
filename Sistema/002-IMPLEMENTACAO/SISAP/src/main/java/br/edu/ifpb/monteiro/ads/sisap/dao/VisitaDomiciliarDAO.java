@@ -55,7 +55,7 @@ public class VisitaDomiciliarDAO extends DAO {
 		try {
 			resultado = em.merge(visitaDomiciliar);
 		} catch (PersistenceException e) {
-			LOGGER.warn("Erro ao alterar o atendimento!", e);
+			LOGGER.warn("Erro ao alterar o Visita Domiciliar!", e);
 		}
 		return resultado;
 	}
@@ -74,7 +74,7 @@ public class VisitaDomiciliarDAO extends DAO {
 		try {
 			resultado = em.find(VisitaDomiciliar.class, id);
 		} catch (PersistenceException e) {
-			LOGGER.warn("Ocorreu um problema ao buscar o atendimento!", e);
+			LOGGER.warn("Ocorreu um problema ao buscar o Visita Domiciliar!", e);
 		}
 		return resultado;
 	}
@@ -99,7 +99,7 @@ public class VisitaDomiciliarDAO extends DAO {
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
 			throw new SisapException(
-					"Ocorreu algum problema ao tentar recuperar as reuniões.",
+					"Ocorreu algum problema ao tentar recuperar as Visitas Domiciliares.",
 					pe);
 		}
 		return resultado;
