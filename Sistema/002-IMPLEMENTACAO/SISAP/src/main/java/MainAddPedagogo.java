@@ -35,7 +35,7 @@ public class MainAddPedagogo {
 			endereco.setUf("PE");
 
 			Pedagogo pedagogo = new Pedagogo();
-			pedagogo.setMatriculaSuap("555555");
+			pedagogo.setMatriculaSuap("felipe");
 			pedagogo.setSexo("Masculino");
 			Contato contato = new Contato();
 			contato.setEmail("deividazevedo@gmail.com");
