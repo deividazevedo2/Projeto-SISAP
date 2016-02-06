@@ -99,7 +99,7 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		} else {
 			visitaDomiciliarService.salvar(visitaDomiciliar);
 		}
-		reportarMensagemDeSucesso("Atendimento realizado com sucesso!");
+		reportarMensagemDeSucesso("Visita Domiciliar registrada com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_VISITAS;
 
 	}
@@ -170,8 +170,6 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		aluno = (Aluno) event.getObject();
 		matriculaAluno = aluno.getMatricula();
 		nomeAluno = aluno.getNome();
-		// atendimento.setAluno(aluno);
-		// setAtendimento(atendimento);
 	}
 
 }
