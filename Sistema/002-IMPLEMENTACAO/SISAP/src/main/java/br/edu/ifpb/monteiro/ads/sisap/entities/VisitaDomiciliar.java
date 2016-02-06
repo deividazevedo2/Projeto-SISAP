@@ -5,12 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,8 +26,8 @@ public class VisitaDomiciliar implements Serializable {
 	@Column(name = "ID")
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ALUNO_FK")
+	// @ManyToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "ALUNO_FK")
 	private Aluno aluno;
 
 	@Column(name = "DATA_AGENDAMENTO")
@@ -51,6 +48,12 @@ public class VisitaDomiciliar implements Serializable {
 
 	@Column(name = "ANALISE")
 	private String analise;
+
+	@Column(name = "MATRICULA_ALUNO")
+	private String matriculaAluno;
+
+	@Column(name = "NOME_ALUNO")
+	private String nomeAluno;
 
 	public VisitaDomiciliar() {
 	}
@@ -117,6 +120,22 @@ public class VisitaDomiciliar implements Serializable {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+	}
+
+	public String getMatriculaAluno() {
+		return matriculaAluno;
+	}
+
+	public void setMatriculaAluno(String matriculaAluno) {
+		this.matriculaAluno = matriculaAluno;
+	}
+
+	public String getNomeAluno() {
+		return nomeAluno;
+	}
+
+	public void setNomeAluno(String nomeAluno) {
+		this.nomeAluno = nomeAluno;
 	}
 
 }

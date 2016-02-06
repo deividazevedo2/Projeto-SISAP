@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/templates/templatePedagogo.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="visitaDomiciliar"
+			value="#{visitaDomiciliarBean.visitaDomiciliar}"
+			converter="#{visitaDomiciliarConverter}" />
+		<f:event listener="#{visitaDomiciliarBean.preRenderView()}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="title">
+	SISAP - Editar Visita Domiciliar
+	</ui:define>
+
+	<ui:define name="center">
+
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
+		<h:form>
+			<h:panelGrid columns="1">
+				<h:panelGrid id="informacoesAluno" columns="2">
+
+					<h:outputText value="Aluno: " />
+
+					<h:outputText
+						value="#{visitaDomiciliarBean.visitaDomiciliar.nomeAluno}" />
+
+					<h:outputText value="Matrícula: " />
+
+					<h:outputText
+						value="#{visitaDomiciliarBean.visitaDomiciliar.matriculaAluno}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid id="informacoesAluno2" columns="2">
+
+					<p:outputLabel value="Visita Domiciliar Número: "
+						rendered="#{!empty visitaDomiciliarBean.visitaDomiciliar.id}" />
+					<p:outputLabel value="#{visitaDomiciliarBean.visitaDomiciliar.id}"
+						rendered="#{!empty visitaDomiciliarBean.visitaDomiciliar.id}" />
+
+				</h:panelGrid>
+
+				<br />
+
+				<h:panelGrid columns="2">
+
+					<h:panelGrid columns="1">
+
+						<h:outputText value="Descrição: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.descricao}" />
+
+						<h:outputText value="Motivo: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.motivo}" />
+
+					</h:panelGrid>
+
+					<h:panelGrid id="camposAtendimento1" columns="1">
+
+						<h:outputText value="Análise: *" />
+						<h:inputTextarea rows="3" cols="45" maxlength="10"
+							autoResize="true"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.analise}" />
+
+						<br />
+						<br />
+
+						<h:outputText value="Situação: *" />
+						<h:selectOneMenu id="situacao"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.situacao}">
+							<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
+							<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
+							<f:selectItem itemLabel="Iniciado" itemValue="Iniciado" />
+							<f:selectItem itemLabel="Concluído" itemValue="Concluido" />
+							<f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+						</h:selectOneMenu>
+
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+				<f:facet name="footer">
+					<h:commandButton value="Atualizar Visita Domiciliar"
+						icon="ui-icon-search"
+						action="#{visitaDomiciliarBean.salvarVisitaDomiciliar}" />
+					<h:button value="Voltar" icon="ui-icon-search"
+						outcome="/paginas/pedagogo/listarVisitasDomiciliares.xhtml" />
+				</f:facet>
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
