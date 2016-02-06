@@ -54,7 +54,6 @@ public class AtendimentoDAOTest {
 		aluno.setResponsavel(responsavel);
 		em.persist(aluno);
 
-		atendimento.setAluno(aluno);
 		atendimento.setAtendido("Pessoa Atendida");
 		atendimento.setData("12/12/2012");
 		atendimento.setDescricao("Descricao do atendimento");
