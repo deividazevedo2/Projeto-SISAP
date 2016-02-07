@@ -29,7 +29,7 @@
 		<h:form>
 			<h:panelGrid id="informacoesReuniao" columns="2">
 
-				<h:outputText value="Solicitante: *" />
+				<h:outputText value="Solicitante:" />
 
 				<h:outputText value="#{reuniaoBean.reuniao.solicitante}" />
 
@@ -41,11 +41,11 @@
 					<h:panelGrid id="camposReuniao1" columns="2">
 
 						<h:outputText value="Data de Agendamento: *" />
-						<h:inputText size="44"
+						<h:inputText size="44" required="true"
 							value="#{reuniaoBean.reuniao.dataDeAgendamento}" />
 
 						<h:outputText value="Objetivo: *" />
-						<h:inputTextarea rows="3" cols="45" maxlength="10"
+						<h:inputTextarea rows="3" cols="45" maxlength="10" required="true"
 							autoResize="true" value="#{reuniaoBean.reuniao.objetivo}" />
 
 						<h:outputText value="Pauta: " />
@@ -57,16 +57,16 @@
 
 				<h:panelGrid id="camposReuniao2" columns="1">
 
-					<h:outputText value="Data de Finalização: " />
+					<h:outputText value="Data de Finalização:" />
 					<h:inputText size="44"
 						value="#{reuniaoBean.reuniao.dataDeFinalizacao}" />
 
-					<h:outputText value="Descrição: " />
+					<h:outputText value="Descrição:" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true" value="#{reuniaoBean.reuniao.descricao}" />
 
 					<h:outputText value="Situação: *" />
-					<h:selectOneMenu id="situacao"
+					<h:selectOneMenu id="situacao" required="true"
 						value="#{reuniaoBean.reuniao.situacao}">
 						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
 						<f:selectItem itemLabel="Agendada" itemValue="Agendada" />

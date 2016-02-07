@@ -39,13 +39,14 @@
 					<h:outputText value="#{visitaDomiciliar.nomeAluno}" />
 				</p:column>
 
-				<p:column filterBy="#{visitaDomiciliar.data}" headerText="Data">
-					<h:outputText value="#{visitaDomiciliar.data}" />
+				<p:column filterBy="#{visitaDomiciliar.dataDeAgendamento}"
+					headerText="Data de Agendamento">
+					<h:outputText value="#{visitaDomiciliar.dataDeAgendamento}" />
 				</p:column>
 
-				<p:column filterBy="#{visitaDomiciliar.solicitante}"
-					headerText="Solicitante">
-					<h:outputText value="#{visitaDomiciliar.solicitante}" />
+				<p:column filterBy="#{visitaDomiciliar.dataDeFinalizacao}"
+					headerText="Data de Finalização">
+					<h:outputText value="#{visitaDomiciliar.dataDeFinalizacao}" />
 				</p:column>
 
 				<p:column filterBy="#{visitaDomiciliar.situacao}"

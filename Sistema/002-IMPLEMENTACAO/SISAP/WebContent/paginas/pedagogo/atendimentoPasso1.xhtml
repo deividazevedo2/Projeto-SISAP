@@ -59,15 +59,15 @@
 					<h:outputText value="Data do Atendimento: *" />
 					<h:inputText size="44" value="#{atendimentoBean.atendimento.data}" />
 
-					<h:outputText value="Solicitante: *" />
+					<h:outputText value="Solicitante:" />
 					<h:inputText size="44"
 						value="#{atendimentoBean.atendimento.solicitante}" />
 
-					<h:outputText value="Descrição: *" />
+					<h:outputText value="Descrição:" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true" value="#{atendimentoBean.atendimento.descricao}" />
 
-					<h:outputText value="Medidas Anteriores: *" />
+					<h:outputText value="Medidas Anteriores:" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.medidasAnteriores}" />
@@ -77,7 +77,7 @@
 				<h:panelGrid id="camposAtendimento2" columns="1">
 
 					<h:outputText value="Situação: *" />
-					<h:selectOneMenu id="situacao"
+					<h:selectOneMenu id="situacao" required="true"
 						value="#{atendimentoBean.atendimento.situacao}">
 						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
 						<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
@@ -87,15 +87,15 @@
 					</h:selectOneMenu>
 
 					<h:outputText value="Atendido: *" />
-					<h:inputText size="44"
+					<h:inputText size="44" required="true"
 						value="#{atendimentoBean.atendimento.atendido}" />
 
-					<h:outputText value="Observações: *" />
+					<h:outputText value="Observações:" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.observacoes}" />
 
-					<h:outputText value="Medidas Posteriores: *" />
+					<h:outputText value="Medidas Posteriores: " />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
 						autoResize="true"
 						value="#{atendimentoBean.atendimento.medidasPosteriores}" />

@@ -60,19 +60,19 @@
 
 						<h:outputText value="Descrição: *" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
-							autoResize="true"
+							autoResize="true" required="true"
 							value="#{visitaDomiciliarBean.visitaDomiciliar.descricao}" />
 
 						<h:outputText value="Motivo: *" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
-							autoResize="true"
+							autoResize="true" required="true"
 							value="#{visitaDomiciliarBean.visitaDomiciliar.motivo}" />
 
 					</h:panelGrid>
 
 					<h:panelGrid id="camposAtendimento1" columns="1">
 
-						<h:outputText value="Análise: *" />
+						<h:outputText value="Análise:" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
 							autoResize="true"
 							value="#{visitaDomiciliarBean.visitaDomiciliar.analise}" />
@@ -81,7 +81,7 @@
 						<br />
 
 						<h:outputText value="Situação: *" />
-						<h:selectOneMenu id="situacao"
+						<h:selectOneMenu id="situacao" required="true"
 							value="#{visitaDomiciliarBean.visitaDomiciliar.situacao}">
 							<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
 							<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
