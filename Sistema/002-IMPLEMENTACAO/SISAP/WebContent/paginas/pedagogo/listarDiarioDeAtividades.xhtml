@@ -39,6 +39,11 @@
 					<h:outputText value="#{atividade.situacao}" />
 				</p:column>
 
+				<p:column filterBy="#{atividade.tipoAtividade}"
+					headerText="Tipo de Atividade">
+					<h:outputText value="#{atividade.tipoAtividade}" />
+				</p:column>
+
 			</p:dataTable>
 		</h:form>
 
