@@ -75,17 +75,17 @@
 
 				<h:panelGrid id="camposAtendimento2" columns="1">
 
-					<h:outputText value="Data de Finalização: *" />
+					<h:outputText value="Data de Finalização:" />
 					<h:inputText size="44"
 						value="#{visitaDomiciliarBean.visitaDomiciliar.dataDeFinalizacao}" />
 
 					<h:outputText value="Motivo: *" />
 					<h:inputTextarea rows="3" cols="45" maxlength="10"
-						autoResize="true"
+						autoResize="true" required="true"
 						value="#{visitaDomiciliarBean.visitaDomiciliar.motivo}" />
 
 					<h:outputText value="Situação: *" />
-					<h:selectOneMenu id="situacao"
+					<h:selectOneMenu id="situacao" required="true"
 						value="#{visitaDomiciliarBean.visitaDomiciliar.situacao}">
 						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
 						<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
