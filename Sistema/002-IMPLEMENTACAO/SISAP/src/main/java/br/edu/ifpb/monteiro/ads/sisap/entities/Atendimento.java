@@ -5,9 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -21,32 +18,18 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "Atendimento")
 @Table(name = "TB_ATENDIMENTO")
 @DiscriminatorValue("ATENDIMENTO")
-public class Atendimento implements Serializable {
+public class Atendimento extends Atividade implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8244968228387250826L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
-
 	@NotNull(message = "Informe o nome do Atendido")
 	private String atendido;
 
-	@NotNull
-	// @Pattern(regexp =
-	// "(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((18|19|20|21)\\d\\d)",
-	// message = "Informe a data no formato DD/MM/YYYY")
-	private String data;
-
 	@Column(name = "SOLICITANTE")
 	private String solicitante;
-
-	@Column(name = "DESCRICAO")
-	private String descricao;
 
 	@Column(name = "MATRICULA_ALUNO")
 	private String matriculaAluno;
@@ -63,18 +46,7 @@ public class Atendimento implements Serializable {
 	@Column(name = "OBSERVACOES")
 	private String observacoes;
 
-	@NotNull(message = "Informe a Situacao deste Atendimento")
-	private String situacao;
-
 	public Atendimento() {
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
 	}
 
 	public String getAtendido() {
@@ -109,14 +81,6 @@ public class Atendimento implements Serializable {
 		this.matriculaAluno = matriculaAluno;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
 	public String getMedidasAnteriores() {
 		return medidasAnteriores;
 	}
@@ -139,22 +103,6 @@ public class Atendimento implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
 	}
 
 }

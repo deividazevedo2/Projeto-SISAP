@@ -27,7 +27,7 @@ public class AtendimentoConverter implements Converter {
 		}
 
 		Integer id = Integer.parseInt(matricula);
-		
+
 		try {
 			return atendimentos.buscarPorId(id);
 		} catch (SisapException e) {
@@ -46,7 +46,7 @@ public class AtendimentoConverter implements Converter {
 		if (valor == null) {
 			return null;
 		}
-		Integer matriculaAluno = ((Atendimento) valor).getId();
+		Long matriculaAluno = ((Atendimento) valor).getId();
 
 		return (matriculaAluno != null) ? matriculaAluno.toString() : null;
 	}

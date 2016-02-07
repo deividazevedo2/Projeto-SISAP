@@ -22,6 +22,7 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
 import br.edu.ifpb.monteiro.ads.sisap.service.AtendimentoService;
+import br.edu.ifpb.monteiro.ads.sisap.service.AtividadeService;
 
 @Named
 @ConversationScoped
@@ -45,6 +46,9 @@ public class AtendimentoBean extends ClasseAbstrata {
 
 	@Inject
 	private AlunoService alunoService;
+
+	@Inject
+	private AtividadeService atividadeService;
 
 	@Inject
 	private AtendimentoService atendimentoService;
@@ -97,9 +101,9 @@ public class AtendimentoBean extends ClasseAbstrata {
 			atendimento.setSolicitante("Nao ha");
 		}
 		if (atendimento.getId() != null) {
-			atendimentoService.atualizar(atendimento);
+			atividadeService.atualizar(atendimento);
 		} else {
-			atendimentoService.salvar(atendimento);
+			atividadeService.salvar(atendimento);
 		}
 		reportarMensagemDeSucesso("Atendimento realizado com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_ATENDIMENTOS;

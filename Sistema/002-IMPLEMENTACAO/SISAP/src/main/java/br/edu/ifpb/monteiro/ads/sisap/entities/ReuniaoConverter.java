@@ -44,7 +44,7 @@ public class ReuniaoConverter implements Converter {
 		if (valor == null) {
 			return null;
 		}
-		Integer id = ((Reuniao) valor).getId();
+		Long id = ((Reuniao) valor).getId();
 
 		return (id != null) ? id.toString() : null;
 	}

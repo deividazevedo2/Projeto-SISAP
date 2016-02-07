@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
+import br.edu.ifpb.monteiro.ads.sisap.service.AtividadeService;
 import br.edu.ifpb.monteiro.ads.sisap.service.ReuniaoService;
 
 @Named
@@ -34,6 +35,9 @@ public class ReuniaoBean extends ClasseAbstrata {
 
 	@Inject
 	private ReuniaoService reuniaoService;
+
+	@Inject
+	private AtividadeService atividadeService;
 
 	@Inject
 	private Conversation conversation;
@@ -66,9 +70,9 @@ public class ReuniaoBean extends ClasseAbstrata {
 	public String salvarReuniao() throws SisapException {
 
 		if (reuniao.getId() != null) {
-			reuniaoService.atualizar(reuniao);
+			atividadeService.atualizar(reuniao);
 		} else {
-			reuniaoService.salvar(reuniao);
+			atividadeService.salvar(reuniao);
 		}
 		reportarMensagemDeSucesso("Reunião realizado com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_REUNIOES;

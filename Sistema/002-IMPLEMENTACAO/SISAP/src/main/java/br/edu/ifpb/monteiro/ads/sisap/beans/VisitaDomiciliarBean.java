@@ -21,6 +21,7 @@ import br.edu.ifpb.monteiro.ads.sisap.entities.VisitaDomiciliar;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
+import br.edu.ifpb.monteiro.ads.sisap.service.AtividadeService;
 import br.edu.ifpb.monteiro.ads.sisap.service.VisitaDomiciliarService;
 
 @Named
@@ -49,6 +50,9 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 
 	@Inject
 	private VisitaDomiciliarService visitaDomiciliarService;
+
+	@Inject
+	private AtividadeService atividadeService;
 
 	@Inject
 	private Conversation conversation;
@@ -95,9 +99,9 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 			visitaDomiciliar.setMatriculaAluno(matriculaAluno);
 		}
 		if (visitaDomiciliar.getId() != null) {
-			visitaDomiciliarService.atualizar(visitaDomiciliar);
+			atividadeService.atualizar(visitaDomiciliar);
 		} else {
-			visitaDomiciliarService.salvar(visitaDomiciliar);
+			atividadeService.salvar(visitaDomiciliar);
 		}
 		reportarMensagemDeSucesso("Visita Domiciliar registrada com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_VISITAS;

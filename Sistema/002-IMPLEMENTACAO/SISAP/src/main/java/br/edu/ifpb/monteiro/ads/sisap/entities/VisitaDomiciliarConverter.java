@@ -44,7 +44,7 @@ public class VisitaDomiciliarConverter implements Converter {
 		if (valor == null) {
 			return null;
 		}
-		Integer id = ((VisitaDomiciliar) valor).getId();
+		Long id = ((VisitaDomiciliar) valor).getId();
 
 		return (id != null) ? id.toString() : null;
 	}

@@ -31,6 +31,6 @@ public class EnderecoPaginas {
 	public static final String PAGINA_PRINCIPAL_REUNIOES = "/paginas/pedagogo/listarReunioes"
 			+ REDIRECT_TRUE;
 
-	public static final String PAGINA_PRINCIPAL_VISITAS = "/paginas/pedagogo/listarVisitarDomiciliares"
+	public static final String PAGINA_PRINCIPAL_VISITAS = "/paginas/pedagogo/listarVisitasDomiciliares"
 			+ REDIRECT_TRUE;
 }

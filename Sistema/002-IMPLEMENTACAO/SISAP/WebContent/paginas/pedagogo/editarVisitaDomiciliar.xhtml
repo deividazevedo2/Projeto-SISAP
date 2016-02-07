@@ -63,19 +63,19 @@
 							autoResize="true" required="true"
 							value="#{visitaDomiciliarBean.visitaDomiciliar.descricao}" />
 
-						<h:outputText value="Motivo: *" />
+						<h:outputText value="Análise:" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
-							autoResize="true" required="true"
-							value="#{visitaDomiciliarBean.visitaDomiciliar.motivo}" />
+							autoResize="true"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.analise}" />
 
 					</h:panelGrid>
 
 					<h:panelGrid id="camposAtendimento1" columns="1">
 
-						<h:outputText value="Análise:" />
+						<h:outputText value="Motivo: *" />
 						<h:inputTextarea rows="3" cols="45" maxlength="10"
-							autoResize="true"
-							value="#{visitaDomiciliarBean.visitaDomiciliar.analise}" />
+							autoResize="true" required="true"
+							value="#{visitaDomiciliarBean.visitaDomiciliar.motivo}" />
 
 						<br />
 						<br />
