@@ -7,11 +7,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atividade;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class DiarioDeAtividadesDAO extends DAO {
@@ -38,22 +45,6 @@ public class DiarioDeAtividadesDAO extends DAO {
 	 * @throws SisapException
 	 */
 	public List<Atividade> getAll() throws SisapException {
-		// List<Atendimento> atendimentos = buscaAtendimentos();
-		// for (Atendimento atendimento : atendimentos) {
-		// atividades.add(atendimento);
-		// }
-		//
-		// List<Reuniao> reunioes = buscaReunioes();
-		// for (Reuniao reuniao : reunioes) {
-		// atividades.add(reuniao);
-		// }
-		//
-		// List<VisitaDomiciliar> visitas = buscaVisitas();
-		// for (VisitaDomiciliar visita : visitas) {
-		// atividades.add(visita);
-		// }
-		//
-		// return atividades;
 		EntityManager em = getEntityManager();
 		List<Atividade> resultado = null;
 
@@ -72,80 +63,24 @@ public class DiarioDeAtividadesDAO extends DAO {
 
 	}
 
-	/**
-	 * Realiza a busca das atividades do tipo Atendimento.
-	 * 
-	 * @return
-	 * @throws SisapException
-	 */
-	// public List<Atendimento> buscaAtendimentos() throws SisapException {
-	// EntityManager em = getEntityManager();
-	// List<Atendimento> atendimentos = null;
-	//
-	// String jpql =
-	// "select atendimento from Atendimento atendimento where 1=1";
-	//
-	// TypedQuery<Atendimento> query = em.createQuery(jpql, Atendimento.class);
-	//
-	// try {
-	// atendimentos = query.getResultList();
-	// } catch (PersistenceException e) {
-	// LOGGER.warn(
-	// "Ocorreu um problema ao buscar as atividades de Atendimento!",
-	// e);
-	// }
-	// return atendimentos;
-	// }
+	public void gerarRelatorio() throws SisapException {
 
-	/**
-	 * Realiza a busca das atividades do tipo Reuniao.
-	 * 
-	 * @return
-	 * @throws SisapException
-	 */
-	// public List<Reuniao> buscaReunioes() throws SisapException {
-	// EntityManager em = getEntityManager();
-	// List<Reuniao> reunioes = null;
-	//
-	// String jpql = "select reuniao from Reuniao reuniao where 1=1";
-	//
-	// TypedQuery<Reuniao> query = em.createQuery(jpql, Reuniao.class);
-	//
-	// try {
-	// reunioes = query.getResultList();
-	// } catch (PersistenceException e) {
-	// LOGGER.warn(
-	// "Ocorreu um problema ao buscar as atividades de Reuniao!",
-	// e);
-	// }
-	// return reunioes;
-	// }
+		try {
+			JasperReport report = JasperCompileManager
+					.compileReport("relatorios/RelatorioClientes.jrxml");
 
-	/**
-	 * Realiza a busca das atividades do tipo Visita Domiciliar.
-	 * 
-	 * @return
-	 * @throws SisapException
-	 */
-	// public List<VisitaDomiciliar> buscaVisitas() throws SisapException {
-	// EntityManager em = getEntityManager();
-	// List<VisitaDomiciliar> visitas = null;
-	//
-	// String jpql =
-	// "select visita_domiciliar from Visita_Domiciliar visita_domiciliar where 1=1";
-	//
-	// TypedQuery<VisitaDomiciliar> query = em.createQuery(jpql,
-	// VisitaDomiciliar.class);
-	//
-	// try {
-	// visitas = query.getResultList();
-	// } catch (PersistenceException e) {
-	// LOGGER.warn(
-	// "Ocorreu um problema ao buscar as atividades de Visita Domiciliar!",
-	// e);
-	// }
-	// return visitas;
-	// }
+			JasperPrint print = JasperFillManager.fillReport(report, null,
+					new JRBeanCollectionDataSource(atividades));
+
+			// exportacao do relatorio para o formato PDF
+			JasperExportManager.exportReportToPdfFile(print,
+					"relatorios/RelatorioAtividades.pdf");
+
+		} catch (JRException e) {
+			LOGGER.warn("Ocorreu um problema ao gerar o Relatorio!", e);
+		}
+
+	}
 
 	public ArrayList<Atividade> getAtividades() {
 		return atividades;

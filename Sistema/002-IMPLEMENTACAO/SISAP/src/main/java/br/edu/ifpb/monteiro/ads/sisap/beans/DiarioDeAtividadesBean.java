@@ -72,6 +72,15 @@ public class DiarioDeAtividadesBean extends ClasseAbstrata {
 		}
 	}
 
+	public void gerarRelatorio() {
+		try {
+			atividadesDoPedagogoService.gerarRelatorio();
+		} catch (SisapException e) {
+			reportarMensagemDeErro(e.getMessage());
+			LOGGER.warn(e);
+		}
+	}
+
 	public Atividade getAtividade() {
 		return atividade;
 	}
