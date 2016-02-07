@@ -46,7 +46,7 @@ public class AtendimentoConverter implements Converter {
 		if (valor == null) {
 			return null;
 		}
-		Long matriculaAluno = ((Atendimento) valor).getId();
+		Integer matriculaAluno = ((Atendimento) valor).getId();
 
 		return (matriculaAluno != null) ? matriculaAluno.toString() : null;
 	}
