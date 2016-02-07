@@ -22,7 +22,8 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<h:button value="Imprimir" />
+			<h:button value="Imprimir"
+				action="#{diarioDeAtividadesBean.gerarRelatorio}" />
 
 			<p:dataTable var="atividade"
 				value="#{diarioDeAtividadesBean.atividadesDoPedagogo}"
