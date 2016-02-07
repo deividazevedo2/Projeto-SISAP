@@ -69,12 +69,14 @@ public class ReuniaoBean extends ClasseAbstrata {
 
 	public String salvarReuniao() throws SisapException {
 
+		reuniao.setTipoAtividade("Reuniao");
+
 		if (reuniao.getId() != null) {
 			atividadeService.atualizar(reuniao);
 		} else {
 			atividadeService.salvar(reuniao);
 		}
-		reportarMensagemDeSucesso("Reunião realizado com sucesso!");
+		reportarMensagemDeSucesso("Reuniao registrada com sucesso!");
 		return EnderecoPaginas.PAGINA_PRINCIPAL_REUNIOES;
 
 	}

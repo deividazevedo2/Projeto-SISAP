@@ -94,6 +94,9 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 	}
 
 	public String salvarVisitaDomiciliar() throws SisapException {
+
+		visitaDomiciliar.setTipoAtividade("Visita Domiciliar");
+
 		if (visitaDomiciliar.getMatriculaAluno() == null) {
 			visitaDomiciliar.setNomeAluno(nomeAluno);
 			visitaDomiciliar.setMatriculaAluno(matriculaAluno);

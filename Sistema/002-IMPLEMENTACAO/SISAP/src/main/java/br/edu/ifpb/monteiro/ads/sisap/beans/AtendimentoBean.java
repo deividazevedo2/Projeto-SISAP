@@ -92,6 +92,9 @@ public class AtendimentoBean extends ClasseAbstrata {
 	}
 
 	public String salvarAtendimento() throws SisapException {
+
+		atendimento.setTipoAtividade("Atendimento");
+
 		if (atendimento.getMatriculaAluno() == null) {
 			atendimento.setNomeAluno(nomeAluno);
 			atendimento.setMatriculaAluno(matriculaAluno);
