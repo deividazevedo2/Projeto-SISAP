@@ -49,8 +49,17 @@ public class Atividade implements Serializable {
 	// message = "Informe a data no formato DD/MM/YYYY")
 	private String dataDeFinalizacao;
 
+	private String tipoAtividade;
+
 	public Atividade() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public String getTipoAtividade() {
+		return tipoAtividade;
+	}
+
+	public void setTipoAtividade(String tipoAtividade) {
+		this.tipoAtividade = tipoAtividade;
 	}
 
 	public Long getId() {
