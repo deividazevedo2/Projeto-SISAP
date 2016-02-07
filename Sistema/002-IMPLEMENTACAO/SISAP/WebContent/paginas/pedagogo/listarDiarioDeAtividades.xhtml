@@ -22,10 +22,13 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<h:button value="Imprimir"
-				action="#{diarioDeAtividadesBean.gerarRelatorio}" />
+			<h:commandLink>
+				<p:graphicImage name="../resources/pdf.png" width="24" />
+				<p:dataExporter type="pdf" target="tbl" encoding="iso-8859-1"
+					fileName="atividadesDoPedagogo" pageOnly="true" preProcessor="#{diarioDeAtividadesBean.preProcessPDF}"/>
+			</h:commandLink>
 
-			<p:dataTable var="atividade"
+			<p:dataTable var="atividade" id="tbl"
 				value="#{diarioDeAtividadesBean.atividadesDoPedagogo}"
 				emptyMessage="Nenhum registro encontrado." paginator="true" rows="6"
 				style="text-align: center">
@@ -33,6 +36,15 @@
 				<p:column filterBy="#{atividade.dataDeAgendamento}"
 					headerText="Data de Agendamento">
 					<h:outputText value="#{atividade.dataDeAgendamento}" />
+				</p:column>
+
+				<p:column filterBy="#{atividade.dataDeFinalizacao}"
+					headerText="Data de Finalização">
+					<h:outputText value="#{atividade.dataDeFinalizacao}" />
+				</p:column>
+
+				<p:column filterBy="#{atividade.descricao}" headerText="Descrição">
+					<h:outputText value="#{atividade.descricao}" />
 				</p:column>
 
 				<p:column filterBy="#{atividade.situacao}" headerText="Situação">
