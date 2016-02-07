@@ -12,6 +12,7 @@ import javax.inject.Named;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import br.edu.ifpb.monteiro.ads.sisap.entities.Atividade;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.service.DiarioDeAtividadesService;
 
@@ -27,9 +28,9 @@ public class DiarioDeAtividadesBean extends ClasseAbstrata {
 	private static final Log LOGGER = LogFactory
 			.getLog(DiarioDeAtividadesBean.class);
 
-	private List<Object> atividadesDoPedagogo;
+	private List<Atividade> atividadesDoPedagogo;
 
-	private Object atividade = new Object();
+	private Atividade atividade = new Atividade();
 
 	@Inject
 	private DiarioDeAtividadesService atividadesDoPedagogoService;
@@ -44,21 +45,21 @@ public class DiarioDeAtividadesBean extends ClasseAbstrata {
 
 	public void preRenderView() {
 		if (atividade == null) {
-			atividade = new Object();
+			atividade = new Atividade();
 		}
 		if (atividadesDoPedagogo == null) {
-			atividadesDoPedagogo = new ArrayList<Object>();
+			atividadesDoPedagogo = new ArrayList<Atividade>();
 		}
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
 	}
 
-	public List<Object> getAtividadesDoPedagogo() {
+	public List<Atividade> getAtividadesDoPedagogo() {
 		return atividadesDoPedagogo;
 	}
 
-	public void setAtividadesDoPedagogo(List<Object> atividadesDoPedagogo) {
+	public void setAtividadesDoPedagogo(List<Atividade> atividadesDoPedagogo) {
 		this.atividadesDoPedagogo = atividadesDoPedagogo;
 	}
 
@@ -71,11 +72,11 @@ public class DiarioDeAtividadesBean extends ClasseAbstrata {
 		}
 	}
 
-	public Object getAtividade() {
+	public Atividade getAtividade() {
 		return atividade;
 	}
 
-	public void setAtividade(Object atividade) {
+	public void setAtividade(Atividade atividade) {
 		this.atividade = atividade;
 	}
 

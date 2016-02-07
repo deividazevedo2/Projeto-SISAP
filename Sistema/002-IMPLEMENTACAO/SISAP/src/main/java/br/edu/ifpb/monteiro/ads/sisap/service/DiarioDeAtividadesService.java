@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.DiarioDeAtividadesDAO;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Atividade;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 public class DiarioDeAtividadesService implements Serializable {
@@ -25,7 +26,7 @@ public class DiarioDeAtividadesService implements Serializable {
 		this.diarioDeAtividadesDAO = diarioDeAtividadesDAO;
 	}
 
-	public List<Object> getAll() throws SisapException {
+	public List<Atividade> getAll() throws SisapException {
 		try {
 			return this.diarioDeAtividadesDAO.getAll();
 		} catch (PersistenceException e) {
