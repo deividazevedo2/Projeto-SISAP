@@ -76,14 +76,23 @@
 			<artifactId>selenium-java</artifactId>
 			<version>2.44.0</version>
 		</dependency>
-		
-		
+
+
 		<!-- Driver JDBC 4 do PostgreSQL 9.4 -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1200-jdbc4</version>
 		</dependency>
+
+		<!-- JasperReports para criacao dos relatorios PDF -->
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
