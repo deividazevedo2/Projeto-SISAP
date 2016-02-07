@@ -7,14 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -55,30 +47,9 @@ public class DiarioDeAtividadesDAO extends DAO {
 		try {
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
-			throw new SisapException(
-					"Ocorreu algum problema ao tentar recuperar as reunioess.",
-					pe);
+			LOGGER.warn("Ocorreu um problema ao gerar o Relatorio!", pe);
 		}
 		return resultado;
-
-	}
-
-	public void gerarRelatorio() throws SisapException {
-
-		try {
-			JasperReport report = JasperCompileManager
-					.compileReport("relatorios/RelatorioClientes.jrxml");
-
-			JasperPrint print = JasperFillManager.fillReport(report, null,
-					new JRBeanCollectionDataSource(atividades));
-
-			// exportacao do relatorio para o formato PDF
-			JasperExportManager.exportReportToPdfFile(print,
-					"relatorios/RelatorioAtividades.pdf");
-
-		} catch (JRException e) {
-			LOGGER.warn("Ocorreu um problema ao gerar o Relatorio!", e);
-		}
 
 	}
 
