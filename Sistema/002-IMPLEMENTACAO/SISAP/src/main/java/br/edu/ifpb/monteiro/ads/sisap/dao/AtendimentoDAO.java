@@ -92,11 +92,11 @@ public class AtendimentoDAO extends DAO {
 		String jpql = "select atendimento from Atendimento atendimento where 1=1";
 
 		if (matricula != null && !matricula.isEmpty()) {
-			jpql += " and atendimento.aluno.matricula = :matricula";
+			jpql += " and atendimento.matriculaAluno = :matricula";
 		}
 
 		if (nome != null && !nome.isEmpty()) {
-			jpql += " and atendimento.aluno.nome like :nome";
+			jpql += " and atendimento.nomeAluno like :nome";
 		}
 
 		TypedQuery<Atendimento> query = em.createQuery(jpql, Atendimento.class);

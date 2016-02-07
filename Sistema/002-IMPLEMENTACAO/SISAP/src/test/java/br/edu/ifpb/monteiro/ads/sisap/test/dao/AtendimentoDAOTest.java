@@ -41,7 +41,7 @@ public class AtendimentoDAOTest {
 		Aluno aluno = new Aluno();
 
 		Responsavel responsavel = new Responsavel();
-		responsavel.setNome("Paiô");
+		responsavel.setNome("Pai");
 
 		aluno.setNome("meu nome");
 		aluno.setMae("Mainha");
@@ -55,43 +55,14 @@ public class AtendimentoDAOTest {
 		em.persist(aluno);
 
 		atendimento.setAtendido("Pessoa Atendida");
-		atendimento.setData("12/12/2012");
+		atendimento.setDataDeAgendamento("02/02/2017");
+		atendimento.setDataDeFinalizacao("02/02/2017");
 		atendimento.setDescricao("Descricao do atendimento");
 		atendimento.setMedidasAnteriores("Medidas anteriores");
 		atendimento.setMedidasPosteriores("Medidas posteriores");
 		atendimento.setObservacoes("Observacoes do atendimento");
 		atendimento.setSituacao("Concluido");
 		atendimento.setSolicitante("Professor Joao");
-		atendimento.setId(100);
-
-	}
-
-	// @Test
-	// public void buscarPedagogoIdInvalido() {
-	//
-	// try {
-	//
-	// atendimento = em.find(Atendimento.class, 100);
-	//
-	// assertNull("Resultado deveria ser nulo.", atendimento);
-	//
-	// } catch (NumberFormatException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// }
-
-	@Test
-	public void buscarAtendimentoPorIdInvalido() {
-		try {
-			atendimento = atendimentoDAO.buscarPorId(1000);
-
-			assertEquals(null, atendimento);
-
-		} catch (SisapException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	@Test
@@ -112,7 +83,7 @@ public class AtendimentoDAOTest {
 		try {
 			List<Atendimento> atendimentos = atendimentoDAO.getAll(" ", "Nome");
 
-			assertNull(atendimentos.size());
+			assertEquals(0, atendimentos.size());
 
 		} catch (SisapException e) {
 			e.printStackTrace();
@@ -124,7 +95,7 @@ public class AtendimentoDAOTest {
 		try {
 			List<Atendimento> atendimentos = atendimentoDAO.getAll(null, null);
 
-			assertNull(atendimentos.size());
+			assertEquals(0, atendimentos.size());
 
 		} catch (SisapException e) {
 			e.printStackTrace();
