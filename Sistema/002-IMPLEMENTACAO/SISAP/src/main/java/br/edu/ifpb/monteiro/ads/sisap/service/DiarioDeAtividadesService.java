@@ -34,12 +34,4 @@ public class DiarioDeAtividadesService implements Serializable {
 		}
 	}
 
-	public void gerarRelatorio() throws SisapException {
-		try {
-			this.diarioDeAtividadesDAO.gerarRelatorio();
-		} catch (PersistenceException e) {
-			throw new SisapException(e.getMessage(), e);
-		}
-	}
-
 }
