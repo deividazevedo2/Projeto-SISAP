@@ -14,11 +14,9 @@ import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Professor;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.redirecionamentos.EnderecoPaginas;
 import br.edu.ifpb.monteiro.ads.sisap.service.PedagogoService;
-import br.edu.ifpb.monteiro.ads.sisap.service.ProfessorService;
 
 @Named
 @ConversationScoped
@@ -34,7 +32,6 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 
 	private Pessoa pessoa;
 	private Pedagogo pedagogo;
-	private Professor professor;
 	private Contato contato;
 	private Contato contatoPessoa;
 	private Endereco endereco;
@@ -43,17 +40,11 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	private PedagogoService pedagogoService;
 
 	@Inject
-	private ProfessorService professorService;
-
-	@Inject
 	private Conversation conversation;
 
 	public void preRenderView() {
 		if (pedagogo == null) {
 			pedagogo = new Pedagogo();
-		}
-		if (professor == null) {
-			professor = new Professor();
 		}
 		if (pessoa == null) {
 			pessoa = new Pessoa();
@@ -75,14 +66,6 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 
 	public void setPedagogo(Pedagogo pedagogo) {
 		this.pedagogo = pedagogo;
-	}
-
-	public Professor getProfessor() {
-		return professor;
-	}
-
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
 	}
 
 	public Pessoa getPessoa() {
@@ -126,23 +109,16 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 				pedagogoService.atualizar(pedagogo);
 				reportarMensagemDeSucesso("Dados atualizados com sucesso!");
 				return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
-			} else {
-				this.professor = atributosProfessor();
-				professorService.atualizar(atributosProfessor());
-				reportarMensagemDeSucesso("Dados atualizados com sucesso!");
-				return EnderecoPaginas.PAGINA_PRINCIPAL_PROFESSOR;
-
+			} else if (pessoa.getId() == null) {
+				// comparacao do equals abaixo: a string esta no inicio como
+				// dica do
+				// jenkins para compilacao
+				if ("pedagogo".equals(pessoa.getGrupo())) {
+					this.pedagogo = atributosPedagogo();
+					pedagogoService.salvar(pedagogo);
+				}
+				reportarMensagemDeSucesso("Usuario criado com sucesso!");
 			}
-		} else if (pessoa.getId() == null) {
-			// comparacao do equals abaixo: a string esta no inicio como dica do
-			// jenkins para compilacao
-			if ("pedagogo".equals(pessoa.getGrupo())) {
-				this.pedagogo = atributosPedagogo();
-				pedagogoService.salvar(pedagogo);
-			} else {
-				professorService.salvar(atributosProfessor());
-			}
-			reportarMensagemDeSucesso("Usuario criado com sucesso!");
 		}
 		return EnderecoPaginas.PAGINA_PRINCIPAL_ADMIN;
 	}
@@ -181,39 +157,6 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 		}
 
 		return pedagogo;
-	}
-
-	/**
-	 * OBS: este metodo deve ser implementado/consertado na iteracao de manter
-	 * CRUD de Professor. Ele foi implementado aqui apenas "por cima", porem
-	 * ainda nao esta correto. Deve ser mantido igual o metodo
-	 * atributosPedagogo() acima, inclusive rever a duplicacao e a chamada do
-	 * metodo de criptografia da senha.
-	 * 
-	 * @return
-	 */
-	public Professor atributosProfessor() {
-		endereco.setRua(pessoa.getEndereco().getRua());
-		endereco.setNumero(pessoa.getEndereco().getNumero());
-		endereco.setBairro(pessoa.getEndereco().getBairro());
-		endereco.setCidade(pessoa.getEndereco().getCidade());
-		endereco.setCep(pessoa.getEndereco().getCep());
-		endereco.setUf(pessoa.getEndereco().getUf());
-		professor.setPrimeiroNome(pessoa.getPrimeiroNome());
-		professor.setSegundoNome(pessoa.getSegundoNome());
-		professor.setCpf(pessoa.getCpf());
-		professor.setDataNascimento(pessoa.getDataNascimento());
-		professor.setNaturalidade(pessoa.getNaturalidade());
-		professor.setMatriculaSuap(pessoa.getMatriculaSuap());
-		professor.setSexo(pessoa.getSexo());
-		professor.setSenha(pessoa.getSenha());
-		professor.setGrupo(pessoa.getGrupo());
-		professor.setRg(pessoa.getRg());
-		professor.setSenha(pessoa.getSenha());
-		professor.setId(pessoa.getId());
-		professor.setEndereco(endereco);
-
-		return professor;
 	}
 
 	/**

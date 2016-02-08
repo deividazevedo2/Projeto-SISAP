@@ -51,6 +51,8 @@ public class Atividade implements Serializable {
 
 	private String tipoAtividade;
 
+	private String pedagogoResponsavel;
+
 	public Atividade() {
 	}
 
@@ -100,6 +102,14 @@ public class Atividade implements Serializable {
 
 	public void setDataDeFinalizacao(String dataDeFinalizacao) {
 		this.dataDeFinalizacao = dataDeFinalizacao;
+	}
+
+	public String getPedagogoResponsavel() {
+		return pedagogoResponsavel;
+	}
+
+	public void setPedagogoResponsavel(String pedagogoResponsavel) {
+		this.pedagogoResponsavel = pedagogoResponsavel;
 	}
 
 }
