@@ -25,7 +25,8 @@
 			<h:commandLink>
 				<p:graphicImage name="../resources/pdf.png" width="24" />
 				<p:dataExporter type="pdf" target="tbl" encoding="iso-8859-1"
-					fileName="atividadesDoPedagogo" pageOnly="true" preProcessor="#{diarioDeAtividadesBean.preProcessPDF}"/>
+					fileName="atividadesDoPedagogo" pageOnly="true"
+					preProcessor="#{diarioDeAtividadesBean.preProcessPDF}" />
 			</h:commandLink>
 
 			<p:dataTable var="atividade" id="tbl"
