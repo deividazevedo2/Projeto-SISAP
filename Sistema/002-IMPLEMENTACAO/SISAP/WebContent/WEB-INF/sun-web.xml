@@ -9,11 +9,6 @@
 	</security-role-mapping>
 
 	<security-role-mapping>
-		<role-name>PROFESSOR</role-name>
-		<group-name>PROFESSOR</group-name>
-	</security-role-mapping>
-	
-	<security-role-mapping>
         <role-name>ADMIN</role-name>
         <group-name>ADMIN</group-name>
     </security-role-mapping>
