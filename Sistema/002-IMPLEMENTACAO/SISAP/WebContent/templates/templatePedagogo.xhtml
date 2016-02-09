@@ -44,11 +44,6 @@
 						</f:facet>
 						<f:facet name="right">
 
-							<p:button title="Notificações" icon="ui-icon-comment" />
-							<p:button title="Sincronização" icon="ui-icon-refresh" />
-							<p:commandButton title="Sair" icon="ui-icon-extlink"
-								action="#{logoutBean.efetuarLogout}" />
-
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
@@ -63,6 +58,8 @@
 								<p:menuitem value="Excluir Perfil" update="messages"
 									id="openDialogExcPedagogo"
 									onclick="PF('dlg-exc-pedagogo').show();" />
+								<p:menuitem value="Sair" update="messages"
+									action="#{logoutBean.efetuarLogout}" />
 							</p:menuButton>
 
 						</f:facet>
