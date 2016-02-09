@@ -74,8 +74,15 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.44.0</version>
+			<version>2.51.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>2.51.0</version>
+		</dependency>
+
 
 
 		<!-- Driver JDBC 4 do PostgreSQL 9.4 -->
