@@ -19,9 +19,6 @@ public class EnderecoPaginas {
 	public static final String PAGINA_PRINCIPAL_PEDAGOGO = "/paginas/pedagogo/indexPedagogo"
 			+ REDIRECT_TRUE;
 
-	public static final String PAGINA_PRINCIPAL_PROFESSOR = "/paginas/professor/indexProfessor"
-			+ REDIRECT_TRUE;
-
 	public static final String PAGINA_PRINCIPAL_ADMIN = "/paginas/admin/indexAdmin"
 			+ REDIRECT_TRUE;
 
