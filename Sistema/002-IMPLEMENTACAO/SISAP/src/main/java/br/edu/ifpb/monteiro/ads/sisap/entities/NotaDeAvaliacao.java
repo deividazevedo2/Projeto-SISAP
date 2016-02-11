@@ -36,10 +36,10 @@ public class NotaDeAvaliacao implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 
 	@Column(name = "NOTA")
-	private Float nota;
+	private Double nota;
 
 	@Column(name = "COMENTARIO")
 	private String comentario;
@@ -67,11 +67,11 @@ public class NotaDeAvaliacao implements Serializable {
 		this.avaliacao = avaliacao;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -91,11 +91,11 @@ public class NotaDeAvaliacao implements Serializable {
 		this.disciplina = disciplina;
 	}
 
-	public Float getNota() {
+	public Double getNota() {
 		return nota;
 	}
 
-	public void setNota(Float nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
 

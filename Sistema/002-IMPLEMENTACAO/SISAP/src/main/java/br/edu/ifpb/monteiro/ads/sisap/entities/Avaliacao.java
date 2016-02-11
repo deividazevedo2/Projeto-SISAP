@@ -2,7 +2,6 @@ package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -45,7 +44,7 @@ public class Avaliacao implements Serializable {
 	private Long id;
 
 	@Column(name = "DATA")
-	private Date data;
+	private String data;
 
 	@Column(name = "ASSUNTO")
 	private String assunto;

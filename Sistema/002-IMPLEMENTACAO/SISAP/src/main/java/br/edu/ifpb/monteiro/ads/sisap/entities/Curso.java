@@ -18,7 +18,7 @@ import javax.persistence.Table;
  *
  */
 @Entity(name = "Curso")
-@Table(name = "TC_CURSO")
+@Table(name = "TB_CURSO")
 @DiscriminatorValue("CURSO")
 public class Curso implements Serializable {
 
@@ -29,7 +29,7 @@ public class Curso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	@Column(name = "CODIGO")
 	private String codigo;
@@ -41,10 +41,10 @@ public class Curso implements Serializable {
 	private String nome;
 
 	@Column(name = "DURACAO_MESES")
-	private Short duracaoMeses;
+	private String duracaoMeses;
 
 	@Column(name = "TURNO") 
-	private Turno turno;
+	private String turno;
 
 	public Curso() {
 	}
@@ -73,19 +73,19 @@ public class Curso implements Serializable {
 		this.nome = nome;
 	}
 
-	public Short getDuracaoMeses() {
+	public String getDuracaoMeses() {
 		return duracaoMeses;
 	}
 
-	public void setDuracaoMeses(Short duracaoMeses) {
+	public void setDuracaoMeses(String duracaoMeses) {
 		this.duracaoMeses = duracaoMeses;
 	}
 
-	public Turno getTurno() {
+	public String getTurno() {
 		return turno;
 	}
 
-	public void setTurno(Turno turno) {
+	public void setTurno(String turno) {
 		this.turno = turno;
 	}
 

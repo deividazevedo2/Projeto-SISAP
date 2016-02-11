@@ -69,6 +69,7 @@ public class Aluno implements Serializable {
 	private Responsavel responsavel;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "AULA_FK")
 	private Aula aula;
 
 	@ManyToOne(fetch = FetchType.EAGER)

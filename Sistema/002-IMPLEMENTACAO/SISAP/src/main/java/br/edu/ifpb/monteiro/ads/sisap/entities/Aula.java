@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,10 +35,10 @@ public class Aula implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 
 	@Column(name = "DATA")
-	private Date data;
+	private String data;
 
 	@Column(name = "CONTEUDO")
 	private String conteudo;
@@ -55,19 +54,19 @@ public class Aula implements Serializable {
 	public Aula() {
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
