@@ -22,7 +22,7 @@ public class AtividadeDAO extends DAO {
 	private static final Log LOGGER = LogFactory.getLog(AtividadeDAO.class);
 
 	/**
-	 * Realiza a persistencia da entidade Atendimento passada como parametro no
+	 * Realiza a persistencia da entidade Atividade passada como parametro no
 	 * banco de dados.
 	 * 
 	 * @param atividade
@@ -39,7 +39,7 @@ public class AtividadeDAO extends DAO {
 
 	/**
 	 * Atualiza o registro no banco de dados de uma determinada entidade
-	 * Atendimento passada como parametro.
+	 * Atividade passada como parametro.
 	 * 
 	 * @param atendimento
 	 * @return Atendimento
@@ -57,7 +57,7 @@ public class AtividadeDAO extends DAO {
 	}
 
 	/**
-	 * Realiza a busca da entidade Atendimento atraves do ID passado como
+	 * Realiza a busca da entidade Atividade atraves do ID passado como
 	 * parametro no metodo.
 	 * 
 	 * @param id
@@ -76,8 +76,8 @@ public class AtividadeDAO extends DAO {
 	}
 
 	/**
-	 * Realiza a busca de uma determinada Lista de Atendimentos atraves da
-	 * matricula e do nome passados como parâmentros
+	 * Realiza a busca de uma determinada Lista de Atividades atraves da
+	 * matricula e do nome passados como parï¿½mentros
 	 * 
 	 * @param matricula
 	 * @param nome
