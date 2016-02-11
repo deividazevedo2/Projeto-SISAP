@@ -27,11 +27,10 @@ public class AtividadeService implements Serializable {
 	}
 
 	/**
-	 * Metodo para salvar um novo atendimento, chamando a classe atendimentoDAO
-	 * onde o registro desta ficha de atendimento devera ser salva no banco de
-	 * dados da aplicação..
+	 * Metodo para salvar uma nova atividade, chamando a classe atividadeDAO
+	 * onde o registro devera ser salvo no banco de dados da aplicação.
 	 * 
-	 * @param atendimento
+	 * @param atividade
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
@@ -41,11 +40,11 @@ public class AtividadeService implements Serializable {
 	}
 
 	/**
-	 * Este metodo atualiza um determinado atendimento que esta sendo passado
-	 * como parametro. Sera chamado o atendimentoDAO que fara a busca no banco e
-	 * ira alterar os dados que foram modificados na ficha do atendimento.
+	 * Este metodo atualiza uma determinada atividade que esta sendo passada
+	 * como parametro. Sera chamada a AtividadeDAO que fara a busca no banco e
+	 * ira alterar os dados que forem modificados.
 	 * 
-	 * @param atendimento
+	 * @param atividade
 	 * @return
 	 * @throws SisapException
 	 */
@@ -55,9 +54,9 @@ public class AtividadeService implements Serializable {
 	}
 
 	/**
-	 * Metodo para realizar a busca do atendimento pelo identificador (ID) do
-	 * mesmo. O id deve ser passado como parametro para que a busca no banco
-	 * possa ser realizada, retornando o atendimento referente ao ID procurado.
+	 * Metodo para realizar a busca de uma Atividade pelo identificador (ID) da
+	 * mesma. O id deve ser passado como parametro para que a busca no banco
+	 * possa ser realizada, retornando a Atividade referente ao ID procurado.
 	 * 
 	 * @param id
 	 * @return
@@ -68,6 +67,17 @@ public class AtividadeService implements Serializable {
 		return this.atividadeDAO.buscarPorId(id);
 	}
 
+	/**
+	 * Método para realizar a busca de todas as atividades registradas no banco
+	 * de dados da aplicação. Retorna uma lista de atividades de acordo com os
+	 * parâmetros passados e/ou caso estes sejam nulos, retorna uma lista com
+	 * todas as atividades.
+	 * 
+	 * @param matriculaAluno
+	 * @param nomeAluno
+	 * @return
+	 * @throws SisapException
+	 */
 	public List<Atividade> getAll(String matriculaAluno, String nomeAluno)
 			throws SisapException {
 		try {
