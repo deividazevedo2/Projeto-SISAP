@@ -101,24 +101,21 @@ public class EditarPedagogoBean extends ClasseAbstrata {
 	 */
 	public String salvarUsuario() throws SisapException {
 		conversation.end();
+		// comparacao do equals abaixo: a string esta no inicio como dica do
+		// jenkins para compilacao
 		if (pessoa.getId() != null) {
-			// comparacao do equals abaixo: a string esta no inicio como dica do
-			// jenkins para compilacao
-			if ("pedagogo".equals(pessoa.getGrupo())) {
-				this.pedagogo = atributosPedagogo();
-				pedagogoService.atualizar(pedagogo);
-				reportarMensagemDeSucesso("Dados atualizados com sucesso!");
-				return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
-			} else if (pessoa.getId() == null) {
-				// comparacao do equals abaixo: a string esta no inicio como
-				// dica do
-				// jenkins para compilacao
-				if ("pedagogo".equals(pessoa.getGrupo())) {
-					this.pedagogo = atributosPedagogo();
-					pedagogoService.salvar(pedagogo);
-				}
-				reportarMensagemDeSucesso("Usuario criado com sucesso!");
-			}
+			this.pedagogo = atributosPedagogo();
+			pedagogoService.atualizar(pedagogo);
+			reportarMensagemDeSucesso("Dados atualizados com sucesso!");
+			return EnderecoPaginas.PAGINA_PRINCIPAL_PEDAGOGO;
+		}
+		// comparacao do equals abaixo: a string esta no inicio como
+		// dica do
+		// jenkins para compilacao
+		else if (pessoa.getId() == null) {
+			this.pedagogo = atributosPedagogo();
+			pedagogoService.salvar(pedagogo);
+			reportarMensagemDeSucesso("Usuario criado com sucesso!");
 		}
 		return EnderecoPaginas.PAGINA_PRINCIPAL_ADMIN;
 	}
