@@ -43,18 +43,15 @@
 						</f:facet>
 						<f:facet name="right">
 
-							<p:commandButton title="Sair" icon="ui-icon-extlink"
-								action="#{logoutBean.efetuarLogout}" />
-
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
 
-							<p:menuButton value="Admin Logado">
+							<p:menuButton value="Admnistrador SISAP">
 								<p:menuitem value="Editar Perfil" update="messages"
 									id="openDialogEdtAdmin" onclick="PF('dlg-edt-admin').show();" />
-								<p:menuitem value="Excluir Perfil" update="messages"
-									id="openDialogExcAdmin" onclick="PF('dlg-exc-admin').show();" />
+								<p:menuitem value="Sair" update="messages"
+									action="#{logoutBean.efetuarLogout}" />
 							</p:menuButton>
 
 						</f:facet>
@@ -123,29 +120,6 @@
 					<p:separator style="height: 1px; width: 100%;" />
 					<center>
 						<p:commandButton value="Salvar" />
-						<p:commandButton value="Limpar" />
-					</center>
-				</p:dialog>
-			</h:form>
-
-			<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
-			<h:form>
-				<p:dialog id="dlg-excluir-admin" showEffect="scale"
-					hideEffect="scale" header="Excluir Perfil"
-					widgetVar="dlg-exc-admin">
-					<h:outputLabel style="font-weight: bold;">Confirmação de Senha</h:outputLabel>
-					<h:panelGrid id="exc-senha" columns="1" cellpadding="5">
-						<h:panelGroup>
-							<h:outputLabel for="conf-senha" value="Confirme sua senha:" />
-							<br />
-							<br />
-							<p:password id="conf-senha" required="true" label="conf-senha"
-								style="width: 100%;" />
-						</h:panelGroup>
-					</h:panelGrid>
-					<p:separator style="height: 1px; width: 100%;" />
-					<center>
-						<p:commandButton value="Confirmar Exclusão" />
 						<p:commandButton value="Limpar" />
 					</center>
 				</p:dialog>
