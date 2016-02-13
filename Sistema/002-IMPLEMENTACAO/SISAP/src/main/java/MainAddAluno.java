@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Nota;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Responsavel;
 
 public class MainAddAluno {
@@ -22,6 +23,8 @@ public class MainAddAluno {
 
 	static ArrayList<Contato> contatos = new ArrayList<Contato>();
 	static ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+	static ArrayList<Nota> notas;
+	static ArrayList<Nota> notasSalvasNoBanco;
 
 	public static void adicionaAlunos() {
 
@@ -34,10 +37,26 @@ public class MainAddAluno {
 		try {
 			LOGGER.info("Creating data. . . Please wait. . .");
 			retornaAluno();
-			for (Aluno aluno : alunos) {
 
-				em.persist(aluno);
+			int i = 1;
 
+			for (int j = 0; j < 200; j++) {
+
+				notas = new ArrayList<Nota>();
+				notasSalvasNoBanco = new ArrayList<Nota>();
+
+				retornaNotas();
+
+				for (Nota n : notas) {
+					em.persist(n);
+					notasSalvasNoBanco.add(em.find(Nota.class, i));
+
+					retornaNotas();
+					i++;
+				}
+
+				alunos.get(j).setNotas(notasSalvasNoBanco);
+				em.persist(alunos.get(j));
 			}
 
 			LOGGER.info("SUCESS!");
@@ -113,6 +132,59 @@ public class MainAddAluno {
 			aluno.setResponsavel(responsavel);
 
 			alunos.add(aluno);
+		}
+
+	}
+
+	private static void retornaNotas() {
+
+		ArrayList<String> disciplinas = new ArrayList<String>();
+		disciplinas.add("Matematica");
+		disciplinas.add("Português");
+		disciplinas.add("Artes");
+		disciplinas.add("Biologia");
+		disciplinas.add("Geografia");
+		disciplinas.add("História");
+		disciplinas.add("Física");
+		disciplinas.add("Química");
+		disciplinas.add("Sociologia");
+		disciplinas.add("Filosofia");
+
+		ArrayList<Double> notasVariadas = new ArrayList<Double>();
+		notasVariadas.add(0.0);
+		notasVariadas.add(3.0);
+		notasVariadas.add(4.0);
+		notasVariadas.add(4.5);
+		notasVariadas.add(5.0);
+		notasVariadas.add(5.5);
+		notasVariadas.add(6.0);
+		notasVariadas.add(6.5);
+		notasVariadas.add(7.0);
+		notasVariadas.add(8.0);
+		notasVariadas.add(8.5);
+		notasVariadas.add(9.0);
+		notasVariadas.add(10.0);
+
+		notas = new ArrayList<Nota>();
+
+		int n = 0;
+		for (int i = 0; i < 10; i++) {
+
+			int valor = 0;
+
+			for (int j = valor; j < 4; j++) {
+
+				Collections.shuffle(notasVariadas);
+
+				Nota nota = new Nota();
+				nota.setData("06/08/2011");
+				nota.setDisciplina(disciplinas.get(n));
+				nota.setNota(notasVariadas.get(1));
+
+				notas.add(nota);
+			}
+			n++;
+
 		}
 
 	}
