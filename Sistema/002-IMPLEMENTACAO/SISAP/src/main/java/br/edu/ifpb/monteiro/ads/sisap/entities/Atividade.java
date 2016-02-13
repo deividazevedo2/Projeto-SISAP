@@ -14,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity(name = "Atividade")
 @Table(name = "TB_ATIVIDADE")
@@ -39,14 +40,10 @@ public class Atividade implements Serializable {
 	private String situacao;
 
 	@NotNull
-	// @Pattern(regexp =
-	// "(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((18|19|20|21)\\d\\d)",
-	// message = "Informe a data no formato DD/MM/YYYY")
+	@Pattern(regexp = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message = "Incorreto! Informe a data no formato DD/MM/YYYY")
 	private String dataDeAgendamento;
 
-	// @Pattern(regexp =
-	// "(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((18|19|20|21)\\d\\d)",
-	// message = "Informe a data no formato DD/MM/YYYY")
+	@Pattern(regexp = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)", message = "Incorreto! Informe a data no formato DD/MM/YYYY")
 	private String dataDeFinalizacao;
 
 	private String tipoAtividade;
