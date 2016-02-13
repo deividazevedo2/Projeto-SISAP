@@ -1,9 +1,11 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,7 +17,7 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class IndexAlunoBean extends ClasseAbstrata {
 
 	/**
@@ -25,7 +27,7 @@ public class IndexAlunoBean extends ClasseAbstrata {
 
 	private static final Log LOGGER = LogFactory.getLog(IndexAlunoBean.class);
 
-	private List<Aluno> alunos;
+	private List<Aluno> alunos = new ArrayList<Aluno>();
 
 	@Inject
 	private AlunoService alunoService;
@@ -33,13 +35,29 @@ public class IndexAlunoBean extends ClasseAbstrata {
 	private String matriculaAluno;
 	private String nomeAluno;
 
+	@Inject
+	private Conversation conversation;
+
 	@PostConstruct
 	public void init() {
 		filtrar();
 	}
 
+	public void preRenderView() {
+		if (alunos == null) {
+			alunos = new ArrayList<Aluno>();
+		}
+		if (conversation.isTransient()) {
+			conversation.begin();
+		}
+	}
+
 	public List<Aluno> getAlunos() {
 		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	public String getMatriculaAluno() {
