@@ -3,12 +3,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.RollbackException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 public class MainAddPedagogo {
 
@@ -47,8 +47,11 @@ public class MainAddPedagogo {
 			pedagogo.setContato(contato);
 
 			em.persist(pedagogo);
+
+			MainAddAluno.adicionaAlunos();
+
 		} catch (RollbackException ex) {
-			LOGGER.warn("Erro ao salvar cadastro!", ex);
+			LOGGER.warn("FAIL to save new Pedagogo", ex);
 		} finally {
 			em.getTransaction().commit();
 			emf.close();
