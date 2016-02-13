@@ -16,6 +16,34 @@
 
 		<p:growl id="messages" autoUpdate="true" showDetail="true"
 			showSummary="true" />
+
+		<h:form>
+
+			<p:dataTable var="pedagogo" value="#{indexBean.pedagogos}"
+				emptyMessage="Nenhum registro encontrado." paginator="true" rows="6"
+				style="text-align: center">
+
+				<p:column filterBy="#{pedagogo.cpf}" headerText="CPF">
+					<h:outputText value="#{pedagogo.cpf}" />
+				</p:column>
+
+				<p:column filterBy="#{pedagogo.matriculaSuap}"
+					headerText="Matrícula">
+					<h:outputText value="#{pedagogo.matriculaSuap}" />
+				</p:column>
+
+				<p:column filterBy="#{pedagogo.primeiroNome}" headerText="Nome">
+					<h:outputText value="#{pedagogo.primeiroNome}" />
+				</p:column>
+
+				<p:column filterBy="#{pedagogo.segundoNome}" headerText="Sobrenome">
+					<h:outputText value="#{pedagogo.segundoNome}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+
 	</ui:define>
 
 </ui:composition>

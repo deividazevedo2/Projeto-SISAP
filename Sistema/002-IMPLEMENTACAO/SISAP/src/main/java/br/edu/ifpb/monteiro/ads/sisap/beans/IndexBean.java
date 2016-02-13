@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -24,12 +26,15 @@ public class IndexBean extends ClasseAbstrata {
 
 	private static final Log LOGGER = LogFactory.getLog(IndexBean.class);
 
-	private Pedagogo pedagogo;
+	private Pedagogo pedagogo = new Pedagogo();
+
+	private List<Pedagogo> pedagogos;
 
 	@Inject
 	private PedagogoService pedagogoService;
 
-	private String matricula;
+	private String nomePedagogo;
+	private String matriculaPedagogo;
 
 	public Pedagogo getPedagogo() {
 		return pedagogo;
@@ -54,18 +59,47 @@ public class IndexBean extends ClasseAbstrata {
 	 */
 	public void filtrar() {
 		try {
-			pedagogo = pedagogoService.buscarPorMatricula(matricula);
+			pedagogo = pedagogoService.buscarPorMatricula(matriculaPedagogo);
+			pedagogos = pedagogoService.getAll(matriculaPedagogo, nomePedagogo);
 		} catch (RollbackException | SisapException exception) {
 			reportarMensagemDeErro(exception.getMessage());
 			LOGGER.warn("Erro ao filtrar", exception);
 		}
 	}
 
+	public List<Pedagogo> getPedagogos() {
+		return pedagogos;
+	}
+
+	public void setPedagogos(List<Pedagogo> pedagogos) {
+		this.pedagogos = pedagogos;
+	}
+
+	public String getNomePedagogo() {
+		return nomePedagogo;
+	}
+
+	public void setNomePedagogo(String nomePedagogo) {
+		this.nomePedagogo = nomePedagogo;
+	}
+
+	public String getMatriculaPedagogo() {
+		return matriculaPedagogo;
+	}
+
+	public void setMatriculaPedagogo(String matriculaPedagogo) {
+		this.matriculaPedagogo = matriculaPedagogo;
+	}
+
+	public void setPedagogo(Pedagogo pedagogo) {
+		this.pedagogo = pedagogo;
+	}
+
 	/**
 	 * Limpar o campo.
 	 */
 	public void limpar() {
-		matricula = null;
+		matriculaPedagogo = null;
 	}
 
 }

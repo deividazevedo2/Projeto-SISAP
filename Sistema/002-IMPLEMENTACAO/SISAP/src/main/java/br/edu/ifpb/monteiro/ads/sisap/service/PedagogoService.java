@@ -5,13 +5,16 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.PedagogoDAO;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
@@ -143,6 +146,15 @@ public class PedagogoService implements Serializable {
 			LOGGER.warn("Nao foi possivel criptografar a senha!", e);
 		}
 		return null;
+	}
+
+	public List<Pedagogo> getAll(String matriculaPedagogo, String nomePedagogo)
+			throws SisapException {
+		try {
+			return this.pedagogoDAO.getAll(matriculaPedagogo, nomePedagogo);
+		} catch (PersistenceException e) {
+			throw new SisapException(e.getMessage(), e);
+		}
 	}
 
 }

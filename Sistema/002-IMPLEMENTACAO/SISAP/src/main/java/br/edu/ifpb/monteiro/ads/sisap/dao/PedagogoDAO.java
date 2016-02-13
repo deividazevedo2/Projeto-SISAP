@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
@@ -7,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
@@ -113,6 +116,50 @@ public class PedagogoDAO extends DAO {
 
 		return resultado;
 
+	}
+
+	/**
+	 * Realiza a busca de uma determinada Lista de Alunos atraves da matricula e
+	 * do nome passados como parâmentros
+	 * 
+	 * @param matricula
+	 * @param nome
+	 * @return List<Pedagogo>
+	 * @throws SisapException
+	 */
+	public List<Pedagogo> getAll(String matricula, String nome)
+			throws SisapException {
+		EntityManager em = getEntityManager();
+		List<Pedagogo> resultado = null;
+
+		String jpql = "select pedagogo from Pedagogo pedagogo where 1=1";
+
+		if (matricula != null && !matricula.isEmpty()) {
+			jpql += " and pedagogo.matriculaSuap = :matricula";
+		}
+
+		if (nome != null && !nome.isEmpty()) {
+			jpql += " and pedagogo.primeiroNome like :nome";
+		}
+
+		TypedQuery<Pedagogo> query = em.createQuery(jpql, Pedagogo.class);
+
+		if (matricula != null && !matricula.isEmpty()) {
+			query.setParameter("matricula", "%" + matricula + "%");
+		}
+
+		if (nome != null && !nome.isEmpty()) {
+			query.setParameter("nome", "%" + nome + "%");
+		}
+
+		try {
+			resultado = query.getResultList();
+		} catch (PersistenceException pe) {
+			throw new SisapException(
+					"Ocorreu algum problema ao tentar recuperar os pedagogos com base no nome e/ou matricula.",
+					pe);
+		}
+		return resultado;
 	}
 
 }
