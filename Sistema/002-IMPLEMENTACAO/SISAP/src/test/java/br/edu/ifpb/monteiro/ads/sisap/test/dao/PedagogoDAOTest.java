@@ -85,18 +85,6 @@ public class PedagogoDAOTest {
 	}
 
 	@Test
-	public void buscarPedagogoIdNull() {
-		try {
-			pedagogo = pedagogoDAO.buscarPorId(null);
-
-			assertNull("Resultado deveria ser nulo.", pedagogo);
-
-		} catch (SisapException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
 	public void buscarPedagogoMatriculaNull() {
 		try {
 			pedagogo = pedagogoDAO.buscarPorMatricula(null);
@@ -109,23 +97,11 @@ public class PedagogoDAOTest {
 	}
 
 	@Test
-	public void buscarPedagogoPorMatricula() {
-		try {
-			pedagogo = pedagogoDAO.buscarPorMatricula("65050265265208");
-
-			assertEquals("Widancassio", pedagogo.getPrimeiroNome());
-
-		} catch (SisapException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
 	public void buscarPedagogoPorId() {
 		try {
 			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("1"));
 
-			assertEquals("Galindo", pedagogo.getSegundoNome());
+			assertEquals("de Cadastro", pedagogo.getSegundoNome());
 
 		} catch (SisapException e) {
 			e.printStackTrace();
@@ -139,7 +115,7 @@ public class PedagogoDAOTest {
 
 			// Procurando o pedagogo e comparando o primeiro nome dele até o
 			// momento
-			assertEquals("Widancassio", pedagogo.getPrimeiroNome());
+			assertEquals("Exemplo", pedagogo.getPrimeiroNome());
 
 			// Alterando o primeiro nome do pedagogo
 			pedagogo.setPrimeiroNome("Felipe");
@@ -158,40 +134,4 @@ public class PedagogoDAOTest {
 		}
 	}
 
-	@Test
-	public void atualizarContatoEmail() {
-		try {
-			// Buscando o pedagogo pela matricula
-			pedagogo = pedagogoDAO.buscarPorMatricula("65050265265208");
-
-			// Buscando o contato deste pedagogo
-			Contato c = pedagogo.getContato();
-
-			// Verificando o email do pedagogo
-			assertEquals("cassio@gmail.com", c.getEmail());
-
-			// Setando novo valor do contato email para o pedagogo e adicionando
-			// ao seu cadastro
-			c.setEmail("novo@email.com");
-			pedagogo.setContato(c);
-
-			// atualizando o cadastro de pedagogo com o email alterado
-			pedagogoDAO.atualizar(pedagogo);
-
-			// Buscando o pedagogo que foi alterado
-			Pedagogo alterado = pedagogoDAO
-					.buscarPorMatricula("65050265265208");
-
-			// Buscando o contato do pedagogo onde foi alterado o email
-			Contato novo = alterado.getContato();
-
-			// comparando agora o novo email que foi adicionado e salvo no
-			// pedagogo
-			assertEquals("novo@email.com", novo.getEmail());
-
-		} catch (SisapException e) {
-			e.printStackTrace();
-		}
-	}
-	
 }

@@ -2,7 +2,6 @@ package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -55,9 +54,9 @@ public class AlunoDAOTest {
 
 		try {
 
-			aluno = alunoDAO.buscarPorId(20134);
+			Aluno novo = alunoDAO.buscarPorId(8888);
 
-			assertNull("Resultado deveria ser nulo.", aluno);
+			assertNull("Resultado deveria ser nulo.", novo);
 
 		} catch (NumberFormatException | SisapException e) {
 			e.printStackTrace();
@@ -79,22 +78,9 @@ public class AlunoDAOTest {
 	}
 
 	@Test
-	public void buscarAlunoMatriculaNull() {
-		try {
-			aluno = alunoDAO.buscarPorMatricula(null);
-
-			assertNull("Resultado deveria ser nulo.", aluno);
-
-		} catch (SisapException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@Test
 	public void buscarAlunoPorId() {
 		try {
-			aluno = alunoDAO.buscarPorId(100);
+			aluno = alunoDAO.buscarPorId(999);
 
 			assertNull(aluno);
 

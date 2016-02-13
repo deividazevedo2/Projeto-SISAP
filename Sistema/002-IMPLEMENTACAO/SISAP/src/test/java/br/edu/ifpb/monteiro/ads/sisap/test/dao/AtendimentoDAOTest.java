@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -10,8 +10,6 @@ import javax.persistence.Persistence;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.hamcrest.*;
-import org.hamcrest.core.Is;
 
 import br.edu.ifpb.monteiro.ads.sisap.dao.AtendimentoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
