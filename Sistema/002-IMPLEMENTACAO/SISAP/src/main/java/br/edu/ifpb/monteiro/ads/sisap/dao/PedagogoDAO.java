@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
@@ -120,7 +119,7 @@ public class PedagogoDAO extends DAO {
 
 	/**
 	 * Realiza a busca de uma determinada Lista de Alunos atraves da matricula e
-	 * do nome passados como parâmentros
+	 * do nome passados como parï¿½mentros
 	 * 
 	 * @param matricula
 	 * @param nome
