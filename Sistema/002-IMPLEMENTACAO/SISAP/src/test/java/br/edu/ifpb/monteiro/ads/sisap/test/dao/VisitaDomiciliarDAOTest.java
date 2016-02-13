@@ -1,6 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.test.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
@@ -11,11 +11,7 @@ import javax.persistence.Persistence;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.edu.ifpb.monteiro.ads.sisap.beans.VisitaDomiciliarBean;
-import br.edu.ifpb.monteiro.ads.sisap.dao.ReuniaoDAO;
 import br.edu.ifpb.monteiro.ads.sisap.dao.VisitaDomiciliarDAO;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.entities.VisitaDomiciliar;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
