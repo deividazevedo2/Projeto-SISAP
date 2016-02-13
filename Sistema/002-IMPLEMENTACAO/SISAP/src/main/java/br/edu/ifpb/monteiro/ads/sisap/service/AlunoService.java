@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,27 +35,6 @@ public class AlunoService implements Serializable {
 		return this.alunoDAO.buscarPorMatricula(matricula);
 	}
 
-	/**
-	 * Metodo para realizar a busca das notas do Aluno pela matricula do mesmo.
-	 * A matricula deve ser passada como parametro para que a busca no banco
-	 * possa ser realizada, retornando o cadastro referente.
-	 * 
-	 * @param matricula
-	 * @return
-	 * @throws SisapException
-	 */
-	@TransacionalCdi
-	public ArrayList<Float> buscarNotasDoAluno(Long matricula)
-			throws SisapException {
-		return this.alunoDAO.buscarNotaPorMatricula(matricula);
-	}
-
-	
-//	@TransacionalCdi
-//	public String buscarFrequenciaDoAluno(Long matricula) throws SisapException {
-//		return this.alunoDAO.buscarFrequenciaDoAluno(matricula);
-//	}
-	
 	/**
 	 * Metodo para realizar a busca das frequencias do Aluno pela matricula do
 	 * mesmo. A matricula deve ser passada como parametro para que a busca no
