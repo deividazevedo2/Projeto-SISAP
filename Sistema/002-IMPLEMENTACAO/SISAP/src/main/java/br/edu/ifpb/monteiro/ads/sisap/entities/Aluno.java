@@ -1,7 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,12 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.IndexColumn;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 
@@ -42,16 +37,12 @@ public class Aluno implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int id;
+	private Integer id;
 
 	@Column(name = "MATRICULA", unique = true)
 	private String matricula;
 
 	private String nome;
-
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "aluno")
-	@IndexColumn(name = "nota")
-	private List<NotaDeAvaliacao> notas;
 
 	@Embedded
 	private Endereco endereco;
@@ -67,14 +58,6 @@ public class Aluno implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
 	private Responsavel responsavel;
-
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "AULA_FK")
-	private Aula aula;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "TURMA_FK")
-	private Turma turma;
 
 	public Aluno() {
 	}
