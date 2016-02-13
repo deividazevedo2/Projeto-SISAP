@@ -16,7 +16,8 @@
 			<h:outputText value="Você não tem acesso a este recurso do sistema!" />
 			<center>
 				<h:form>
-					<p:button value="Voltar" outcome="/paginas/login.xhtml"/>
+					<p:commandButton value="Voltar"
+						action="#{logoutBean.efetuarLogout}" />
 				</h:form>
 			</center>
 		</p:panel>

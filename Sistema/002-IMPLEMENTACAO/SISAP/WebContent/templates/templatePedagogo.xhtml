@@ -31,7 +31,7 @@
 		<p:layout fullPage="true">
 
 			<!-- Layout superior da aplicação que contém o logotipo da aplicação, o botão de menu de 
-			configuração de usuário, e os botões de sincronização, notificações e logout -->
+			editar perfil e efetuar logout -->
 			<p:layoutUnit position="north">
 				<h:form>
 					<p:growl id="messages" showDetail="true" />
@@ -86,7 +86,8 @@
 						</p:submenu>
 
 						<p:submenu label="Boletim do Aluno">
-							<p:menuitem id="visualizarBoletim" value="Visualizar Boletim" />
+							<p:menuitem id="visualizarBoletim" value="Visualizar Boletim"
+								outcome="/paginas/pedagogo/visualizarBoletim.xhtml" />
 						</p:submenu>
 					</p:menu>
 				</h:form>

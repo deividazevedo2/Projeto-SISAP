@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<ui:composition template="/templates/templatePedagogo.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="aluno" value="#{visualizarBoletimBean.aluno}"
+			converter="#{alunoConverter}" />
+		<f:event listener="#{visualizarBoletimBean.preRenderView}"
+			type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="title">
+	SISAP - Boletim do Aluno
+	</ui:define>
+
+	<ui:define name="center">
+
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
+		<h:form>
+
+			<p:dataTable id="lista" var="aluno"
+				value="#{visualizarBoletimBean.notas}"
+				emptyMessage="Nenhum registro encontrado." paginator="true"
+				rows="10" style="text-align: center">
+
+				<p:column headerText="Português">
+					<h:outputText value="#{aluno.matricula}" />
+				</p:column>
+
+				<p:column headerText="Matemática">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Artes">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Biologia">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Geografia">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="História">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Física">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Química">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Sociologia">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column headerText="Filosofia">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
