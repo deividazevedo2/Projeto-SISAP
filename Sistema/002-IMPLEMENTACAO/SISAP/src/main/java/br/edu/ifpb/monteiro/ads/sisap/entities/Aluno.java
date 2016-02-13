@@ -1,6 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -58,6 +61,10 @@ public class Aluno implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
 	private Responsavel responsavel;
+
+	@ManyToMany
+	@JoinTable(name = "Notas_aluno", joinColumns = @JoinColumn(name = "Matricula"), inverseJoinColumns = @JoinColumn(name = "id_nota"))
+	private List<Nota> notas;
 
 	public Aluno() {
 	}
@@ -124,6 +131,14 @@ public class Aluno implements Serializable {
 
 	public void setResponsavel(Responsavel responsavel) {
 		this.responsavel = responsavel;
+	}
+
+	public void setNotas(List<Nota> notas) {
+		this.notas = notas;
+	}
+
+	public List<Nota> getNotas() {
+		return notas;
 	}
 
 }
