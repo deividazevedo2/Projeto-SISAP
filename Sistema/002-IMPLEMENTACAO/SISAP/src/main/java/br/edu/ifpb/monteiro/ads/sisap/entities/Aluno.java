@@ -58,6 +58,8 @@ public class Aluno implements Serializable {
 
 	private String mae;
 
+	private String curso;
+
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "RESPONSAVEL_FK", nullable = false)
 	private Responsavel responsavel;
@@ -139,6 +141,14 @@ public class Aluno implements Serializable {
 
 	public void setBimestres(List<Bimestre> bimestres) {
 		this.bimestres = bimestres;
+	}
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 
 }
