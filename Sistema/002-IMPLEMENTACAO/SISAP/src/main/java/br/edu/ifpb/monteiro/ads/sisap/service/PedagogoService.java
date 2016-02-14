@@ -63,20 +63,6 @@ public class PedagogoService implements Serializable {
 	}
 
 	/**
-	 * Metodo para remover um pedagogo do cadastro de usuarios no banco. Sera
-	 * chamado o pedagogoDAO que fara a busca deste registro e removera o
-	 * cadastro do mesmo.
-	 * 
-	 * @param pedagogo
-	 * @throws SisapException
-	 */
-	@TransacionalCdi
-	public void remover(Pedagogo pedagogo) throws SisapException {
-		this.pedagogoDAO.remover(pedagogo);
-
-	}
-
-	/**
 	 * Metodo para realizar a busca do pedagogo pelo identificador (ID) do
 	 * mesmo. O id deve ser passado como parametro para que a busca no banco
 	 * possa ser realizada, retornando o cadastro referente.
