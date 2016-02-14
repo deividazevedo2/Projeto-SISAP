@@ -14,7 +14,7 @@
 	<f:metadata>
 		<o:viewParam name="aluno" value="#{visualizarBoletimBean.aluno}"
 			converter="#{alunoConverter}" />
-		<f:event listener="#{visualizarBoletimBean.preRenderView}"
+		<f:event listener="#{visualizarBoletimBean.preRenderView()}"
 			type="preRenderView" />
 	</f:metadata>
 
@@ -27,50 +27,66 @@
 		<p:growl id="messages" autoUpdate="true" showDetail="true"
 			showSummary="true" />
 		<h:form>
+			<p:outputLabel value="Id: " style="padding: 10px"
+				rendered="#{!empty visualizarBoletimBean.aluno.id}" />
+			<p:outputLabel value="#{visualizarBoletimBean.aluno.id}"
+				rendered="#{!empty visualizarBoletimBean.aluno.id}" />
+			<h:panelGrid id="informacoesAluno" columns="2">
 
-			<p:dataTable id="lista" var="nota"
-				value="#{visualizarBoletimBean.aluno.notas}"
+				<h:outputText value="Nome: " />
+
+				<h:outputText value="#{visualizarBoletimBean.aluno.nome}" />
+
+				<h:outputText value="Matrícula: " />
+
+				<h:outputText
+					value="#{visualizarBoletimAluno.aluno.boletim.matricula}" />
+
+			</h:panelGrid>
+
+			<p:dataTable id="lista" var="bimestre"
+				value="#{visualizarBoletimBean.bimestres}"
 				emptyMessage="Nenhum registro encontrado." paginator="true"
 				rows="10" style="text-align: center">
 
 				<p:column headerText="Português">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.portugues}" />
 				</p:column>
 
 				<p:column headerText="Matemática">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.matematica}" />
 				</p:column>
 
 				<p:column headerText="Artes">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.artes}" />
 				</p:column>
 
 				<p:column headerText="Biologia">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.biologia}" />
 				</p:column>
 
 				<p:column headerText="Geografia">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.geografia}" />
 				</p:column>
 
 				<p:column headerText="História">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.historia}" />
 				</p:column>
 
 				<p:column headerText="Física">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.fisica}" />
 				</p:column>
 
 				<p:column headerText="Química">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.quimica}" />
 				</p:column>
 
 				<p:column headerText="Sociologia">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.sociologia}" />
 				</p:column>
 
 				<p:column headerText="Filosofia">
-					<h:outputText value="#{nota.nota}" />
+					<h:outputText value="#{bimestre.filosofia}" />
 				</p:column>
 
 			</p:dataTable>
