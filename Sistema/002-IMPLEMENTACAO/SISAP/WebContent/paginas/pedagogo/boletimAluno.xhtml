@@ -28,49 +28,49 @@
 			showSummary="true" />
 		<h:form>
 
-			<p:dataTable id="lista" var="aluno"
-				value="#{visualizarBoletimBean.notas}"
+			<p:dataTable id="lista" var="nota"
+				value="#{visualizarBoletimBean.aluno.notas}"
 				emptyMessage="Nenhum registro encontrado." paginator="true"
 				rows="10" style="text-align: center">
 
 				<p:column headerText="Português">
-					<h:outputText value="#{aluno.matricula}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Matemática">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Artes">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Biologia">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Geografia">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="História">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Física">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Química">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Sociologia">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 				<p:column headerText="Filosofia">
-					<h:outputText value="#{aluno.nome}" />
+					<h:outputText value="#{nota.nota}" />
 				</p:column>
 
 			</p:dataTable>

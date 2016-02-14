@@ -1,8 +1,6 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -17,10 +15,8 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Nota;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
-import br.edu.ifpb.monteiro.ads.sisap.service.NotaService;
 
 @Named
 @SessionScoped
@@ -35,7 +31,6 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 			.getLog(VisualizarBoletimBean.class);
 
 	private Aluno aluno = new Aluno();
-	private List<Nota> notas = new ArrayList<Nota>();
 	String matriculaAluno;
 	String nomeAluno;
 
@@ -43,22 +38,16 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 	private AlunoService alunoService;
 
 	@Inject
-	private NotaService notaService;
-
-	@Inject
 	private Conversation conversation;
 
-	@PostConstruct
 	public void init() {
 		filtrar();
 	}
 
+	@PostConstruct
 	public void preRenderView() {
 		if (aluno == null) {
 			aluno = new Aluno();
-		}
-		if (notas == null) {
-			notas = new ArrayList<Nota>();
 		}
 		if (conversation.isTransient()) {
 			conversation.begin();
@@ -70,14 +59,6 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 		this.aluno = alunoService.buscarPorMatricula(aluno.getMatricula());
 
 		return aluno;
-	}
-
-	public List<Nota> getNotas() {
-		return notas;
-	}
-
-	public void setNotas(List<Nota> notas) {
-		this.notas = notas;
 	}
 
 	public Aluno getAluno() {
@@ -105,12 +86,6 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 	}
 
 	public void filtrar() {
-		try {
-			notas = notaService.buscarNotasDoAluno(aluno.getId());
-		} catch (SisapException e) {
-			reportarMensagemDeErro(e.getMessage());
-			LOGGER.warn(e);
-		}
 	}
 
 	public void limpar() {
