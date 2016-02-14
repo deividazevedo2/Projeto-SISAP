@@ -11,8 +11,8 @@ import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Nota;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Responsavel;
 
 public class MainAddAluno {
@@ -23,8 +23,8 @@ public class MainAddAluno {
 
 	static ArrayList<Contato> contatos = new ArrayList<Contato>();
 	static ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	static ArrayList<Nota> notas;
-	static ArrayList<Nota> notasSalvasNoBanco;
+	static ArrayList<Bimestre> bimestres;
+	static ArrayList<Bimestre> bimestresSalvosNoBanco;
 
 	public static void adicionaAlunos() {
 
@@ -42,21 +42,21 @@ public class MainAddAluno {
 
 			for (int j = 0; j < 200; j++) {
 
-				notas = new ArrayList<Nota>();
-				notasSalvasNoBanco = new ArrayList<Nota>();
+				bimestresSalvosNoBanco = new ArrayList<Bimestre>();
 
-				retornaNotas();
+				retornaBimestres(alunos.get(j).getMatricula());
 
-				for (Nota n : notas) {
-					em.persist(n);
-					notasSalvasNoBanco.add(em.find(Nota.class, i));
+				for (Bimestre b : bimestres) {
+					em.persist(b);
+					bimestresSalvosNoBanco.add(em.find(Bimestre.class, i));
 
-					retornaNotas();
 					i++;
 				}
 
-				alunos.get(j).setNotas(notasSalvasNoBanco);
+				alunos.get(j).setBimestres(bimestres);
+
 				em.persist(alunos.get(j));
+
 			}
 
 			LOGGER.info("SUCESS!");
@@ -136,19 +136,9 @@ public class MainAddAluno {
 
 	}
 
-	private static void retornaNotas() {
+	private static void retornaBimestres(String matricula) {
 
-		ArrayList<String> disciplinas = new ArrayList<String>();
-		disciplinas.add("Matematica");
-		disciplinas.add("Português");
-		disciplinas.add("Artes");
-		disciplinas.add("Biologia");
-		disciplinas.add("Geografia");
-		disciplinas.add("História");
-		disciplinas.add("Física");
-		disciplinas.add("Química");
-		disciplinas.add("Sociologia");
-		disciplinas.add("Filosofia");
+		bimestres = new ArrayList<Bimestre>();
 
 		ArrayList<Double> notasVariadas = new ArrayList<Double>();
 		notasVariadas.add(0.0);
@@ -165,26 +155,43 @@ public class MainAddAluno {
 		notasVariadas.add(9.0);
 		notasVariadas.add(10.0);
 
-		notas = new ArrayList<Nota>();
+		for (int i = 0; i < 4; i++) {
 
-		int n = 0;
-		for (int i = 0; i < 10; i++) {
+			Collections.shuffle(notasVariadas);
 
-			int valor = 0;
+			Bimestre bimestre = new Bimestre();
+			bimestre.setPortugues(notasVariadas.get(1));
 
-			for (int j = valor; j < 4; j++) {
+			Collections.shuffle(notasVariadas);
+			bimestre.setMatematica(notasVariadas.get(1));
 
-				Collections.shuffle(notasVariadas);
+			Collections.shuffle(notasVariadas);
+			bimestre.setArtes(notasVariadas.get(1));
 
-				Nota nota = new Nota();
-				nota.setData("06/08/2011");
-				nota.setDisciplina(disciplinas.get(n));
-				nota.setNota(notasVariadas.get(1));
+			Collections.shuffle(notasVariadas);
+			bimestre.setBiologia(notasVariadas.get(1));
 
-				notas.add(nota);
-			}
-			n++;
+			Collections.shuffle(notasVariadas);
+			bimestre.setFilosofia(notasVariadas.get(1));
 
+			Collections.shuffle(notasVariadas);
+			bimestre.setFisica(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			bimestre.setGeografia(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			bimestre.setHistoria(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			bimestre.setQuimica(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			bimestre.setSociologia(notasVariadas.get(1));
+
+			bimestre.setMatricula(matricula);
+
+			bimestres.add(bimestre);
 		}
 
 	}

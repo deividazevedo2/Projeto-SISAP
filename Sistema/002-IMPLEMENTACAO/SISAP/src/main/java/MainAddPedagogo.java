@@ -34,6 +34,8 @@ public class MainAddPedagogo {
 			Pedagogo pedagogo = new Pedagogo();
 			pedagogo.setMatriculaSuap("exemplo");
 			pedagogo.setSexo("Masculino");
+			pedagogo.setGrupo("PEDAGOGO");
+			
 			Contato contato = new Contato();
 			contato.setEmail("exemplo@gmail.com");
 			contato.setCelular("1234567890");
