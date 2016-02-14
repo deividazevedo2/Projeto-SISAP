@@ -24,6 +24,13 @@ import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
 import br.edu.ifpb.monteiro.ads.sisap.service.AtividadeService;
 import br.edu.ifpb.monteiro.ads.sisap.service.VisitaDomiciliarService;
 
+/**
+ * Classe que recebe dados do XHTML e realiza as operações necessárias,
+ * retornando para a tela aquilo que o usuário necessita/solicita no momento.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 @Named
 @ConversationScoped
 public class VisitaDomiciliarBean extends ClasseAbstrata {
@@ -77,15 +84,12 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		}
 	}
 
-	public List<VisitaDomiciliar> getVisitasDomiciliares() {
-		return visitasDomiciliares;
-	}
-
-	public void setVisitasDomiciliares(
-			List<VisitaDomiciliar> visitasDomiciliares) {
-		this.visitasDomiciliares = visitasDomiciliares;
-	}
-
+	/**
+	 * Método para realizar a busca do aluno pela matrícula do mesmo.
+	 * 
+	 * @return
+	 * @throws SisapException
+	 */
 	public Aluno buscarAlunoPorMatricula() throws SisapException {
 
 		this.aluno = alunoService.buscarPorMatricula(aluno.getMatricula());
@@ -93,6 +97,15 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		return aluno;
 	}
 
+	/**
+	 * Metodo para salvar uma nova visita domiciliar caso o ID dela seja nulo.
+	 * Também serve para realizar a alteração de dados de uma visita
+	 * anteriormente salva, onde é verificado se a atividade possui ID válido,
+	 * onde realizará as alterações das informações e salvará de volta no banco.
+	 * 
+	 * @return
+	 * @throws SisapException
+	 */
 	public String salvarVisitaDomiciliar() throws SisapException {
 
 		visitaDomiciliar.setTipoAtividade("Visita Domiciliar");
@@ -143,6 +156,20 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		this.nomeAluno = nomeAluno;
 	}
 
+	public List<VisitaDomiciliar> getVisitasDomiciliares() {
+		return visitasDomiciliares;
+	}
+
+	public void setVisitasDomiciliares(
+			List<VisitaDomiciliar> visitasDomiciliares) {
+		this.visitasDomiciliares = visitasDomiciliares;
+	}
+
+	/**
+	 * Método para realizar a filtragem das visitas domiciliares feitas pelo
+	 * usuário (pedagogo). Pode-se inclusive, adicionar a matricula e o nome do
+	 * aluno para uma busca mais refinada de dados.
+	 */
 	public void filtrar() {
 		try {
 			visitasDomiciliares = visitaDomiciliarService.getAll(
@@ -153,11 +180,18 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		}
 	}
 
+	/**
+	 * Limpar os campos de matricula do aluno e nome do mesmo.
+	 */
 	public void limpar() {
 		matriculaAluno = null;
 		nomeAluno = null;
 	}
 
+	/**
+	 * Abre a POP-UP de diálogo para que o usuário informe qual o aluno que
+	 * deseja realizar a visita domiciliar.
+	 */
 	public void abrirDialogoAluno() {
 		Map<String, Object> opcoes = new HashMap<>();
 		opcoes.put("modal", true);
@@ -169,10 +203,21 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 
 	}
 
+	/**
+	 * Aluno selecionado a partir da POP-UP exibida na tela.
+	 * 
+	 * @param aluno
+	 */
 	public void selecionarAluno(Aluno aluno) {
 		RequestContext.getCurrentInstance().closeDialog(aluno);
 	}
 
+	/**
+	 * Captura o aluno selecionado e insere a matricula e nome em atributos
+	 * criados nesta classe.
+	 * 
+	 * @param event
+	 */
 	public void alunoSelecionado(SelectEvent event) {
 		aluno = (Aluno) event.getObject();
 		matriculaAluno = aluno.getMatricula();
