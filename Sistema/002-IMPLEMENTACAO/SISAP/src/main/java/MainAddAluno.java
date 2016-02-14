@@ -23,6 +23,7 @@ public class MainAddAluno {
 
 	static ArrayList<Contato> contatos = new ArrayList<Contato>();
 	static ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+	static ArrayList<String> cursos = new ArrayList<String>();
 	static ArrayList<Bimestre> bimestres;
 	static ArrayList<Bimestre> bimestresSalvosNoBanco;
 
@@ -103,6 +104,13 @@ public class MainAddAluno {
 
 		for (int i = 1; i <= 200; i++) {
 
+			cursos.add("Análise e Desenvolvimento de Sistemas");
+			cursos.add("Construção de Edifícios");
+			cursos.add("Manutenção e Suporte de Informática");
+			cursos.add("Música");
+			
+			Collections.shuffle(cursos);
+
 			Aluno aluno = new Aluno();
 			aluno.setEndereco(retornaEndereco());
 
@@ -122,6 +130,7 @@ public class MainAddAluno {
 			aluno.setNome("Aluno " + String.valueOf(i));
 			aluno.setMatricula(String.valueOf(matricula + (i + 1)));
 			aluno.setResponsavel(responsavel);
+			aluno.setCurso(cursos.get(1));
 
 			contatos.get(i - 1).setAluno(aluno);
 
