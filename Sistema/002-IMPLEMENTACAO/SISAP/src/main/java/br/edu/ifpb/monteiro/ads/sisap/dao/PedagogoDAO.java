@@ -12,6 +12,15 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pedagogo;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar o CRUD de Pedagogo (funcionalidades de salvar, buscar,
+ * alterar, e listar). Remover não será uma das funcionalidades abordadas pelo
+ * SISAP, visto que informações importantes podem ser procuradas em um tempo
+ * futuro.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class PedagogoDAO extends DAO {
 
 	private static final long serialVersionUID = 4651136765722356561L;
@@ -51,22 +60,6 @@ public class PedagogoDAO extends DAO {
 			LOGGER.warn("Erro ao alterar cadastro!", e);
 		}
 		return resultado;
-	}
-
-	/**
-	 * Remove o registro de uma determinada entidade passada como parametro
-	 * neste metodo.
-	 * 
-	 * @param pedagogo
-	 * @throws SisapException
-	 */
-	public void remover(Pedagogo pedagogo) throws SisapException {
-		EntityManager em = getEntityManager();
-		try {
-			em.remove(em.merge(pedagogo));
-		} catch (PersistenceException e) {
-			LOGGER.warn("Erro ao remover cadastro!", e);
-		}
 	}
 
 	/**
@@ -119,7 +112,7 @@ public class PedagogoDAO extends DAO {
 
 	/**
 	 * Realiza a busca de uma determinada Lista de Alunos atraves da matricula e
-	 * do nome passados como par�mentros
+	 * do nome passados como parâmentros
 	 * 
 	 * @param matricula
 	 * @param nome

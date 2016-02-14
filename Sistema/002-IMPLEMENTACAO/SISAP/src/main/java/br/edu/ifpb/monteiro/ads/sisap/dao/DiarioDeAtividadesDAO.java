@@ -1,6 +1,5 @@
 package br.edu.ifpb.monteiro.ads.sisap.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +12,16 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atividade;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe responsável por realizar a busca das atividades do Pedagogo,
+ * registradas até o momento no banco de dados. Ele poderá visualizar todas as
+ * atividades realizadas não apenas por ele, mas por outro pedagogo que também
+ * tenha realizado as operações de salvamento das diversas atividades
+ * disponibilizadas pelo SISAP.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class DiarioDeAtividadesDAO extends DAO {
 
 	/**
@@ -23,10 +32,7 @@ public class DiarioDeAtividadesDAO extends DAO {
 	private static final Log LOGGER = LogFactory
 			.getLog(DiarioDeAtividadesDAO.class);
 
-	private ArrayList<Atividade> atividades;
-
 	public DiarioDeAtividadesDAO() {
-		atividades = new ArrayList<Atividade>();
 	}
 
 	/**
@@ -51,14 +57,6 @@ public class DiarioDeAtividadesDAO extends DAO {
 		}
 		return resultado;
 
-	}
-
-	public ArrayList<Atividade> getAtividades() {
-		return atividades;
-	}
-
-	public void setAtividades(ArrayList<Atividade> atividades) {
-		this.atividades = atividades;
 	}
 
 }

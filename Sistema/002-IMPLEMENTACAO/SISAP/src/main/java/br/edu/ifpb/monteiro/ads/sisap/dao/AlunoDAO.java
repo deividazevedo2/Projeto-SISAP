@@ -12,6 +12,16 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar as operações pertinentes ao manipulamento de informações
+ * acerca de um Aluno. Vale ressaltar que, nem todas as operações básicas de um
+ * CRUD convencional estarão presentes aqui, tal qual salvar, alterar, remover,
+ * visto que as informações (dados) devem vir de um banco de dados externo onde
+ * o SISAP poderá apenas realizar operações de visualização.
+ * 
+ * @author Indy, Deivid, Widancássio
+ *
+ */
 public class AlunoDAO extends DAO {
 
 	/**
@@ -42,7 +52,7 @@ public class AlunoDAO extends DAO {
 
 	/**
 	 * Realiza a busca de um determinado Aluno atraves da matricula passados
-	 * como par�mentros
+	 * como parâmentros
 	 * 
 	 * @param matricula
 	 * @return Aluno
@@ -108,7 +118,7 @@ public class AlunoDAO extends DAO {
 		try {
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
-			throw new SisapException(
+			LOGGER.warn(
 					"Ocorreu algum problema ao tentar recuperar os alunos com base no nome e/ou matricula.",
 					pe);
 		}

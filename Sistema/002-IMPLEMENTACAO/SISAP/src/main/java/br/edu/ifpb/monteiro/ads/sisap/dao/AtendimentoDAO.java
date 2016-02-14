@@ -12,6 +12,20 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atendimento;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar as operações (CRUD) relacionadas a uma atividade
+ * Atendimento que está sendo manipulada no momento de chamada desta. Será
+ * possível salvar, alterar, procurar e listar atendimentos realizados. As
+ * buscas podem ser feitas informando a matricula e/ou o nome do aluno, ou ainda
+ * buscando o atendimento através do ID do mesmo.
+ * 
+ * Como é possível perceber a única funcionalidade que não poderá ser realizada
+ * aqui é REMOVER um atendimento realizado. Informações importantes como estas
+ * devem ficar registradas para um acompanhamento futuro.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class AtendimentoDAO extends DAO {
 
 	/**

@@ -12,6 +12,15 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Reuniao;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar um CRUD relacionados a uma Reunião. As funcionalidades
+ * de salvar, alterar, buscar, e listar estão presentes aqui. Não poderão ser
+ * removidos os dados após a confirmação de salvamento visto que estas
+ * informações poderão vir a ser solicitadas em um momento futuro.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class ReuniaoDAO extends DAO {
 
 	/**
@@ -38,8 +47,8 @@ public class ReuniaoDAO extends DAO {
 	}
 
 	/**
-	 * Atualiza o registro no banco de dados de uma determinada entidade
-	 * Reuniao passada como parametro.
+	 * Atualiza o registro no banco de dados de uma determinada entidade Reuniao
+	 * passada como parametro.
 	 * 
 	 * @param reuniao
 	 * @return
@@ -76,9 +85,9 @@ public class ReuniaoDAO extends DAO {
 	}
 
 	/**
-	 * Realiza a busca de uma determinada Lista de Reuni�es 
+	 * Realiza a busca de uma determinada Lista de Reuniões
 	 * 
-	 * @param 
+	 * @param
 	 * @return
 	 * @throws SisapException
 	 */

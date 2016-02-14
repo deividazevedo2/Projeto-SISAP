@@ -12,6 +12,12 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Atividade;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar um CRUD básico de atividades no banco de dados.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class AtividadeDAO extends DAO {
 
 	/**
@@ -42,7 +48,7 @@ public class AtividadeDAO extends DAO {
 	 * Atividade passada como parametro.
 	 * 
 	 * @param atendimento
-	 * @return Atendimento
+	 * @return Atividade
 	 * @throws SisapException
 	 */
 	public Atividade atualizar(Atividade atividade) throws SisapException {
@@ -61,7 +67,7 @@ public class AtividadeDAO extends DAO {
 	 * parametro no metodo.
 	 * 
 	 * @param id
-	 * @return Atendimento
+	 * @return Atividade
 	 * @throws SisapException
 	 */
 	public Atividade buscarPorId(Integer id) throws SisapException {
@@ -77,7 +83,7 @@ public class AtividadeDAO extends DAO {
 
 	/**
 	 * Realiza a busca de uma determinada Lista de Atividades atraves da
-	 * matricula e do nome passados como par�mentros
+	 * matricula e do nome passados como parâmentros
 	 * 
 	 * @param matricula
 	 * @param nome
@@ -112,11 +118,10 @@ public class AtividadeDAO extends DAO {
 		try {
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
-			throw new SisapException(
-					"Ocorreu algum problema ao tentar recuperar os atendimentos do aluno com base no nome e/ou matricula.",
+			LOGGER.warn(
+					"Ocorreu algum problema ao tentar recuperar as atividades registradas com base no nome e/ou matricula.",
 					pe);
 		}
 		return resultado;
 	}
-
 }

@@ -5,6 +5,14 @@ import javax.persistence.EntityManager;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Pessoa;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar o CRUD de Pessoa (salvar, buscar, alterar, e listar).
+ * Remover não será uma das funcionalidades abordadas pelo SISAP, visto que
+ * informações importantes podem ser procuradas em um tempo futuro.
+ * 
+ * @author DVD
+ *
+ */
 public class PessoaDAO extends DAO {
 
 	private static final long serialVersionUID = 4651136765722356561L;
@@ -33,17 +41,6 @@ public class PessoaDAO extends DAO {
 		Pessoa resultado = pessoa;
 		resultado = em.merge(pessoa);
 		return resultado;
-	}
-
-	/**
-	 * Metodo para realizar a exclusao da pessoa no banco de dados do sistema.
-	 * 
-	 * @param pessoa
-	 * @throws SisapException
-	 */
-	public void remover(Pessoa pessoa) throws SisapException {
-		EntityManager em = getEntityManager();
-		em.remove(em.merge(pessoa));
 	}
 
 	/**

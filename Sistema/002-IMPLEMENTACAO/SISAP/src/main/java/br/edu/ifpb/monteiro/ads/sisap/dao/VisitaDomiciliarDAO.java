@@ -12,6 +12,15 @@ import org.apache.commons.logging.LogFactory;
 import br.edu.ifpb.monteiro.ads.sisap.entities.VisitaDomiciliar;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
+/**
+ * Classe para realizar um CRUD relacionados a uma Visita Domiciliar. As
+ * funcionalidades de salvar, alterar, buscar, e listar estão presentes aqui.
+ * Não poderão ser removidos os dados após a confirmação de salvamento visto que
+ * estas informações poderão vir a ser solicitadas em um momento futuro.
+ * 
+ * @author Deivid, Indy, Widancássio
+ *
+ */
 public class VisitaDomiciliarDAO extends DAO {
 
 	/**
@@ -23,8 +32,8 @@ public class VisitaDomiciliarDAO extends DAO {
 			.getLog(VisitaDomiciliarDAO.class);
 
 	/**
-	 *  Realiza a persistencia da entidade VisitaDomiciliar passada como parametro no
-	 * banco de dados.
+	 * Realiza a persistencia da entidade VisitaDomiciliar passada como
+	 * parametro no banco de dados.
 	 * 
 	 * @param visitaDomiciliar
 	 * @return
@@ -38,11 +47,10 @@ public class VisitaDomiciliarDAO extends DAO {
 			LOGGER.warn("Erro ao salvar a visita Domiciliar!", e);
 		}
 	}
-	
-	
+
 	/**
-	 *  Atualiza a entidade VisitaDomiciliar passada como parametro no
-	 * banco de dados.
+	 * Atualiza a entidade VisitaDomiciliar passada como parametro no banco de
+	 * dados.
 	 * 
 	 * @param visitaDomiciliar
 	 * @return
@@ -61,8 +69,8 @@ public class VisitaDomiciliarDAO extends DAO {
 	}
 
 	/**
-	 *   Realiza a busca da entidade VisitaDomiciliar atraves do ID passado como parametro
-	 * no metodo.
+	 * Realiza a busca da entidade VisitaDomiciliar atraves do ID passado como
+	 * parametro no metodo.
 	 * 
 	 * @param visitaDomiciliar
 	 * @return
@@ -78,11 +86,11 @@ public class VisitaDomiciliarDAO extends DAO {
 		}
 		return resultado;
 	}
-	
+
 	/**
-	 *   Realiza a busca de uma Lista de VisitaDomiciliar.
+	 * Realiza a busca de uma Lista de VisitaDomiciliar.
 	 * 
-	 * @param 
+	 * @param
 	 * @return
 	 * @throws SisapException
 	 */
