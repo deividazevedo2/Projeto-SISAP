@@ -14,7 +14,7 @@
 	<f:metadata>
 		<o:viewParam name="reuniao" value="#{reuniaoBean.reuniao}"
 			converter="#{reuniaoConverter}" />
-		<f:event listener="#{atendimentoBean.preRenderView}"
+		<f:event listener="#{atendimentoBean.preRenderView()}"
 			type="preRenderView" />
 	</f:metadata>
 
