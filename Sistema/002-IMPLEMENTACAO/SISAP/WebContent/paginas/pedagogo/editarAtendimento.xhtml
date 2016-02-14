@@ -24,8 +24,7 @@
 
 	<ui:define name="center">
 
-		<p:growl id="messages" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="messages" showDetail="true" showSummary="true" />
 		<h:form>
 			<h:panelGrid columns="1">
 				<h:panelGrid id="informacoesAluno" columns="2">
@@ -112,15 +111,36 @@
 
 				</h:panelGrid>
 
+
 				<f:facet name="footer">
-					<h:commandButton value="Atualizar Atendimento"
-						icon="ui-icon-search"
+					<h:outputText
+						value="Os campos com (*) são obrigatórios, o não
+                         preenchimento dos mesmos acarretará em uma falha na edição do atendimento." />
+
+					<br />
+					<br />
+
+					<p:commandButton value="Atualizar" icon="ui-icon-refresh"
 						action="#{atendimentoBean.salvarAtendimento}" />
-					<h:button value="Voltar" icon="ui-icon-search"
-						outcome="/paginas/pedagogo/listarAtendimentos.xhtml" />
+
+					<p:commandButton value="Cancelar"
+						actionListener="#{cancelarBean.cancelar}">
+						<p:confirm header="Confirmação" message="Deseja cancelar?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
 				</f:facet>
 
 			</h:panelGrid>
+		</h:form>
+		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:button value="Sim" type="button"
+					outcome="/paginas/pedagogo/listarAtendimentos.xhtml"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 

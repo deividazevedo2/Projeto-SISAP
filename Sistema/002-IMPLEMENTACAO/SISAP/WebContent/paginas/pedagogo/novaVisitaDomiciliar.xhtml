@@ -29,12 +29,11 @@
 
 	<ui:define name="center">
 
-		<p:growl id="messages" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="messages" showDetail="true" showSummary="true" />
 		<h:form>
 			<h:panelGrid id="resultadoBusca" columns="2">
 
-				<h:outputText value="Aluno: " for="aluno" />
+				<h:outputText value="Aluno: * " for="aluno" />
 				<h:panelGroup>
 					<p:inputText id="aluno"
 						value="#{visitaDomiciliarBean.matriculaAluno}" required="true" />
@@ -75,7 +74,7 @@
 
 				<h:panelGrid id="camposAtendimento2" columns="1">
 
-					<h:outputText value="Data de Finalização:" />
+					<h:outputText value="Data de Finalização: *" />
 					<h:inputText size="44"
 						value="#{visitaDomiciliarBean.visitaDomiciliar.dataDeFinalizacao}" />
 
@@ -96,21 +95,35 @@
 
 				</h:panelGrid>
 
+
 				<f:facet name="footer" style="width:100%">
-					<p:commandButton value="Salvar" icon="ui-icon-search"
+					<h:outputText
+						value="Os campos com (*) são obrigatórios, o não
+                         preenchimento dos mesmos acarretará em uma falha no agendamento/registro da visita domiciliar." />
+
+					<br />
+					<br />
+
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
 						action="#{visitaDomiciliarBean.salvarVisitaDomiciliar}" />
 
-					<h:commandButton id="limparBotao" value="Limpar"
-						update="camposAtendimento2, camposAtendimento2" process="@this"
-						icon="ui-icon-close">
-						<p:resetInput target="camposAtendimento2, camposAtendimento2" />
-					</h:commandButton>
-
-					<h:button value="Cancelar"
-						outcome="/paginas/pedagogo/listarVisitasDomiciliares.xhtml"
-						icon="ui-icon-cancel" />
+					<p:commandButton value="Cancelar"
+						actionListener="#{cancelarBean.cancelar}">
+						<p:confirm header="Confirmação" message="Deseja cancelar?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
 				</f:facet>
 			</h:panelGrid>
+		</h:form>
+		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:button value="Sim" type="button"
+					outcome="/paginas/pedagogo/listarVisitasDomiciliares.xhtml"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 

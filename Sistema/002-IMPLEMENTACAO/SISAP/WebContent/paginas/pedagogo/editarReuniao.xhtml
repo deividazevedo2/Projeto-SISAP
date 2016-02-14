@@ -14,7 +14,7 @@
 	<f:metadata>
 		<o:viewParam name="reuniao" value="#{reuniaoBean.reuniao}"
 			converter="#{reuniaoConverter}" />
-		<f:event listener="#{atendimentoBean.preRenderView()}"
+		<f:event listener="#{atendimentoBean.preRenderView}"
 			type="preRenderView" />
 	</f:metadata>
 
@@ -24,8 +24,7 @@
 
 	<ui:define name="center">
 
-		<p:growl id="messages" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="messages" showDetail="true" showSummary="true" />
 		<h:form>
 			<h:panelGrid id="informacoesReuniao" columns="2">
 
@@ -38,7 +37,7 @@
 
 				<h:panelGrid columns="1">
 
-					<h:panelGrid id="camposReuniao1" columns="2">
+					<h:panelGrid id="camposReuniao1" columns="1">
 
 						<h:outputText value="Data de Agendamento: *" />
 						<h:inputText size="44" required="true"
@@ -57,7 +56,7 @@
 
 				<h:panelGrid id="camposReuniao2" columns="1">
 
-					<h:outputText value="Data de Finalização:" />
+					<h:outputText value="Data de Finalização: *" />
 					<h:inputText size="44"
 						value="#{reuniaoBean.reuniao.dataDeFinalizacao}" />
 
@@ -76,14 +75,37 @@
 					</h:selectOneMenu>
 
 				</h:panelGrid>
+
+
 				<f:facet name="footer">
-					<h:commandButton value="Atualizar Reuniao" icon="ui-icon-search"
+					<h:outputText
+						value="Os campos com (*) são obrigatórios, o não
+                         preenchimento dos mesmos acarretará em uma falha na edição da reunião." />
+
+					<br />
+					<br />
+
+					<p:commandButton value="Atualizar" icon="ui-icon-refresh"
 						action="#{reuniaoBean.salvarReuniao}" />
-					<h:button value="Voltar" icon="ui-icon-search"
-						outcome="/paginas/pedagogo/listarReunioes.xhtml" />
+
+					<p:commandButton value="Cancelar"
+						actionListener="#{cancelarBean.cancelar}">
+						<p:confirm header="Confirmação" message="Deseja cancelar?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
 				</f:facet>
 			</h:panelGrid>
 
+		</h:form>
+		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:button value="Sim" type="button"
+					outcome="/paginas/pedagogo/listarReunioes.xhtml"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 </ui:composition>

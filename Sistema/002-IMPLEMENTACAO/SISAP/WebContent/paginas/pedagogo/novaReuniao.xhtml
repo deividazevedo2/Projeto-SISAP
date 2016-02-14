@@ -24,8 +24,7 @@
 
 	<ui:define name="center">
 
-		<p:growl id="messages" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="messages" showDetail="true" showSummary="true" />
 		<h:form>
 
 			<h:panelGrid columns="2">
@@ -48,7 +47,7 @@
 
 				<h:panelGrid id="camposReuniao2" columns="1">
 
-					<h:outputText value="Data de Finalização: " />
+					<h:outputText value="Data de Finalização: *" />
 					<h:inputText size="44"
 						value="#{reuniaoBean.reuniao.dataDeFinalizacao}" />
 
@@ -73,20 +72,34 @@
 				</h:panelGrid>
 
 				<f:facet name="footer" style="width:100%">
-					<p:commandButton value="Salvar" icon="ui-icon-search"
+					<h:outputText
+						value="Os campos com (*) são obrigatórios, o não
+                         preenchimento dos mesmos acarretará em uma falha no agendamento/registro da reunião." />
+
+					<br />
+					<br />
+
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
 						action="#{reuniaoBean.salvarReuniao}" />
 
-					<h:commandButton id="limparBotao" value="Limpar"
-						update="camposReuniao1, camposReuniao2" process="@this"
-						icon="ui-icon-close">
-						<p:resetInput target="camposReuniao1, camposReuniao2" />
-					</h:commandButton>
+					<p:commandButton value="Cancelar"
+						actionListener="#{cancelarBean.cancelar}">
+						<p:confirm header="Confirmação" message="Deseja cancelar?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
 
-					<h:button value="Cancelar"
-						outcome="/paginas/pedagogo/listarReunioes.xhtml"
-						icon="ui-icon-cancel" />
 				</f:facet>
 			</h:panelGrid>
+		</h:form>
+		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:button value="Sim" type="button"
+					outcome="/paginas/pedagogo/listarReunioes.xhtml"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 

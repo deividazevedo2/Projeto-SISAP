@@ -22,12 +22,12 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<h:commandButton value="Nova Reunião"
+			<p:commandButton value="Nova Reunião"
 				action="/paginas/pedagogo/novaReuniao.xhtml" />
 
 			<p:dataTable var="reuniao" value="#{reuniaoBean.reunioes}"
-				emptyMessage="Nenhum registro encontrado." paginator="true" rows="6"
-				style="text-align: center">
+				emptyMessage="Nenhum registro encontrado." paginator="true"
+				rows="15" style="text-align: center">
 
 				<p:column filterBy="#{reuniao.dataDeAgendamento}"
 					headerText="Data de Agendamento">

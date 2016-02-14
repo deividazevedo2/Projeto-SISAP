@@ -10,43 +10,128 @@
 	xmlns:of="http://omnifaces.org/functions">
 
 <ui:composition template="/templates/templatePedagogo.xhtml">
+	<f:metadata>
+		<o:viewParam name="aluno" value="#{atendimentoBean.aluno}"
+			converter="#{alunoConverter}" />
+	</f:metadata>
+	<f:metadata>
+		<o:viewParam name="atendimento" value="#{atendimentoBean.atendimento}"
+			converter="#{atendimentoConverter}" />
+		<f:event listener="#{atendimentoBean.preRenderView()}"
+			type="preRenderView" />
+
+	</f:metadata>
 
 	<ui:define name="title">
-	SISAP - Atendimentos
-	</ui:define>
+    SISAP - Novo Atendimento 
+    </ui:define>
 
 	<ui:define name="center">
 
-		<p:growl id="messages" autoUpdate="true" showDetail="true"
-			showSummary="true" />
+		<p:growl id="messages" showDetail="true" showSummary="true" />
 		<h:form>
-			<h:panelGrid id="camposAtendimento" columns="2">
+			<h:panelGrid id="resultadoBusca" columns="2">
 
-				<p:dataTable id="idTabela" var="aluno"
-					value="#{indexAlunoBean.alunos}"
-					emptyMessage="Nenhum registro encontrado." paginator="true"
-					rows="6" style="text-align: center">
-
-					<p:column headerText="Matrícula">
-						<h:outputText value="#{aluno.matricula}" />
-					</p:column>
-
-					<p:column headerText="Nome">
-						<h:outputText value="#{aluno.nome}" />
-					</p:column>
-
-					<p:column headerText="Realizar Atendimento">
-						<p:link outcome="/paginas/pedagogo/atendimentoPasso1.xhtml"
-							value="Realizar Atendimento">
-							<f:param name="aluno" value="#{aluno.matricula}" />
-						</p:link>
-					</p:column>
-
-				</p:dataTable>
+				<h:outputText value="Aluno: * " for="aluno" />
+				<h:panelGroup>
+					<p:inputText id="aluno" value="#{atendimentoBean.matriculaAluno}"
+						required="true" />
+					<p:spacer width="10px" />
+					<p:commandButton icon="ui-icon-search" title="Pesquisar"
+						action="#{atendimentoBean.abrirDialogoAluno}" process="@this"
+						update="@none">
+						<p:ajax event="dialogReturn"
+							listener="#{atendimentoBean.alunoSelecionado}" process="@this"
+							update="aluno" />
+					</p:commandButton>
+				</h:panelGroup>
 
 			</h:panelGrid>
-		</h:form>
 
+
+			<br />
+
+			<h:panelGrid columns="2">
+
+				<h:panelGrid id="camposAtendimento1" columns="1">
+
+					<h:outputText value="Data do Atendimento: *" />
+					<h:inputText size="44"
+						value="#{atendimentoBean.atendimento.dataDeAgendamento}" />
+
+					<h:outputText value="Solicitante:" />
+					<h:inputText size="44"
+						value="#{atendimentoBean.atendimento.solicitante}" />
+
+					<h:outputText value="Descrição:" />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true" value="#{atendimentoBean.atendimento.descricao}" />
+
+					<h:outputText value="Medidas Anteriores:" />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.medidasAnteriores}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid id="camposAtendimento2" columns="1">
+
+					<h:outputText value="Situação: *" />
+					<h:selectOneMenu id="situacao" required="true"
+						value="#{atendimentoBean.atendimento.situacao}">
+						<f:selectItem itemLabel="----- Selecione ------" itemValue="" />
+						<f:selectItem itemLabel="Agendado" itemValue="Agendado" />
+						<f:selectItem itemLabel="Iniciado" itemValue="Iniciado" />
+						<f:selectItem itemLabel="Concluído" itemValue="Concluido" />
+						<f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+					</h:selectOneMenu>
+
+					<h:outputText value="Atendido: *" />
+					<h:inputText size="44" required="true"
+						value="#{atendimentoBean.atendimento.atendido}" />
+
+					<h:outputText value="Observações:" />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.observacoes}" />
+
+					<h:outputText value="Medidas Posteriores: " />
+					<h:inputTextarea rows="3" cols="45" maxlength="10"
+						autoResize="true"
+						value="#{atendimentoBean.atendimento.medidasPosteriores}" />
+
+				</h:panelGrid>
+
+				<f:facet name="footer" style="width:100%">
+
+					<h:outputText
+						value="Os campos com (*) são obrigatórios, o não
+						 preenchimento dos mesmos acarretará em uma falha no agendamento/registro do atendimento." />
+
+					<br />
+					<br />
+
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						action="#{atendimentoBean.salvarAtendimento}" />
+
+					<p:commandButton value="Cancelar"
+						actionListener="#{cancelarBean.cancelar}">
+						<p:confirm header="Confirmação" message="Deseja cancelar?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+				</f:facet>
+			</h:panelGrid>
+		</h:form>
+		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:button value="Sim" type="button"
+					outcome="/paginas/pedagogo/listarAtendimentos.xhtml"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
 	</ui:define>
 
 </ui:composition>

@@ -55,8 +55,9 @@
 									<f:param name="pedagogo"
 										value="#{editarPedagogoBean.usuarioLogado.id}" />
 								</p:menuitem>
-								<p:menuitem value="Sair" update="messages"
-									action="#{logoutBean.efetuarLogout}" />
+								<p:menuitem value="Sair" id="openDialogLogout"
+									onclick="PF('dlg-logout').show();">
+								</p:menuitem>
 							</p:menuButton>
 
 						</f:facet>
@@ -93,25 +94,17 @@
 				</h:form>
 			</p:layoutUnit>
 
-			<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
+			<!-- Caixa de edição de dados do perfil do Pedagogo -->
 			<h:form>
-				<p:dialog id="dlg-excluir-pedagogo" showEffect="scale"
-					hideEffect="scale" header="Excluir Perfil"
-					widgetVar="dlg-exc-pedagogo">
-					<h:outputLabel style="font-weight: bold;">Confirmação de Senha</h:outputLabel>
-					<h:panelGrid id="exc-senha" columns="1" cellpadding="5">
-						<h:panelGroup>
-							<h:outputLabel for="conf-senha" value="Confirme sua senha:" />
-							<br />
-							<br />
-							<p:password id="conf-senha" required="true" label="conf-senha"
-								style="width: 100%;" />
-						</h:panelGroup>
-					</h:panelGrid>
-					<p:separator style="height: 1px; width: 100%;" />
+				<p:dialog id="dlg-logout" showEffect="scale" hideEffect="scale"
+					header="Efetuar Logout" widgetVar="dlg-logout" maximizable="true"
+					minimizable="true">
 					<center>
-						<p:commandButton value="Confirmar Exclusão" />
-						<p:commandButton value="Limpar" />
+						<h:outputText value="Deseja sair?" />
+						<br />
+						<br />
+						<p:commandButton value="Sim" action="#{logoutBean.efetuarLogout}" />
+						<p:commandButton value="Não" />
 					</center>
 				</p:dialog>
 			</h:form>
