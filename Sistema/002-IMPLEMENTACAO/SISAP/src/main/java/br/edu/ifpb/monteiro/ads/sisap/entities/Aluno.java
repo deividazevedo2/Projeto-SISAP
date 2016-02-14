@@ -63,8 +63,8 @@ public class Aluno implements Serializable {
 	private Responsavel responsavel;
 
 	@ManyToMany
-	@JoinTable(name = "Notas_aluno", joinColumns = @JoinColumn(name = "Matricula"), inverseJoinColumns = @JoinColumn(name = "id_nota"))
-	private List<Nota> notas;
+	@JoinTable(name = "Bimestres_aluno", joinColumns = @JoinColumn(name = "id_aluno"), inverseJoinColumns = @JoinColumn(name = "id_bimestre"))
+	private List<Bimestre> bimestres;
 
 	public Aluno() {
 	}
@@ -133,12 +133,12 @@ public class Aluno implements Serializable {
 		this.responsavel = responsavel;
 	}
 
-	public void setNotas(List<Nota> notas) {
-		this.notas = notas;
+	public List<Bimestre> getBimestres() {
+		return bimestres;
 	}
 
-	public List<Nota> getNotas() {
-		return notas;
+	public void setBimestres(List<Bimestre> bimestres) {
+		this.bimestres = bimestres;
 	}
 
 }
