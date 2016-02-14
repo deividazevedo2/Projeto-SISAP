@@ -1,5 +1,7 @@
 package br.edu.ifpb.monteiro.ads.sisap.beans;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,11 +10,20 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
@@ -154,6 +165,49 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 		aluno = (Aluno) event.getObject();
 		matriculaAluno = aluno.getMatricula();
 		nomeAluno = aluno.getNome();
+	}
+
+	/**
+	 * Método de processamento do documento PDF antes que ele seja aberto. Aqui
+	 * setamos um titulo para o documento, uma imagem e parágrafos. Tudo para
+	 * configurar o documento e abri-lo conforme especificado aqui.
+	 * 
+	 * @param document
+	 * @throws IOException
+	 * @throws BadElementException
+	 * @throws DocumentException
+	 */
+	public void preProcessPDF(Object document) throws IOException,
+			BadElementException, DocumentException {
+		// cria o documento
+		Document pdf = (Document) document;
+		// setando a margin e página, precisa estar antes da abertura do
+		// documento, ou seja da linha: pdf.open()
+		pdf.setMargins(5, 5, 5, 5);
+		pdf.setPageSize(PageSize.A4.rotate());
+		pdf.addTitle("Boletim Individual: " + aluno.getNome());
+		pdf.open();
+		// aqui pega o contexto para formar a url da imagem
+		ServletContext servletContext = (ServletContext) FacesContext
+				.getCurrentInstance().getExternalContext().getContext();
+		String logo = servletContext.getRealPath("") + File.separator
+				+ "resources/" + File.separator + "logo_title.png";
+		// cria a imagem e passando a url
+		Image image = Image.getInstance(logo);
+		// alinha ao centro
+		image.setAlignment(Image.ALIGN_CENTER);
+		// adciona a img ao pdf
+		pdf.add(image);
+		// adiciona um paragrafo ao pdf, alinha também ao centro
+		Paragraph p = new Paragraph("Boletim Individual: " + aluno.getNome());
+		// adicionando outro paragrafo para o anterior não ficar colado à tabela
+		Paragraph p2 = new Paragraph("-");
+		p.setAlignment("center");
+		p2.setAlignment("center");
+		pdf.add(p);
+		pdf.add(p2);
+
+		pdf.;
 	}
 
 	public List<Bimestre> getBimestres() throws SisapException {
