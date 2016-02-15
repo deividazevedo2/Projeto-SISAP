@@ -5,9 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 @Named
 @ConversationScoped
 public class CancelarBean extends ClasseAbstrata {
@@ -16,8 +13,6 @@ public class CancelarBean extends ClasseAbstrata {
 	 * 
 	 */
 	private static final long serialVersionUID = -6977557276403647255L;
-
-	private static final Log LOGGER = LogFactory.getLog(CancelarBean.class);
 
 	public void cancelar() {
 		addMessage("System Error", "Please try again later.");
