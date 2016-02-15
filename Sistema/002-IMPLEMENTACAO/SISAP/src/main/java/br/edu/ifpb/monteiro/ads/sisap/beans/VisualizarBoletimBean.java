@@ -18,18 +18,18 @@ import javax.servlet.ServletContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
+import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
+import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
+import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
+import br.edu.ifpb.monteiro.ads.sisap.service.BimestreService;
+
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
-
-import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
-import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
-import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
-import br.edu.ifpb.monteiro.ads.sisap.service.BimestreService;
 
 /**
  * Esta classe recebe um aluno que vem da tela de listagens e busca informações
