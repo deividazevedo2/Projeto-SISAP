@@ -1,4 +1,3 @@
-
 /**
  * Main principal, é ele quem deve ser executado, apenas.. Lembrar de limpar o
  * banco sempre que for preciso executar esta classe, pois senão não irá criar
@@ -13,8 +12,9 @@ public class MainCreateRecords {
 
 		MainAddPedagogo adicionaDados = new MainAddPedagogo();
 
-		// Chama primeiro o Main Pedagogo para criar as tabelas e o cadastro de
-		// um pedagogo como exemplo.
+		// É criado o cadastro de um pedagogo e um administrador. Após isso os
+		// dados de um aluno também são populados no banco de dados desta
+		// aplicação.
 		adicionaDados.createTables();
 
 	}
