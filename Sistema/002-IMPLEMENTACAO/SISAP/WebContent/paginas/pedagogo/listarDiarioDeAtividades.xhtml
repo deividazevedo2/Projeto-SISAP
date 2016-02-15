@@ -22,13 +22,16 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<h:commandLink>
-				<p:graphicImage name="../resources/pdf.png" width="24" />
-				<p:dataExporter title="Gerar Relatório" type="pdf" target="tbl"
-					encoding="iso-8859-1" fileName="atividadesDoPedagogo"
-					pageOnly="true"
-					preProcessor="#{diarioDeAtividadesBean.preProcessPDF}" />
-			</h:commandLink>
+			<h:panelGrid id="imprimir" columns="2">
+				<h:outputText value="Clique neste ícone para Imprimir em PDF > " />
+				<h:commandLink>
+					<p:graphicImage name="../resources/pdf.png" width="24" />
+					<p:dataExporter title="Gerar Relatório" type="pdf" target="tbl"
+						encoding="iso-8859-1" fileName="atividadesDoPedagogo"
+						pageOnly="true"
+						preProcessor="#{diarioDeAtividadesBean.preProcessPDF}" />
+				</h:commandLink>
+			</h:panelGrid>
 
 			<p:dataTable var="atividade" id="tbl"
 				value="#{diarioDeAtividadesBean.atividadesDoPedagogo}"
