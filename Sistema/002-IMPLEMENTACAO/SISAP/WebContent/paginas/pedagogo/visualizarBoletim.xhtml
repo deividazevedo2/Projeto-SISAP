@@ -24,12 +24,16 @@
 				emptyMessage="Nenhum registro encontrado." paginator="true"
 				rows="15" style="text-align: center">
 
-				<p:column headerText="Matrícula">
+				<p:column filterBy="#{aluno.matricula}" headerText="Matrícula">
 					<h:outputText value="#{aluno.matricula}" />
 				</p:column>
 
-				<p:column headerText="Nome">
+				<p:column filterBy="#{aluno.nome}" headerText="Nome">
 					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+
+				<p:column filterBy="#{aluno.curso}" headerText="Curso">
+					<h:outputText value="#{aluno.curso}" />
 				</p:column>
 
 				<p:column headerText="Boletim">
