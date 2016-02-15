@@ -28,28 +28,35 @@
 			showSummary="true" />
 		<h:form>
 
-			<h:commandLink>
-				<p:graphicImage name="../resources/pdf.png" width="24" />
-				<p:dataExporter title="Gerar Relatório" type="pdf" target="lista"
-					encoding="iso-8859-1" fileName="boletimDoAluno" pageOnly="true"
-					preProcessor="#{visualizarBoletimBean.preProcessPDF}" />
-			</h:commandLink>
+			<h:panelGrid id="imprimir" columns="2">
 
-			<p:outputLabel value="Id: " style="padding: 10px"
-				rendered="#{!empty visualizarBoletimBean.aluno.id}" />
-			<p:outputLabel value="#{visualizarBoletimBean.aluno.id}"
-				rendered="#{!empty visualizarBoletimBean.aluno.id}" />
+				<h:outputText value="Clique neste ícone para Imprimir em PDF > " />
+				<h:commandLink>
+					<p:graphicImage name="../resources/pdf.png" width="24" />
+					<p:dataExporter title="Gerar Relatório" type="pdf" target="lista"
+						encoding="iso-8859-1" fileName="boletimDoAluno" pageOnly="true"
+						preProcessor="#{visualizarBoletimBean.preProcessPDF}" />
+				</h:commandLink>
+			</h:panelGrid>
 
 			<h:panelGrid id="informacoesAluno" columns="2">
 
-				<h:outputText value="Nome: " />
+				<p:outputLabel value="Id: " style="font-size:14px"
+					rendered="#{!empty visualizarBoletimBean.aluno.id}" />
+				<p:outputLabel value="#{visualizarBoletimBean.aluno.id}"
+					style="font-size:14px"
+					rendered="#{!empty visualizarBoletimBean.aluno.id}" />
 
-				<h:outputText value="#{visualizarBoletimBean.aluno.nome}" />
 
-				<h:outputText value="Matrícula: " />
+				<h:outputText value="Nome: " style="font-size:14px" />
 
-				<h:outputText
-					value="#{visualizarBoletimAluno.aluno.boletim.matricula}" />
+				<h:outputText value="#{visualizarBoletimBean.aluno.nome}"
+					style="font-size:14px" />
+
+				<h:outputText value="Matrícula: " style="font-size:14px" />
+
+				<h:outputText value="#{visualizarBoletimBean.aluno.matricula}"
+					style="font-size:14px" />
 
 			</h:panelGrid>
 
