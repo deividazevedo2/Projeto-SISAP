@@ -207,7 +207,6 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 		pdf.add(p);
 		pdf.add(p2);
 
-		pdf.;
 	}
 
 	public List<Bimestre> getBimestres() throws SisapException {
