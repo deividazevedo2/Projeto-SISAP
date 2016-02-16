@@ -44,6 +44,8 @@
 						</f:facet>
 						<f:facet name="right">
 
+							<h:outputText value="Bem Vindo: " />
+
 							<span class="ui-separator"> <span
 								class="ui-icon ui-icon-grip-dotted-vertical" />
 							</span>
@@ -101,10 +103,9 @@
 					minimizable="true">
 					<center>
 						<h:outputText value="Deseja sair?" />
-						<br />
-						<br />
+						<br /> <br />
 						<p:commandButton value="Sim" action="#{logoutBean.efetuarLogout}" />
-						<p:commandButton value="Não" />
+						<p:commandButton value="Não" onclick="PF('dlg-logout').hide();" />
 					</center>
 				</p:dialog>
 			</h:form>

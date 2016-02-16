@@ -22,13 +22,13 @@
 		<h:form>
 			<p:separator style="height: 1px;" />
 
-			<p:button value="Novo Atendimento"
+			<p:button value="Novo Atendimento" icon="ui-icon-plus"
 				outcome="/paginas/pedagogo/novoAtendimento.xhtml" />
 
 			<p:dataTable var="atendimento"
 				value="#{atendimentoBean.atendimentos}"
-				emptyMessage="Nenhum registro encontrado." paginator="true" rows="15"
-				style="text-align: center">
+				emptyMessage="Nenhum registro encontrado." paginator="true"
+				rows="15" style="text-align: center">
 
 				<p:column filterBy="#{atendimento.matriculaAluno}"
 					headerText="Matrícula">
