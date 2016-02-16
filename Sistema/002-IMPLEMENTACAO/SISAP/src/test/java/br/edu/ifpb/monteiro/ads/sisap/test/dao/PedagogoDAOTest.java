@@ -99,7 +99,7 @@ public class PedagogoDAOTest {
 	@Test
 	public void buscarPedagogoPorId() {
 		try {
-			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("1"));
+			pedagogo = pedagogoDAO.buscarPorId(Long.parseLong("2"));
 
 			assertEquals("de Cadastro", pedagogo.getSegundoNome());
 
@@ -115,7 +115,7 @@ public class PedagogoDAOTest {
 
 			// Procurando o pedagogo e comparando o primeiro nome dele até o
 			// momento
-			assertEquals("Exemplo", pedagogo.getPrimeiroNome());
+			assertEquals("ADMINISTRADOR", pedagogo.getPrimeiroNome());
 
 			// Alterando o primeiro nome do pedagogo
 			pedagogo.setPrimeiroNome("Felipe");

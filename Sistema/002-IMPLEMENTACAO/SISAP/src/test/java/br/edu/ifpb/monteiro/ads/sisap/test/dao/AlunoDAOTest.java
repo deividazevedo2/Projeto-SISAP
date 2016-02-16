@@ -92,7 +92,7 @@ public class AlunoDAOTest {
 	@Test
 	public void alunoNaoEncontradoNaListagem() {
 		try {
-			List<Aluno> alunos = alunoDAO.getAll("invalida", "invalido");
+			List<Aluno> alunos = alunoDAO.getAll("2012250221","Aluno 1");
 
 			assertEquals(0, alunos.size());
 
