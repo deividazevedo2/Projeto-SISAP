@@ -96,7 +96,8 @@ public class AtendimentoBean extends ClasseAbstrata {
 		atendimento.setTipoAtividade("Atendimento");
 
 		if (atendimento.getMatriculaAluno() == null) {
-			atendimento.setNomeAluno(nomeAluno);
+			atendimento.setNomeAluno(alunoService.buscarPorMatricula(
+					matriculaAluno).getNome());
 			atendimento.setMatriculaAluno(matriculaAluno);
 		}
 		if (atendimento.getSolicitante() == null

@@ -101,7 +101,8 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 	 * Metodo para salvar uma nova visita domiciliar caso o ID dela seja nulo.
 	 * Também serve para realizar a alteração de dados de uma visita
 	 * anteriormente salva, onde é verificado se a atividade possui ID válido,
-	 * onde realizará as alterações das informações e salvará de volta no banco.
+	 * onde realizará as alterações das informações e salvará de volta no
+	 * banco.
 	 * 
 	 * @return
 	 * @throws SisapException
@@ -111,7 +112,8 @@ public class VisitaDomiciliarBean extends ClasseAbstrata {
 		visitaDomiciliar.setTipoAtividade("Visita Domiciliar");
 
 		if (visitaDomiciliar.getMatriculaAluno() == null) {
-			visitaDomiciliar.setNomeAluno(nomeAluno);
+			visitaDomiciliar.setNomeAluno(alunoService.buscarPorMatricula(
+					matriculaAluno).getNome());
 			visitaDomiciliar.setMatriculaAluno(matriculaAluno);
 		}
 		if (visitaDomiciliar.getId() != null) {
