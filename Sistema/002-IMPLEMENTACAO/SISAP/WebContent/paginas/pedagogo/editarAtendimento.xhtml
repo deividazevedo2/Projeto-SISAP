@@ -24,7 +24,8 @@
 
 	<ui:define name="center">
 
-		<p:growl id="messages" showDetail="true" showSummary="true" />
+		<p:growl id="messages" autoUpdate="true" showDetail="true"
+			showSummary="true" />
 		<h:form>
 			<h:panelGrid columns="1">
 				<h:panelGrid id="informacoesAluno" columns="2">
@@ -134,7 +135,7 @@
 		</h:form>
 		<!-- Caixa de confirmação de senha para exclusão do perfil do Pedagogo -->
 		<h:form>
-			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:confirmDialog global="true">
 				<p:button value="Sim" type="button"
 					outcome="/paginas/pedagogo/listarAtendimentos.xhtml"
 					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
