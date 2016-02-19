@@ -96,7 +96,7 @@ public class AlunoDAO extends DAO {
 		List<Aluno> resultado = null;
 
 		String jpql = "select aluno from Aluno aluno where 1=1";
-
+ 
 		if (matricula != null && !matricula.isEmpty()) {
 			jpql += " and aluno.matricula = :matricula";
 		}

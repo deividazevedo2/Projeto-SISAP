@@ -36,6 +36,11 @@
 					<h:outputText value="#{aluno.curso}" />
 				</p:column>
 
+				<p:column filterBy="#{aluno.situacaoAcademica}"
+					headerText="Situação Acadêmica">
+					<h:outputText value="#{aluno.situacaoAcademica}" />
+				</p:column>
+
 				<p:column headerText="Boletim">
 					<p:link outcome="/paginas/pedagogo/boletimAluno.xhtml"
 						value="Visualizar Boletim">

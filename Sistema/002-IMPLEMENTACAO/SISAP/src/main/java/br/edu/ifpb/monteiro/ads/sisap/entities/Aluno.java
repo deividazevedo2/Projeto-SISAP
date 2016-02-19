@@ -65,8 +65,10 @@ public class Aluno implements Serializable {
 	private Responsavel responsavel;
 
 	@ManyToMany
-	@JoinTable(name = "Bimestres_aluno", joinColumns = @JoinColumn(name = "id_aluno"), inverseJoinColumns = @JoinColumn(name = "id_bimestre"))
-	private List<Bimestre> bimestres;
+	@JoinTable(name = "Boletins_aluno", joinColumns = @JoinColumn(name = "id_aluno"), inverseJoinColumns = @JoinColumn(name = "id_boletim"))
+	private List<Boletim> boletim;
+
+	private String situacaoAcademica;
 
 	public Aluno() {
 	}
@@ -135,12 +137,12 @@ public class Aluno implements Serializable {
 		this.responsavel = responsavel;
 	}
 
-	public List<Bimestre> getBimestres() {
-		return bimestres;
+	public List<Boletim> getBoletim() {
+		return boletim;
 	}
 
-	public void setBimestres(List<Bimestre> bimestres) {
-		this.bimestres = bimestres;
+	public void setBoletim(List<Boletim> boletim) {
+		this.boletim = boletim;
 	}
 
 	public String getCurso() {
@@ -149,6 +151,14 @@ public class Aluno implements Serializable {
 
 	public void setCurso(String curso) {
 		this.curso = curso;
+	}
+
+	public String getSituacaoAcademica() {
+		return situacaoAcademica;
+	}
+
+	public void setSituacaoAcademica(String situacaoAcademica) {
+		this.situacaoAcademica = situacaoAcademica;
 	}
 
 }

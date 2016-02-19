@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Boletim;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 
 /**
@@ -23,7 +23,7 @@ import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
  * @author Deivid Azevedo
  *
  */
-public class BimestreDAO extends DAO {
+public class BoletimDAO extends DAO {
 
 	/**
 	 * 
@@ -42,18 +42,18 @@ public class BimestreDAO extends DAO {
 	 * @return
 	 * @throws SisapException
 	 */
-	public List<Bimestre> buscarNotasDoAluno(String matricula)
+	public List<Boletim> buscarBoletimDoAluno(String matricula)
 			throws SisapException {
 		EntityManager em = getEntityManager();
-		List<Bimestre> resultado = null;
+		List<Boletim> resultado = null;
 
-		String jpql = "select bimestre from Bimestre bimestre where 1=1";
+		String jpql = "select boletim from Boletim boletim where 1=1";
 
 		if (matricula != null && !matricula.isEmpty()) {
-			jpql += " and bimestre.matricula like :matricula";
+			jpql += " and boletim.matricula like :matricula";
 		}
 
-		TypedQuery<Bimestre> query = em.createQuery(jpql, Bimestre.class);
+		TypedQuery<Boletim> query = em.createQuery(jpql, Boletim.class);
 
 		if (matricula != null && !matricula.isEmpty()) {
 			query.setParameter("matricula", "%" + matricula + "%");

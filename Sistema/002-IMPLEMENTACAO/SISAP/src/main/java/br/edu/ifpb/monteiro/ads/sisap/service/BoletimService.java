@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import br.edu.ifpb.monteiro.ads.sisap.dao.BimestreDAO;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
+import br.edu.ifpb.monteiro.ads.sisap.dao.BoletimDAO;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Boletim;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
 
@@ -18,10 +18,10 @@ import br.edu.ifpb.monteiro.ads.sisap.util.TransacionalCdi;
  * @author Deivid Azevedo
  *
  */
-public class BimestreService implements Serializable {
+public class BoletimService implements Serializable {
 
 	@Inject
-	private transient BimestreDAO bimestreDAO;
+	private transient BoletimDAO bimestreDAO;
 
 	/**
 	 * 
@@ -37,9 +37,9 @@ public class BimestreService implements Serializable {
 	 * @throws SisapException
 	 */
 	@TransacionalCdi
-	public List<Bimestre> buscarNotasDoAluno(String matricula)
+	public List<Boletim> buscarNotasDoAluno(String matricula)
 			throws SisapException {
-		return this.bimestreDAO.buscarNotasDoAluno(matricula);
+		return this.bimestreDAO.buscarBoletimDoAluno(matricula);
 	}
 
 }

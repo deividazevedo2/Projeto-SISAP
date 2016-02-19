@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 import br.edu.ifpb.monteiro.ads.sisap.embedded.Endereco;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Boletim;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Contato;
 import br.edu.ifpb.monteiro.ads.sisap.entities.Responsavel;
 
@@ -24,8 +25,13 @@ public class MainAddAluno {
 	static ArrayList<Contato> contatos = new ArrayList<Contato>();
 	static ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 	static ArrayList<String> cursos = new ArrayList<String>();
-	static ArrayList<Bimestre> bimestres;
-	static ArrayList<Bimestre> bimestresSalvosNoBanco;
+	static List<String> disciplinasDeADS;
+	static List<String> disciplinasDeConstrucao;
+	static List<String> disciplinasDeMSI;
+	static List<String> disciplinasDeMusica;
+	static ArrayList<Double> notasVariadas = new ArrayList<Double>();
+	static ArrayList<Boletim> boletins;
+	static ArrayList<Boletim> boletinsSalvosNoBanco;
 
 	public static void adicionaAlunos() {
 
@@ -43,18 +49,18 @@ public class MainAddAluno {
 
 			for (int j = 0; j < 200; j++) {
 
-				bimestresSalvosNoBanco = new ArrayList<Bimestre>();
+				boletinsSalvosNoBanco = new ArrayList<Boletim>();
 
-				retornaBimestres(alunos.get(j).getMatricula());
+				retornaBoletins(alunos.get(j));
 
-				for (Bimestre b : bimestres) {
+				for (Boletim b : boletins) {
 					em.persist(b);
-					bimestresSalvosNoBanco.add(em.find(Bimestre.class, i));
+					boletinsSalvosNoBanco.add(em.find(Boletim.class, i));
 
 					i++;
 				}
 
-				alunos.get(j).setBimestres(bimestres);
+				alunos.get(j).setBoletim(boletins);
 
 				em.persist(alunos.get(j));
 
@@ -108,7 +114,7 @@ public class MainAddAluno {
 			cursos.add("Construção de Edifícios");
 			cursos.add("Manutenção e Suporte de Informática");
 			cursos.add("Música");
-			
+
 			Collections.shuffle(cursos);
 
 			Aluno aluno = new Aluno();
@@ -145,16 +151,9 @@ public class MainAddAluno {
 
 	}
 
-	private static void retornaBimestres(String matricula) {
+	private static void retornaBoletins(Aluno aluno) {
 
-		bimestres = new ArrayList<Bimestre>();
-
-		ArrayList<Double> notasVariadas = new ArrayList<Double>();
-		notasVariadas.add(0.0);
-		notasVariadas.add(3.0);
-		notasVariadas.add(4.0);
 		notasVariadas.add(4.5);
-		notasVariadas.add(5.0);
 		notasVariadas.add(5.5);
 		notasVariadas.add(6.0);
 		notasVariadas.add(6.5);
@@ -168,41 +167,259 @@ public class MainAddAluno {
 
 			Collections.shuffle(notasVariadas);
 
-			Bimestre bimestre = new Bimestre();
-			bimestre.setPortugues(notasVariadas.get(1));
+			if (aluno.getCurso()
+					.equals("Análise e Desenvolvimento de Sistemas")) {
+				adicionaDisciplinasADS(aluno);
+			} else if (aluno.getCurso().equals("Construção de Edifícios")) {
+				adicionaDisciplinasConstrucao(aluno);
+			} else if (aluno.getCurso().equals(
+					"Manutenção e Suporte de Informática")) {
+				adicionaDisciplinasMSI(aluno);
+			} else if (aluno.getCurso().equals("Música")) {
+				adicionaDisciplinasMusica(aluno);
+			}
 
-			Collections.shuffle(notasVariadas);
-			bimestre.setMatematica(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setArtes(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setBiologia(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setFilosofia(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setFisica(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setGeografia(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setHistoria(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setQuimica(notasVariadas.get(1));
-
-			Collections.shuffle(notasVariadas);
-			bimestre.setSociologia(notasVariadas.get(1));
-
-			bimestre.setMatricula(matricula);
-
-			bimestres.add(bimestre);
 		}
 
 	}
 
+	private static void adicionaDisciplinasADS(Aluno aluno) {
+
+		boletins = new ArrayList<Boletim>();
+
+		disciplinasDeADS = new ArrayList<String>();
+
+		disciplinasDeADS.add("Matematica Básica");
+		disciplinasDeADS.add("Português Instrumental");
+		disciplinasDeADS.add("Inglês I");
+		disciplinasDeADS.add("Inglês II");
+		disciplinasDeADS.add("Programação I");
+		disciplinasDeADS.add("Programação II");
+		disciplinasDeADS.add("Banco de Dados I");
+		disciplinasDeADS.add("Banco de Dados II");
+		disciplinasDeADS.add("Padrões de Projeto");
+		disciplinasDeADS.add("Análise de Algoritmos");
+		disciplinasDeADS.add("Projeto I");
+		disciplinasDeADS.add("Projeto II");
+
+		Double mediaGeral = 0.0;
+
+		Collections.shuffle(disciplinasDeADS);
+		for (int i = 0; i < 7; i++) {
+
+			Boletim boletim = new Boletim();
+
+			boletim.setDisciplina(disciplinasDeADS.get(i));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaPrimeiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaSegundoBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaTerceiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaQuartoBimestre(notasVariadas.get(1));
+
+			Double mediaDisciplina = 0.0;
+			mediaDisciplina += boletim.getNotaPrimeiroBimestre();
+			mediaDisciplina += boletim.getNotaSegundoBimestre();
+			mediaDisciplina += boletim.getNotaTerceiroBimestre();
+			mediaDisciplina += boletim.getNotaQuartoBimestre();
+
+			mediaDisciplina = mediaDisciplina / 4.0;
+			boletim.setMediaDisciplina(mediaDisciplina);
+			mediaGeral += mediaDisciplina;
+
+			boletim.setMatricula(aluno.getMatricula());
+
+			boletins.add(boletim);
+
+		}
+		mediaGeral = mediaGeral / 7.0;
+		aluno.setSituacaoAcademica(situacaoAluno(mediaGeral));
+
+	}
+
+	private static void adicionaDisciplinasMSI(Aluno aluno) {
+
+		boletins = new ArrayList<Boletim>();
+
+		disciplinasDeMSI = new ArrayList<String>();
+
+		disciplinasDeMSI.add("Informática Básica");
+		disciplinasDeMSI.add("Informática Avançada");
+		disciplinasDeMSI.add("Português");
+		disciplinasDeMSI.add("Matemática");
+		disciplinasDeMSI.add("Cálculo");
+		disciplinasDeMSI.add("Fundamentos de Redes");
+		disciplinasDeMSI.add("Introdução à Redes de Computadores");
+		disciplinasDeMSI.add("Sistemas para Informática");
+
+		Double mediaGeral = 0.0;
+
+		Collections.shuffle(disciplinasDeMSI);
+		for (int i = 0; i < 7; i++) {
+
+			Boletim boletim = new Boletim();
+			boletim.setDisciplina(disciplinasDeMSI.get(i));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaPrimeiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaSegundoBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaTerceiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaQuartoBimestre(notasVariadas.get(1));
+
+			Double mediaDisciplina = 0.0;
+			mediaDisciplina += boletim.getNotaPrimeiroBimestre();
+			mediaDisciplina += boletim.getNotaSegundoBimestre();
+			mediaDisciplina += boletim.getNotaTerceiroBimestre();
+			mediaDisciplina += boletim.getNotaQuartoBimestre();
+
+			mediaDisciplina = mediaDisciplina / 4.0;
+			boletim.setMediaDisciplina(mediaDisciplina);
+			mediaGeral += mediaDisciplina;
+
+			boletim.setMatricula(aluno.getMatricula());
+
+			boletins.add(boletim);
+
+		}
+		mediaGeral = mediaGeral / 7.0;
+		aluno.setSituacaoAcademica(situacaoAluno(mediaGeral));
+
+	}
+
+	private static void adicionaDisciplinasConstrucao(Aluno aluno) {
+
+		boletins = new ArrayList<Boletim>();
+
+		disciplinasDeConstrucao = new ArrayList<String>();
+
+		disciplinasDeConstrucao.add("Inglês I");
+		disciplinasDeConstrucao.add("Português");
+		disciplinasDeConstrucao.add("Física");
+		disciplinasDeConstrucao.add("Química");
+		disciplinasDeConstrucao.add("Física Quântica");
+		disciplinasDeConstrucao.add("Matemática");
+		disciplinasDeConstrucao.add("Cálculo Vetorial");
+		disciplinasDeConstrucao.add("Álgebra Linear");
+
+		Double mediaGeral = 0.0;
+
+		Collections.shuffle(disciplinasDeConstrucao);
+		for (int i = 0; i < 7; i++) {
+
+			Boletim boletim = new Boletim();
+			boletim.setDisciplina(disciplinasDeConstrucao.get(i));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaPrimeiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaSegundoBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaTerceiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaQuartoBimestre(notasVariadas.get(1));
+
+			Double mediaDisciplina = 0.0;
+			mediaDisciplina += boletim.getNotaPrimeiroBimestre();
+			mediaDisciplina += boletim.getNotaSegundoBimestre();
+			mediaDisciplina += boletim.getNotaTerceiroBimestre();
+			mediaDisciplina += boletim.getNotaQuartoBimestre();
+
+			mediaDisciplina = mediaDisciplina / 4.0;
+			boletim.setMediaDisciplina(mediaDisciplina);
+			mediaGeral += mediaDisciplina;
+
+			boletim.setMatricula(aluno.getMatricula());
+
+			boletins.add(boletim);
+
+		}
+		mediaGeral = mediaGeral / 7.0;
+		aluno.setSituacaoAcademica(situacaoAluno(mediaGeral));
+
+	}
+
+	private static void adicionaDisciplinasMusica(Aluno aluno) {
+
+		boletins = new ArrayList<Boletim>();
+
+		disciplinasDeMusica = new ArrayList<String>();
+
+		disciplinasDeMusica.add("Notas Musicais I");
+		disciplinasDeMusica.add("Canto Lírico");
+		disciplinasDeMusica.add("Fundamentos do Sopro");
+		disciplinasDeMusica.add("Exemplo de Disciplina de Música");
+		disciplinasDeMusica.add("Sopro Avançado I");
+		disciplinasDeMusica.add("Sopro Avançado II");
+		disciplinasDeMusica.add("Sopro Super Avançado III");
+		disciplinasDeMusica.add("Bateria");
+		disciplinasDeMusica.add("Violino Básico");
+
+		Double mediaGeral = 0.0;
+
+		Collections.shuffle(disciplinasDeMusica);
+		for (int i = 0; i < 7; i++) {
+
+			Boletim boletim = new Boletim();
+			boletim.setDisciplina(disciplinasDeMusica.get(i));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaPrimeiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaSegundoBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaTerceiroBimestre(notasVariadas.get(1));
+
+			Collections.shuffle(notasVariadas);
+			boletim.setNotaQuartoBimestre(notasVariadas.get(1));
+
+			Double mediaDisciplina = 0.0;
+			mediaDisciplina += boletim.getNotaPrimeiroBimestre();
+			mediaDisciplina += boletim.getNotaSegundoBimestre();
+			mediaDisciplina += boletim.getNotaTerceiroBimestre();
+			mediaDisciplina += boletim.getNotaQuartoBimestre();
+
+			mediaDisciplina = mediaDisciplina / 4.0;
+			boletim.setMediaDisciplina(mediaDisciplina);
+			mediaGeral += mediaDisciplina;
+
+			boletim.setMatricula(aluno.getMatricula());
+
+			boletins.add(boletim);
+		}
+		mediaGeral = mediaGeral / 7.0;
+		aluno.setSituacaoAcademica(situacaoAluno(mediaGeral));
+
+	}
+
+	/**
+	 * Capturando a situação do aluno com base na media das disciplinas dele.
+	 * 
+	 * @param media
+	 * @return
+	 */
+	private static String situacaoAluno(Double media) {
+		if (media >= 7.0) {
+			return "APROVADO";
+		} else if (media >= 4 && media <= 6.9) {
+			return "MERECE ATENÇÃO";
+		}
+		return "REPROVADO";
+	}
 }

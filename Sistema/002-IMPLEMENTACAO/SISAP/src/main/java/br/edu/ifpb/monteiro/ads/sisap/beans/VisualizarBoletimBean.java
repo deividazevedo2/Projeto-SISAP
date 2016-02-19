@@ -19,10 +19,10 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import br.edu.ifpb.monteiro.ads.sisap.entities.Aluno;
-import br.edu.ifpb.monteiro.ads.sisap.entities.Bimestre;
+import br.edu.ifpb.monteiro.ads.sisap.entities.Boletim;
 import br.edu.ifpb.monteiro.ads.sisap.exception.SisapException;
 import br.edu.ifpb.monteiro.ads.sisap.service.AlunoService;
-import br.edu.ifpb.monteiro.ads.sisap.service.BimestreService;
+import br.edu.ifpb.monteiro.ads.sisap.service.BoletimService;
 
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
@@ -52,13 +52,13 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 	String matriculaAluno;
 	String nomeAluno;
 
-	private List<Bimestre> bimestres;
+	private List<Boletim> boletins;
 
 	@Inject
 	private AlunoService alunoService;
 
 	@Inject
-	private BimestreService bimestreService;
+	private BoletimService boletimService;
 
 	@Inject
 	private Conversation conversation;
@@ -75,8 +75,8 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 		if (conversation.isTransient()) {
 			conversation.begin();
 		}
-		if (bimestres == null) {
-			bimestres = new ArrayList<Bimestre>();
+		if (boletins == null) {
+			boletins = new ArrayList<Boletim>();
 		}
 	}
 
@@ -209,8 +209,14 @@ public class VisualizarBoletimBean extends ClasseAbstrata {
 
 	}
 
-	public List<Bimestre> getBimestres() throws SisapException {
-		return bimestreService.buscarNotasDoAluno(aluno.getMatricula());
+	/**
+	 * Capturar os boletins de um aluno com matricula passada no parâmetro.
+	 * 
+	 * @return
+	 * @throws SisapException
+	 */
+	public List<Boletim> getBoletins() throws SisapException {
+		return boletimService.buscarNotasDoAluno(aluno.getMatricula());
 
 	}
 

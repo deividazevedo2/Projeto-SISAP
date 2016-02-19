@@ -60,49 +60,33 @@
 
 			</h:panelGrid>
 
-			<p:dataTable id="lista" var="bimestre"
-				value="#{visualizarBoletimBean.bimestres}"
+			<p:dataTable id="lista" var="boletim"
+				value="#{visualizarBoletimBean.boletins}"
 				emptyMessage="Nenhum registro encontrado." paginator="true"
 				rows="10" style="text-align: center">
 
-				<p:column headerText="Português">
-					<h:outputText value="#{bimestre.portugues}" />
+				<p:column headerText="Disciplina">
+					<h:outputText value="#{boletim.disciplina}" />
 				</p:column>
 
-				<p:column headerText="Matemática">
-					<h:outputText value="#{bimestre.matematica}" />
+				<p:column headerText="Nota Primeiro Bimestre">
+					<h:outputText value="#{boletim.notaPrimeiroBimestre}" />
 				</p:column>
 
-				<p:column headerText="Artes">
-					<h:outputText value="#{bimestre.artes}" />
+				<p:column headerText="Nota Segundo Bimestre">
+					<h:outputText value="#{boletim.notaSegundoBimestre}" />
 				</p:column>
 
-				<p:column headerText="Biologia">
-					<h:outputText value="#{bimestre.biologia}" />
+				<p:column headerText="Nota Terceiro Bimestre">
+					<h:outputText value="#{boletim.notaTerceiroBimestre}" />
 				</p:column>
 
-				<p:column headerText="Geografia">
-					<h:outputText value="#{bimestre.geografia}" />
+				<p:column headerText="Nota Quarto Bimestre">
+					<h:outputText value="#{boletim.notaQuartoBimestre}" />
 				</p:column>
 
-				<p:column headerText="História">
-					<h:outputText value="#{bimestre.historia}" />
-				</p:column>
-
-				<p:column headerText="Física">
-					<h:outputText value="#{bimestre.fisica}" />
-				</p:column>
-
-				<p:column headerText="Química">
-					<h:outputText value="#{bimestre.quimica}" />
-				</p:column>
-
-				<p:column headerText="Sociologia">
-					<h:outputText value="#{bimestre.sociologia}" />
-				</p:column>
-
-				<p:column headerText="Filosofia">
-					<h:outputText value="#{bimestre.filosofia}" />
+				<p:column headerText="Média">
+					<h:outputText value="#{boletim.mediaDisciplina}" />
 				</p:column>
 
 			</p:dataTable>
