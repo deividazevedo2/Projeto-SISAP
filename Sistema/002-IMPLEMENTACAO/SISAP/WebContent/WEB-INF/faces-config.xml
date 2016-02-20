@@ -8,11 +8,15 @@
 
 		<!-- Para inserir o arquivo de propriedades messages que será utilizado 
 			para as mensagem de erro (ou nao) que serão utilizadas na aplicação -->
-		<!-- <message-bundle>br.edu.ifpb.mt.daca.exception.messages</message-bundle> -->
+		<message-bundle>br.edu.ifpb.monteiro.ads.sisap.exception.messages</message-bundle>
 
 		<action-listener>org.primefaces.application.DialogActionListener</action-listener>
 		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
 		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
 	</application>
+
+	<lifecycle>
+		<phase-listener>br.edu.ifpb.monteiro.ads.sisap.util.MessageHandler</phase-listener>
+	</lifecycle>
 
 </faces-config>
